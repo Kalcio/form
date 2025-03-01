@@ -1,0 +1,132 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block content %}
+
+<h1>{% block title %}Example: {{ example.name }}{% endblock %}</h1>
+
+<p class="mb-4">{{ example.description }}</p>
+
+{% set jsonFlags =
+    constant('JSON_PRETTY_PRINT') +
+    constant('JSON_INVALID_UTF8_SUBSTITUTE') +
+    constant('JSON_UNESCAPED_LINE_TERMINATORS') +
+    constant('JSON_UNESCAPED_SLASHES') +
+    constant('JSON_UNESCAPED_UNICODE') +
+    constant('JSON_THROW_ON_ERROR')
+%}
+
+{% set tab_content_input %}
+<pre class="line-numbers language-json"><code>
+    {{- example.form | json_encode(jsonFlags) -}}
+</code></pre>
+{% endset %}
+
+{% set tab_content_demo_php %}
+
+{% endset %}
+
+{% set tab_content_demo_js %}
+<div id="json-form-container" class="mb-4"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const formDefinition = {{- example.jsonFormsDefinition | json_encode | raw -}};
+    window.renderJsonForm('json-form-container', formDefinition);
+});
+</script>
+
+<twig:block-alert
+    type="info"
+    content="The demo in JavaScript uses the <a href='https://jsonforms.io' target='_blank' class='alert-link'>JSON Forms</a> library."
+/>
+{% endset %}
+
+{% set tab_content_schema %}
+<pre class="line-numbers language-json"><code>
+    {{- example.jsonFormsDefinition.schema | json_encode(jsonFlags) -}}
+</code></pre>
+{% endset %}
+
+{% set tab_content_uischema %}
+<pre class="line-numbers language-json"><code>
+    {{- example.jsonFormsDefinition.uischema | json_encode(jsonFlags) -}}
+</code></pre>
+{% endset %}
+
+{% set tab_content_data %}
+<pre class="line-numbers language-json"><code>
+    {{- example.jsonFormsDefinition.data | json_encode(jsonFlags) -}}
+</code></pre>
+{% endset %}
+
+<twig:block-tabs
+    activeTab="demo_js"
+    :tabs="[
+        {
+            'id': 'input',
+            'title': 'Input',
+            'icon': 'fa-solid fa-file-code',
+            'content': tab_content_input
+        },
+        {
+            'id': 'demo_php',
+            'title': 'Demo PHP',
+            'icon': 'fa-brands fa-php',
+            'content': tab_content_demo_php
+        },
+        {
+            'id': 'demo_js',
+            'title': 'Demo JS',
+            'icon': 'fa-brands fa-js',
+            'content': tab_content_demo_js
+        },
+        {
+            'id': 'schema',
+            'title': 'Schema',
+            'icon': 'fa-solid fa-list',
+            'content': tab_content_schema
+        },
+        {
+            'id': 'uischema',
+            'title': 'UI Schema',
+            'icon': 'fa-solid fa-table-list',
+            'content': tab_content_uischema
+        },
+        {
+            'id': 'data',
+            'title': 'Data',
+            'icon': 'fa-solid fa-database',
+            'content': tab_content_data
+        },
+    ]"
+/>
+
+{% if example.tags is not empty %}
+    <hr/>
+    <div class="my-4 small">
+        Tags: <span class="text-muted">#{{ example.tags | join(' #')}}</span>
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-6">
+        {% if example.previous is not empty %}
+            <a href="{{ base_path }}/examples/{{ example.previous.code }}" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                {{ example.previous.name }}
+            </a>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {% if example.next is not empty %}
+            <a href="{{ base_path }}/examples/{{ example.next.code }}" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                {{ example.next.name }}
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
