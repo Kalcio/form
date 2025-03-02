@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Advanced Invoice Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: Advanced Invoice Search</h1>
+
+<p class="mb-4">Complex search form for filtering invoices with conditional fields.</p>
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def1eb9d4">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;basicFilters&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;dateRange&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;today&quot;,
+                            &quot;yesterday&quot;,
+                            &quot;last7days&quot;,
+                            &quot;last30days&quot;,
+                            &quot;thisMonth&quot;,
+                            &quot;lastMonth&quot;,
+                            &quot;custom&quot;
+                        ],
+                        &quot;default&quot;: &quot;last30days&quot;,
+                        &quot;title&quot;: &quot;Date Range&quot;
+                    },
+                    &quot;customDateFrom&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;From Date&quot;
+                    },
+                    &quot;customDateTo&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;To Date&quot;
+                    },
+                    &quot;invoiceStatus&quot;: {
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;items&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;enum&quot;: [
+                                &quot;draft&quot;,
+                                &quot;sent&quot;,
+                                &quot;paid&quot;,
+                                &quot;overdue&quot;,
+                                &quot;cancelled&quot;,
+                                &quot;rejected&quot;
+                            ]
+                        },
+                        &quot;uniqueItems&quot;: true,
+                        &quot;title&quot;: &quot;Invoice Status&quot;
+                    },
+                    &quot;searchText&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Search Text&quot;
+                    }
+                }
+            },
+            &quot;advancedFilters&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;showAdvanced&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Show Advanced Filters&quot;,
+                        &quot;default&quot;: false
+                    },
+                    &quot;amountRange&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;min&quot;: {
+                                &quot;type&quot;: &quot;number&quot;,
+                                &quot;title&quot;: &quot;Minimum Amount&quot;
+                            },
+                            &quot;max&quot;: {
+                                &quot;type&quot;: &quot;number&quot;,
+                                &quot;title&quot;: &quot;Maximum Amount&quot;
+                            }
+                        }
+                    },
+                    &quot;customer&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Customer&quot;
+                    },
+                    &quot;taxId&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Tax ID&quot;
+                    },
+                    &quot;paymentMethod&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;all&quot;,
+                            &quot;cash&quot;,
+                            &quot;creditCard&quot;,
+                            &quot;bankTransfer&quot;,
+                            &quot;check&quot;
+                        ],
+                        &quot;default&quot;: &quot;all&quot;,
+                        &quot;title&quot;: &quot;Payment Method&quot;
+                    },
+                    &quot;includeItems&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Search in Line Items&quot;,
+                        &quot;default&quot;: false
+                    },
+                    &quot;itemFilters&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;productCode&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Product Code&quot;
+                            },
+                            &quot;description&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Description Contains&quot;
+                            }
+                        }
+                    }
+                }
+            },
+            &quot;displayOptions&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;groupBy&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;none&quot;,
+                            &quot;customer&quot;,
+                            &quot;status&quot;,
+                            &quot;month&quot;,
+                            &quot;quarter&quot;
+                        ],
+                        &quot;default&quot;: &quot;none&quot;,
+                        &quot;title&quot;: &quot;Group Results By&quot;
+                    },
+                    &quot;sortBy&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;date&quot;,
+                            &quot;number&quot;,
+                            &quot;customer&quot;,
+                            &quot;amount&quot;
+                        ],
+                        &quot;default&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;Sort By&quot;
+                    },
+                    &quot;sortOrder&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;asc&quot;,
+                            &quot;desc&quot;
+                        ],
+                        &quot;default&quot;: &quot;desc&quot;,
+                        &quot;title&quot;: &quot;Sort Order&quot;
+                    },
+                    &quot;itemsPerPage&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;enum&quot;: [
+                            10,
+                            25,
+                            50,
+                            100
+                        ],
+                        &quot;default&quot;: 25,
+                        &quot;title&quot;: &quot;Items Per Page&quot;
+                    }
+                }
+            }
+        }
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;VerticalLayout&quot;,
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Basic Search&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/basicFilters/properties/customDateFrom&quot;,
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: &quot;custom&quot;
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/basicFilters/properties/customDateTo&quot;,
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: &quot;custom&quot;
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/invoiceStatus&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;checkbox&quot;
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;,
+                        &quot;options&quot;: {
+                            &quot;placeholder&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Advanced Filters&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;
+                    },
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/amountRange/properties/min&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/amountRange/properties/max&quot;
+                            }
+                        ],
+                        &quot;rule&quot;: {
+                            &quot;effect&quot;: &quot;SHOW&quot;,
+                            &quot;condition&quot;: {
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                &quot;schema&quot;: {
+                                    &quot;const&quot;: true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/customer&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/taxId&quot;
+                            }
+                        ],
+                        &quot;rule&quot;: {
+                            &quot;effect&quot;: &quot;SHOW&quot;,
+                            &quot;condition&quot;: {
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                &quot;schema&quot;: {
+                                    &quot;const&quot;: true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/paymentMethod&quot;,
+                        &quot;rule&quot;: {
+                            &quot;effect&quot;: &quot;SHOW&quot;,
+                            &quot;condition&quot;: {
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                &quot;schema&quot;: {
+                                    &quot;const&quot;: true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/includeItems&quot;,
+                        &quot;rule&quot;: {
+                            &quot;effect&quot;: &quot;SHOW&quot;,
+                            &quot;condition&quot;: {
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                &quot;schema&quot;: {
+                                    &quot;const&quot;: true
+                                }
+                            }
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/itemFilters/properties/productCode&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/itemFilters/properties/description&quot;
+                            }
+                        ],
+                        &quot;rule&quot;: {
+                            &quot;effect&quot;: &quot;SHOW&quot;,
+                            &quot;condition&quot;: {
+                                &quot;type&quot;: &quot;AND&quot;,
+                                &quot;conditions&quot;: [
+                                    {
+                                        &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    },
+                                    {
+                                        &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/includeItems&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Display Options&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/displayOptions/properties/groupBy&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/displayOptions/properties/sortBy&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/displayOptions/properties/sortOrder&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/displayOptions/properties/itemsPerPage&quot;
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;data&quot;: {
+        &quot;basicFilters&quot;: {
+            &quot;dateRange&quot;: &quot;last30days&quot;,
+            &quot;invoiceStatus&quot;: [
+                &quot;sent&quot;,
+                &quot;paid&quot;,
+                &quot;overdue&quot;
+            ],
+            &quot;searchText&quot;: &quot;&quot;
+        },
+        &quot;advancedFilters&quot;: {
+            &quot;showAdvanced&quot;: false,
+            &quot;amountRange&quot;: {
+                &quot;min&quot;: null,
+                &quot;max&quot;: null
+            },
+            &quot;customer&quot;: &quot;&quot;,
+            &quot;taxId&quot;: &quot;&quot;,
+            &quot;paymentMethod&quot;: &quot;all&quot;,
+            &quot;includeItems&quot;: false,
+            &quot;itemFilters&quot;: {
+                &quot;productCode&quot;: &quot;&quot;,
+                &quot;description&quot;: &quot;&quot;
+            }
+        },
+        &quot;displayOptions&quot;: {
+            &quot;groupBy&quot;: &quot;none&quot;,
+            &quot;sortBy&quot;: &quot;date&quot;,
+            &quot;sortOrder&quot;: &quot;desc&quot;,
+            &quot;itemsPerPage&quot;: 25
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1e8de3">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"basicFilters":{"type":"object","properties":{"dateRange":{"type":"string","enum":["today","yesterday","last7days","last30days","thisMonth","lastMonth","custom"],"default":"last30days","title":"Date Range"},"customDateFrom":{"type":"string","format":"date","title":"From Date"},"customDateTo":{"type":"string","format":"date","title":"To Date"},"invoiceStatus":{"type":"array","items":{"type":"string","enum":["draft","sent","paid","overdue","cancelled","rejected"]},"uniqueItems":true,"title":"Invoice Status"},"searchText":{"type":"string","title":"Search Text"}}},"advancedFilters":{"type":"object","properties":{"showAdvanced":{"type":"boolean","title":"Show Advanced Filters","default":false},"amountRange":{"type":"object","properties":{"min":{"type":"number","title":"Minimum Amount"},"max":{"type":"number","title":"Maximum Amount"}}},"customer":{"type":"string","title":"Customer"},"taxId":{"type":"string","title":"Tax ID"},"paymentMethod":{"type":"string","enum":["all","cash","creditCard","bankTransfer","check"],"default":"all","title":"Payment Method"},"includeItems":{"type":"boolean","title":"Search in Line Items","default":false},"itemFilters":{"type":"object","properties":{"productCode":{"type":"string","title":"Product Code"},"description":{"type":"string","title":"Description Contains"}}}}},"displayOptions":{"type":"object","properties":{"groupBy":{"type":"string","enum":["none","customer","status","month","quarter"],"default":"none","title":"Group Results By"},"sortBy":{"type":"string","enum":["date","number","customer","amount"],"default":"date","title":"Sort By"},"sortOrder":{"type":"string","enum":["asc","desc"],"default":"desc","title":"Sort Order"},"itemsPerPage":{"type":"number","enum":[10,25,50,100],"default":25,"title":"Items Per Page"}}}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Search","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/dateRange"},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateFrom","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateTo","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}}]},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/invoiceStatus","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/searchText","options":{"placeholder":"Invoice #, customer name, or any text in the invoice"}}]},{"type":"Group","label":"Advanced Filters","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/showAdvanced"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/min"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/max"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/customer"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/taxId"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/paymentMethod","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/includeItems","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/productCode"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/description"}],"rule":{"effect":"SHOW","condition":{"type":"AND","conditions":[{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}},{"scope":"#\/properties\/advancedFilters\/properties\/includeItems","schema":{"const":true}}]}}}]},{"type":"Group","label":"Display Options","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/groupBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortOrder"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/itemsPerPage"}]}]}]},"data":{"basicFilters":{"dateRange":"last30days","invoiceStatus":["sent","paid","overdue"],"searchText":""},"advancedFilters":{"showAdvanced":false,"amountRange":{"min":null,"max":null},"customer":"","taxId":"","paymentMethod":"all","includeItems":false,"itemFilters":{"productCode":"","description":""}},"displayOptions":{"groupBy":"none","sortBy":"date","sortOrder":"desc","itemsPerPage":25}}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;basicFilters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;dateRange&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;today&quot;,
+                        &quot;yesterday&quot;,
+                        &quot;last7days&quot;,
+                        &quot;last30days&quot;,
+                        &quot;thisMonth&quot;,
+                        &quot;lastMonth&quot;,
+                        &quot;custom&quot;
+                    ],
+                    &quot;default&quot;: &quot;last30days&quot;,
+                    &quot;title&quot;: &quot;Date Range&quot;
+                },
+                &quot;customDateFrom&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;From Date&quot;
+                },
+                &quot;customDateTo&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;To Date&quot;
+                },
+                &quot;invoiceStatus&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;draft&quot;,
+                            &quot;sent&quot;,
+                            &quot;paid&quot;,
+                            &quot;overdue&quot;,
+                            &quot;cancelled&quot;,
+                            &quot;rejected&quot;
+                        ]
+                    },
+                    &quot;uniqueItems&quot;: true,
+                    &quot;title&quot;: &quot;Invoice Status&quot;
+                },
+                &quot;searchText&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Search Text&quot;
+                }
+            }
+        },
+        &quot;advancedFilters&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;showAdvanced&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Show Advanced Filters&quot;,
+                    &quot;default&quot;: false
+                },
+                &quot;amountRange&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;min&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Minimum Amount&quot;
+                        },
+                        &quot;max&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Maximum Amount&quot;
+                        }
+                    }
+                },
+                &quot;customer&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Customer&quot;
+                },
+                &quot;taxId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Tax ID&quot;
+                },
+                &quot;paymentMethod&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;all&quot;,
+                        &quot;cash&quot;,
+                        &quot;creditCard&quot;,
+                        &quot;bankTransfer&quot;,
+                        &quot;check&quot;
+                    ],
+                    &quot;default&quot;: &quot;all&quot;,
+                    &quot;title&quot;: &quot;Payment Method&quot;
+                },
+                &quot;includeItems&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Search in Line Items&quot;,
+                    &quot;default&quot;: false
+                },
+                &quot;itemFilters&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;productCode&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Product Code&quot;
+                        },
+                        &quot;description&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Description Contains&quot;
+                        }
+                    }
+                }
+            }
+        },
+        &quot;displayOptions&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;groupBy&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;none&quot;,
+                        &quot;customer&quot;,
+                        &quot;status&quot;,
+                        &quot;month&quot;,
+                        &quot;quarter&quot;
+                    ],
+                    &quot;default&quot;: &quot;none&quot;,
+                    &quot;title&quot;: &quot;Group Results By&quot;
+                },
+                &quot;sortBy&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;date&quot;,
+                        &quot;number&quot;,
+                        &quot;customer&quot;,
+                        &quot;amount&quot;
+                    ],
+                    &quot;default&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;Sort By&quot;
+                },
+                &quot;sortOrder&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;asc&quot;,
+                        &quot;desc&quot;
+                    ],
+                    &quot;default&quot;: &quot;desc&quot;,
+                    &quot;title&quot;: &quot;Sort Order&quot;
+                },
+                &quot;itemsPerPage&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;enum&quot;: [
+                        10,
+                        25,
+                        50,
+                        100
+                    ],
+                    &quot;default&quot;: 25,
+                    &quot;title&quot;: &quot;Items Per Page&quot;
+                }
+            }
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Basic Search&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/basicFilters/properties/customDateFrom&quot;,
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: &quot;custom&quot;
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/basicFilters/properties/customDateTo&quot;,
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/dateRange&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: &quot;custom&quot;
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/invoiceStatus&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;checkbox&quot;
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;,
+                    &quot;options&quot;: {
+                        &quot;placeholder&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
+                    }
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Advanced Filters&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;
+                },
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/amountRange/properties/min&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/amountRange/properties/max&quot;
+                        }
+                    ],
+                    &quot;rule&quot;: {
+                        &quot;effect&quot;: &quot;SHOW&quot;,
+                        &quot;condition&quot;: {
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                            &quot;schema&quot;: {
+                                &quot;const&quot;: true
+                            }
+                        }
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/customer&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/taxId&quot;
+                        }
+                    ],
+                    &quot;rule&quot;: {
+                        &quot;effect&quot;: &quot;SHOW&quot;,
+                        &quot;condition&quot;: {
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                            &quot;schema&quot;: {
+                                &quot;const&quot;: true
+                            }
+                        }
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/paymentMethod&quot;,
+                    &quot;rule&quot;: {
+                        &quot;effect&quot;: &quot;SHOW&quot;,
+                        &quot;condition&quot;: {
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                            &quot;schema&quot;: {
+                                &quot;const&quot;: true
+                            }
+                        }
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/includeItems&quot;,
+                    &quot;rule&quot;: {
+                        &quot;effect&quot;: &quot;SHOW&quot;,
+                        &quot;condition&quot;: {
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                            &quot;schema&quot;: {
+                                &quot;const&quot;: true
+                            }
+                        }
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/itemFilters/properties/productCode&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/itemFilters/properties/description&quot;
+                        }
+                    ],
+                    &quot;rule&quot;: {
+                        &quot;effect&quot;: &quot;SHOW&quot;,
+                        &quot;condition&quot;: {
+                            &quot;type&quot;: &quot;AND&quot;,
+                            &quot;conditions&quot;: [
+                                {
+                                    &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/showAdvanced&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                },
+                                {
+                                    &quot;scope&quot;: &quot;#/properties/advancedFilters/properties/includeItems&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Display Options&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/displayOptions/properties/groupBy&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/displayOptions/properties/sortBy&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/displayOptions/properties/sortOrder&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/displayOptions/properties/itemsPerPage&quot;
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;basicFilters&quot;: {
+        &quot;dateRange&quot;: &quot;last30days&quot;,
+        &quot;invoiceStatus&quot;: [
+            &quot;sent&quot;,
+            &quot;paid&quot;,
+            &quot;overdue&quot;
+        ],
+        &quot;searchText&quot;: &quot;&quot;
+    },
+    &quot;advancedFilters&quot;: {
+        &quot;showAdvanced&quot;: false,
+        &quot;amountRange&quot;: {
+            &quot;min&quot;: null,
+            &quot;max&quot;: null
+        },
+        &quot;customer&quot;: &quot;&quot;,
+        &quot;taxId&quot;: &quot;&quot;,
+        &quot;paymentMethod&quot;: &quot;all&quot;,
+        &quot;includeItems&quot;: false,
+        &quot;itemFilters&quot;: {
+            &quot;productCode&quot;: &quot;&quot;,
+            &quot;description&quot;: &quot;&quot;
+        }
+    },
+    &quot;displayOptions&quot;: {
+        &quot;groupBy&quot;: &quot;none&quot;,
+        &quot;sortBy&quot;: &quot;date&quot;,
+        &quot;sortOrder&quot;: &quot;desc&quot;,
+        &quot;itemsPerPage&quot;: 25
+    }
+}</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#conditionalFields</span>
+        </div>
+        <div class="text-muted float-end">
+            009_search
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="invoicing.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                Invoice Issuance
+            </a>
+            </div>
+    <div class="col-md-6">
+                    <a href="config.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                E-Invoicing Configuration
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

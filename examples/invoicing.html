@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Invoice Issuance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: Invoice Issuance</h1>
+
+<p class="mb-4">Form for creating invoices with basic fields and line items.</p>
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def1d0fb1">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;header&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;title&quot;: &quot;Invoice Information&quot;,
+                &quot;properties&quot;: {
+                    &quot;id&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Invoice Number&quot;
+                    },
+                    &quot;issueDate&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;Issue Date&quot;
+                    },
+                    &quot;dueDate&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;Due Date&quot;
+                    },
+                    &quot;documentCurrencyCode&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Currency&quot;,
+                        &quot;default&quot;: &quot;USD&quot;
+                    },
+                    &quot;note&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Notes&quot;
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;id&quot;,
+                    &quot;issueDate&quot;,
+                    &quot;documentCurrencyCode&quot;
+                ]
+            },
+            &quot;accountingSupplierParty&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;title&quot;: &quot;Supplier Information&quot;,
+                &quot;properties&quot;: {
+                    &quot;taxId&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Tax ID&quot;
+                    },
+                    &quot;name&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Company Name&quot;
+                    },
+                    &quot;address&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;streetName&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Street&quot;
+                            },
+                            &quot;cityName&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;City&quot;
+                            },
+                            &quot;postalZone&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Postal Code&quot;
+                            },
+                            &quot;country&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Country&quot;
+                            }
+                        }
+                    },
+                    &quot;contact&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;name&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Contact Name&quot;
+                            },
+                            &quot;telephone&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Phone&quot;
+                            },
+                            &quot;electronicMail&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;format&quot;: &quot;email&quot;,
+                                &quot;title&quot;: &quot;Email&quot;
+                            }
+                        }
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;name&quot;,
+                    &quot;taxId&quot;
+                ]
+            },
+            &quot;accountingCustomerParty&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;title&quot;: &quot;Customer Information&quot;,
+                &quot;properties&quot;: {
+                    &quot;taxId&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Tax ID&quot;
+                    },
+                    &quot;name&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Company Name&quot;
+                    },
+                    &quot;address&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;streetName&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Street&quot;
+                            },
+                            &quot;cityName&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;City&quot;
+                            },
+                            &quot;postalZone&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Postal Code&quot;
+                            },
+                            &quot;country&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Country&quot;
+                            }
+                        }
+                    },
+                    &quot;contact&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;name&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Contact Name&quot;
+                            },
+                            &quot;telephone&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Phone&quot;
+                            },
+                            &quot;electronicMail&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;format&quot;: &quot;email&quot;,
+                                &quot;title&quot;: &quot;Email&quot;
+                            }
+                        }
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;taxId&quot;,
+                    &quot;name&quot;
+                ]
+            },
+            &quot;invoiceLines&quot;: {
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;title&quot;: &quot;Invoice Lines&quot;,
+                &quot;items&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;description&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Description&quot;
+                        },
+                        &quot;quantity&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Quantity&quot;,
+                            &quot;minimum&quot;: 0
+                        },
+                        &quot;unitCode&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Unit&quot;,
+                            &quot;default&quot;: &quot;UN&quot;
+                        },
+                        &quot;priceAmount&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Unit Price&quot;,
+                            &quot;exclusiveMinimum&quot;: 0
+                        },
+                        &quot;taxPercent&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Tax %&quot;,
+                            &quot;default&quot;: 22,
+                            &quot;minimum&quot;: 0
+                        },
+                        &quot;lineExtensionAmount&quot;: {
+                            &quot;type&quot;: &quot;number&quot;,
+                            &quot;title&quot;: &quot;Line Total&quot;,
+                            &quot;exclusiveMinimum&quot;: 0
+                        }
+                    },
+                    &quot;required&quot;: [
+                        &quot;description&quot;,
+                        &quot;quantity&quot;,
+                        &quot;unitCode&quot;,
+                        &quot;priceAmount&quot;
+                    ]
+                },
+                &quot;minItems&quot;: 1
+            },
+            &quot;legalMonetaryTotal&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;title&quot;: &quot;Totals&quot;,
+                &quot;properties&quot;: {
+                    &quot;lineExtensionAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Total Before Tax&quot;,
+                        &quot;minimum&quot;: 0
+                    },
+                    &quot;taxExclusiveAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Tax Amount&quot;,
+                        &quot;minimum&quot;: 0
+                    },
+                    &quot;taxInclusiveAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Total With Tax&quot;,
+                        &quot;minimum&quot;: 0
+                    },
+                    &quot;payableAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Amount Due&quot;,
+                        &quot;minimum&quot;: 0
+                    }
+                }
+            }
+        },
+        &quot;required&quot;: [
+            &quot;header&quot;,
+            &quot;accountingSupplierParty&quot;,
+            &quot;accountingCustomerParty&quot;,
+            &quot;invoiceLines&quot;,
+            &quot;legalMonetaryTotal&quot;
+        ]
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;VerticalLayout&quot;,
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Invoice Information&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/header/properties/id&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/header/properties/issueDate&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/header/properties/dueDate&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/header/properties/documentCurrencyCode&quot;
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/header/properties/note&quot;
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Supplier Information&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/taxId&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/name&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/streetName&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/cityName&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/postalZone&quot;
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/country&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/name&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/telephone&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/electronicMail&quot;
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Customer Information&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/taxId&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/name&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/streetName&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/cityName&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/postalZone&quot;
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/country&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/name&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/telephone&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/electronicMail&quot;
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Invoice Items&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/invoiceLines&quot;,
+                        &quot;options&quot;: {
+                            &quot;detail&quot;: {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/description&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/quantity&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/unitCode&quot;
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/priceAmount&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxPercent&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/lineExtensionAmount&quot;,
+                                                &quot;options&quot;: {
+                                                    &quot;readonly&quot;: true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Totals&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/lineExtensionAmount&quot;,
+                                &quot;options&quot;: {
+                                    &quot;readonly&quot;: true
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/taxExclusiveAmount&quot;,
+                                &quot;options&quot;: {
+                                    &quot;readonly&quot;: true
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/taxInclusiveAmount&quot;,
+                                &quot;options&quot;: {
+                                    &quot;readonly&quot;: true
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/payableAmount&quot;,
+                                &quot;options&quot;: {
+                                    &quot;readonly&quot;: true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;data&quot;: {
+        &quot;header&quot;: {
+            &quot;id&quot;: &quot;&quot;,
+            &quot;issueDate&quot;: &quot;2025-03-01&quot;,
+            &quot;dueDate&quot;: &quot;2025-03-10&quot;,
+            &quot;documentCurrencyCode&quot;: &quot;EUR&quot;,
+            &quot;note&quot;: &quot;&quot;
+        },
+        &quot;accountingSupplierParty&quot;: {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;taxId&quot;: &quot;&quot;,
+            &quot;address&quot;: {
+                &quot;streetName&quot;: &quot;&quot;,
+                &quot;cityName&quot;: &quot;&quot;,
+                &quot;postalZone&quot;: &quot;&quot;,
+                &quot;country&quot;: &quot;&quot;
+            },
+            &quot;contact&quot;: {
+                &quot;name&quot;: &quot;&quot;,
+                &quot;telephone&quot;: &quot;&quot;,
+                &quot;electronicMail&quot;: &quot;&quot;
+            }
+        },
+        &quot;accountingCustomerParty&quot;: {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;taxId&quot;: &quot;&quot;,
+            &quot;address&quot;: {
+                &quot;streetName&quot;: &quot;&quot;,
+                &quot;cityName&quot;: &quot;&quot;,
+                &quot;postalZone&quot;: &quot;&quot;,
+                &quot;country&quot;: &quot;&quot;
+            },
+            &quot;contact&quot;: {
+                &quot;name&quot;: &quot;&quot;,
+                &quot;telephone&quot;: &quot;&quot;,
+                &quot;electronicMail&quot;: &quot;&quot;
+            }
+        },
+        &quot;invoiceLines&quot;: [
+            {
+                &quot;description&quot;: &quot;Form Generation Service&quot;,
+                &quot;quantity&quot;: 1,
+                &quot;unitCode&quot;: &quot;UN&quot;,
+                &quot;priceAmount&quot;: 0,
+                &quot;taxPercent&quot;: 22,
+                &quot;lineExtensionAmount&quot;: 0
+            }
+        ],
+        &quot;legalMonetaryTotal&quot;: {
+            &quot;lineExtensionAmount&quot;: 0,
+            &quot;taxExclusiveAmount&quot;: 0,
+            &quot;taxInclusiveAmount&quot;: 0,
+            &quot;payableAmount&quot;: 0
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1ce41c">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"header":{"type":"object","title":"Invoice Information","properties":{"id":{"type":"string","title":"Invoice Number"},"issueDate":{"type":"string","format":"date","title":"Issue Date"},"dueDate":{"type":"string","format":"date","title":"Due Date"},"documentCurrencyCode":{"type":"string","title":"Currency","default":"USD"},"note":{"type":"string","title":"Notes"}},"required":["id","issueDate","documentCurrencyCode"]},"accountingSupplierParty":{"type":"object","title":"Supplier Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","format":"email","title":"Email"}}}},"required":["name","taxId"]},"accountingCustomerParty":{"type":"object","title":"Customer Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","format":"email","title":"Email"}}}},"required":["taxId","name"]},"invoiceLines":{"type":"array","title":"Invoice Lines","items":{"type":"object","properties":{"description":{"type":"string","title":"Description"},"quantity":{"type":"number","title":"Quantity","minimum":0},"unitCode":{"type":"string","title":"Unit","default":"UN"},"priceAmount":{"type":"number","title":"Unit Price","exclusiveMinimum":0},"taxPercent":{"type":"number","title":"Tax %","default":22,"minimum":0},"lineExtensionAmount":{"type":"number","title":"Line Total","exclusiveMinimum":0}},"required":["description","quantity","unitCode","priceAmount"]},"minItems":1},"legalMonetaryTotal":{"type":"object","title":"Totals","properties":{"lineExtensionAmount":{"type":"number","title":"Total Before Tax","minimum":0},"taxExclusiveAmount":{"type":"number","title":"Tax Amount","minimum":0},"taxInclusiveAmount":{"type":"number","title":"Total With Tax","minimum":0},"payableAmount":{"type":"number","title":"Amount Due","minimum":0}}}},"required":["header","accountingSupplierParty","accountingCustomerParty","invoiceLines","legalMonetaryTotal"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Invoice Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/header\/properties\/id"},{"type":"Control","scope":"#\/properties\/header\/properties\/issueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/dueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/documentCurrencyCode"}]},{"type":"Control","scope":"#\/properties\/header\/properties\/note"}]},{"type":"HorizontalLayout","elements":[{"type":"Group","label":"Supplier Information","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/electronicMail"}]},{"type":"Group","label":"Customer Information","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/electronicMail"}]}]},{"type":"Group","label":"Invoice Items","elements":[{"type":"Control","scope":"#\/properties\/invoiceLines","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/description"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/quantity"},{"type":"Control","scope":"#\/properties\/unitCode"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/priceAmount"},{"type":"Control","scope":"#\/properties\/taxPercent"},{"type":"Control","scope":"#\/properties\/lineExtensionAmount","options":{"readonly":true}}]}]}}}]},{"type":"Group","label":"Totals","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/lineExtensionAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxExclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxInclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/payableAmount","options":{"readonly":true}}]}]}]},"data":{"header":{"id":"","issueDate":"2025-03-01","dueDate":"2025-03-10","documentCurrencyCode":"EUR","note":""},"accountingSupplierParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"accountingCustomerParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"invoiceLines":[{"description":"Form Generation Service","quantity":1,"unitCode":"UN","priceAmount":0,"taxPercent":22,"lineExtensionAmount":0}],"legalMonetaryTotal":{"lineExtensionAmount":0,"taxExclusiveAmount":0,"taxInclusiveAmount":0,"payableAmount":0}}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;header&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;title&quot;: &quot;Invoice Information&quot;,
+            &quot;properties&quot;: {
+                &quot;id&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Invoice Number&quot;
+                },
+                &quot;issueDate&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;Issue Date&quot;
+                },
+                &quot;dueDate&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;Due Date&quot;
+                },
+                &quot;documentCurrencyCode&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Currency&quot;,
+                    &quot;default&quot;: &quot;USD&quot;
+                },
+                &quot;note&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Notes&quot;
+                }
+            },
+            &quot;required&quot;: [
+                &quot;id&quot;,
+                &quot;issueDate&quot;,
+                &quot;documentCurrencyCode&quot;
+            ]
+        },
+        &quot;accountingSupplierParty&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;title&quot;: &quot;Supplier Information&quot;,
+            &quot;properties&quot;: {
+                &quot;taxId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Tax ID&quot;
+                },
+                &quot;name&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Company Name&quot;
+                },
+                &quot;address&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;streetName&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Street&quot;
+                        },
+                        &quot;cityName&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;City&quot;
+                        },
+                        &quot;postalZone&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Postal Code&quot;
+                        },
+                        &quot;country&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Country&quot;
+                        }
+                    }
+                },
+                &quot;contact&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;name&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Contact Name&quot;
+                        },
+                        &quot;telephone&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Phone&quot;
+                        },
+                        &quot;electronicMail&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;format&quot;: &quot;email&quot;,
+                            &quot;title&quot;: &quot;Email&quot;
+                        }
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;name&quot;,
+                &quot;taxId&quot;
+            ]
+        },
+        &quot;accountingCustomerParty&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;title&quot;: &quot;Customer Information&quot;,
+            &quot;properties&quot;: {
+                &quot;taxId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Tax ID&quot;
+                },
+                &quot;name&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Company Name&quot;
+                },
+                &quot;address&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;streetName&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Street&quot;
+                        },
+                        &quot;cityName&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;City&quot;
+                        },
+                        &quot;postalZone&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Postal Code&quot;
+                        },
+                        &quot;country&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Country&quot;
+                        }
+                    }
+                },
+                &quot;contact&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;name&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Contact Name&quot;
+                        },
+                        &quot;telephone&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Phone&quot;
+                        },
+                        &quot;electronicMail&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;format&quot;: &quot;email&quot;,
+                            &quot;title&quot;: &quot;Email&quot;
+                        }
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;taxId&quot;,
+                &quot;name&quot;
+            ]
+        },
+        &quot;invoiceLines&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;title&quot;: &quot;Invoice Lines&quot;,
+            &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;description&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Description&quot;
+                    },
+                    &quot;quantity&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Quantity&quot;,
+                        &quot;minimum&quot;: 0
+                    },
+                    &quot;unitCode&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Unit&quot;,
+                        &quot;default&quot;: &quot;UN&quot;
+                    },
+                    &quot;priceAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Unit Price&quot;,
+                        &quot;exclusiveMinimum&quot;: 0
+                    },
+                    &quot;taxPercent&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Tax %&quot;,
+                        &quot;default&quot;: 22,
+                        &quot;minimum&quot;: 0
+                    },
+                    &quot;lineExtensionAmount&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Line Total&quot;,
+                        &quot;exclusiveMinimum&quot;: 0
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;description&quot;,
+                    &quot;quantity&quot;,
+                    &quot;unitCode&quot;,
+                    &quot;priceAmount&quot;
+                ]
+            },
+            &quot;minItems&quot;: 1
+        },
+        &quot;legalMonetaryTotal&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;title&quot;: &quot;Totals&quot;,
+            &quot;properties&quot;: {
+                &quot;lineExtensionAmount&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;title&quot;: &quot;Total Before Tax&quot;,
+                    &quot;minimum&quot;: 0
+                },
+                &quot;taxExclusiveAmount&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;title&quot;: &quot;Tax Amount&quot;,
+                    &quot;minimum&quot;: 0
+                },
+                &quot;taxInclusiveAmount&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;title&quot;: &quot;Total With Tax&quot;,
+                    &quot;minimum&quot;: 0
+                },
+                &quot;payableAmount&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;title&quot;: &quot;Amount Due&quot;,
+                    &quot;minimum&quot;: 0
+                }
+            }
+        }
+    },
+    &quot;required&quot;: [
+        &quot;header&quot;,
+        &quot;accountingSupplierParty&quot;,
+        &quot;accountingCustomerParty&quot;,
+        &quot;invoiceLines&quot;,
+        &quot;legalMonetaryTotal&quot;
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Invoice Information&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/header/properties/id&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/header/properties/issueDate&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/header/properties/dueDate&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/header/properties/documentCurrencyCode&quot;
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/header/properties/note&quot;
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Supplier Information&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/taxId&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/name&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/streetName&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/cityName&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/postalZone&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/address/properties/country&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/name&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/telephone&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingSupplierParty/properties/contact/properties/electronicMail&quot;
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Customer Information&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/taxId&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/name&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/streetName&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/cityName&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/postalZone&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/address/properties/country&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/name&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/telephone&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/accountingCustomerParty/properties/contact/properties/electronicMail&quot;
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Invoice Items&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/invoiceLines&quot;,
+                    &quot;options&quot;: {
+                        &quot;detail&quot;: {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/description&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/quantity&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/unitCode&quot;
+                                        }
+                                    ]
+                                },
+                                {
+                                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/priceAmount&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxPercent&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/lineExtensionAmount&quot;,
+                                            &quot;options&quot;: {
+                                                &quot;readonly&quot;: true
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Totals&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/lineExtensionAmount&quot;,
+                            &quot;options&quot;: {
+                                &quot;readonly&quot;: true
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/taxExclusiveAmount&quot;,
+                            &quot;options&quot;: {
+                                &quot;readonly&quot;: true
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/taxInclusiveAmount&quot;,
+                            &quot;options&quot;: {
+                                &quot;readonly&quot;: true
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/legalMonetaryTotal/properties/payableAmount&quot;,
+                            &quot;options&quot;: {
+                                &quot;readonly&quot;: true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;header&quot;: {
+        &quot;id&quot;: &quot;&quot;,
+        &quot;issueDate&quot;: &quot;2025-03-01&quot;,
+        &quot;dueDate&quot;: &quot;2025-03-10&quot;,
+        &quot;documentCurrencyCode&quot;: &quot;EUR&quot;,
+        &quot;note&quot;: &quot;&quot;
+    },
+    &quot;accountingSupplierParty&quot;: {
+        &quot;name&quot;: &quot;&quot;,
+        &quot;taxId&quot;: &quot;&quot;,
+        &quot;address&quot;: {
+            &quot;streetName&quot;: &quot;&quot;,
+            &quot;cityName&quot;: &quot;&quot;,
+            &quot;postalZone&quot;: &quot;&quot;,
+            &quot;country&quot;: &quot;&quot;
+        },
+        &quot;contact&quot;: {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;telephone&quot;: &quot;&quot;,
+            &quot;electronicMail&quot;: &quot;&quot;
+        }
+    },
+    &quot;accountingCustomerParty&quot;: {
+        &quot;name&quot;: &quot;&quot;,
+        &quot;taxId&quot;: &quot;&quot;,
+        &quot;address&quot;: {
+            &quot;streetName&quot;: &quot;&quot;,
+            &quot;cityName&quot;: &quot;&quot;,
+            &quot;postalZone&quot;: &quot;&quot;,
+            &quot;country&quot;: &quot;&quot;
+        },
+        &quot;contact&quot;: {
+            &quot;name&quot;: &quot;&quot;,
+            &quot;telephone&quot;: &quot;&quot;,
+            &quot;electronicMail&quot;: &quot;&quot;
+        }
+    },
+    &quot;invoiceLines&quot;: [
+        {
+            &quot;description&quot;: &quot;Form Generation Service&quot;,
+            &quot;quantity&quot;: 1,
+            &quot;unitCode&quot;: &quot;UN&quot;,
+            &quot;priceAmount&quot;: 0,
+            &quot;taxPercent&quot;: 22,
+            &quot;lineExtensionAmount&quot;: 0
+        }
+    ],
+    &quot;legalMonetaryTotal&quot;: {
+        &quot;lineExtensionAmount&quot;: 0,
+        &quot;taxExclusiveAmount&quot;: 0,
+        &quot;taxInclusiveAmount&quot;: 0,
+        &quot;payableAmount&quot;: 0
+    }
+}</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#array #callback</span>
+        </div>
+        <div class="text-muted float-end">
+            008_invoicing
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="wizard.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                Setup Wizard
+            </a>
+            </div>
+    <div class="col-md-6">
+                    <a href="search.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                Advanced Invoice Search
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: E-Invoicing Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: E-Invoicing Configuration</h1>
+
+<p class="mb-4">Comprehensive configuration form for electronic invoicing.</p>
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def2141bf">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;companyProfile&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;legalName&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Legal Name&quot;
+                    },
+                    &quot;commercialName&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Commercial Name&quot;
+                    },
+                    &quot;taxIdentifier&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Tax ID&quot;
+                    },
+                    &quot;fiscalRegime&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Fiscal Regime&quot;
+                    },
+                    &quot;address&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;street&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Street&quot;
+                            },
+                            &quot;number&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Number&quot;
+                            },
+                            &quot;city&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;City&quot;
+                            },
+                            &quot;state&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;State/Province&quot;
+                            },
+                            &quot;postalCode&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Postal Code&quot;
+                            },
+                            &quot;country&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Country&quot;
+                            }
+                        },
+                        &quot;required&quot;: [
+                            &quot;street&quot;,
+                            &quot;number&quot;,
+                            &quot;city&quot;,
+                            &quot;country&quot;
+                        ]
+                    },
+                    &quot;contact&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;email&quot;: {
+                                &quot;type&quot;: [
+                                    &quot;null&quot;,
+                                    &quot;string&quot;
+                                ],
+                                &quot;format&quot;: &quot;email&quot;,
+                                &quot;title&quot;: &quot;Email&quot;
+                            },
+                            &quot;phone&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Phone&quot;
+                            },
+                            &quot;website&quot;: {
+                                &quot;type&quot;: [
+                                    &quot;null&quot;,
+                                    &quot;string&quot;
+                                ],
+                                &quot;format&quot;: &quot;uri&quot;,
+                                &quot;title&quot;: &quot;Website&quot;
+                            }
+                        },
+                        &quot;required&quot;: [
+                            &quot;email&quot;
+                        ]
+                    },
+                    &quot;logo&quot;: {
+                        &quot;type&quot;: [
+                            &quot;null&quot;,
+                            &quot;string&quot;
+                        ],
+                        &quot;format&quot;: &quot;uri&quot;,
+                        &quot;title&quot;: &quot;Company Logo URL&quot;
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;legalName&quot;,
+                    &quot;taxIdentifier&quot;,
+                    &quot;fiscalRegime&quot;
+                ]
+            },
+            &quot;digitalSignature&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;certificateType&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;production&quot;,
+                            &quot;testing&quot;
+                        ],
+                        &quot;default&quot;: &quot;testing&quot;,
+                        &quot;title&quot;: &quot;Certificate Type&quot;
+                    },
+                    &quot;certificateFile&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Certificate File (.cer)&quot;
+                    },
+                    &quot;privateKeyFile&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Private Key File (.key)&quot;
+                    },
+                    &quot;privateKeyPassword&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Private Key Password&quot;
+                    },
+                    &quot;certificateExpiration&quot;: {
+                        &quot;type&quot;: [
+                            &quot;null&quot;,
+                            &quot;string&quot;
+                        ],
+                        &quot;format&quot;: &quot;date&quot;,
+                        &quot;title&quot;: &quot;Certificate Expiration Date&quot;
+                    },
+                    &quot;enableNotifications&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Enable Expiration Notifications&quot;,
+                        &quot;default&quot;: true
+                    },
+                    &quot;notificationThreshold&quot;: {
+                        &quot;type&quot;: &quot;number&quot;,
+                        &quot;title&quot;: &quot;Days Before Expiration to Notify&quot;,
+                        &quot;default&quot;: 30,
+                        &quot;minimum&quot;: 1,
+                        &quot;maximum&quot;: 90
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;certificateType&quot;,
+                    &quot;certificateFile&quot;,
+                    &quot;privateKeyFile&quot;,
+                    &quot;privateKeyPassword&quot;
+                ]
+            },
+            &quot;documentTypes&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;enabledDocuments&quot;: {
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;items&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;enum&quot;: [
+                                &quot;invoice&quot;,
+                                &quot;creditNote&quot;,
+                                &quot;debitNote&quot;,
+                                &quot;receipt&quot;,
+                                &quot;paymentReceipt&quot;
+                            ]
+                        },
+                        &quot;uniqueItems&quot;: true,
+                        &quot;default&quot;: [
+                            &quot;invoice&quot;
+                        ],
+                        &quot;title&quot;: &quot;Enabled Document Types&quot;
+                    },
+                    &quot;documentSettings&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;invoice&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;series&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;title&quot;: &quot;Series&quot;,
+                                        &quot;default&quot;: &quot;A&quot;
+                                    },
+                                    &quot;startNumber&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Starting Number&quot;,
+                                        &quot;default&quot;: 1
+                                    },
+                                    &quot;folioDigits&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Folio Digits&quot;,
+                                        &quot;default&quot;: 8,
+                                        &quot;minimum&quot;: 1,
+                                        &quot;maximum&quot;: 10
+                                    },
+                                    &quot;defaultCurrency&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;title&quot;: &quot;Default Currency&quot;,
+                                        &quot;default&quot;: &quot;USD&quot;
+                                    },
+                                    &quot;defaultTaxRate&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Default Tax Rate (%)&quot;,
+                                        &quot;default&quot;: 0
+                                    }
+                                }
+                            },
+                            &quot;creditNote&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;series&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;title&quot;: &quot;Series&quot;,
+                                        &quot;default&quot;: &quot;NC&quot;
+                                    },
+                                    &quot;startNumber&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Starting Number&quot;,
+                                        &quot;default&quot;: 1
+                                    },
+                                    &quot;folioDigits&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Folio Digits&quot;,
+                                        &quot;default&quot;: 8
+                                    },
+                                    &quot;requiresReference&quot;: {
+                                        &quot;type&quot;: &quot;boolean&quot;,
+                                        &quot;title&quot;: &quot;Requires Reference to Invoice&quot;,
+                                        &quot;default&quot;: true
+                                    }
+                                }
+                            },
+                            &quot;debitNote&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;series&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;title&quot;: &quot;Series&quot;,
+                                        &quot;default&quot;: &quot;ND&quot;
+                                    },
+                                    &quot;startNumber&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Starting Number&quot;,
+                                        &quot;default&quot;: 1
+                                    },
+                                    &quot;folioDigits&quot;: {
+                                        &quot;type&quot;: &quot;number&quot;,
+                                        &quot;title&quot;: &quot;Folio Digits&quot;,
+                                        &quot;default&quot;: 8
+                                    },
+                                    &quot;requiresReference&quot;: {
+                                        &quot;type&quot;: &quot;boolean&quot;,
+                                        &quot;title&quot;: &quot;Requires Reference to Invoice&quot;,
+                                        &quot;default&quot;: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            &quot;notifications&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;emailNotifications&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;sendToCustomer&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Send Email to Customer&quot;,
+                                &quot;default&quot;: true
+                            },
+                            &quot;attachPdf&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Attach PDF&quot;,
+                                &quot;default&quot;: true
+                            },
+                            &quot;attachXml&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Attach XML&quot;,
+                                &quot;default&quot;: true
+                            },
+                            &quot;customMessage&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Custom Message Template&quot;
+                            },
+                            &quot;ccEmails&quot;: {
+                                &quot;type&quot;: &quot;array&quot;,
+                                &quot;items&quot;: {
+                                    &quot;type&quot;: &quot;object&quot;,
+                                    &quot;properties&quot;: {
+                                        &quot;email&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;format&quot;: &quot;email&quot;,
+                                            &quot;title&quot;: &quot;Email&quot;
+                                        }
+                                    },
+                                    &quot;required&quot;: [
+                                        &quot;email&quot;
+                                    ]
+                                },
+                                &quot;title&quot;: &quot;CC Email Addresses&quot;
+                            },
+                            &quot;bccEmails&quot;: {
+                                &quot;type&quot;: &quot;array&quot;,
+                                &quot;items&quot;: {
+                                    &quot;type&quot;: &quot;object&quot;,
+                                    &quot;properties&quot;: {
+                                        &quot;email&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;format&quot;: &quot;email&quot;,
+                                            &quot;title&quot;: &quot;Email&quot;
+                                        }
+                                    },
+                                    &quot;required&quot;: [
+                                        &quot;email&quot;
+                                    ]
+                                },
+                                &quot;title&quot;: &quot;BCC Email Addresses&quot;
+                            }
+                        }
+                    },
+                    &quot;adminNotifications&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;errorNotifications&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Receive Error Notifications&quot;,
+                                &quot;default&quot;: true
+                            },
+                            &quot;successSummary&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Receive Daily Success Summary&quot;,
+                                &quot;default&quot;: false
+                            },
+                            &quot;notificationEmails&quot;: {
+                                &quot;type&quot;: &quot;array&quot;,
+                                &quot;items&quot;: {
+                                    &quot;type&quot;: &quot;object&quot;,
+                                    &quot;properties&quot;: {
+                                        &quot;email&quot;: {
+                                            &quot;type&quot;: &quot;string&quot;,
+                                            &quot;format&quot;: &quot;email&quot;,
+                                            &quot;title&quot;: &quot;Email&quot;
+                                        }
+                                    },
+                                    &quot;required&quot;: [
+                                        &quot;email&quot;
+                                    ]
+                                },
+                                &quot;title&quot;: &quot;Notification Emails&quot;
+                            }
+                        }
+                    }
+                }
+            },
+            &quot;integration&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;webServiceUrl&quot;: {
+                        &quot;type&quot;: [
+                            &quot;null&quot;,
+                            &quot;string&quot;
+                        ],
+                        &quot;format&quot;: &quot;uri&quot;,
+                        &quot;title&quot;: &quot;Fiscal Authority Web Service URL&quot;
+                    },
+                    &quot;apiKeys&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;production&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Production API Key&quot;
+                            },
+                            &quot;testing&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Testing API Key&quot;
+                            }
+                        }
+                    },
+                    &quot;webhook&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;enableWebhook&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Enable Status Webhook&quot;,
+                                &quot;default&quot;: false
+                            },
+                            &quot;webhookUrl&quot;: {
+                                &quot;type&quot;: [
+                                    &quot;null&quot;,
+                                    &quot;string&quot;
+                                ],
+                                &quot;format&quot;: &quot;uri&quot;,
+                                &quot;title&quot;: &quot;Webhook URL&quot;
+                            },
+                            &quot;secret&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Webhook Secret&quot;
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        &quot;required&quot;: [
+            &quot;companyProfile&quot;,
+            &quot;digitalSignature&quot;
+        ]
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;Categorization&quot;,
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Company Profile&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Company Information&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/legalName&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/commercialName&quot;
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/taxIdentifier&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/fiscalRegime&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Address&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/street&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/number&quot;
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/city&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/state&quot;
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/postalCode&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/country&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Contact Information&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/email&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/phone&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/website&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Branding&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/companyProfile/properties/logo&quot;,
+                                &quot;options&quot;: {
+                                    &quot;format&quot;: &quot;file&quot;
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Digital Signature&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Certificate Information&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateType&quot;,
+                                &quot;options&quot;: {
+                                    &quot;format&quot;: &quot;radio&quot;
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateFile&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;file&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/privateKeyFile&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;file&quot;
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/privateKeyPassword&quot;,
+                                &quot;options&quot;: {
+                                    &quot;format&quot;: &quot;password&quot;
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateExpiration&quot;
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Expiration Notifications&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/enableNotifications&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/notificationThreshold&quot;,
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/enableNotifications&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Document Types&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Enabled Documents&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                &quot;options&quot;: {
+                                    &quot;format&quot;: &quot;checkbox&quot;
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Categorization&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Category&quot;,
+                                &quot;label&quot;: &quot;Invoice&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Group&quot;,
+                                        &quot;label&quot;: &quot;Invoice Settings&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/series&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/startNumber&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/folioDigits&quot;
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/defaultCurrency&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/defaultTaxRate&quot;
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ],
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;contains&quot;: {
+                                                &quot;const&quot;: &quot;invoice&quot;
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Category&quot;,
+                                &quot;label&quot;: &quot;Credit Note&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Group&quot;,
+                                        &quot;label&quot;: &quot;Credit Note Settings&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/series&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/startNumber&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/folioDigits&quot;
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/requiresReference&quot;
+                                            }
+                                        ]
+                                    }
+                                ],
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;contains&quot;: {
+                                                &quot;const&quot;: &quot;creditNote&quot;
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Category&quot;,
+                                &quot;label&quot;: &quot;Debit Note&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Group&quot;,
+                                        &quot;label&quot;: &quot;Debit Note Settings&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/series&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/startNumber&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/folioDigits&quot;
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/requiresReference&quot;
+                                            }
+                                        ]
+                                    }
+                                ],
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;contains&quot;: {
+                                                &quot;const&quot;: &quot;debitNote&quot;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Notifications&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Customer Notifications&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/attachPdf&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/attachXml&quot;
+                                    }
+                                ],
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/customMessage&quot;,
+                                &quot;options&quot;: {
+                                    &quot;multi&quot;: true
+                                },
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/ccEmails&quot;,
+                                &quot;options&quot;: {
+                                    &quot;detail&quot;: {
+                                        &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/email&quot;
+                                            }
+                                        ]
+                                    }
+                                },
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/bccEmails&quot;,
+                                &quot;options&quot;: {
+                                    &quot;detail&quot;: {
+                                        &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/email&quot;
+                                            }
+                                        ]
+                                    }
+                                },
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Admin Notifications&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/errorNotifications&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/successSummary&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/notificationEmails&quot;,
+                                &quot;options&quot;: {
+                                    &quot;detail&quot;: {
+                                        &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/email&quot;
+                                            }
+                                        ]
+                                    }
+                                },
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;type&quot;: &quot;OR&quot;,
+                                        &quot;conditions&quot;: [
+                                            {
+                                                &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/errorNotifications&quot;,
+                                                &quot;schema&quot;: {
+                                                    &quot;const&quot;: true
+                                                }
+                                            },
+                                            {
+                                                &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/successSummary&quot;,
+                                                &quot;schema&quot;: {
+                                                    &quot;const&quot;: true
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Integration&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Fiscal Authority Integration&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/integration/properties/webServiceUrl&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/integration/properties/apiKeys/properties/production&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;password&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/integration/properties/apiKeys/properties/testing&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;password&quot;
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Webhook Configuration&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/webhookUrl&quot;,
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                &quot;type&quot;: &quot;Control&quot;,
+                                &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/secret&quot;,
+                                &quot;options&quot;: {
+                                    &quot;format&quot;: &quot;password&quot;
+                                },
+                                &quot;rule&quot;: {
+                                    &quot;effect&quot;: &quot;SHOW&quot;,
+                                    &quot;condition&quot;: {
+                                        &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;,
+                                        &quot;schema&quot;: {
+                                            &quot;const&quot;: true
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;data&quot;: {
+        &quot;companyProfile&quot;: {
+            &quot;legalName&quot;: &quot;&quot;,
+            &quot;commercialName&quot;: &quot;&quot;,
+            &quot;taxIdentifier&quot;: &quot;&quot;,
+            &quot;fiscalRegime&quot;: &quot;&quot;,
+            &quot;address&quot;: {
+                &quot;street&quot;: &quot;&quot;,
+                &quot;number&quot;: &quot;&quot;,
+                &quot;city&quot;: &quot;&quot;,
+                &quot;state&quot;: &quot;&quot;,
+                &quot;postalCode&quot;: &quot;&quot;,
+                &quot;country&quot;: &quot;&quot;
+            },
+            &quot;contact&quot;: {
+                &quot;email&quot;: null,
+                &quot;phone&quot;: &quot;&quot;,
+                &quot;website&quot;: null
+            },
+            &quot;logo&quot;: null
+        },
+        &quot;digitalSignature&quot;: {
+            &quot;certificateType&quot;: &quot;testing&quot;,
+            &quot;certificateFile&quot;: &quot;&quot;,
+            &quot;privateKeyFile&quot;: &quot;&quot;,
+            &quot;privateKeyPassword&quot;: &quot;&quot;,
+            &quot;certificateExpiration&quot;: null,
+            &quot;enableNotifications&quot;: true,
+            &quot;notificationThreshold&quot;: 30
+        },
+        &quot;documentTypes&quot;: {
+            &quot;enabledDocuments&quot;: [
+                &quot;invoice&quot;
+            ],
+            &quot;documentSettings&quot;: {
+                &quot;invoice&quot;: {
+                    &quot;series&quot;: &quot;A&quot;,
+                    &quot;startNumber&quot;: 1,
+                    &quot;folioDigits&quot;: 8,
+                    &quot;defaultCurrency&quot;: &quot;USD&quot;,
+                    &quot;defaultTaxRate&quot;: 0
+                },
+                &quot;creditNote&quot;: {
+                    &quot;series&quot;: &quot;NC&quot;,
+                    &quot;startNumber&quot;: 1,
+                    &quot;folioDigits&quot;: 8,
+                    &quot;requiresReference&quot;: true
+                },
+                &quot;debitNote&quot;: {
+                    &quot;series&quot;: &quot;ND&quot;,
+                    &quot;startNumber&quot;: 1,
+                    &quot;folioDigits&quot;: 8,
+                    &quot;requiresReference&quot;: true
+                }
+            }
+        },
+        &quot;notifications&quot;: {
+            &quot;emailNotifications&quot;: {
+                &quot;sendToCustomer&quot;: true,
+                &quot;attachPdf&quot;: true,
+                &quot;attachXml&quot;: true,
+                &quot;customMessage&quot;: &quot;&quot;,
+                &quot;ccEmails&quot;: [],
+                &quot;bccEmails&quot;: []
+            },
+            &quot;adminNotifications&quot;: {
+                &quot;errorNotifications&quot;: true,
+                &quot;successSummary&quot;: false,
+                &quot;notificationEmails&quot;: []
+            }
+        },
+        &quot;integration&quot;: {
+            &quot;webServiceUrl&quot;: null,
+            &quot;apiKeys&quot;: {
+                &quot;production&quot;: &quot;&quot;,
+                &quot;testing&quot;: &quot;&quot;
+            },
+            &quot;webhook&quot;: {
+                &quot;enableWebhook&quot;: false,
+                &quot;webhookUrl&quot;: null,
+                &quot;secret&quot;: &quot;&quot;
+            }
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def2114c7">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"companyProfile":{"type":"object","properties":{"legalName":{"type":"string","title":"Legal Name"},"commercialName":{"type":"string","title":"Commercial Name"},"taxIdentifier":{"type":"string","title":"Tax ID"},"fiscalRegime":{"type":"string","title":"Fiscal Regime"},"address":{"type":"object","properties":{"street":{"type":"string","title":"Street"},"number":{"type":"string","title":"Number"},"city":{"type":"string","title":"City"},"state":{"type":"string","title":"State\/Province"},"postalCode":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}},"required":["street","number","city","country"]},"contact":{"type":"object","properties":{"email":{"type":["null","string"],"format":"email","title":"Email"},"phone":{"type":"string","title":"Phone"},"website":{"type":["null","string"],"format":"uri","title":"Website"}},"required":["email"]},"logo":{"type":["null","string"],"format":"uri","title":"Company Logo URL"}},"required":["legalName","taxIdentifier","fiscalRegime"]},"digitalSignature":{"type":"object","properties":{"certificateType":{"type":"string","enum":["production","testing"],"default":"testing","title":"Certificate Type"},"certificateFile":{"type":"string","title":"Certificate File (.cer)"},"privateKeyFile":{"type":"string","title":"Private Key File (.key)"},"privateKeyPassword":{"type":"string","title":"Private Key Password"},"certificateExpiration":{"type":["null","string"],"format":"date","title":"Certificate Expiration Date"},"enableNotifications":{"type":"boolean","title":"Enable Expiration Notifications","default":true},"notificationThreshold":{"type":"number","title":"Days Before Expiration to Notify","default":30,"minimum":1,"maximum":90}},"required":["certificateType","certificateFile","privateKeyFile","privateKeyPassword"]},"documentTypes":{"type":"object","properties":{"enabledDocuments":{"type":"array","items":{"type":"string","enum":["invoice","creditNote","debitNote","receipt","paymentReceipt"]},"uniqueItems":true,"default":["invoice"],"title":"Enabled Document Types"},"documentSettings":{"type":"object","properties":{"invoice":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"A"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8,"minimum":1,"maximum":10},"defaultCurrency":{"type":"string","title":"Default Currency","default":"USD"},"defaultTaxRate":{"type":"number","title":"Default Tax Rate (%)","default":0}}},"creditNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"NC"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}},"debitNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"ND"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}}}}}},"notifications":{"type":"object","properties":{"emailNotifications":{"type":"object","properties":{"sendToCustomer":{"type":"boolean","title":"Send Email to Customer","default":true},"attachPdf":{"type":"boolean","title":"Attach PDF","default":true},"attachXml":{"type":"boolean","title":"Attach XML","default":true},"customMessage":{"type":"string","title":"Custom Message Template"},"ccEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"CC Email Addresses"},"bccEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"BCC Email Addresses"}}},"adminNotifications":{"type":"object","properties":{"errorNotifications":{"type":"boolean","title":"Receive Error Notifications","default":true},"successSummary":{"type":"boolean","title":"Receive Daily Success Summary","default":false},"notificationEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"Notification Emails"}}}}},"integration":{"type":"object","properties":{"webServiceUrl":{"type":["null","string"],"format":"uri","title":"Fiscal Authority Web Service URL"},"apiKeys":{"type":"object","properties":{"production":{"type":"string","title":"Production API Key"},"testing":{"type":"string","title":"Testing API Key"}}},"webhook":{"type":"object","properties":{"enableWebhook":{"type":"boolean","title":"Enable Status Webhook","default":false},"webhookUrl":{"type":["null","string"],"format":"uri","title":"Webhook URL"},"secret":{"type":"string","title":"Webhook Secret"}}}}}},"required":["companyProfile","digitalSignature"]},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Company Profile","elements":[{"type":"Group","label":"Company Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/commercialName"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/taxIdentifier"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/fiscalRegime"}]}]},{"type":"Group","label":"Address","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/street"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/number"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/city"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/state"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/postalCode"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/country"}]}]},{"type":"Group","label":"Contact Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/email"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/phone"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/website"}]}]},{"type":"Group","label":"Branding","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/logo","options":{"format":"file"}}]}]},{"type":"Category","label":"Digital Signature","elements":[{"type":"Group","label":"Certificate Information","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateType","options":{"format":"radio"}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateFile","options":{"format":"file"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyFile","options":{"format":"file"}}]},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateExpiration"}]},{"type":"Group","label":"Expiration Notifications","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/enableNotifications"},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/notificationThreshold","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/digitalSignature\/properties\/enableNotifications","schema":{"const":true}}}}]}]},{"type":"Category","label":"Document Types","elements":[{"type":"Group","label":"Enabled Documents","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","options":{"format":"checkbox"}}]},{"type":"Categorization","elements":[{"type":"Category","label":"Invoice","elements":[{"type":"Group","label":"Invoice Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/folioDigits"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultCurrency"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultTaxRate"}]}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"invoice"}}}}},{"type":"Category","label":"Credit Note","elements":[{"type":"Group","label":"Credit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/requiresReference"}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"creditNote"}}}}},{"type":"Category","label":"Debit Note","elements":[{"type":"Group","label":"Debit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/requiresReference"}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"debitNote"}}}}}]}]},{"type":"Category","label":"Notifications","elements":[{"type":"Group","label":"Customer Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachPdf"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachXml"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/customMessage","options":{"multi":true},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/ccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/bccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}}]},{"type":"Group","label":"Admin Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/notificationEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"type":"OR","conditions":[{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications","schema":{"const":true}},{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary","schema":{"const":true}}]}}}]}]},{"type":"Category","label":"Integration","elements":[{"type":"Group","label":"Fiscal Authority Integration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webServiceUrl"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/production","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/testing","options":{"format":"password"}}]}]},{"type":"Group","label":"Webhook Configuration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook"},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/webhookUrl","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/secret","options":{"format":"password"},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}}]}]}]},"data":{"companyProfile":{"legalName":"","commercialName":"","taxIdentifier":"","fiscalRegime":"","address":{"street":"","number":"","city":"","state":"","postalCode":"","country":""},"contact":{"email":null,"phone":"","website":null},"logo":null},"digitalSignature":{"certificateType":"testing","certificateFile":"","privateKeyFile":"","privateKeyPassword":"","certificateExpiration":null,"enableNotifications":true,"notificationThreshold":30},"documentTypes":{"enabledDocuments":["invoice"],"documentSettings":{"invoice":{"series":"A","startNumber":1,"folioDigits":8,"defaultCurrency":"USD","defaultTaxRate":0},"creditNote":{"series":"NC","startNumber":1,"folioDigits":8,"requiresReference":true},"debitNote":{"series":"ND","startNumber":1,"folioDigits":8,"requiresReference":true}}},"notifications":{"emailNotifications":{"sendToCustomer":true,"attachPdf":true,"attachXml":true,"customMessage":"","ccEmails":[],"bccEmails":[]},"adminNotifications":{"errorNotifications":true,"successSummary":false,"notificationEmails":[]}},"integration":{"webServiceUrl":null,"apiKeys":{"production":"","testing":""},"webhook":{"enableWebhook":false,"webhookUrl":null,"secret":""}}}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;companyProfile&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;legalName&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Legal Name&quot;
+                },
+                &quot;commercialName&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Commercial Name&quot;
+                },
+                &quot;taxIdentifier&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Tax ID&quot;
+                },
+                &quot;fiscalRegime&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Fiscal Regime&quot;
+                },
+                &quot;address&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;street&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Street&quot;
+                        },
+                        &quot;number&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Number&quot;
+                        },
+                        &quot;city&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;City&quot;
+                        },
+                        &quot;state&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;State/Province&quot;
+                        },
+                        &quot;postalCode&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Postal Code&quot;
+                        },
+                        &quot;country&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Country&quot;
+                        }
+                    },
+                    &quot;required&quot;: [
+                        &quot;street&quot;,
+                        &quot;number&quot;,
+                        &quot;city&quot;,
+                        &quot;country&quot;
+                    ]
+                },
+                &quot;contact&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;email&quot;: {
+                            &quot;type&quot;: [
+                                &quot;null&quot;,
+                                &quot;string&quot;
+                            ],
+                            &quot;format&quot;: &quot;email&quot;,
+                            &quot;title&quot;: &quot;Email&quot;
+                        },
+                        &quot;phone&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Phone&quot;
+                        },
+                        &quot;website&quot;: {
+                            &quot;type&quot;: [
+                                &quot;null&quot;,
+                                &quot;string&quot;
+                            ],
+                            &quot;format&quot;: &quot;uri&quot;,
+                            &quot;title&quot;: &quot;Website&quot;
+                        }
+                    },
+                    &quot;required&quot;: [
+                        &quot;email&quot;
+                    ]
+                },
+                &quot;logo&quot;: {
+                    &quot;type&quot;: [
+                        &quot;null&quot;,
+                        &quot;string&quot;
+                    ],
+                    &quot;format&quot;: &quot;uri&quot;,
+                    &quot;title&quot;: &quot;Company Logo URL&quot;
+                }
+            },
+            &quot;required&quot;: [
+                &quot;legalName&quot;,
+                &quot;taxIdentifier&quot;,
+                &quot;fiscalRegime&quot;
+            ]
+        },
+        &quot;digitalSignature&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;certificateType&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;production&quot;,
+                        &quot;testing&quot;
+                    ],
+                    &quot;default&quot;: &quot;testing&quot;,
+                    &quot;title&quot;: &quot;Certificate Type&quot;
+                },
+                &quot;certificateFile&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Certificate File (.cer)&quot;
+                },
+                &quot;privateKeyFile&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Private Key File (.key)&quot;
+                },
+                &quot;privateKeyPassword&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Private Key Password&quot;
+                },
+                &quot;certificateExpiration&quot;: {
+                    &quot;type&quot;: [
+                        &quot;null&quot;,
+                        &quot;string&quot;
+                    ],
+                    &quot;format&quot;: &quot;date&quot;,
+                    &quot;title&quot;: &quot;Certificate Expiration Date&quot;
+                },
+                &quot;enableNotifications&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Enable Expiration Notifications&quot;,
+                    &quot;default&quot;: true
+                },
+                &quot;notificationThreshold&quot;: {
+                    &quot;type&quot;: &quot;number&quot;,
+                    &quot;title&quot;: &quot;Days Before Expiration to Notify&quot;,
+                    &quot;default&quot;: 30,
+                    &quot;minimum&quot;: 1,
+                    &quot;maximum&quot;: 90
+                }
+            },
+            &quot;required&quot;: [
+                &quot;certificateType&quot;,
+                &quot;certificateFile&quot;,
+                &quot;privateKeyFile&quot;,
+                &quot;privateKeyPassword&quot;
+            ]
+        },
+        &quot;documentTypes&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;enabledDocuments&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;invoice&quot;,
+                            &quot;creditNote&quot;,
+                            &quot;debitNote&quot;,
+                            &quot;receipt&quot;,
+                            &quot;paymentReceipt&quot;
+                        ]
+                    },
+                    &quot;uniqueItems&quot;: true,
+                    &quot;default&quot;: [
+                        &quot;invoice&quot;
+                    ],
+                    &quot;title&quot;: &quot;Enabled Document Types&quot;
+                },
+                &quot;documentSettings&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;invoice&quot;: {
+                            &quot;type&quot;: &quot;object&quot;,
+                            &quot;properties&quot;: {
+                                &quot;series&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;title&quot;: &quot;Series&quot;,
+                                    &quot;default&quot;: &quot;A&quot;
+                                },
+                                &quot;startNumber&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Starting Number&quot;,
+                                    &quot;default&quot;: 1
+                                },
+                                &quot;folioDigits&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Folio Digits&quot;,
+                                    &quot;default&quot;: 8,
+                                    &quot;minimum&quot;: 1,
+                                    &quot;maximum&quot;: 10
+                                },
+                                &quot;defaultCurrency&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;title&quot;: &quot;Default Currency&quot;,
+                                    &quot;default&quot;: &quot;USD&quot;
+                                },
+                                &quot;defaultTaxRate&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Default Tax Rate (%)&quot;,
+                                    &quot;default&quot;: 0
+                                }
+                            }
+                        },
+                        &quot;creditNote&quot;: {
+                            &quot;type&quot;: &quot;object&quot;,
+                            &quot;properties&quot;: {
+                                &quot;series&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;title&quot;: &quot;Series&quot;,
+                                    &quot;default&quot;: &quot;NC&quot;
+                                },
+                                &quot;startNumber&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Starting Number&quot;,
+                                    &quot;default&quot;: 1
+                                },
+                                &quot;folioDigits&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Folio Digits&quot;,
+                                    &quot;default&quot;: 8
+                                },
+                                &quot;requiresReference&quot;: {
+                                    &quot;type&quot;: &quot;boolean&quot;,
+                                    &quot;title&quot;: &quot;Requires Reference to Invoice&quot;,
+                                    &quot;default&quot;: true
+                                }
+                            }
+                        },
+                        &quot;debitNote&quot;: {
+                            &quot;type&quot;: &quot;object&quot;,
+                            &quot;properties&quot;: {
+                                &quot;series&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;title&quot;: &quot;Series&quot;,
+                                    &quot;default&quot;: &quot;ND&quot;
+                                },
+                                &quot;startNumber&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Starting Number&quot;,
+                                    &quot;default&quot;: 1
+                                },
+                                &quot;folioDigits&quot;: {
+                                    &quot;type&quot;: &quot;number&quot;,
+                                    &quot;title&quot;: &quot;Folio Digits&quot;,
+                                    &quot;default&quot;: 8
+                                },
+                                &quot;requiresReference&quot;: {
+                                    &quot;type&quot;: &quot;boolean&quot;,
+                                    &quot;title&quot;: &quot;Requires Reference to Invoice&quot;,
+                                    &quot;default&quot;: true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        &quot;notifications&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;emailNotifications&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;sendToCustomer&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Send Email to Customer&quot;,
+                            &quot;default&quot;: true
+                        },
+                        &quot;attachPdf&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Attach PDF&quot;,
+                            &quot;default&quot;: true
+                        },
+                        &quot;attachXml&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Attach XML&quot;,
+                            &quot;default&quot;: true
+                        },
+                        &quot;customMessage&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Custom Message Template&quot;
+                        },
+                        &quot;ccEmails&quot;: {
+                            &quot;type&quot;: &quot;array&quot;,
+                            &quot;items&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;email&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;format&quot;: &quot;email&quot;,
+                                        &quot;title&quot;: &quot;Email&quot;
+                                    }
+                                },
+                                &quot;required&quot;: [
+                                    &quot;email&quot;
+                                ]
+                            },
+                            &quot;title&quot;: &quot;CC Email Addresses&quot;
+                        },
+                        &quot;bccEmails&quot;: {
+                            &quot;type&quot;: &quot;array&quot;,
+                            &quot;items&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;email&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;format&quot;: &quot;email&quot;,
+                                        &quot;title&quot;: &quot;Email&quot;
+                                    }
+                                },
+                                &quot;required&quot;: [
+                                    &quot;email&quot;
+                                ]
+                            },
+                            &quot;title&quot;: &quot;BCC Email Addresses&quot;
+                        }
+                    }
+                },
+                &quot;adminNotifications&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;errorNotifications&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Receive Error Notifications&quot;,
+                            &quot;default&quot;: true
+                        },
+                        &quot;successSummary&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Receive Daily Success Summary&quot;,
+                            &quot;default&quot;: false
+                        },
+                        &quot;notificationEmails&quot;: {
+                            &quot;type&quot;: &quot;array&quot;,
+                            &quot;items&quot;: {
+                                &quot;type&quot;: &quot;object&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;email&quot;: {
+                                        &quot;type&quot;: &quot;string&quot;,
+                                        &quot;format&quot;: &quot;email&quot;,
+                                        &quot;title&quot;: &quot;Email&quot;
+                                    }
+                                },
+                                &quot;required&quot;: [
+                                    &quot;email&quot;
+                                ]
+                            },
+                            &quot;title&quot;: &quot;Notification Emails&quot;
+                        }
+                    }
+                }
+            }
+        },
+        &quot;integration&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;webServiceUrl&quot;: {
+                    &quot;type&quot;: [
+                        &quot;null&quot;,
+                        &quot;string&quot;
+                    ],
+                    &quot;format&quot;: &quot;uri&quot;,
+                    &quot;title&quot;: &quot;Fiscal Authority Web Service URL&quot;
+                },
+                &quot;apiKeys&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;production&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Production API Key&quot;
+                        },
+                        &quot;testing&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Testing API Key&quot;
+                        }
+                    }
+                },
+                &quot;webhook&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;enableWebhook&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Enable Status Webhook&quot;,
+                            &quot;default&quot;: false
+                        },
+                        &quot;webhookUrl&quot;: {
+                            &quot;type&quot;: [
+                                &quot;null&quot;,
+                                &quot;string&quot;
+                            ],
+                            &quot;format&quot;: &quot;uri&quot;,
+                            &quot;title&quot;: &quot;Webhook URL&quot;
+                        },
+                        &quot;secret&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Webhook Secret&quot;
+                        }
+                    }
+                }
+            }
+        }
+    },
+    &quot;required&quot;: [
+        &quot;companyProfile&quot;,
+        &quot;digitalSignature&quot;
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;Categorization&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Company Profile&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Company Information&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/legalName&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/commercialName&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/taxIdentifier&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/fiscalRegime&quot;
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Address&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/street&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/number&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/city&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/state&quot;
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/postalCode&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/address/properties/country&quot;
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Contact Information&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/email&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/phone&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/companyProfile/properties/contact/properties/website&quot;
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Branding&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/companyProfile/properties/logo&quot;,
+                            &quot;options&quot;: {
+                                &quot;format&quot;: &quot;file&quot;
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Digital Signature&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Certificate Information&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateType&quot;,
+                            &quot;options&quot;: {
+                                &quot;format&quot;: &quot;radio&quot;
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateFile&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;file&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/privateKeyFile&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;file&quot;
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/privateKeyPassword&quot;,
+                            &quot;options&quot;: {
+                                &quot;format&quot;: &quot;password&quot;
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/certificateExpiration&quot;
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Expiration Notifications&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/enableNotifications&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/notificationThreshold&quot;,
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/enableNotifications&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Document Types&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Enabled Documents&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                            &quot;options&quot;: {
+                                &quot;format&quot;: &quot;checkbox&quot;
+                            }
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Categorization&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Category&quot;,
+                            &quot;label&quot;: &quot;Invoice&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Group&quot;,
+                                    &quot;label&quot;: &quot;Invoice Settings&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/series&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/startNumber&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/folioDigits&quot;
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/defaultCurrency&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/invoice/properties/defaultTaxRate&quot;
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;contains&quot;: {
+                                            &quot;const&quot;: &quot;invoice&quot;
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Category&quot;,
+                            &quot;label&quot;: &quot;Credit Note&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Group&quot;,
+                                    &quot;label&quot;: &quot;Credit Note Settings&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/series&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/startNumber&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/folioDigits&quot;
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/creditNote/properties/requiresReference&quot;
+                                        }
+                                    ]
+                                }
+                            ],
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;contains&quot;: {
+                                            &quot;const&quot;: &quot;creditNote&quot;
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Category&quot;,
+                            &quot;label&quot;: &quot;Debit Note&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Group&quot;,
+                                    &quot;label&quot;: &quot;Debit Note Settings&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/series&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/startNumber&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/folioDigits&quot;
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/documentTypes/properties/documentSettings/properties/debitNote/properties/requiresReference&quot;
+                                        }
+                                    ]
+                                }
+                            ],
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;contains&quot;: {
+                                            &quot;const&quot;: &quot;debitNote&quot;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Notifications&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Customer Notifications&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/attachPdf&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/attachXml&quot;
+                                }
+                            ],
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/customMessage&quot;,
+                            &quot;options&quot;: {
+                                &quot;multi&quot;: true
+                            },
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/ccEmails&quot;,
+                            &quot;options&quot;: {
+                                &quot;detail&quot;: {
+                                    &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/email&quot;
+                                        }
+                                    ]
+                                }
+                            },
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/bccEmails&quot;,
+                            &quot;options&quot;: {
+                                &quot;detail&quot;: {
+                                    &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/email&quot;
+                                        }
+                                    ]
+                                }
+                            },
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Admin Notifications&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/errorNotifications&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/successSummary&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/notificationEmails&quot;,
+                            &quot;options&quot;: {
+                                &quot;detail&quot;: {
+                                    &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/email&quot;
+                                        }
+                                    ]
+                                }
+                            },
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;type&quot;: &quot;OR&quot;,
+                                    &quot;conditions&quot;: [
+                                        {
+                                            &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/errorNotifications&quot;,
+                                            &quot;schema&quot;: {
+                                                &quot;const&quot;: true
+                                            }
+                                        },
+                                        {
+                                            &quot;scope&quot;: &quot;#/properties/notifications/properties/adminNotifications/properties/successSummary&quot;,
+                                            &quot;schema&quot;: {
+                                                &quot;const&quot;: true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Integration&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Fiscal Authority Integration&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/integration/properties/webServiceUrl&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/integration/properties/apiKeys/properties/production&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;password&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/integration/properties/apiKeys/properties/testing&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;password&quot;
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Webhook Configuration&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/webhookUrl&quot;,
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            &quot;type&quot;: &quot;Control&quot;,
+                            &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/secret&quot;,
+                            &quot;options&quot;: {
+                                &quot;format&quot;: &quot;password&quot;
+                            },
+                            &quot;rule&quot;: {
+                                &quot;effect&quot;: &quot;SHOW&quot;,
+                                &quot;condition&quot;: {
+                                    &quot;scope&quot;: &quot;#/properties/integration/properties/webhook/properties/enableWebhook&quot;,
+                                    &quot;schema&quot;: {
+                                        &quot;const&quot;: true
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;companyProfile&quot;: {
+        &quot;legalName&quot;: &quot;&quot;,
+        &quot;commercialName&quot;: &quot;&quot;,
+        &quot;taxIdentifier&quot;: &quot;&quot;,
+        &quot;fiscalRegime&quot;: &quot;&quot;,
+        &quot;address&quot;: {
+            &quot;street&quot;: &quot;&quot;,
+            &quot;number&quot;: &quot;&quot;,
+            &quot;city&quot;: &quot;&quot;,
+            &quot;state&quot;: &quot;&quot;,
+            &quot;postalCode&quot;: &quot;&quot;,
+            &quot;country&quot;: &quot;&quot;
+        },
+        &quot;contact&quot;: {
+            &quot;email&quot;: null,
+            &quot;phone&quot;: &quot;&quot;,
+            &quot;website&quot;: null
+        },
+        &quot;logo&quot;: null
+    },
+    &quot;digitalSignature&quot;: {
+        &quot;certificateType&quot;: &quot;testing&quot;,
+        &quot;certificateFile&quot;: &quot;&quot;,
+        &quot;privateKeyFile&quot;: &quot;&quot;,
+        &quot;privateKeyPassword&quot;: &quot;&quot;,
+        &quot;certificateExpiration&quot;: null,
+        &quot;enableNotifications&quot;: true,
+        &quot;notificationThreshold&quot;: 30
+    },
+    &quot;documentTypes&quot;: {
+        &quot;enabledDocuments&quot;: [
+            &quot;invoice&quot;
+        ],
+        &quot;documentSettings&quot;: {
+            &quot;invoice&quot;: {
+                &quot;series&quot;: &quot;A&quot;,
+                &quot;startNumber&quot;: 1,
+                &quot;folioDigits&quot;: 8,
+                &quot;defaultCurrency&quot;: &quot;USD&quot;,
+                &quot;defaultTaxRate&quot;: 0
+            },
+            &quot;creditNote&quot;: {
+                &quot;series&quot;: &quot;NC&quot;,
+                &quot;startNumber&quot;: 1,
+                &quot;folioDigits&quot;: 8,
+                &quot;requiresReference&quot;: true
+            },
+            &quot;debitNote&quot;: {
+                &quot;series&quot;: &quot;ND&quot;,
+                &quot;startNumber&quot;: 1,
+                &quot;folioDigits&quot;: 8,
+                &quot;requiresReference&quot;: true
+            }
+        }
+    },
+    &quot;notifications&quot;: {
+        &quot;emailNotifications&quot;: {
+            &quot;sendToCustomer&quot;: true,
+            &quot;attachPdf&quot;: true,
+            &quot;attachXml&quot;: true,
+            &quot;customMessage&quot;: &quot;&quot;,
+            &quot;ccEmails&quot;: [],
+            &quot;bccEmails&quot;: []
+        },
+        &quot;adminNotifications&quot;: {
+            &quot;errorNotifications&quot;: true,
+            &quot;successSummary&quot;: false,
+            &quot;notificationEmails&quot;: []
+        }
+    },
+    &quot;integration&quot;: {
+        &quot;webServiceUrl&quot;: null,
+        &quot;apiKeys&quot;: {
+            &quot;production&quot;: &quot;&quot;,
+            &quot;testing&quot;: &quot;&quot;
+        },
+        &quot;webhook&quot;: {
+            &quot;enableWebhook&quot;: false,
+            &quot;webhookUrl&quot;: null,
+            &quot;secret&quot;: &quot;&quot;
+        }
+    }
+}</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#categories #groups #conditionalCategories #conditionalFields #nullableFields</span>
+        </div>
+        <div class="text-muted float-end">
+            010_config
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="search.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                Advanced Invoice Search
+            </a>
+            </div>
+    <div class="col-md-6">
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

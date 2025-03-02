@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example: From Data</title>
+    <title>Example: Login Form</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
@@ -21,18 +21,18 @@
             <div class="row">
                 <main class="col-md-9">
                     
-<h1>Example: From Data</h1>
+<h1>Example: Login Form</h1>
 
-<p class="mb-4">The simplest form, created from data only. Form normalization is not performed.</p>
-
-
+<p class="mb-4">A user login form with username, password and 2FA options.</p>
 
 
 
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def1107dd">
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def164b40">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -108,15 +108,31 @@
                     aria-labelledby="tab-input"
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;username&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Username or Email&quot;
+            },
+            &quot;password&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Password&quot;
+            },
+            &quot;twoFactorToken&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;2FA Token (optional)&quot;,
+                &quot;description&quot;: &quot;Enter your two-factor authentication code if enabled&quot;
+            }
+        },
+        &quot;required&quot;: [
+            &quot;username&quot;,
+            &quot;password&quot;
+        ]
+    },
     &quot;data&quot;: {
-        &quot;name&quot;: &quot;John Doe&quot;,
-        &quot;email&quot;: &quot;john.doe@example.com&quot;,
-        &quot;web&quot;: &quot;https://www.example.com&quot;,
-        &quot;age&quot;: 39,
-        &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-        &quot;end_date&quot;: &quot;&quot;,
-        &quot;salary&quot;: 2499.99,
-        &quot;require_onboarding&quot;: true
+        &quot;username&quot;: &quot;&quot;,
+        &quot;password&quot;: &quot;&quot;
     }
 }</code></pre>
 
@@ -127,7 +143,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def10cd3e">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def161e4a">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -172,7 +188,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
+    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -194,7 +210,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-schema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;username&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Username or Email&quot;
+        },
+        &quot;password&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Password&quot;
+        },
+        &quot;twoFactorToken&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;2FA Token (optional)&quot;,
+            &quot;description&quot;: &quot;Enter your two-factor authentication code if enabled&quot;
+        }
+    },
+    &quot;required&quot;: [
+        &quot;username&quot;,
+        &quot;password&quot;
+    ]
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -202,7 +239,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-uischema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Username or Email&quot;,
+            &quot;scope&quot;: &quot;#/properties/username&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Password&quot;,
+            &quot;scope&quot;: &quot;#/properties/password&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;2FA Token (optional)&quot;,
+            &quot;scope&quot;: &quot;#/properties/twoFactorToken&quot;
+        }
+    ]
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -211,14 +267,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     aria-labelledby="tab-data"
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
-    &quot;name&quot;: &quot;John Doe&quot;,
-    &quot;email&quot;: &quot;john.doe@example.com&quot;,
-    &quot;web&quot;: &quot;https://www.example.com&quot;,
-    &quot;age&quot;: 39,
-    &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-    &quot;end_date&quot;: &quot;&quot;,
-    &quot;salary&quot;: 2499.99,
-    &quot;require_onboarding&quot;: true
+    &quot;username&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;
 }</code></pre>
 
                 </div>
@@ -229,10 +279,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <hr/>
     <div class="my-4 small clearfix">
         <div class="float-start">
-            Tags: <span class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #raw</span>
+            Tags: <span class="text-muted">#withSchema #withOutUiSchema #withData #requiredWithDefaults</span>
         </div>
         <div class="text-muted float-end">
-            001_from_data
+            004_signin
         </div>
     </div>
 
@@ -240,11 +290,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="row">
     <div class="col-md-6">
+                    <a href="signup.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                User Registration
+            </a>
             </div>
     <div class="col-md-6">
-                    <a href="from_normalized_data.html" class="btn btn-secondary w-100 text-end">
+                    <a href="profile_cards.html" class="btn btn-secondary w-100 text-end">
                 <small class="d-block mb-2">Next</small>
-                From Normalized Data
+                User Profile with Cards
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             </div>

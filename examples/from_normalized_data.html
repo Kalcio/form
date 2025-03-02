@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c38f07b86ae">
+<div class="derafu-block-tabs " id="block-tabs--67c3def12c25c">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -108,89 +108,6 @@
                     aria-labelledby="tab-input"
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
-    &quot;schema&quot;: {
-        &quot;type&quot;: &quot;object&quot;,
-        &quot;properties&quot;: {
-            &quot;name&quot;: {
-                &quot;type&quot;: &quot;string&quot;
-            },
-            &quot;email&quot;: {
-                &quot;type&quot;: &quot;string&quot;,
-                &quot;format&quot;: &quot;email&quot;,
-                &quot;maxLength&quot;: 320
-            },
-            &quot;web&quot;: {
-                &quot;type&quot;: &quot;string&quot;,
-                &quot;format&quot;: &quot;uri&quot;,
-                &quot;maxLength&quot;: 2048,
-                &quot;minLength&quot;: 2
-            },
-            &quot;age&quot;: {
-                &quot;type&quot;: &quot;integer&quot;
-            },
-            &quot;start_date&quot;: {
-                &quot;type&quot;: &quot;string&quot;,
-                &quot;format&quot;: &quot;date-time&quot;,
-                &quot;maxLength&quot;: 35,
-                &quot;minLength&quot;: 16
-            },
-            &quot;end_date&quot;: {
-                &quot;type&quot;: &quot;string&quot;
-            },
-            &quot;salary&quot;: {
-                &quot;type&quot;: &quot;number&quot;
-            },
-            &quot;require_onboarding&quot;: {
-                &quot;type&quot;: &quot;boolean&quot;
-            }
-        },
-        &quot;required&quot;: []
-    },
-    &quot;uischema&quot;: {
-        &quot;type&quot;: &quot;VerticalLayout&quot;,
-        &quot;elements&quot;: [
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Name&quot;,
-                &quot;scope&quot;: &quot;#/properties/name&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Email&quot;,
-                &quot;scope&quot;: &quot;#/properties/email&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Web&quot;,
-                &quot;scope&quot;: &quot;#/properties/web&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Age&quot;,
-                &quot;scope&quot;: &quot;#/properties/age&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Start Date&quot;,
-                &quot;scope&quot;: &quot;#/properties/start_date&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;End Date&quot;,
-                &quot;scope&quot;: &quot;#/properties/end_date&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Salary&quot;,
-                &quot;scope&quot;: &quot;#/properties/salary&quot;
-            },
-            {
-                &quot;type&quot;: &quot;Control&quot;,
-                &quot;label&quot;: &quot;Require Onboarding&quot;,
-                &quot;scope&quot;: &quot;#/properties/require_onboarding&quot;
-            }
-        ]
-    },
     &quot;data&quot;: {
         &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;john.doe@example.com&quot;,
@@ -209,7 +126,15 @@
                     role="tabpanel"
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
-                    
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def128cf6">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
 
                 </div>
                             <div class="tab-pane fade show active"
@@ -218,23 +143,50 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string"},"email":{"type":"string","format":"email","maxLength":320},"web":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"age":{"type":"integer"},"start_date":{"type":"string","format":"date-time","maxLength":35,"minLength":16},"end_date":{"type":"string"},"salary":{"type":"number"},"require_onboarding":{"type":"boolean"}},"required":[]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Email","scope":"#\/properties\/email"},{"type":"Control","label":"Web","scope":"#\/properties\/web"},{"type":"Control","label":"Age","scope":"#\/properties\/age"},{"type":"Control","label":"Start Date","scope":"#\/properties\/start_date"},{"type":"Control","label":"End Date","scope":"#\/properties\/end_date"},{"type":"Control","label":"Salary","scope":"#\/properties\/salary"},{"type":"Control","label":"Require Onboarding","scope":"#\/properties\/require_onboarding"}]},"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
-    window.renderJsonForm('json-form-container', formDefinition);
-});
-</script>
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
 
-<div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c38f07b7b22">
-                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
-                <div>
-            The demo in JavaScript uses the <a href='https://jsonforms.io' target='_blank' class='alert-link'>JSON Forms</a> library.
-        </div>
+                    </div>
     </div>
 </div>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string"},"email":{"type":"string","format":"email","maxLength":320},"web":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"age":{"type":"integer"},"start_date":{"type":"string","format":"date-time","maxLength":35,"minLength":16},"end_date":{"type":"string"},"salary":{"type":"number"},"require_onboarding":{"type":"boolean"}},"required":[]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Email","scope":"#\/properties\/email"},{"type":"Control","label":"Web","scope":"#\/properties\/web"},{"type":"Control","label":"Age","scope":"#\/properties\/age"},{"type":"Control","label":"Start Date","scope":"#\/properties\/start_date"},{"type":"Control","label":"End Date","scope":"#\/properties\/end_date"},{"type":"Control","label":"Salary","scope":"#\/properties\/salary"},{"type":"Control","label":"Require Onboarding","scope":"#\/properties\/require_onboarding"}]},"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
 
                 </div>
                             <div class="tab-pane fade"
@@ -355,6 +307,17 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
 
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #normalized</span>
+        </div>
+        <div class="text-muted float-end">
+            002_from_normalized_data
+        </div>
+    </div>
+
+<hr class="mb-4" />
 
 <div class="row">
     <div class="col-md-6">
@@ -365,6 +328,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </a>
             </div>
     <div class="col-md-6">
+                    <a href="signup.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                User Registration
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
             </div>
 </div>
 

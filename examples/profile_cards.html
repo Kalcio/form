@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: User Profile with Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: User Profile with Cards</h1>
+
+<p class="mb-4">User profile form with grouped sections in cards.</p>
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def17fc34">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;name&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Name&quot;,
+                &quot;description&quot;: &quot;User&#039;s real name.&quot;
+            },
+            &quot;username&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Username&quot;,
+                &quot;description&quot;: &quot;Username. Can be used to login.&quot;
+            },
+            &quot;email&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;email&quot;,
+                &quot;title&quot;: &quot;Email&quot;,
+                &quot;description&quot;: &quot;Email address for system use, including login and notifications.&quot;
+            },
+            &quot;api_hash&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;API hash&quot;,
+                &quot;description&quot;: &quot;User&#039;s unique identifier in the API. To generate a new one, delete this and save.&quot;
+            },
+            &quot;api_key&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;API key&quot;,
+                &quot;description&quot;: &quot;Send authentication header to the API: Authorization: Basic APIKEY&quot;
+            },
+            &quot;current_password&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Current password&quot;,
+                &quot;description&quot;: &quot;Password currently used by the user.&quot;
+            },
+            &quot;new_password&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;New password&quot;,
+                &quot;description&quot;: &quot;Password you want to use.&quot;
+            },
+            &quot;repeat_password&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Repeat password&quot;,
+                &quot;description&quot;: &quot;Repeat the password entered above.&quot;
+            }
+        },
+        &quot;required&quot;: [
+            &quot;name&quot;,
+            &quot;username&quot;,
+            &quot;email&quot;
+        ]
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;VerticalLayout&quot;,
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Basic Information&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/name&quot;
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/username&quot;
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/email&quot;
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;API Access&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/api_hash&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;password&quot;,
+                            &quot;showUnfocusedDescription&quot;: true
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/api_key&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;password&quot;,
+                            &quot;showUnfocusedDescription&quot;: true
+                        }
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Group&quot;,
+                &quot;label&quot;: &quot;Change Password&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/current_password&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;password&quot;
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/new_password&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;password&quot;
+                        }
+                    },
+                    {
+                        &quot;type&quot;: &quot;Control&quot;,
+                        &quot;scope&quot;: &quot;#/properties/repeat_password&quot;,
+                        &quot;options&quot;: {
+                            &quot;format&quot;: &quot;password&quot;
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;data&quot;: {
+        &quot;name&quot;: &quot;Admin&quot;,
+        &quot;username&quot;: &quot;admin&quot;,
+        &quot;email&quot;: &quot;admin@example.com&quot;,
+        &quot;api_hash&quot;: &quot;••••••••••••••••••••••••••••••••&quot;,
+        &quot;api_key&quot;: &quot;••••••••••••••••••••••••••••••••••••••••&quot;
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def17d006">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name","description":"User's real name."},"username":{"type":"string","title":"Username","description":"Username. Can be used to login."},"email":{"type":"string","format":"email","title":"Email","description":"Email address for system use, including login and notifications."},"api_hash":{"type":"string","title":"API hash","description":"User's unique identifier in the API. To generate a new one, delete this and save."},"api_key":{"type":"string","title":"API key","description":"Send authentication header to the API: Authorization: Basic APIKEY"},"current_password":{"type":"string","title":"Current password","description":"Password currently used by the user."},"new_password":{"type":"string","title":"New password","description":"Password you want to use."},"repeat_password":{"type":"string","title":"Repeat password","description":"Repeat the password entered above."}},"required":["name","username","email"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Information","elements":[{"type":"Control","scope":"#\/properties\/name"},{"type":"Control","scope":"#\/properties\/username"},{"type":"Control","scope":"#\/properties\/email"}]},{"type":"Group","label":"API Access","elements":[{"type":"Control","scope":"#\/properties\/api_hash","options":{"format":"password","showUnfocusedDescription":true}},{"type":"Control","scope":"#\/properties\/api_key","options":{"format":"password","showUnfocusedDescription":true}}]},{"type":"Group","label":"Change Password","elements":[{"type":"Control","scope":"#\/properties\/current_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/new_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/repeat_password","options":{"format":"password"}}]}]},"data":{"name":"Admin","username":"admin","email":"admin@example.com","api_hash":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022","api_key":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;name&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Name&quot;,
+            &quot;description&quot;: &quot;User&#039;s real name.&quot;
+        },
+        &quot;username&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Username&quot;,
+            &quot;description&quot;: &quot;Username. Can be used to login.&quot;
+        },
+        &quot;email&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;email&quot;,
+            &quot;title&quot;: &quot;Email&quot;,
+            &quot;description&quot;: &quot;Email address for system use, including login and notifications.&quot;
+        },
+        &quot;api_hash&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;API hash&quot;,
+            &quot;description&quot;: &quot;User&#039;s unique identifier in the API. To generate a new one, delete this and save.&quot;
+        },
+        &quot;api_key&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;API key&quot;,
+            &quot;description&quot;: &quot;Send authentication header to the API: Authorization: Basic APIKEY&quot;
+        },
+        &quot;current_password&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Current password&quot;,
+            &quot;description&quot;: &quot;Password currently used by the user.&quot;
+        },
+        &quot;new_password&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;New password&quot;,
+            &quot;description&quot;: &quot;Password you want to use.&quot;
+        },
+        &quot;repeat_password&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Repeat password&quot;,
+            &quot;description&quot;: &quot;Repeat the password entered above.&quot;
+        }
+    },
+    &quot;required&quot;: [
+        &quot;name&quot;,
+        &quot;username&quot;,
+        &quot;email&quot;
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Basic Information&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/name&quot;
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/username&quot;
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/email&quot;
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;API Access&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/api_hash&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;password&quot;,
+                        &quot;showUnfocusedDescription&quot;: true
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/api_key&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;password&quot;,
+                        &quot;showUnfocusedDescription&quot;: true
+                    }
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Group&quot;,
+            &quot;label&quot;: &quot;Change Password&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/current_password&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;password&quot;
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/new_password&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;password&quot;
+                    }
+                },
+                {
+                    &quot;type&quot;: &quot;Control&quot;,
+                    &quot;scope&quot;: &quot;#/properties/repeat_password&quot;,
+                    &quot;options&quot;: {
+                        &quot;format&quot;: &quot;password&quot;
+                    }
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;name&quot;: &quot;Admin&quot;,
+    &quot;username&quot;: &quot;admin&quot;,
+    &quot;email&quot;: &quot;admin@example.com&quot;,
+    &quot;api_hash&quot;: &quot;••••••••••••••••••••••••••••••••&quot;,
+    &quot;api_key&quot;: &quot;••••••••••••••••••••••••••••••••••••••••&quot;
+}</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#withSchema #withUiSchema #withData #groups #description</span>
+        </div>
+        <div class="text-muted float-end">
+            005_profile_cards
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="signin.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                Login Form
+            </a>
+            </div>
+    <div class="col-md-6">
+                    <a href="profile_tabs.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                User Profile with Tabs
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

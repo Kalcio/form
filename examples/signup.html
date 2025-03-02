@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example: From Data</title>
+    <title>Example: User Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
@@ -21,18 +21,18 @@
             <div class="row">
                 <main class="col-md-9">
                     
-<h1>Example: From Data</h1>
+<h1>Example: User Registration</h1>
 
-<p class="mb-4">The simplest form, created from data only. Form normalization is not performed.</p>
-
-
+<p class="mb-4">Form to create a new user account.</p>
 
 
 
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def1107dd">
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def146e9c">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -108,15 +108,33 @@
                     aria-labelledby="tab-input"
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
-    &quot;data&quot;: {
-        &quot;name&quot;: &quot;John Doe&quot;,
-        &quot;email&quot;: &quot;john.doe@example.com&quot;,
-        &quot;web&quot;: &quot;https://www.example.com&quot;,
-        &quot;age&quot;: 39,
-        &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-        &quot;end_date&quot;: &quot;&quot;,
-        &quot;salary&quot;: 2499.99,
-        &quot;require_onboarding&quot;: true
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;name&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Name&quot;
+            },
+            &quot;username&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;title&quot;: &quot;Username&quot;
+            },
+            &quot;email&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;email&quot;,
+                &quot;title&quot;: &quot;Email address&quot;
+            },
+            &quot;terms_accepted&quot;: {
+                &quot;type&quot;: &quot;boolean&quot;,
+                &quot;title&quot;: &quot;I accept the terms and conditions of use of the service.&quot;
+            }
+        },
+        &quot;required&quot;: [
+            &quot;name&quot;,
+            &quot;username&quot;,
+            &quot;email&quot;,
+            &quot;terms_accepted&quot;
+        ]
     }
 }</code></pre>
 
@@ -127,7 +145,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def10cd3e">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1442e6">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -172,7 +190,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","format":"email","title":"Email address"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -194,7 +212,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-schema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;name&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Name&quot;
+        },
+        &quot;username&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;title&quot;: &quot;Username&quot;
+        },
+        &quot;email&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;email&quot;,
+            &quot;title&quot;: &quot;Email address&quot;
+        },
+        &quot;terms_accepted&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;,
+            &quot;title&quot;: &quot;I accept the terms and conditions of use of the service.&quot;
+        }
+    },
+    &quot;required&quot;: [
+        &quot;name&quot;,
+        &quot;username&quot;,
+        &quot;email&quot;,
+        &quot;terms_accepted&quot;
+    ]
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -202,7 +247,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-uischema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Name&quot;,
+            &quot;scope&quot;: &quot;#/properties/name&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Username&quot;,
+            &quot;scope&quot;: &quot;#/properties/username&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Email address&quot;,
+            &quot;scope&quot;: &quot;#/properties/email&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;I accept the terms and conditions of use of the service.&quot;,
+            &quot;scope&quot;: &quot;#/properties/terms_accepted&quot;
+        }
+    ]
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -210,16 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-data"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>{
-    &quot;name&quot;: &quot;John Doe&quot;,
-    &quot;email&quot;: &quot;john.doe@example.com&quot;,
-    &quot;web&quot;: &quot;https://www.example.com&quot;,
-    &quot;age&quot;: 39,
-    &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-    &quot;end_date&quot;: &quot;&quot;,
-    &quot;salary&quot;: 2499.99,
-    &quot;require_onboarding&quot;: true
-}</code></pre>
+                    <pre class="line-numbers language-json"><code>null</code></pre>
 
                 </div>
                     </div>
@@ -229,10 +289,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <hr/>
     <div class="my-4 small clearfix">
         <div class="float-start">
-            Tags: <span class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #raw</span>
+            Tags: <span class="text-muted">#withSchema #withOutUiSchema #withOutData #onlySchema #requiredWithOutDefaults</span>
         </div>
         <div class="text-muted float-end">
-            001_from_data
+            003_signup
         </div>
     </div>
 
@@ -240,11 +300,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="row">
     <div class="col-md-6">
+                    <a href="from_normalized_data.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                From Normalized Data
+            </a>
             </div>
     <div class="col-md-6">
-                    <a href="from_normalized_data.html" class="btn btn-secondary w-100 text-end">
+                    <a href="signin.html" class="btn btn-secondary w-100 text-end">
                 <small class="d-block mb-2">Next</small>
-                From Normalized Data
+                Login Form
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             </div>

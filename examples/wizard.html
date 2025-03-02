@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Setup Wizard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: Setup Wizard</h1>
+
+<p class="mb-4">Multi-step wizard for account setup.</p>
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c3def1b6544">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;plan&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;selectedPlan&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;free&quot;,
+                            &quot;basic&quot;,
+                            &quot;professional&quot;,
+                            &quot;enterprise&quot;
+                        ],
+                        &quot;title&quot;: &quot;Plan seleccionado&quot;,
+                        &quot;default&quot;: &quot;basic&quot;
+                    },
+                    &quot;paymentFrequency&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;monthly&quot;,
+                            &quot;yearly&quot;
+                        ],
+                        &quot;title&quot;: &quot;Frecuencia de pago&quot;,
+                        &quot;default&quot;: &quot;monthly&quot;
+                    },
+                    &quot;acceptTerms&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Acepto los términos y condiciones&quot;,
+                        &quot;default&quot;: false
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;selectedPlan&quot;,
+                    &quot;acceptTerms&quot;
+                ]
+            },
+            &quot;digitalSignature&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;signatureFile&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;data-url&quot;,
+                        &quot;title&quot;: &quot;Archivo de Firma Electrónica (.p12, .pfx)&quot;
+                    },
+                    &quot;signaturePassword&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Contraseña de la Firma&quot;
+                    },
+                    &quot;hasAuthorizedSignature&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Mi firma está autorizada en SII&quot;,
+                        &quot;default&quot;: false
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;signatureFile&quot;,
+                    &quot;signaturePassword&quot;
+                ]
+            },
+            &quot;taxKey&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;taxId&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;RUT Empresa&quot;,
+                        &quot;pattern&quot;: &quot;^[0-9]{1,8}-[0-9Kk]{1}$&quot;
+                    },
+                    &quot;taxPassword&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Contraseña SII&quot;
+                    },
+                    &quot;savePassword&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Guardar contraseña para sincronización automática&quot;,
+                        &quot;default&quot;: true
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;taxId&quot;,
+                    &quot;taxPassword&quot;
+                ]
+            },
+            &quot;taxpayerInfo&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;legalName&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Razón Social&quot;
+                    },
+                    &quot;commercialActivity&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Actividad Económica&quot;
+                    },
+                    &quot;businessLine&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Giro&quot;
+                    },
+                    &quot;address&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Dirección&quot;
+                    },
+                    &quot;city&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Comuna&quot;
+                    },
+                    &quot;phone&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Teléfono&quot;
+                    },
+                    &quot;email&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;email&quot;,
+                        &quot;title&quot;: &quot;Correo Electrónico&quot;
+                    },
+                    &quot;additionalContact&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;sendBillingToAdditional&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Enviar facturas a un contacto adicional&quot;,
+                                &quot;default&quot;: false
+                            },
+                            &quot;contactName&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Nombre del Contacto&quot;
+                            },
+                            &quot;contactEmail&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;format&quot;: &quot;email&quot;,
+                                &quot;title&quot;: &quot;Email del Contacto&quot;
+                            }
+                        }
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;legalName&quot;,
+                    &quot;businessLine&quot;,
+                    &quot;address&quot;,
+                    &quot;city&quot;,
+                    &quot;email&quot;
+                ]
+            },
+            &quot;documents&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;enabledDocuments&quot;: {
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;items&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;enum&quot;: [
+                                &quot;factura&quot;,
+                                &quot;facturaExenta&quot;,
+                                &quot;boletaElectronica&quot;,
+                                &quot;notaCredito&quot;,
+                                &quot;notaDebito&quot;,
+                                &quot;facturaCompra&quot;,
+                                &quot;guiaDespacho&quot;
+                            ]
+                        },
+                        &quot;uniqueItems&quot;: true,
+                        &quot;title&quot;: &quot;Documentos a Emitir&quot;
+                    },
+                    &quot;documentEstimates&quot;: {
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;items&quot;: {
+                            &quot;type&quot;: &quot;object&quot;,
+                            &quot;properties&quot;: {
+                                &quot;documentType&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;title&quot;: &quot;Tipo de Documento&quot;
+                                },
+                                &quot;monthlyEstimate&quot;: {
+                                    &quot;type&quot;: &quot;integer&quot;,
+                                    &quot;title&quot;: &quot;Cantidad Mensual Estimada&quot;,
+                                    &quot;minimum&quot;: 0
+                                },
+                                &quot;folioFile&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;format&quot;: &quot;data-url&quot;,
+                                    &quot;title&quot;: &quot;Archivo XML de Folios (opcional)&quot;
+                                }
+                            }
+                        },
+                        &quot;title&quot;: &quot;Estimación de Documentos&quot;
+                    }
+                },
+                &quot;required&quot;: [
+                    &quot;enabledDocuments&quot;
+                ]
+            },
+            &quot;generalConfig&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;defaultDocument&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;title&quot;: &quot;Documento por Defecto&quot;
+                    },
+                    &quot;environment&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;production&quot;,
+                            &quot;certification&quot;
+                        ],
+                        &quot;title&quot;: &quot;Ambiente&quot;,
+                        &quot;default&quot;: &quot;production&quot;
+                    },
+                    &quot;logo&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;format&quot;: &quot;data-url&quot;,
+                        &quot;title&quot;: &quot;Logo de la Empresa (opcional)&quot;
+                    },
+                    &quot;emailConfig&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;useCustomEmail&quot;: {
+                                &quot;type&quot;: &quot;boolean&quot;,
+                                &quot;title&quot;: &quot;Configurar correo personalizado&quot;,
+                                &quot;default&quot;: false
+                            },
+                            &quot;emailServer&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Servidor SMTP&quot;
+                            },
+                            &quot;emailUser&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Usuario&quot;
+                            },
+                            &quot;emailPassword&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Contraseña&quot;
+                            }
+                        }
+                    },
+                    &quot;enablePOS&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Activar POS para boletas electrónicas&quot;,
+                        &quot;default&quot;: false
+                    },
+                    &quot;enableDirectPrint&quot;: {
+                        &quot;type&quot;: &quot;boolean&quot;,
+                        &quot;title&quot;: &quot;Activar impresión directa desde web&quot;,
+                        &quot;default&quot;: true
+                    }
+                }
+            },
+            &quot;users&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;inviteUsers&quot;: {
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;items&quot;: {
+                            &quot;type&quot;: &quot;object&quot;,
+                            &quot;properties&quot;: {
+                                &quot;email&quot;: {
+                                    &quot;type&quot;: &quot;string&quot;,
+                                    &quot;format&quot;: &quot;email&quot;,
+                                    &quot;title&quot;: &quot;Correo Electrónico&quot;
+                                }
+                            },
+                            &quot;required&quot;: [
+                                &quot;email&quot;
+                            ]
+                        },
+                        &quot;title&quot;: &quot;Invitar Usuarios&quot;
+                    }
+                }
+            },
+            &quot;getStarted&quot;: {
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: {
+                    &quot;trainingOption&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;basicVideo&quot;,
+                            &quot;fullTraining&quot;,
+                            &quot;none&quot;
+                        ],
+                        &quot;title&quot;: &quot;¿Deseas recibir capacitación inicial?&quot;,
+                        &quot;default&quot;: &quot;basicVideo&quot;
+                    }
+                }
+            }
+        }
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;Categorization&quot;,
+        &quot;options&quot;: {
+            &quot;variant&quot;: &quot;stepper&quot;,
+            &quot;showNavButtons&quot;: true
+        },
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Conoce tu plan&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Servicio Plus&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/plan/properties/selectedPlan&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;radio&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/plan/properties/paymentFrequency&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;radio&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/plan/properties/acceptTerms&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Firma y Clave SII&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Firma electrónica&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;La firma electrónica es necesaria para la emisión de documentos tributarios electrónicos.&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/signatureFile&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;accept&quot;: &quot;.p12,.pfx&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/signaturePassword&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;password&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/hasAuthorizedSignature&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;Si no tienes tu firma autorizada, deberás realizarlo en el sitio del SII antes de emitir documentos en producción.&quot;,
+                                        &quot;rule&quot;: {
+                                            &quot;effect&quot;: &quot;SHOW&quot;,
+                                            &quot;condition&quot;: {
+                                                &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/hasAuthorizedSignature&quot;,
+                                                &quot;schema&quot;: {
+                                                    &quot;const&quot;: false
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Clave tributaria SII&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxKey/properties/taxId&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxKey/properties/taxPassword&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;password&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxKey/properties/savePassword&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;Para garantizar la sincronización automática con el SII, recomendamos guardar la contraseña.&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Datos y Documentos&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Datos del contribuyente&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/legalName&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/commercialActivity&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/businessLine&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/address&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/city&quot;
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/phone&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/email&quot;
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/contactName&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/contactEmail&quot;
+                                            }
+                                        ],
+                                        &quot;rule&quot;: {
+                                            &quot;effect&quot;: &quot;SHOW&quot;,
+                                            &quot;condition&quot;: {
+                                                &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional&quot;,
+                                                &quot;schema&quot;: {
+                                                    &quot;const&quot;: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Documentos a emitir&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/documents/properties/enabledDocuments&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;format&quot;: &quot;checkbox&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/documents/properties/documentEstimates&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;detail&quot;: {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/documentType&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/monthlyEstimate&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/folioFile&quot;
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Configuración y Usuarios&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Configuración general&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/defaultDocument&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/environment&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/logo&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;accept&quot;: &quot;image/*&quot;
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/enablePOS&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/enableDirectPrint&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                        &quot;elements&quot;: [
+                                            {
+                                                &quot;type&quot;: &quot;Control&quot;,
+                                                &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailServer&quot;
+                                            },
+                                            {
+                                                &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailUser&quot;
+                                                    },
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailPassword&quot;,
+                                                        &quot;options&quot;: {
+                                                            &quot;format&quot;: &quot;password&quot;
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        &quot;rule&quot;: {
+                                            &quot;effect&quot;: &quot;SHOW&quot;,
+                                            &quot;condition&quot;: {
+                                                &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail&quot;,
+                                                &quot;schema&quot;: {
+                                                    &quot;const&quot;: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Usuarios autorizados&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/users/properties/inviteUsers&quot;,
+                                        &quot;options&quot;: {
+                                            &quot;detail&quot;: {
+                                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                                &quot;elements&quot;: [
+                                                    {
+                                                        &quot;type&quot;: &quot;Control&quot;,
+                                                        &quot;scope&quot;: &quot;#/properties/email&quot;
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;Se enviará un email de invitación a cada usuario para que complete su registro.&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                &quot;type&quot;: &quot;Category&quot;,
+                &quot;label&quot;: &quot;Empieza a usar&quot;,
+                &quot;elements&quot;: [
+                    {
+                        &quot;type&quot;: &quot;Group&quot;,
+                        &quot;label&quot;: &quot;Emite tu primer documento tributario&quot;,
+                        &quot;elements&quot;: [
+                            {
+                                &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                &quot;elements&quot;: [
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;¡Felicidades! Has completado la configuración básica.&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Control&quot;,
+                                        &quot;scope&quot;: &quot;#/properties/getStarted/properties/trainingOption&quot;
+                                    },
+                                    {
+                                        &quot;type&quot;: &quot;Label&quot;,
+                                        &quot;text&quot;: &quot;Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel.&quot;
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    &quot;data&quot;: []
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1b3856">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"plan":{"type":"object","properties":{"selectedPlan":{"type":"string","enum":["free","basic","professional","enterprise"],"title":"Plan seleccionado","default":"basic"},"paymentFrequency":{"type":"string","enum":["monthly","yearly"],"title":"Frecuencia de pago","default":"monthly"},"acceptTerms":{"type":"boolean","title":"Acepto los t\u00e9rminos y condiciones","default":false}},"required":["selectedPlan","acceptTerms"]},"digitalSignature":{"type":"object","properties":{"signatureFile":{"type":"string","format":"data-url","title":"Archivo de Firma Electr\u00f3nica (.p12, .pfx)"},"signaturePassword":{"type":"string","title":"Contrase\u00f1a de la Firma"},"hasAuthorizedSignature":{"type":"boolean","title":"Mi firma est\u00e1 autorizada en SII","default":false}},"required":["signatureFile","signaturePassword"]},"taxKey":{"type":"object","properties":{"taxId":{"type":"string","title":"RUT Empresa","pattern":"^[0-9]{1,8}-[0-9Kk]{1}$"},"taxPassword":{"type":"string","title":"Contrase\u00f1a SII"},"savePassword":{"type":"boolean","title":"Guardar contrase\u00f1a para sincronizaci\u00f3n autom\u00e1tica","default":true}},"required":["taxId","taxPassword"]},"taxpayerInfo":{"type":"object","properties":{"legalName":{"type":"string","title":"Raz\u00f3n Social"},"commercialActivity":{"type":"string","title":"Actividad Econ\u00f3mica"},"businessLine":{"type":"string","title":"Giro"},"address":{"type":"string","title":"Direcci\u00f3n"},"city":{"type":"string","title":"Comuna"},"phone":{"type":"string","title":"Tel\u00e9fono"},"email":{"type":"string","format":"email","title":"Correo Electr\u00f3nico"},"additionalContact":{"type":"object","properties":{"sendBillingToAdditional":{"type":"boolean","title":"Enviar facturas a un contacto adicional","default":false},"contactName":{"type":"string","title":"Nombre del Contacto"},"contactEmail":{"type":"string","format":"email","title":"Email del Contacto"}}}},"required":["legalName","businessLine","address","city","email"]},"documents":{"type":"object","properties":{"enabledDocuments":{"type":"array","items":{"type":"string","enum":["factura","facturaExenta","boletaElectronica","notaCredito","notaDebito","facturaCompra","guiaDespacho"]},"uniqueItems":true,"title":"Documentos a Emitir"},"documentEstimates":{"type":"array","items":{"type":"object","properties":{"documentType":{"type":"string","title":"Tipo de Documento"},"monthlyEstimate":{"type":"integer","title":"Cantidad Mensual Estimada","minimum":0},"folioFile":{"type":"string","format":"data-url","title":"Archivo XML de Folios (opcional)"}}},"title":"Estimaci\u00f3n de Documentos"}},"required":["enabledDocuments"]},"generalConfig":{"type":"object","properties":{"defaultDocument":{"type":"string","title":"Documento por Defecto"},"environment":{"type":"string","enum":["production","certification"],"title":"Ambiente","default":"production"},"logo":{"type":"string","format":"data-url","title":"Logo de la Empresa (opcional)"},"emailConfig":{"type":"object","properties":{"useCustomEmail":{"type":"boolean","title":"Configurar correo personalizado","default":false},"emailServer":{"type":"string","title":"Servidor SMTP"},"emailUser":{"type":"string","title":"Usuario"},"emailPassword":{"type":"string","title":"Contrase\u00f1a"}}},"enablePOS":{"type":"boolean","title":"Activar POS para boletas electr\u00f3nicas","default":false},"enableDirectPrint":{"type":"boolean","title":"Activar impresi\u00f3n directa desde web","default":true}}},"users":{"type":"object","properties":{"inviteUsers":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Correo Electr\u00f3nico"}},"required":["email"]},"title":"Invitar Usuarios"}}},"getStarted":{"type":"object","properties":{"trainingOption":{"type":"string","enum":["basicVideo","fullTraining","none"],"title":"\u00bfDeseas recibir capacitaci\u00f3n inicial?","default":"basicVideo"}}}}},"uischema":{"type":"Categorization","options":{"variant":"stepper","showNavButtons":true},"elements":[{"type":"Category","label":"Conoce tu plan","elements":[{"type":"Group","label":"Servicio Plus","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/plan\/properties\/selectedPlan","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/paymentFrequency","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/acceptTerms"}]}]}]},{"type":"Category","label":"Firma y Clave SII","elements":[{"type":"Group","label":"Firma electr\u00f3nica","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","text":"La firma electr\u00f3nica es necesaria para la emisi\u00f3n de documentos tributarios electr\u00f3nicos."},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signatureFile","options":{"accept":".p12,.pfx"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signaturePassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/hasAuthorizedSignature"},{"type":"Label","text":"Si no tienes tu firma autorizada, deber\u00e1s realizarlo en el sitio del SII antes de emitir documentos en producci\u00f3n.","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/digitalSignature\/properties\/hasAuthorizedSignature","schema":{"const":false}}}}]}]},{"type":"Group","label":"Clave tributaria SII","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/savePassword"},{"type":"Label","text":"Para garantizar la sincronizaci\u00f3n autom\u00e1tica con el SII, recomendamos guardar la contrase\u00f1a."}]}]}]},{"type":"Category","label":"Datos y Documentos","elements":[{"type":"Group","label":"Datos del contribuyente","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/commercialActivity"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/businessLine"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/address"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/city"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/phone"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/email"}]},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/sendBillingToAdditional"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactEmail"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/sendBillingToAdditional","schema":{"const":true}}}}]}]},{"type":"Group","label":"Documentos a emitir","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/documents\/properties\/enabledDocuments","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/documents\/properties\/documentEstimates","options":{"detail":{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentType"},{"type":"Control","scope":"#\/properties\/monthlyEstimate"},{"type":"Control","scope":"#\/properties\/folioFile"}]}}}]}]}]},{"type":"Category","label":"Configuraci\u00f3n y Usuarios","elements":[{"type":"Group","label":"Configuraci\u00f3n general","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/defaultDocument"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/environment"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/logo","options":{"accept":"image\/*"}},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enablePOS"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enableDirectPrint"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/useCustomEmail"},{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailServer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailUser"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailPassword","options":{"format":"password"}}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/useCustomEmail","schema":{"const":true}}}}]}]},{"type":"Group","label":"Usuarios autorizados","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/users\/properties\/inviteUsers","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}}},{"type":"Label","text":"Se enviar\u00e1 un email de invitaci\u00f3n a cada usuario para que complete su registro."}]}]}]},{"type":"Category","label":"Empieza a usar","elements":[{"type":"Group","label":"Emite tu primer documento tributario","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","text":"\u00a1Felicidades! Has completado la configuraci\u00f3n b\u00e1sica."},{"type":"Control","scope":"#\/properties\/getStarted\/properties\/trainingOption"},{"type":"Label","text":"Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel."}]}]}]}]},"data":null};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;plan&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;selectedPlan&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;free&quot;,
+                        &quot;basic&quot;,
+                        &quot;professional&quot;,
+                        &quot;enterprise&quot;
+                    ],
+                    &quot;title&quot;: &quot;Plan seleccionado&quot;,
+                    &quot;default&quot;: &quot;basic&quot;
+                },
+                &quot;paymentFrequency&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;monthly&quot;,
+                        &quot;yearly&quot;
+                    ],
+                    &quot;title&quot;: &quot;Frecuencia de pago&quot;,
+                    &quot;default&quot;: &quot;monthly&quot;
+                },
+                &quot;acceptTerms&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Acepto los términos y condiciones&quot;,
+                    &quot;default&quot;: false
+                }
+            },
+            &quot;required&quot;: [
+                &quot;selectedPlan&quot;,
+                &quot;acceptTerms&quot;
+            ]
+        },
+        &quot;digitalSignature&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;signatureFile&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;data-url&quot;,
+                    &quot;title&quot;: &quot;Archivo de Firma Electrónica (.p12, .pfx)&quot;
+                },
+                &quot;signaturePassword&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Contraseña de la Firma&quot;
+                },
+                &quot;hasAuthorizedSignature&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Mi firma está autorizada en SII&quot;,
+                    &quot;default&quot;: false
+                }
+            },
+            &quot;required&quot;: [
+                &quot;signatureFile&quot;,
+                &quot;signaturePassword&quot;
+            ]
+        },
+        &quot;taxKey&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;taxId&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;RUT Empresa&quot;,
+                    &quot;pattern&quot;: &quot;^[0-9]{1,8}-[0-9Kk]{1}$&quot;
+                },
+                &quot;taxPassword&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Contraseña SII&quot;
+                },
+                &quot;savePassword&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Guardar contraseña para sincronización automática&quot;,
+                    &quot;default&quot;: true
+                }
+            },
+            &quot;required&quot;: [
+                &quot;taxId&quot;,
+                &quot;taxPassword&quot;
+            ]
+        },
+        &quot;taxpayerInfo&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;legalName&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Razón Social&quot;
+                },
+                &quot;commercialActivity&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Actividad Económica&quot;
+                },
+                &quot;businessLine&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Giro&quot;
+                },
+                &quot;address&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Dirección&quot;
+                },
+                &quot;city&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Comuna&quot;
+                },
+                &quot;phone&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Teléfono&quot;
+                },
+                &quot;email&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;email&quot;,
+                    &quot;title&quot;: &quot;Correo Electrónico&quot;
+                },
+                &quot;additionalContact&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;sendBillingToAdditional&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Enviar facturas a un contacto adicional&quot;,
+                            &quot;default&quot;: false
+                        },
+                        &quot;contactName&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Nombre del Contacto&quot;
+                        },
+                        &quot;contactEmail&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;format&quot;: &quot;email&quot;,
+                            &quot;title&quot;: &quot;Email del Contacto&quot;
+                        }
+                    }
+                }
+            },
+            &quot;required&quot;: [
+                &quot;legalName&quot;,
+                &quot;businessLine&quot;,
+                &quot;address&quot;,
+                &quot;city&quot;,
+                &quot;email&quot;
+            ]
+        },
+        &quot;documents&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;enabledDocuments&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;enum&quot;: [
+                            &quot;factura&quot;,
+                            &quot;facturaExenta&quot;,
+                            &quot;boletaElectronica&quot;,
+                            &quot;notaCredito&quot;,
+                            &quot;notaDebito&quot;,
+                            &quot;facturaCompra&quot;,
+                            &quot;guiaDespacho&quot;
+                        ]
+                    },
+                    &quot;uniqueItems&quot;: true,
+                    &quot;title&quot;: &quot;Documentos a Emitir&quot;
+                },
+                &quot;documentEstimates&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;documentType&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;title&quot;: &quot;Tipo de Documento&quot;
+                            },
+                            &quot;monthlyEstimate&quot;: {
+                                &quot;type&quot;: &quot;integer&quot;,
+                                &quot;title&quot;: &quot;Cantidad Mensual Estimada&quot;,
+                                &quot;minimum&quot;: 0
+                            },
+                            &quot;folioFile&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;format&quot;: &quot;data-url&quot;,
+                                &quot;title&quot;: &quot;Archivo XML de Folios (opcional)&quot;
+                            }
+                        }
+                    },
+                    &quot;title&quot;: &quot;Estimación de Documentos&quot;
+                }
+            },
+            &quot;required&quot;: [
+                &quot;enabledDocuments&quot;
+            ]
+        },
+        &quot;generalConfig&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;defaultDocument&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Documento por Defecto&quot;
+                },
+                &quot;environment&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;production&quot;,
+                        &quot;certification&quot;
+                    ],
+                    &quot;title&quot;: &quot;Ambiente&quot;,
+                    &quot;default&quot;: &quot;production&quot;
+                },
+                &quot;logo&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;format&quot;: &quot;data-url&quot;,
+                    &quot;title&quot;: &quot;Logo de la Empresa (opcional)&quot;
+                },
+                &quot;emailConfig&quot;: {
+                    &quot;type&quot;: &quot;object&quot;,
+                    &quot;properties&quot;: {
+                        &quot;useCustomEmail&quot;: {
+                            &quot;type&quot;: &quot;boolean&quot;,
+                            &quot;title&quot;: &quot;Configurar correo personalizado&quot;,
+                            &quot;default&quot;: false
+                        },
+                        &quot;emailServer&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Servidor SMTP&quot;
+                        },
+                        &quot;emailUser&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Usuario&quot;
+                        },
+                        &quot;emailPassword&quot;: {
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Contraseña&quot;
+                        }
+                    }
+                },
+                &quot;enablePOS&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Activar POS para boletas electrónicas&quot;,
+                    &quot;default&quot;: false
+                },
+                &quot;enableDirectPrint&quot;: {
+                    &quot;type&quot;: &quot;boolean&quot;,
+                    &quot;title&quot;: &quot;Activar impresión directa desde web&quot;,
+                    &quot;default&quot;: true
+                }
+            }
+        },
+        &quot;users&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;inviteUsers&quot;: {
+                    &quot;type&quot;: &quot;array&quot;,
+                    &quot;items&quot;: {
+                        &quot;type&quot;: &quot;object&quot;,
+                        &quot;properties&quot;: {
+                            &quot;email&quot;: {
+                                &quot;type&quot;: &quot;string&quot;,
+                                &quot;format&quot;: &quot;email&quot;,
+                                &quot;title&quot;: &quot;Correo Electrónico&quot;
+                            }
+                        },
+                        &quot;required&quot;: [
+                            &quot;email&quot;
+                        ]
+                    },
+                    &quot;title&quot;: &quot;Invitar Usuarios&quot;
+                }
+            }
+        },
+        &quot;getStarted&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+                &quot;trainingOption&quot;: {
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;enum&quot;: [
+                        &quot;basicVideo&quot;,
+                        &quot;fullTraining&quot;,
+                        &quot;none&quot;
+                    ],
+                    &quot;title&quot;: &quot;¿Deseas recibir capacitación inicial?&quot;,
+                    &quot;default&quot;: &quot;basicVideo&quot;
+                }
+            }
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;Categorization&quot;,
+    &quot;options&quot;: {
+        &quot;variant&quot;: &quot;stepper&quot;,
+        &quot;showNavButtons&quot;: true
+    },
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Conoce tu plan&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Servicio Plus&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/plan/properties/selectedPlan&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;radio&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/plan/properties/paymentFrequency&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;radio&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/plan/properties/acceptTerms&quot;
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Firma y Clave SII&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Firma electrónica&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;La firma electrónica es necesaria para la emisión de documentos tributarios electrónicos.&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/signatureFile&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;accept&quot;: &quot;.p12,.pfx&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/signaturePassword&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;password&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/hasAuthorizedSignature&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;Si no tienes tu firma autorizada, deberás realizarlo en el sitio del SII antes de emitir documentos en producción.&quot;,
+                                    &quot;rule&quot;: {
+                                        &quot;effect&quot;: &quot;SHOW&quot;,
+                                        &quot;condition&quot;: {
+                                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/hasAuthorizedSignature&quot;,
+                                            &quot;schema&quot;: {
+                                                &quot;const&quot;: false
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Clave tributaria SII&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxKey/properties/taxId&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxKey/properties/taxPassword&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;password&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxKey/properties/savePassword&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;Para garantizar la sincronización automática con el SII, recomendamos guardar la contraseña.&quot;
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Datos y Documentos&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Datos del contribuyente&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/legalName&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/commercialActivity&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/businessLine&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/address&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/city&quot;
+                                        }
+                                    ]
+                                },
+                                {
+                                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/phone&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/email&quot;
+                                        }
+                                    ]
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/contactName&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/contactEmail&quot;
+                                        }
+                                    ],
+                                    &quot;rule&quot;: {
+                                        &quot;effect&quot;: &quot;SHOW&quot;,
+                                        &quot;condition&quot;: {
+                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional&quot;,
+                                            &quot;schema&quot;: {
+                                                &quot;const&quot;: true
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Documentos a emitir&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/documents/properties/enabledDocuments&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;format&quot;: &quot;checkbox&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/documents/properties/documentEstimates&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;detail&quot;: {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/documentType&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/monthlyEstimate&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/folioFile&quot;
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Configuración y Usuarios&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Configuración general&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/defaultDocument&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/environment&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/logo&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;accept&quot;: &quot;image/*&quot;
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/enablePOS&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/enableDirectPrint&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                    &quot;elements&quot;: [
+                                        {
+                                            &quot;type&quot;: &quot;Control&quot;,
+                                            &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailServer&quot;
+                                        },
+                                        {
+                                            &quot;type&quot;: &quot;HorizontalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailUser&quot;
+                                                },
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/emailPassword&quot;,
+                                                    &quot;options&quot;: {
+                                                        &quot;format&quot;: &quot;password&quot;
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    &quot;rule&quot;: {
+                                        &quot;effect&quot;: &quot;SHOW&quot;,
+                                        &quot;condition&quot;: {
+                                            &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail&quot;,
+                                            &quot;schema&quot;: {
+                                                &quot;const&quot;: true
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Usuarios autorizados&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/users/properties/inviteUsers&quot;,
+                                    &quot;options&quot;: {
+                                        &quot;detail&quot;: {
+                                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                                            &quot;elements&quot;: [
+                                                {
+                                                    &quot;type&quot;: &quot;Control&quot;,
+                                                    &quot;scope&quot;: &quot;#/properties/email&quot;
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;Se enviará un email de invitación a cada usuario para que complete su registro.&quot;
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;type&quot;: &quot;Category&quot;,
+            &quot;label&quot;: &quot;Empieza a usar&quot;,
+            &quot;elements&quot;: [
+                {
+                    &quot;type&quot;: &quot;Group&quot;,
+                    &quot;label&quot;: &quot;Emite tu primer documento tributario&quot;,
+                    &quot;elements&quot;: [
+                        {
+                            &quot;type&quot;: &quot;VerticalLayout&quot;,
+                            &quot;elements&quot;: [
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;¡Felicidades! Has completado la configuración básica.&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Control&quot;,
+                                    &quot;scope&quot;: &quot;#/properties/getStarted/properties/trainingOption&quot;
+                                },
+                                {
+                                    &quot;type&quot;: &quot;Label&quot;,
+                                    &quot;text&quot;: &quot;Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel.&quot;
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>null</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#wizard #steps</span>
+        </div>
+        <div class="text-muted float-end">
+            007_wizard
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="profile_tabs.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                User Profile with Tabs
+            </a>
+            </div>
+    <div class="col-md-6">
+                    <a href="invoicing.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                Invoice Issuance
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

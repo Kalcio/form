@@ -30,7 +30,7 @@
                 <small class="text-secondary">001_from_data</small>
             </div>
             <p class="mb-1">The simplest form, created from data only. Form normalization is not performed.</p>
-                            <small class="text-muted">#raw</small>
+                            <small class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #raw</small>
                     </a>
             <a href="examples/from_normalized_data.html" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
@@ -38,6 +38,71 @@
                 <small class="text-secondary">002_from_normalized_data</small>
             </div>
             <p class="mb-1">The simplest form, created from data only. Form normalization is performed automatically from the data.</p>
+                            <small class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #normalized</small>
+                    </a>
+            <a href="examples/signup.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">User Registration</h5>
+                <small class="text-secondary">003_signup</small>
+            </div>
+            <p class="mb-1">Form to create a new user account.</p>
+                            <small class="text-muted">#withSchema #withOutUiSchema #withOutData #onlySchema #requiredWithOutDefaults</small>
+                    </a>
+            <a href="examples/signin.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Login Form</h5>
+                <small class="text-secondary">004_signin</small>
+            </div>
+            <p class="mb-1">A user login form with username, password and 2FA options.</p>
+                            <small class="text-muted">#withSchema #withOutUiSchema #withData #requiredWithDefaults</small>
+                    </a>
+            <a href="examples/profile_cards.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">User Profile with Cards</h5>
+                <small class="text-secondary">005_profile_cards</small>
+            </div>
+            <p class="mb-1">User profile form with grouped sections in cards.</p>
+                            <small class="text-muted">#withSchema #withUiSchema #withData #groups #description</small>
+                    </a>
+            <a href="examples/profile_tabs.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">User Profile with Tabs</h5>
+                <small class="text-secondary">006_profile_tabs</small>
+            </div>
+            <p class="mb-1">User profile form with tabs and cards.</p>
+                            <small class="text-muted">#withSchema #withUiSchema #withData #categories #groups #description</small>
+                    </a>
+            <a href="examples/wizard.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Setup Wizard</h5>
+                <small class="text-secondary">007_wizard</small>
+            </div>
+            <p class="mb-1">Multi-step wizard for account setup.</p>
+                            <small class="text-muted">#wizard #steps</small>
+                    </a>
+            <a href="examples/invoicing.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Invoice Issuance</h5>
+                <small class="text-secondary">008_invoicing</small>
+            </div>
+            <p class="mb-1">Form for creating invoices with basic fields and line items.</p>
+                            <small class="text-muted">#array #callback</small>
+                    </a>
+            <a href="examples/search.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Advanced Invoice Search</h5>
+                <small class="text-secondary">009_search</small>
+            </div>
+            <p class="mb-1">Complex search form for filtering invoices with conditional fields.</p>
+                            <small class="text-muted">#conditionalFields</small>
+                    </a>
+            <a href="examples/config.html" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">E-Invoicing Configuration</h5>
+                <small class="text-secondary">010_config</small>
+            </div>
+            <p class="mb-1">Comprehensive configuration form for electronic invoicing.</p>
+                            <small class="text-muted">#categories #groups #conditionalCategories #conditionalFields #nullableFields</small>
                     </a>
     <ul>
 
