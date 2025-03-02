@@ -39,3 +39,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 ## License
 
 This package is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+In the examples, the demo in JavaScript uses the [JSON Forms](https://jsonforms.io) library.

@@ -17,28 +17,47 @@
 
 {% set tab_content_input %}
 <pre class="line-numbers language-json"><code>
-    {{- example.form | json_encode(jsonFlags) -}}
+    {{- example.data.form | json_encode(jsonFlags) -}}
 </code></pre>
 {% endset %}
 
 {% set tab_content_demo_php %}
-
+<twig:block-alert
+    type="info"
+    content="WIP: Work In Progress."
+/>
 {% endset %}
 
 {% set tab_content_demo_js %}
 <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button">Submit</button>
+
+<twig:block-modal
+    id="modal-xl-form"
+    title="Data from the form"
+    content="<pre class='line-numbers language-json'><code id='submit-data'></code></pre>"
+    size="xl"
+    centered="true"
+/>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
     const formDefinition = {{- example.jsonFormsDefinition | json_encode | raw -}};
-    window.renderJsonForm('json-form-container', formDefinition);
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
 });
 </script>
-
-<twig:block-alert
-    type="info"
-    content="The demo in JavaScript uses the <a href='https://jsonforms.io' target='_blank' class='alert-link'>JSON Forms</a> library."
-/>
 {% endset %}
 
 {% set tab_content_schema %}
@@ -103,10 +122,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% if example.tags is not empty %}
     <hr/>
-    <div class="my-4 small">
-        Tags: <span class="text-muted">#{{ example.tags | join(' #')}}</span>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#{{ example.tags | join(' #')}}</span>
+        </div>
+        <div class="text-muted float-end">
+            {{ example.id }}
+        </div>
     </div>
 {% endif %}
+
+<hr class="mb-4" />
 
 <div class="row">
     <div class="col-md-6">

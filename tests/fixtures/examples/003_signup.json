@@ -1,0 +1,43 @@
+{
+    "meta": {
+        "name": "User Registration",
+        "description": "Form to create a new user account.",
+        "tags": [
+            "withSchema",
+            "withOutUiSchema",
+            "withOutData",
+            "onlySchema",
+            "requiredWithOutDefaults"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name"
+                },
+                "username": {
+                    "type": "string",
+                    "title": "Username"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "title": "Email address"
+                },
+                "terms_accepted": {
+                    "type": "boolean",
+                    "title": "I accept the terms and conditions of use of the service."
+                }
+            },
+            "required": [
+                "name",
+                "username",
+                "email",
+                "terms_accepted"
+            ]
+        }
+    }
+}

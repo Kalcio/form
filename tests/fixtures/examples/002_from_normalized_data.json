@@ -1,7 +1,14 @@
 {
     "meta": {
         "name": "From Normalized Data",
-        "description": "The simplest form, created from data only. Form normalization is performed automatically from the data."
+        "description": "The simplest form, created from data only. Form normalization is performed automatically from the data.",
+        "tags": [
+            "withOutSchema",
+            "withOutUiSchema",
+            "withData",
+            "onlyData",
+            "normalized"
+        ]
     },
     "form": {
         "data": {

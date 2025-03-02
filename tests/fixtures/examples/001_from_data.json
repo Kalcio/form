@@ -2,7 +2,13 @@
     "meta": {
         "name": "From Data",
         "description": "The simplest form, created from data only. Form normalization is not performed.",
-        "tags": ["raw"],
+        "tags": [
+            "withOutSchema",
+            "withOutUiSchema",
+            "withData",
+            "onlyData",
+            "raw"
+        ],
         "normalize": false
     },
     "form": {

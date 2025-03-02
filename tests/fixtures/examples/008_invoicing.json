@@ -1,0 +1,527 @@
+{
+    "meta": {
+        "name": "Invoice Issuance",
+        "description": "Form for creating invoices with basic fields and line items.",
+        "tags": [
+            "array",
+            "callback"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "header": {
+                    "type": "object",
+                    "title": "Invoice Information",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "title": "Invoice Number"
+                        },
+                        "issueDate": {
+                            "type": "string",
+                            "format": "date",
+                            "title": "Issue Date"
+                        },
+                        "dueDate": {
+                            "type": "string",
+                            "format": "date",
+                            "title": "Due Date"
+                        },
+                        "documentCurrencyCode": {
+                            "type": "string",
+                            "title": "Currency",
+                            "default": "USD"
+                        },
+                        "note": {
+                            "type": "string",
+                            "title": "Notes"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "issueDate",
+                        "documentCurrencyCode"
+                    ]
+                },
+                "accountingSupplierParty": {
+                    "type": "object",
+                    "title": "Supplier Information",
+                    "properties": {
+                        "taxId": {
+                            "type": "string",
+                            "title": "Tax ID"
+                        },
+                        "name": {
+                            "type": "string",
+                            "title": "Company Name"
+                        },
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "streetName": {
+                                    "type": "string",
+                                    "title": "Street"
+                                },
+                                "cityName": {
+                                    "type": "string",
+                                    "title": "City"
+                                },
+                                "postalZone": {
+                                    "type": "string",
+                                    "title": "Postal Code"
+                                },
+                                "country": {
+                                    "type": "string",
+                                    "title": "Country"
+                                }
+                            }
+                        },
+                        "contact": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Contact Name"
+                                },
+                                "telephone": {
+                                    "type": "string",
+                                    "title": "Phone"
+                                },
+                                "electronicMail": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "title": "Email"
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "taxId"
+                    ]
+                },
+                "accountingCustomerParty": {
+                    "type": "object",
+                    "title": "Customer Information",
+                    "properties": {
+                        "taxId": {
+                            "type": "string",
+                            "title": "Tax ID"
+                        },
+                        "name": {
+                            "type": "string",
+                            "title": "Company Name"
+                        },
+                        "address": {
+                            "type": "object",
+                            "properties": {
+                                "streetName": {
+                                    "type": "string",
+                                    "title": "Street"
+                                },
+                                "cityName": {
+                                    "type": "string",
+                                    "title": "City"
+                                },
+                                "postalZone": {
+                                    "type": "string",
+                                    "title": "Postal Code"
+                                },
+                                "country": {
+                                    "type": "string",
+                                    "title": "Country"
+                                }
+                            }
+                        },
+                        "contact": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Contact Name"
+                                },
+                                "telephone": {
+                                    "type": "string",
+                                    "title": "Phone"
+                                },
+                                "electronicMail": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "title": "Email"
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "taxId",
+                        "name"
+                    ]
+                },
+                "invoiceLines": {
+                    "type": "array",
+                    "title": "Invoice Lines",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "description": {
+                                "type": "string",
+                                "title": "Description"
+                            },
+                            "quantity": {
+                                "type": "number",
+                                "title": "Quantity",
+                                "minimum": 0
+                            },
+                            "unitCode": {
+                                "type": "string",
+                                "title": "Unit",
+                                "default": "UN"
+                            },
+                            "priceAmount": {
+                                "type": "number",
+                                "title": "Unit Price",
+                                "exclusiveMinimum": 0
+                            },
+                            "taxPercent": {
+                                "type": "number",
+                                "title": "Tax %",
+                                "default": 22,
+                                "minimum": 0
+                            },
+                            "lineExtensionAmount": {
+                                "type": "number",
+                                "title": "Line Total",
+                                "exclusiveMinimum": 0
+                            }
+                        },
+                        "required": [
+                            "description",
+                            "quantity",
+                            "unitCode",
+                            "priceAmount"
+                        ]
+                    },
+                    "minItems": 1
+                },
+                "legalMonetaryTotal": {
+                    "type": "object",
+                    "title": "Totals",
+                    "properties": {
+                        "lineExtensionAmount": {
+                            "type": "number",
+                            "title": "Total Before Tax",
+                            "minimum": 0
+                        },
+                        "taxExclusiveAmount": {
+                            "type": "number",
+                            "title": "Tax Amount",
+                            "minimum": 0
+                        },
+                        "taxInclusiveAmount": {
+                            "type": "number",
+                            "title": "Total With Tax",
+                            "minimum": 0
+                        },
+                        "payableAmount": {
+                            "type": "number",
+                            "title": "Amount Due",
+                            "minimum": 0
+                        }
+                    }
+                }
+            },
+            "required": [
+                "header",
+                "accountingSupplierParty",
+                "accountingCustomerParty",
+                "invoiceLines",
+                "legalMonetaryTotal"
+            ]
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Invoice Information",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/header/properties/id"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/header/properties/issueDate"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/header/properties/dueDate"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/header/properties/documentCurrencyCode"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/header/properties/note"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Supplier Information",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/taxId"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/name"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/address/properties/streetName"
+                                },
+                                {
+                                    "type": "HorizontalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/accountingSupplierParty/properties/address/properties/cityName"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/accountingSupplierParty/properties/address/properties/postalZone"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/address/properties/country"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/contact/properties/name"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/contact/properties/telephone"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingSupplierParty/properties/contact/properties/electronicMail"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Group",
+                            "label": "Customer Information",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/taxId"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/name"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/address/properties/streetName"
+                                },
+                                {
+                                    "type": "HorizontalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/accountingCustomerParty/properties/address/properties/cityName"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/accountingCustomerParty/properties/address/properties/postalZone"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/address/properties/country"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/contact/properties/name"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/contact/properties/telephone"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/accountingCustomerParty/properties/contact/properties/electronicMail"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Invoice Items",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/invoiceLines",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/description"
+                                        },
+                                        {
+                                            "type": "HorizontalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/quantity"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/unitCode"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "HorizontalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/priceAmount"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxPercent"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/lineExtensionAmount",
+                                                    "options": {
+                                                        "readonly": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Totals",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/legalMonetaryTotal/properties/lineExtensionAmount",
+                                    "options": {
+                                        "readonly": true
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/legalMonetaryTotal/properties/taxExclusiveAmount",
+                                    "options": {
+                                        "readonly": true
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/legalMonetaryTotal/properties/taxInclusiveAmount",
+                                    "options": {
+                                        "readonly": true
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/legalMonetaryTotal/properties/payableAmount",
+                                    "options": {
+                                        "readonly": true
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "header": {
+                "id": "",
+                "issueDate": "2025-03-01",
+                "dueDate": "2025-03-10",
+                "documentCurrencyCode": "EUR",
+                "note": ""
+            },
+            "accountingSupplierParty": {
+                "name": "",
+                "taxId": "",
+                "address": {
+                    "streetName": "",
+                    "cityName": "",
+                    "postalZone": "",
+                    "country": ""
+                },
+                "contact": {
+                    "name": "",
+                    "telephone": "",
+                    "electronicMail": ""
+                }
+            },
+            "accountingCustomerParty": {
+                "name": "",
+                "taxId": "",
+                "address": {
+                    "streetName": "",
+                    "cityName": "",
+                    "postalZone": "",
+                    "country": ""
+                },
+                "contact": {
+                    "name": "",
+                    "telephone": "",
+                    "electronicMail": ""
+                }
+            },
+            "invoiceLines": [
+                {
+                    "description": "Form Generation Service",
+                    "quantity": 1,
+                    "unitCode": "UN",
+                    "priceAmount": 0,
+                    "taxPercent": 22,
+                    "lineExtensionAmount": 0
+                }
+            ],
+            "legalMonetaryTotal": {
+                "lineExtensionAmount": 0,
+                "taxExclusiveAmount": 0,
+                "taxInclusiveAmount": 0,
+                "payableAmount": 0
+            }
+        }
+    }
+}

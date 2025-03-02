@@ -13,13 +13,13 @@ const JsonFormsViewer = function(props) {
       uischema: props.uischema,
       data: props.data || {},
       renderers: materialRenderers,
-      //readonly: true // For display only.
+      onChange: props.onChange
     })
   );
 };
 
 // Function to initialize the viewer in any container.
-window.renderJsonForm = function(containerId, jsonData) {
+window.renderJsonForm = function(containerId, jsonData, onSubmit) {
   const container = document.getElementById(containerId);
   if (!container) {
     console.error(`Container #${containerId} not found`);
@@ -29,17 +29,38 @@ window.renderJsonForm = function(containerId, jsonData) {
   try {
     // Parse JSON if necessary.
     const formData = typeof jsonData === 'string' ? JSON.parse(jsonData) : jsonData;
+
+    // Create state to store form data and errors.
+    let currentData = formData.data || {};
+    let currentErrors = [];
+
     const root = createRoot(container);
 
     root.render(
       React.createElement(JsonFormsViewer, {
         schema: formData.schema,
         uischema: formData.uischema,
-        data: formData.data
+        data: currentData,
+        onChange: ({ data, errors }) => {
+          currentData = data;
+          currentErrors = errors;
+        }
       })
     );
+
+    // Expose method to get the current data and errors.
+    return {
+      getData: () => currentData,
+      getErrors: () => currentErrors,
+      submit: () => {
+        if (onSubmit) {
+          onSubmit(currentData);
+        }
+      }
+    };
   } catch (error) {
     console.error('Error rendering JSON Forms:', error);
     container.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+    return null;
   }
 };

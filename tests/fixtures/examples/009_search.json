@@ -1,0 +1,406 @@
+{
+    "meta": {
+        "name": "Advanced Invoice Search",
+        "description": "Complex search form for filtering invoices with conditional fields.",
+        "tags": [
+            "conditionalFields"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "basicFilters": {
+                    "type": "object",
+                    "properties": {
+                        "dateRange": {
+                            "type": "string",
+                            "enum": [
+                                "today",
+                                "yesterday",
+                                "last7days",
+                                "last30days",
+                                "thisMonth",
+                                "lastMonth",
+                                "custom"
+                            ],
+                            "default": "last30days",
+                            "title": "Date Range"
+                        },
+                        "customDateFrom": {
+                            "type": "string",
+                            "format": "date",
+                            "title": "From Date"
+                        },
+                        "customDateTo": {
+                            "type": "string",
+                            "format": "date",
+                            "title": "To Date"
+                        },
+                        "invoiceStatus": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "draft",
+                                    "sent",
+                                    "paid",
+                                    "overdue",
+                                    "cancelled",
+                                    "rejected"
+                                ]
+                            },
+                            "uniqueItems": true,
+                            "title": "Invoice Status"
+                        },
+                        "searchText": {
+                            "type": "string",
+                            "title": "Search Text"
+                        }
+                    }
+                },
+                "advancedFilters": {
+                    "type": "object",
+                    "properties": {
+                        "showAdvanced": {
+                            "type": "boolean",
+                            "title": "Show Advanced Filters",
+                            "default": false
+                        },
+                        "amountRange": {
+                            "type": "object",
+                            "properties": {
+                                "min": {
+                                    "type": "number",
+                                    "title": "Minimum Amount"
+                                },
+                                "max": {
+                                    "type": "number",
+                                    "title": "Maximum Amount"
+                                }
+                            }
+                        },
+                        "customer": {
+                            "type": "string",
+                            "title": "Customer"
+                        },
+                        "taxId": {
+                            "type": "string",
+                            "title": "Tax ID"
+                        },
+                        "paymentMethod": {
+                            "type": "string",
+                            "enum": [
+                                "all",
+                                "cash",
+                                "creditCard",
+                                "bankTransfer",
+                                "check"
+                            ],
+                            "default": "all",
+                            "title": "Payment Method"
+                        },
+                        "includeItems": {
+                            "type": "boolean",
+                            "title": "Search in Line Items",
+                            "default": false
+                        },
+                        "itemFilters": {
+                            "type": "object",
+                            "properties": {
+                                "productCode": {
+                                    "type": "string",
+                                    "title": "Product Code"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "title": "Description Contains"
+                                }
+                            }
+                        }
+                    }
+                },
+                "displayOptions": {
+                    "type": "object",
+                    "properties": {
+                        "groupBy": {
+                            "type": "string",
+                            "enum": [
+                                "none",
+                                "customer",
+                                "status",
+                                "month",
+                                "quarter"
+                            ],
+                            "default": "none",
+                            "title": "Group Results By"
+                        },
+                        "sortBy": {
+                            "type": "string",
+                            "enum": [
+                                "date",
+                                "number",
+                                "customer",
+                                "amount"
+                            ],
+                            "default": "date",
+                            "title": "Sort By"
+                        },
+                        "sortOrder": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ],
+                            "default": "desc",
+                            "title": "Sort Order"
+                        },
+                        "itemsPerPage": {
+                            "type": "number",
+                            "enum": [
+                                10,
+                                25,
+                                50,
+                                100
+                            ],
+                            "default": 25,
+                            "title": "Items Per Page"
+                        }
+                    }
+                }
+            }
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Basic Search",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/basicFilters/properties/dateRange"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/basicFilters/properties/customDateFrom",
+                                    "rule": {
+                                        "effect": "SHOW",
+                                        "condition": {
+                                            "scope": "#/properties/basicFilters/properties/dateRange",
+                                            "schema": {
+                                                "const": "custom"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/basicFilters/properties/customDateTo",
+                                    "rule": {
+                                        "effect": "SHOW",
+                                        "condition": {
+                                            "scope": "#/properties/basicFilters/properties/dateRange",
+                                            "schema": {
+                                                "const": "custom"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/basicFilters/properties/invoiceStatus",
+                            "options": {
+                                "format": "checkbox"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/basicFilters/properties/searchText",
+                            "options": {
+                                "placeholder": "Invoice #, customer name, or any text in the invoice"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Advanced Filters",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/advancedFilters/properties/showAdvanced"
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/amountRange/properties/min"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/amountRange/properties/max"
+                                }
+                            ],
+                            "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                    "scope": "#/properties/advancedFilters/properties/showAdvanced",
+                                    "schema": {
+                                        "const": true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/customer"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/taxId"
+                                }
+                            ],
+                            "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                    "scope": "#/properties/advancedFilters/properties/showAdvanced",
+                                    "schema": {
+                                        "const": true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/advancedFilters/properties/paymentMethod",
+                            "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                    "scope": "#/properties/advancedFilters/properties/showAdvanced",
+                                    "schema": {
+                                        "const": true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/advancedFilters/properties/includeItems",
+                            "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                    "scope": "#/properties/advancedFilters/properties/showAdvanced",
+                                    "schema": {
+                                        "const": true
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/itemFilters/properties/productCode"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/advancedFilters/properties/itemFilters/properties/description"
+                                }
+                            ],
+                            "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                    "type": "AND",
+                                    "conditions": [
+                                        {
+                                            "scope": "#/properties/advancedFilters/properties/showAdvanced",
+                                            "schema": {
+                                                "const": true
+                                            }
+                                        },
+                                        {
+                                            "scope": "#/properties/advancedFilters/properties/includeItems",
+                                            "schema": {
+                                                "const": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Display Options",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/displayOptions/properties/groupBy"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/displayOptions/properties/sortBy"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/displayOptions/properties/sortOrder"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/displayOptions/properties/itemsPerPage"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "basicFilters": {
+                "dateRange": "last30days",
+                "invoiceStatus": [
+                    "sent",
+                    "paid",
+                    "overdue"
+                ],
+                "searchText": ""
+            },
+            "advancedFilters": {
+                "showAdvanced": false,
+                "amountRange": {
+                    "min": null,
+                    "max": null
+                },
+                "customer": "",
+                "taxId": "",
+                "paymentMethod": "all",
+                "includeItems": false,
+                "itemFilters": {
+                    "productCode": "",
+                    "description": ""
+                }
+            },
+            "displayOptions": {
+                "groupBy": "none",
+                "sortBy": "date",
+                "sortOrder": "desc",
+                "itemsPerPage": 25
+            }
+        }
+    }
+}

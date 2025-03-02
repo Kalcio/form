@@ -1,0 +1,145 @@
+{
+    "meta": {
+        "name": "User Profile with Cards",
+        "description": "User profile form with grouped sections in cards.",
+        "tags": [
+            "withSchema",
+            "withUiSchema",
+            "withData",
+            "groups",
+            "description"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "User's real name."
+                },
+                "username": {
+                    "type": "string",
+                    "title": "Username",
+                    "description": "Username. Can be used to login."
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "title": "Email",
+                    "description": "Email address for system use, including login and notifications."
+                },
+                "api_hash": {
+                    "type": "string",
+                    "title": "API hash",
+                    "description": "User's unique identifier in the API. To generate a new one, delete this and save."
+                },
+                "api_key": {
+                    "type": "string",
+                    "title": "API key",
+                    "description": "Send authentication header to the API: Authorization: Basic APIKEY"
+                },
+                "current_password": {
+                    "type": "string",
+                    "title": "Current password",
+                    "description": "Password currently used by the user."
+                },
+                "new_password": {
+                    "type": "string",
+                    "title": "New password",
+                    "description": "Password you want to use."
+                },
+                "repeat_password": {
+                    "type": "string",
+                    "title": "Repeat password",
+                    "description": "Repeat the password entered above."
+                }
+            },
+            "required": [
+                "name",
+                "username",
+                "email"
+            ]
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Basic Information",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/username"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email"
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "API Access",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/api_hash",
+                            "options": {
+                                "format": "password",
+                                "showUnfocusedDescription": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/api_key",
+                            "options": {
+                                "format": "password",
+                                "showUnfocusedDescription": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Change Password",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/current_password",
+                            "options": {
+                                "format": "password"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/new_password",
+                            "options": {
+                                "format": "password"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/repeat_password",
+                            "options": {
+                                "format": "password"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "name": "Admin",
+            "username": "admin",
+            "email": "admin@example.com",
+            "api_hash": "••••••••••••••••••••••••••••••••",
+            "api_key": "••••••••••••••••••••••••••••••••••••••••"
+        }
+    }
+}

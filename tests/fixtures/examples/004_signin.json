@@ -1,0 +1,40 @@
+{
+    "meta": {
+        "name": "Login Form",
+        "description": "A user login form with username, password and 2FA options.",
+        "tags": [
+            "withSchema",
+            "withOutUiSchema",
+            "withData",
+            "requiredWithDefaults"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "title": "Username or Email"
+                },
+                "password": {
+                    "type": "string",
+                    "title": "Password"
+                },
+                "twoFactorToken": {
+                    "type": "string",
+                    "title": "2FA Token (optional)",
+                    "description": "Enter your two-factor authentication code if enabled"
+                }
+            },
+            "required": [
+                "username",
+                "password"
+            ]
+        },
+        "data": {
+            "username": "",
+            "password": ""
+        }
+    }
+}

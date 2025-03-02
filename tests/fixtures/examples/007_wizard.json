@@ -1,0 +1,683 @@
+{
+    "meta": {
+        "name": "Setup Wizard",
+        "description": "Multi-step wizard for account setup.",
+        "tags": [
+            "wizard",
+            "steps"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "plan": {
+                    "type": "object",
+                    "properties": {
+                        "selectedPlan": {
+                            "type": "string",
+                            "enum": [
+                                "free",
+                                "basic",
+                                "professional",
+                                "enterprise"
+                            ],
+                            "title": "Plan seleccionado",
+                            "default": "basic"
+                        },
+                        "paymentFrequency": {
+                            "type": "string",
+                            "enum": [
+                                "monthly",
+                                "yearly"
+                            ],
+                            "title": "Frecuencia de pago",
+                            "default": "monthly"
+                        },
+                        "acceptTerms": {
+                            "type": "boolean",
+                            "title": "Acepto los términos y condiciones",
+                            "default": false
+                        }
+                    },
+                    "required": [
+                        "selectedPlan",
+                        "acceptTerms"
+                    ]
+                },
+                "digitalSignature": {
+                    "type": "object",
+                    "properties": {
+                        "signatureFile": {
+                            "type": "string",
+                            "format": "data-url",
+                            "title": "Archivo de Firma Electrónica (.p12, .pfx)"
+                        },
+                        "signaturePassword": {
+                            "type": "string",
+                            "title": "Contraseña de la Firma"
+                        },
+                        "hasAuthorizedSignature": {
+                            "type": "boolean",
+                            "title": "Mi firma está autorizada en SII",
+                            "default": false
+                        }
+                    },
+                    "required": [
+                        "signatureFile",
+                        "signaturePassword"
+                    ]
+                },
+                "taxKey": {
+                    "type": "object",
+                    "properties": {
+                        "taxId": {
+                            "type": "string",
+                            "title": "RUT Empresa",
+                            "pattern": "^[0-9]{1,8}-[0-9Kk]{1}$"
+                        },
+                        "taxPassword": {
+                            "type": "string",
+                            "title": "Contraseña SII"
+                        },
+                        "savePassword": {
+                            "type": "boolean",
+                            "title": "Guardar contraseña para sincronización automática",
+                            "default": true
+                        }
+                    },
+                    "required": [
+                        "taxId",
+                        "taxPassword"
+                    ]
+                },
+                "taxpayerInfo": {
+                    "type": "object",
+                    "properties": {
+                        "legalName": {
+                            "type": "string",
+                            "title": "Razón Social"
+                        },
+                        "commercialActivity": {
+                            "type": "string",
+                            "title": "Actividad Económica"
+                        },
+                        "businessLine": {
+                            "type": "string",
+                            "title": "Giro"
+                        },
+                        "address": {
+                            "type": "string",
+                            "title": "Dirección"
+                        },
+                        "city": {
+                            "type": "string",
+                            "title": "Comuna"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "title": "Teléfono"
+                        },
+                        "email": {
+                            "type": "string",
+                            "format": "email",
+                            "title": "Correo Electrónico"
+                        },
+                        "additionalContact": {
+                            "type": "object",
+                            "properties": {
+                                "sendBillingToAdditional": {
+                                    "type": "boolean",
+                                    "title": "Enviar facturas a un contacto adicional",
+                                    "default": false
+                                },
+                                "contactName": {
+                                    "type": "string",
+                                    "title": "Nombre del Contacto"
+                                },
+                                "contactEmail": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "title": "Email del Contacto"
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "legalName",
+                        "businessLine",
+                        "address",
+                        "city",
+                        "email"
+                    ]
+                },
+                "documents": {
+                    "type": "object",
+                    "properties": {
+                        "enabledDocuments": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "factura",
+                                    "facturaExenta",
+                                    "boletaElectronica",
+                                    "notaCredito",
+                                    "notaDebito",
+                                    "facturaCompra",
+                                    "guiaDespacho"
+                                ]
+                            },
+                            "uniqueItems": true,
+                            "title": "Documentos a Emitir"
+                        },
+                        "documentEstimates": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "documentType": {
+                                        "type": "string",
+                                        "title": "Tipo de Documento"
+                                    },
+                                    "monthlyEstimate": {
+                                        "type": "integer",
+                                        "title": "Cantidad Mensual Estimada",
+                                        "minimum": 0
+                                    },
+                                    "folioFile": {
+                                        "type": "string",
+                                        "format": "data-url",
+                                        "title": "Archivo XML de Folios (opcional)"
+                                    }
+                                }
+                            },
+                            "title": "Estimación de Documentos"
+                        }
+                    },
+                    "required": [
+                        "enabledDocuments"
+                    ]
+                },
+                "generalConfig": {
+                    "type": "object",
+                    "properties": {
+                        "defaultDocument": {
+                            "type": "string",
+                            "title": "Documento por Defecto"
+                        },
+                        "environment": {
+                            "type": "string",
+                            "enum": [
+                                "production",
+                                "certification"
+                            ],
+                            "title": "Ambiente",
+                            "default": "production"
+                        },
+                        "logo": {
+                            "type": "string",
+                            "format": "data-url",
+                            "title": "Logo de la Empresa (opcional)"
+                        },
+                        "emailConfig": {
+                            "type": "object",
+                            "properties": {
+                                "useCustomEmail": {
+                                    "type": "boolean",
+                                    "title": "Configurar correo personalizado",
+                                    "default": false
+                                },
+                                "emailServer": {
+                                    "type": "string",
+                                    "title": "Servidor SMTP"
+                                },
+                                "emailUser": {
+                                    "type": "string",
+                                    "title": "Usuario"
+                                },
+                                "emailPassword": {
+                                    "type": "string",
+                                    "title": "Contraseña"
+                                }
+                            }
+                        },
+                        "enablePOS": {
+                            "type": "boolean",
+                            "title": "Activar POS para boletas electrónicas",
+                            "default": false
+                        },
+                        "enableDirectPrint": {
+                            "type": "boolean",
+                            "title": "Activar impresión directa desde web",
+                            "default": true
+                        }
+                    }
+                },
+                "users": {
+                    "type": "object",
+                    "properties": {
+                        "inviteUsers": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "title": "Correo Electrónico"
+                                    }
+                                },
+                                "required": [
+                                    "email"
+                                ]
+                            },
+                            "title": "Invitar Usuarios"
+                        }
+                    }
+                },
+                "getStarted": {
+                    "type": "object",
+                    "properties": {
+                        "trainingOption": {
+                            "type": "string",
+                            "enum": [
+                                "basicVideo",
+                                "fullTraining",
+                                "none"
+                            ],
+                            "title": "¿Deseas recibir capacitación inicial?",
+                            "default": "basicVideo"
+                        }
+                    }
+                }
+            }
+        },
+        "uischema": {
+            "type": "Categorization",
+            "options": {
+                "variant": "stepper",
+                "showNavButtons": true
+            },
+            "elements": [
+                {
+                    "type": "Category",
+                    "label": "Conoce tu plan",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Servicio Plus",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/plan/properties/selectedPlan",
+                                            "options": {
+                                                "format": "radio"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/plan/properties/paymentFrequency",
+                                            "options": {
+                                                "format": "radio"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/plan/properties/acceptTerms"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Category",
+                    "label": "Firma y Clave SII",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Firma electrónica",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Label",
+                                            "text": "La firma electrónica es necesaria para la emisión de documentos tributarios electrónicos."
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/digitalSignature/properties/signatureFile",
+                                            "options": {
+                                                "accept": ".p12,.pfx"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/digitalSignature/properties/signaturePassword",
+                                            "options": {
+                                                "format": "password"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/digitalSignature/properties/hasAuthorizedSignature"
+                                        },
+                                        {
+                                            "type": "Label",
+                                            "text": "Si no tienes tu firma autorizada, deberás realizarlo en el sitio del SII antes de emitir documentos en producción.",
+                                            "rule": {
+                                                "effect": "SHOW",
+                                                "condition": {
+                                                    "scope": "#/properties/digitalSignature/properties/hasAuthorizedSignature",
+                                                    "schema": {
+                                                        "const": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Group",
+                            "label": "Clave tributaria SII",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxKey/properties/taxId"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxKey/properties/taxPassword",
+                                            "options": {
+                                                "format": "password"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxKey/properties/savePassword"
+                                        },
+                                        {
+                                            "type": "Label",
+                                            "text": "Para garantizar la sincronización automática con el SII, recomendamos guardar la contraseña."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Category",
+                    "label": "Datos y Documentos",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Datos del contribuyente",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxpayerInfo/properties/legalName"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxpayerInfo/properties/commercialActivity"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxpayerInfo/properties/businessLine"
+                                        },
+                                        {
+                                            "type": "HorizontalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/address"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/city"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "HorizontalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/phone"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/email"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional"
+                                        },
+                                        {
+                                            "type": "HorizontalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/additionalContact/properties/contactName"
+                                                },
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/taxpayerInfo/properties/additionalContact/properties/contactEmail"
+                                                }
+                                            ],
+                                            "rule": {
+                                                "effect": "SHOW",
+                                                "condition": {
+                                                    "scope": "#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional",
+                                                    "schema": {
+                                                        "const": true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Group",
+                            "label": "Documentos a emitir",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/documents/properties/enabledDocuments",
+                                            "options": {
+                                                "format": "checkbox"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/documents/properties/documentEstimates",
+                                            "options": {
+                                                "detail": {
+                                                    "type": "HorizontalLayout",
+                                                    "elements": [
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/documentType"
+                                                        },
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/monthlyEstimate"
+                                                        },
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/folioFile"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Category",
+                    "label": "Configuración y Usuarios",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Configuración general",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/defaultDocument"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/environment"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/logo",
+                                            "options": {
+                                                "accept": "image/*"
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/enablePOS"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/enableDirectPrint"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail"
+                                        },
+                                        {
+                                            "type": "VerticalLayout",
+                                            "elements": [
+                                                {
+                                                    "type": "Control",
+                                                    "scope": "#/properties/generalConfig/properties/emailConfig/properties/emailServer"
+                                                },
+                                                {
+                                                    "type": "HorizontalLayout",
+                                                    "elements": [
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/generalConfig/properties/emailConfig/properties/emailUser"
+                                                        },
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/generalConfig/properties/emailConfig/properties/emailPassword",
+                                                            "options": {
+                                                                "format": "password"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "rule": {
+                                                "effect": "SHOW",
+                                                "condition": {
+                                                    "scope": "#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail",
+                                                    "schema": {
+                                                        "const": true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Group",
+                            "label": "Usuarios autorizados",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/users/properties/inviteUsers",
+                                            "options": {
+                                                "detail": {
+                                                    "type": "VerticalLayout",
+                                                    "elements": [
+                                                        {
+                                                            "type": "Control",
+                                                            "scope": "#/properties/email"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "Label",
+                                            "text": "Se enviará un email de invitación a cada usuario para que complete su registro."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Category",
+                    "label": "Empieza a usar",
+                    "elements": [
+                        {
+                            "type": "Group",
+                            "label": "Emite tu primer documento tributario",
+                            "elements": [
+                                {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Label",
+                                            "text": "¡Felicidades! Has completado la configuración básica."
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/getStarted/properties/trainingOption"
+                                        },
+                                        {
+                                            "type": "Label",
+                                            "text": "Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {}
+    }
+}
