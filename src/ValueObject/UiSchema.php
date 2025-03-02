@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\Form\ValueObject;
 
-use Derafu\Form\Contract\UiElementInterface;
-use Derafu\Form\Contract\UiSchemaInterface;
+use Derafu\Form\Contract\ValueObject\UiElementInterface;
+use Derafu\Form\Contract\ValueObject\UiSchemaInterface;
 use Derafu\Form\Serializer\JsonSerializer;
 
 /**

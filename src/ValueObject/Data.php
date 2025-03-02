@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Derafu\Form\ValueObject;
 
-use Derafu\Form\Contract\DataInterface;
+use Derafu\Form\Contract\ValueObject\DataInterface;
 use Derafu\Form\Serializer\JsonSerializer;
 
 /**

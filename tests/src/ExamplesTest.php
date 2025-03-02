@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace Derafu\TestsForm;
 
 use Derafu\ExamplesForm\Example;
-use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Contract\ValueObject\FormInterface;
 use Derafu\Form\FormFactory;
 use Derafu\Form\ValueObject\Data;
 use Derafu\Form\ValueObject\Form;

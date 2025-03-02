@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Derafu\ExamplesForm;
 
-use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Contract\ValueObject\FormInterface;
 use Derafu\Form\FormFactory;
 use Derafu\Routing\Exception\RouteNotFoundException;
 

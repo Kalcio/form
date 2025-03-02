@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\Form\ValueObject;
 
-use Derafu\Form\Contract\PropertyInterface;
-use Derafu\Form\Contract\SchemaInterface;
+use Derafu\Form\Contract\ValueObject\PropertyInterface;
+use Derafu\Form\Contract\ValueObject\SchemaInterface;
 use Derafu\Form\Serializer\JsonSerializer;
 
 /**

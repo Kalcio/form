@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Derafu\Form\Contract;
 
+use Derafu\Form\Contract\ValueObject\FormInterface;
 use InvalidArgumentException;
 
 /**

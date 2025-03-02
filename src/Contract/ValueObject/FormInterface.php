@@ -10,7 +10,7 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Contract;
+namespace Derafu\Form\Contract\ValueObject;
 
 use JsonSerializable;
 

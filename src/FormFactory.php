@@ -14,7 +14,7 @@ namespace Derafu\Form;
 
 use DateTimeInterface;
 use Derafu\Form\Contract\FormFactoryInterface;
-use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Contract\ValueObject\FormInterface;
 use Derafu\Form\ValueObject\Form;
 use InvalidArgumentException;
 
