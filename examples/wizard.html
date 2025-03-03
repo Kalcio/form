@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def1b6544">
+<div class="derafu-block-tabs " id="block-tabs--67c6250071929">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -788,13 +788,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1b3856">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c625006dbd5">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -833,7 +836,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"plan":{"type":"object","properties":{"selectedPlan":{"type":"string","enum":["free","basic","professional","enterprise"],"title":"Plan seleccionado","default":"basic"},"paymentFrequency":{"type":"string","enum":["monthly","yearly"],"title":"Frecuencia de pago","default":"monthly"},"acceptTerms":{"type":"boolean","title":"Acepto los t\u00e9rminos y condiciones","default":false}},"required":["selectedPlan","acceptTerms"]},"digitalSignature":{"type":"object","properties":{"signatureFile":{"type":"string","format":"data-url","title":"Archivo de Firma Electr\u00f3nica (.p12, .pfx)"},"signaturePassword":{"type":"string","title":"Contrase\u00f1a de la Firma"},"hasAuthorizedSignature":{"type":"boolean","title":"Mi firma est\u00e1 autorizada en SII","default":false}},"required":["signatureFile","signaturePassword"]},"taxKey":{"type":"object","properties":{"taxId":{"type":"string","title":"RUT Empresa","pattern":"^[0-9]{1,8}-[0-9Kk]{1}$"},"taxPassword":{"type":"string","title":"Contrase\u00f1a SII"},"savePassword":{"type":"boolean","title":"Guardar contrase\u00f1a para sincronizaci\u00f3n autom\u00e1tica","default":true}},"required":["taxId","taxPassword"]},"taxpayerInfo":{"type":"object","properties":{"legalName":{"type":"string","title":"Raz\u00f3n Social"},"commercialActivity":{"type":"string","title":"Actividad Econ\u00f3mica"},"businessLine":{"type":"string","title":"Giro"},"address":{"type":"string","title":"Direcci\u00f3n"},"city":{"type":"string","title":"Comuna"},"phone":{"type":"string","title":"Tel\u00e9fono"},"email":{"type":"string","format":"email","title":"Correo Electr\u00f3nico"},"additionalContact":{"type":"object","properties":{"sendBillingToAdditional":{"type":"boolean","title":"Enviar facturas a un contacto adicional","default":false},"contactName":{"type":"string","title":"Nombre del Contacto"},"contactEmail":{"type":"string","format":"email","title":"Email del Contacto"}}}},"required":["legalName","businessLine","address","city","email"]},"documents":{"type":"object","properties":{"enabledDocuments":{"type":"array","items":{"type":"string","enum":["factura","facturaExenta","boletaElectronica","notaCredito","notaDebito","facturaCompra","guiaDespacho"]},"uniqueItems":true,"title":"Documentos a Emitir"},"documentEstimates":{"type":"array","items":{"type":"object","properties":{"documentType":{"type":"string","title":"Tipo de Documento"},"monthlyEstimate":{"type":"integer","title":"Cantidad Mensual Estimada","minimum":0},"folioFile":{"type":"string","format":"data-url","title":"Archivo XML de Folios (opcional)"}}},"title":"Estimaci\u00f3n de Documentos"}},"required":["enabledDocuments"]},"generalConfig":{"type":"object","properties":{"defaultDocument":{"type":"string","title":"Documento por Defecto"},"environment":{"type":"string","enum":["production","certification"],"title":"Ambiente","default":"production"},"logo":{"type":"string","format":"data-url","title":"Logo de la Empresa (opcional)"},"emailConfig":{"type":"object","properties":{"useCustomEmail":{"type":"boolean","title":"Configurar correo personalizado","default":false},"emailServer":{"type":"string","title":"Servidor SMTP"},"emailUser":{"type":"string","title":"Usuario"},"emailPassword":{"type":"string","title":"Contrase\u00f1a"}}},"enablePOS":{"type":"boolean","title":"Activar POS para boletas electr\u00f3nicas","default":false},"enableDirectPrint":{"type":"boolean","title":"Activar impresi\u00f3n directa desde web","default":true}}},"users":{"type":"object","properties":{"inviteUsers":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Correo Electr\u00f3nico"}},"required":["email"]},"title":"Invitar Usuarios"}}},"getStarted":{"type":"object","properties":{"trainingOption":{"type":"string","enum":["basicVideo","fullTraining","none"],"title":"\u00bfDeseas recibir capacitaci\u00f3n inicial?","default":"basicVideo"}}}}},"uischema":{"type":"Categorization","options":{"variant":"stepper","showNavButtons":true},"elements":[{"type":"Category","label":"Conoce tu plan","elements":[{"type":"Group","label":"Servicio Plus","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/plan\/properties\/selectedPlan","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/paymentFrequency","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/acceptTerms"}]}]}]},{"type":"Category","label":"Firma y Clave SII","elements":[{"type":"Group","label":"Firma electr\u00f3nica","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","text":"La firma electr\u00f3nica es necesaria para la emisi\u00f3n de documentos tributarios electr\u00f3nicos."},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signatureFile","options":{"accept":".p12,.pfx"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signaturePassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/hasAuthorizedSignature"},{"type":"Label","text":"Si no tienes tu firma autorizada, deber\u00e1s realizarlo en el sitio del SII antes de emitir documentos en producci\u00f3n.","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/digitalSignature\/properties\/hasAuthorizedSignature","schema":{"const":false}}}}]}]},{"type":"Group","label":"Clave tributaria SII","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/savePassword"},{"type":"Label","text":"Para garantizar la sincronizaci\u00f3n autom\u00e1tica con el SII, recomendamos guardar la contrase\u00f1a."}]}]}]},{"type":"Category","label":"Datos y Documentos","elements":[{"type":"Group","label":"Datos del contribuyente","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/commercialActivity"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/businessLine"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/address"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/city"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/phone"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/email"}]},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/sendBillingToAdditional"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactEmail"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/sendBillingToAdditional","schema":{"const":true}}}}]}]},{"type":"Group","label":"Documentos a emitir","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/documents\/properties\/enabledDocuments","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/documents\/properties\/documentEstimates","options":{"detail":{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentType"},{"type":"Control","scope":"#\/properties\/monthlyEstimate"},{"type":"Control","scope":"#\/properties\/folioFile"}]}}}]}]}]},{"type":"Category","label":"Configuraci\u00f3n y Usuarios","elements":[{"type":"Group","label":"Configuraci\u00f3n general","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/defaultDocument"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/environment"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/logo","options":{"accept":"image\/*"}},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enablePOS"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enableDirectPrint"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/useCustomEmail"},{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailServer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailUser"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailPassword","options":{"format":"password"}}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/useCustomEmail","schema":{"const":true}}}}]}]},{"type":"Group","label":"Usuarios autorizados","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/users\/properties\/inviteUsers","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}}},{"type":"Label","text":"Se enviar\u00e1 un email de invitaci\u00f3n a cada usuario para que complete su registro."}]}]}]},{"type":"Category","label":"Empieza a usar","elements":[{"type":"Group","label":"Emite tu primer documento tributario","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","text":"\u00a1Felicidades! Has completado la configuraci\u00f3n b\u00e1sica."},{"type":"Control","scope":"#\/properties\/getStarted\/properties\/trainingOption"},{"type":"Label","text":"Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel."}]}]}]}]},"data":null};
+    const formDefinition ={"schema":{"type":"object","properties":{"plan":{"type":"object","properties":{"selectedPlan":{"type":"string","title":"Plan seleccionado","default":"basic","enum":["free","basic","professional","enterprise"]},"paymentFrequency":{"type":"string","title":"Frecuencia de pago","default":"monthly","enum":["monthly","yearly"]},"acceptTerms":{"type":"boolean","title":"Acepto los t\u00e9rminos y condiciones","default":false}},"required":["selectedPlan","acceptTerms"]},"digitalSignature":{"type":"object","properties":{"signatureFile":{"type":"string","title":"Archivo de Firma Electr\u00f3nica (.p12, .pfx)","format":"data-url"},"signaturePassword":{"type":"string","title":"Contrase\u00f1a de la Firma"},"hasAuthorizedSignature":{"type":"boolean","title":"Mi firma est\u00e1 autorizada en SII","default":false}},"required":["signatureFile","signaturePassword"]},"taxKey":{"type":"object","properties":{"taxId":{"type":"string","title":"RUT Empresa","pattern":"^[0-9]{1,8}-[0-9Kk]{1}$"},"taxPassword":{"type":"string","title":"Contrase\u00f1a SII"},"savePassword":{"type":"boolean","title":"Guardar contrase\u00f1a para sincronizaci\u00f3n autom\u00e1tica","default":true}},"required":["taxId","taxPassword"]},"taxpayerInfo":{"type":"object","properties":{"legalName":{"type":"string","title":"Raz\u00f3n Social"},"commercialActivity":{"type":"string","title":"Actividad Econ\u00f3mica"},"businessLine":{"type":"string","title":"Giro"},"address":{"type":"string","title":"Direcci\u00f3n"},"city":{"type":"string","title":"Comuna"},"phone":{"type":"string","title":"Tel\u00e9fono"},"email":{"type":"string","title":"Correo Electr\u00f3nico","format":"email"},"additionalContact":{"type":"object","properties":{"sendBillingToAdditional":{"type":"boolean","title":"Enviar facturas a un contacto adicional","default":false},"contactName":{"type":"string","title":"Nombre del Contacto"},"contactEmail":{"type":"string","title":"Email del Contacto","format":"email"}}}},"required":["legalName","businessLine","address","city","email"]},"documents":{"type":"object","properties":{"enabledDocuments":{"type":"array","title":"Documentos a Emitir","items":{"type":"string","enum":["factura","facturaExenta","boletaElectronica","notaCredito","notaDebito","facturaCompra","guiaDespacho"]},"uniqueItems":true},"documentEstimates":{"type":"array","title":"Estimaci\u00f3n de Documentos","items":{"type":"object","properties":{"documentType":{"type":"string","title":"Tipo de Documento"},"monthlyEstimate":{"type":"integer","title":"Cantidad Mensual Estimada","minimum":0},"folioFile":{"type":"string","format":"data-url","title":"Archivo XML de Folios (opcional)"}}}}},"required":["enabledDocuments"]},"generalConfig":{"type":"object","properties":{"defaultDocument":{"type":"string","title":"Documento por Defecto"},"environment":{"type":"string","title":"Ambiente","default":"production","enum":["production","certification"]},"logo":{"type":"string","title":"Logo de la Empresa (opcional)","format":"data-url"},"emailConfig":{"type":"object","properties":{"useCustomEmail":{"type":"boolean","title":"Configurar correo personalizado","default":false},"emailServer":{"type":"string","title":"Servidor SMTP"},"emailUser":{"type":"string","title":"Usuario"},"emailPassword":{"type":"string","title":"Contrase\u00f1a"}}},"enablePOS":{"type":"boolean","title":"Activar POS para boletas electr\u00f3nicas","default":false},"enableDirectPrint":{"type":"boolean","title":"Activar impresi\u00f3n directa desde web","default":true}}},"users":{"type":"object","properties":{"inviteUsers":{"type":"array","title":"Invitar Usuarios","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Correo Electr\u00f3nico"}},"required":["email"]}}}},"getStarted":{"type":"object","properties":{"trainingOption":{"type":"string","title":"\u00bfDeseas recibir capacitaci\u00f3n inicial?","default":"basicVideo","enum":["basicVideo","fullTraining","none"]}}}}},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Conoce tu plan","elements":[{"type":"Group","label":"Servicio Plus","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/plan\/properties\/selectedPlan","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/paymentFrequency","options":{"format":"radio"}},{"type":"Control","scope":"#\/properties\/plan\/properties\/acceptTerms"}]}]}]},{"type":"Category","label":"Firma y Clave SII","elements":[{"type":"Group","label":"Firma electr\u00f3nica","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","label":"La firma electr\u00f3nica es necesaria para la emisi\u00f3n de documentos tributarios electr\u00f3nicos."},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signatureFile","options":{"accept":".p12,.pfx"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/signaturePassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/hasAuthorizedSignature"},{"type":"Label","label":"Si no tienes tu firma autorizada, deber\u00e1s realizarlo en el sitio del SII antes de emitir documentos en producci\u00f3n."}]}]},{"type":"Group","label":"Clave tributaria SII","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/taxPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/taxKey\/properties\/savePassword"},{"type":"Label","label":"Para garantizar la sincronizaci\u00f3n autom\u00e1tica con el SII, recomendamos guardar la contrase\u00f1a."}]}]}]},{"type":"Category","label":"Datos y Documentos","elements":[{"type":"Group","label":"Datos del contribuyente","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/commercialActivity"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/businessLine"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/address"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/city"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/phone"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/email"}]},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/sendBillingToAdditional"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactName"},{"type":"Control","scope":"#\/properties\/taxpayerInfo\/properties\/additionalContact\/properties\/contactEmail"}]}]}]},{"type":"Group","label":"Documentos a emitir","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/documents\/properties\/enabledDocuments","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/documents\/properties\/documentEstimates","options":{"detail":{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentType"},{"type":"Control","scope":"#\/properties\/monthlyEstimate"},{"type":"Control","scope":"#\/properties\/folioFile"}]}}}]}]}]},{"type":"Category","label":"Configuraci\u00f3n y Usuarios","elements":[{"type":"Group","label":"Configuraci\u00f3n general","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/defaultDocument"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/environment"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/logo","options":{"accept":"image\/*"}},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enablePOS"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/enableDirectPrint"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/useCustomEmail"},{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailServer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailUser"},{"type":"Control","scope":"#\/properties\/generalConfig\/properties\/emailConfig\/properties\/emailPassword","options":{"format":"password"}}]}]}]}]},{"type":"Group","label":"Usuarios autorizados","elements":[{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/users\/properties\/inviteUsers","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}}},{"type":"Label","label":"Se enviar\u00e1 un email de invitaci\u00f3n a cada usuario para que complete su registro."}]}]}]},{"type":"Category","label":"Empieza a usar","elements":[{"type":"Group","label":"Emite tu primer documento tributario","elements":[{"type":"VerticalLayout","elements":[{"type":"Label","label":"\u00a1Felicidades! Has completado la configuraci\u00f3n b\u00e1sica."},{"type":"Control","scope":"#\/properties\/getStarted\/properties\/trainingOption"},{"type":"Label","label":"Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel."}]}]}]}],"options":{"variant":"stepper","showNavButtons":true}},"data":null,"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -863,23 +866,23 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;selectedPlan&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Plan seleccionado&quot;,
+                    &quot;default&quot;: &quot;basic&quot;,
                     &quot;enum&quot;: [
                         &quot;free&quot;,
                         &quot;basic&quot;,
                         &quot;professional&quot;,
                         &quot;enterprise&quot;
-                    ],
-                    &quot;title&quot;: &quot;Plan seleccionado&quot;,
-                    &quot;default&quot;: &quot;basic&quot;
+                    ]
                 },
                 &quot;paymentFrequency&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Frecuencia de pago&quot;,
+                    &quot;default&quot;: &quot;monthly&quot;,
                     &quot;enum&quot;: [
                         &quot;monthly&quot;,
                         &quot;yearly&quot;
-                    ],
-                    &quot;title&quot;: &quot;Frecuencia de pago&quot;,
-                    &quot;default&quot;: &quot;monthly&quot;
+                    ]
                 },
                 &quot;acceptTerms&quot;: {
                     &quot;type&quot;: &quot;boolean&quot;,
@@ -897,8 +900,8 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;signatureFile&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
-                    &quot;format&quot;: &quot;data-url&quot;,
-                    &quot;title&quot;: &quot;Archivo de Firma Electrónica (.p12, .pfx)&quot;
+                    &quot;title&quot;: &quot;Archivo de Firma Electrónica (.p12, .pfx)&quot;,
+                    &quot;format&quot;: &quot;data-url&quot;
                 },
                 &quot;signaturePassword&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
@@ -967,8 +970,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 &quot;email&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
-                    &quot;format&quot;: &quot;email&quot;,
-                    &quot;title&quot;: &quot;Correo Electrónico&quot;
+                    &quot;title&quot;: &quot;Correo Electrónico&quot;,
+                    &quot;format&quot;: &quot;email&quot;
                 },
                 &quot;additionalContact&quot;: {
                     &quot;type&quot;: &quot;object&quot;,
@@ -984,8 +987,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                         &quot;contactEmail&quot;: {
                             &quot;type&quot;: &quot;string&quot;,
-                            &quot;format&quot;: &quot;email&quot;,
-                            &quot;title&quot;: &quot;Email del Contacto&quot;
+                            &quot;title&quot;: &quot;Email del Contacto&quot;,
+                            &quot;format&quot;: &quot;email&quot;
                         }
                     }
                 }
@@ -1003,6 +1006,7 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;enabledDocuments&quot;: {
                     &quot;type&quot;: &quot;array&quot;,
+                    &quot;title&quot;: &quot;Documentos a Emitir&quot;,
                     &quot;items&quot;: {
                         &quot;type&quot;: &quot;string&quot;,
                         &quot;enum&quot;: [
@@ -1015,11 +1019,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             &quot;guiaDespacho&quot;
                         ]
                     },
-                    &quot;uniqueItems&quot;: true,
-                    &quot;title&quot;: &quot;Documentos a Emitir&quot;
+                    &quot;uniqueItems&quot;: true
                 },
                 &quot;documentEstimates&quot;: {
                     &quot;type&quot;: &quot;array&quot;,
+                    &quot;title&quot;: &quot;Estimación de Documentos&quot;,
                     &quot;items&quot;: {
                         &quot;type&quot;: &quot;object&quot;,
                         &quot;properties&quot;: {
@@ -1038,8 +1042,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 &quot;title&quot;: &quot;Archivo XML de Folios (opcional)&quot;
                             }
                         }
-                    },
-                    &quot;title&quot;: &quot;Estimación de Documentos&quot;
+                    }
                 }
             },
             &quot;required&quot;: [
@@ -1055,17 +1058,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 &quot;environment&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Ambiente&quot;,
+                    &quot;default&quot;: &quot;production&quot;,
                     &quot;enum&quot;: [
                         &quot;production&quot;,
                         &quot;certification&quot;
-                    ],
-                    &quot;title&quot;: &quot;Ambiente&quot;,
-                    &quot;default&quot;: &quot;production&quot;
+                    ]
                 },
                 &quot;logo&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
-                    &quot;format&quot;: &quot;data-url&quot;,
-                    &quot;title&quot;: &quot;Logo de la Empresa (opcional)&quot;
+                    &quot;title&quot;: &quot;Logo de la Empresa (opcional)&quot;,
+                    &quot;format&quot;: &quot;data-url&quot;
                 },
                 &quot;emailConfig&quot;: {
                     &quot;type&quot;: &quot;object&quot;,
@@ -1106,6 +1109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;inviteUsers&quot;: {
                     &quot;type&quot;: &quot;array&quot;,
+                    &quot;title&quot;: &quot;Invitar Usuarios&quot;,
                     &quot;items&quot;: {
                         &quot;type&quot;: &quot;object&quot;,
                         &quot;properties&quot;: {
@@ -1118,8 +1122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         &quot;required&quot;: [
                             &quot;email&quot;
                         ]
-                    },
-                    &quot;title&quot;: &quot;Invitar Usuarios&quot;
+                    }
                 }
             }
         },
@@ -1128,13 +1131,13 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;trainingOption&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;¿Deseas recibir capacitación inicial?&quot;,
+                    &quot;default&quot;: &quot;basicVideo&quot;,
                     &quot;enum&quot;: [
                         &quot;basicVideo&quot;,
                         &quot;fullTraining&quot;,
                         &quot;none&quot;
-                    ],
-                    &quot;title&quot;: &quot;¿Deseas recibir capacitación inicial?&quot;,
-                    &quot;default&quot;: &quot;basicVideo&quot;
+                    ]
                 }
             }
         }
@@ -1149,10 +1152,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
     &quot;type&quot;: &quot;Categorization&quot;,
-    &quot;options&quot;: {
-        &quot;variant&quot;: &quot;stepper&quot;,
-        &quot;showNavButtons&quot;: true
-    },
     &quot;elements&quot;: [
         {
             &quot;type&quot;: &quot;Category&quot;,
@@ -1202,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             &quot;elements&quot;: [
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;La firma electrónica es necesaria para la emisión de documentos tributarios electrónicos.&quot;
+                                    &quot;label&quot;: &quot;La firma electrónica es necesaria para la emisión de documentos tributarios electrónicos.&quot;
                                 },
                                 {
                                     &quot;type&quot;: &quot;Control&quot;,
@@ -1224,16 +1223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 },
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;Si no tienes tu firma autorizada, deberás realizarlo en el sitio del SII antes de emitir documentos en producción.&quot;,
-                                    &quot;rule&quot;: {
-                                        &quot;effect&quot;: &quot;SHOW&quot;,
-                                        &quot;condition&quot;: {
-                                            &quot;scope&quot;: &quot;#/properties/digitalSignature/properties/hasAuthorizedSignature&quot;,
-                                            &quot;schema&quot;: {
-                                                &quot;const&quot;: false
-                                            }
-                                        }
-                                    }
+                                    &quot;label&quot;: &quot;Si no tienes tu firma autorizada, deberás realizarlo en el sitio del SII antes de emitir documentos en producción.&quot;
                                 }
                             ]
                         }
@@ -1263,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 },
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;Para garantizar la sincronización automática con el SII, recomendamos guardar la contraseña.&quot;
+                                    &quot;label&quot;: &quot;Para garantizar la sincronización automática con el SII, recomendamos guardar la contraseña.&quot;
                                 }
                             ]
                         }
@@ -1335,16 +1325,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             &quot;type&quot;: &quot;Control&quot;,
                                             &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/contactEmail&quot;
                                         }
-                                    ],
-                                    &quot;rule&quot;: {
-                                        &quot;effect&quot;: &quot;SHOW&quot;,
-                                        &quot;condition&quot;: {
-                                            &quot;scope&quot;: &quot;#/properties/taxpayerInfo/properties/additionalContact/properties/sendBillingToAdditional&quot;,
-                                            &quot;schema&quot;: {
-                                                &quot;const&quot;: true
-                                            }
-                                        }
-                                    }
+                                    ]
                                 }
                             ]
                         }
@@ -1454,16 +1435,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 }
                                             ]
                                         }
-                                    ],
-                                    &quot;rule&quot;: {
-                                        &quot;effect&quot;: &quot;SHOW&quot;,
-                                        &quot;condition&quot;: {
-                                            &quot;scope&quot;: &quot;#/properties/generalConfig/properties/emailConfig/properties/useCustomEmail&quot;,
-                                            &quot;schema&quot;: {
-                                                &quot;const&quot;: true
-                                            }
-                                        }
-                                    }
+                                    ]
                                 }
                             ]
                         }
@@ -1493,7 +1465,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 },
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;Se enviará un email de invitación a cada usuario para que complete su registro.&quot;
+                                    &quot;label&quot;: &quot;Se enviará un email de invitación a cada usuario para que complete su registro.&quot;
                                 }
                             ]
                         }
@@ -1514,7 +1486,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             &quot;elements&quot;: [
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;¡Felicidades! Has completado la configuración básica.&quot;
+                                    &quot;label&quot;: &quot;¡Felicidades! Has completado la configuración básica.&quot;
                                 },
                                 {
                                     &quot;type&quot;: &quot;Control&quot;,
@@ -1522,7 +1494,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 },
                                 {
                                     &quot;type&quot;: &quot;Label&quot;,
-                                    &quot;text&quot;: &quot;Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel.&quot;
+                                    &quot;label&quot;: &quot;Para cualquier consulta, puedes abrir un ticket de soporte desde tu panel.&quot;
                                 }
                             ]
                         }
@@ -1530,7 +1502,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ]
         }
-    ]
+    ],
+    &quot;options&quot;: {
+        &quot;variant&quot;: &quot;stepper&quot;,
+        &quot;showNavButtons&quot;: true
+    }
 }</code></pre>
 
                 </div>

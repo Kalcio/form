@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def164b40">
+<div class="derafu-block-tabs " id="block-tabs--67c625001c3f8">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -143,13 +143,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def161e4a">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c6250019552">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -188,7 +191,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""}};
+    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""},"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.

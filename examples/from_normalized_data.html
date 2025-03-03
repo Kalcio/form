@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def12c25c">
+<div class="derafu-block-tabs " id="block-tabs--67c624ffd387d">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -127,13 +127,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def128cf6">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c624ffd0789">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -172,7 +175,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string"},"email":{"type":"string","format":"email","maxLength":320},"web":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"age":{"type":"integer"},"start_date":{"type":"string","format":"date-time","maxLength":35,"minLength":16},"end_date":{"type":"string"},"salary":{"type":"number"},"require_onboarding":{"type":"boolean"}},"required":[]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Email","scope":"#\/properties\/email"},{"type":"Control","label":"Web","scope":"#\/properties\/web"},{"type":"Control","label":"Age","scope":"#\/properties\/age"},{"type":"Control","label":"Start Date","scope":"#\/properties\/start_date"},{"type":"Control","label":"End Date","scope":"#\/properties\/end_date"},{"type":"Control","label":"Salary","scope":"#\/properties\/salary"},{"type":"Control","label":"Require Onboarding","scope":"#\/properties\/require_onboarding"}]},"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string"},"email":{"type":"string","format":"email","maxLength":320},"web":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"age":{"type":"integer"},"start_date":{"type":"string","format":"date-time","maxLength":35,"minLength":16},"end_date":{"type":"string"},"salary":{"type":"number"},"require_onboarding":{"type":"boolean"}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Email","scope":"#\/properties\/email"},{"type":"Control","label":"Web","scope":"#\/properties\/web"},{"type":"Control","label":"Age","scope":"#\/properties\/age"},{"type":"Control","label":"Start Date","scope":"#\/properties\/start_date"},{"type":"Control","label":"End Date","scope":"#\/properties\/end_date"},{"type":"Control","label":"Salary","scope":"#\/properties\/salary"},{"type":"Control","label":"Require Onboarding","scope":"#\/properties\/require_onboarding"}]},"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true},"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -229,8 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
         &quot;require_onboarding&quot;: {
             &quot;type&quot;: &quot;boolean&quot;
         }
-    },
-    &quot;required&quot;: []
+    }
 }</code></pre>
 
                 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Derafu: Form - Form Builder with Easy Definition and Layouts</title>
+    <title>Derafu: Form - Declarative Forms, Seamless Rendering</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
@@ -21,25 +21,162 @@
             <div class="row">
                 <main class="col-md-9">
                     <div class="container py-4">
-    <div class="markdown-body"><h1><a id="content-derafu-form---form-builder-with-easy-definition-and-layouts" href="index.html#content-derafu-form---form-builder-with-easy-definition-and-layouts" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Derafu: Form - Form Builder with Easy Definition and Layouts</h1>
+    <div class="markdown-body"><h1><a id="content-derafu-form---declarative-forms-seamless-rendering" href="index.html#content-derafu-form---declarative-forms-seamless-rendering" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Derafu: Form - Declarative Forms, Seamless Rendering</h1>
 <p><a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://github.com/derafu/form/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://github.com/derafu/form/actions/workflows/ci.yml/badge.svg?branch=main&amp;event=push" alt="CI Workflow" /></a>
 <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a></p>
+<p>A modern PHP form library that leverages a declarative, schema-based approach to form definition and rendering, compatible with JSON Forms while providing a powerful backend-centric workflow.</p>
 <hr />
 <blockquote>
 <p><strong>WIP: Work In Progress.</strong></p>
 </blockquote>
 <hr />
+<h2><a id="content-key-features" href="index.html#content-key-features" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Key Features</h2>
+<ul>
+<li><strong>Schema-Based Form Definition</strong>: Define forms using structured arrays that clearly separate data schemas from UI layouts.</li>
+<li><strong>Backend-First Approach</strong>: Built for PHP developers who want control over form generation with minimum effort.</li>
+<li><strong>Symfony-Compatible Twig Extensions</strong>: Familiar syntax for Symfony developers, minimizing learning curve.</li>
+<li><strong>Decoupled Rendering System</strong>: Separate your form logic from its presentation with specialized renderers.</li>
+<li><strong>JSON Forms Compatibility</strong>: Define once, use anywhere - same schema can be used with frontend JSON Forms library.</li>
+<li><strong>Automatic Form Generation</strong>: Generate form UI schemas automatically from your data models.</li>
+<li><strong>Extensible Architecture</strong>: Easily add custom types, layouts and renderers.</li>
+</ul>
+<h2><a id="content-why-choose-this-library" href="index.html#content-why-choose-this-library" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Why Choose This Library?</h2>
+<h3><a id="content-compared-to-traditional-php-form-libraries" href="index.html#content-compared-to-traditional-php-form-libraries" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Compared to Traditional PHP Form Libraries</h3>
+<p>Traditional PHP form libraries often tightly couple form definition with HTML generation, making it difficult to separate concerns. This library takes a different approach:</p>
+<ol>
+<li><strong>Declarative Rather Than Imperative</strong>: Define <em>what</em> your form should be rather than <em>how</em> it should be built, step by step.</li>
+<li><strong>Clear Separation of Concerns</strong>: Schema (data structure) is separate from UI schema (presentation) and data (values).</li>
+<li><strong>Powerful Layouts Without HTML Knowledge</strong>: Create complex, multi-column layouts without writing HTML.</li>
+</ol>
+<h3><a id="content-compared-to-frontend-only-solutions" href="index.html#content-compared-to-frontend-only-solutions" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Compared to Frontend-Only Solutions</h3>
+<p>Unlike frontend-only form builders, this library:</p>
+<ol>
+<li><strong>Keeps Validation Logic Server-Side</strong>: Where it belongs for security-critical applications.</li>
+<li><strong>Provides PHP-Native Form Definition</strong>: No need to write JavaScript to define your forms.</li>
+<li><strong>Works With or Without JavaScript</strong>: Generate the same forms for both traditional and SPA applications.</li>
+</ol>
 <h2><a id="content-installation" href="index.html#content-installation" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Installation</h2>
 <p>Install the library using Composer:</p>
 <pre><code class="line-numbers match-braces language-shell">composer require derafu/form
 </code></pre>
-<h2><a id="content-development-requirements" href="index.html#content-development-requirements" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Development Requirements</h2>
+<h2><a id="content-basic-usage" href="index.html#content-basic-usage" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Basic Usage</h2>
+<h3><a id="content-creating-a-simple-form" href="index.html#content-creating-a-simple-form" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Creating a Simple Form</h3>
+<pre><code class="line-numbers match-braces language-php">use Derafu\Form\Factory\FormFactory;
+
+// Define the form structure.
+$definition = [
+    'schema' =&gt; [
+        'type' =&gt; 'object',
+        'properties' =&gt; [
+            'name' =&gt; [
+                'type' =&gt; 'string',
+                'title' =&gt; 'Full Name',
+            ],
+            'email' =&gt; [
+                'type' =&gt; 'string',
+                'format' =&gt; 'email',
+                'title' =&gt; 'Email Address',
+            ],
+        ],
+        'required' =&gt; ['name', 'email'],
+    ],
+    'uischema' =&gt; [
+        'type' =&gt; 'VerticalLayout',
+        'elements' =&gt; [
+            [
+                'type' =&gt; 'Control',
+                'scope' =&gt; '#/properties/name',
+            ],
+            [
+                'type' =&gt; 'Control',
+                'scope' =&gt; '#/properties/email',
+            ],
+        ],
+    ],
+    'data' =&gt; [
+        'name' =&gt; '',
+        'email' =&gt; '',
+    ],
+];
+
+// Create the form.
+$form = FormFactory::create($definition);
+</code></pre>
+<h3><a id="content-rendering-with-twig" href="index.html#content-rendering-with-twig" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Rendering with Twig</h3>
+<pre><code class="line-numbers match-braces language-twig">{# Simple rendering of the entire form. #}
+{{ form(form) }}
+
+{# Or with more control over individual components. #}
+{{ form_start(form) }}
+    {{ form_row(form.fields.name) }}
+    {{ form_row(form.fields.email) }}
+    &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
+{{ form_end(form) }}
+</code></pre>
+<h2><a id="content-automatic-schema-generation" href="index.html#content-automatic-schema-generation" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Automatic Schema Generation</h2>
+<p>The library can automatically generate a schema from your data:</p>
+<pre><code class="line-numbers match-braces language-php">$definition = [
+    'data' =&gt; [
+        'name' =&gt; 'John Doe',
+        'email' =&gt; 'john.doe@example.com',
+        'age' =&gt; 34,
+        'birthdate' =&gt; &quot;1990-01-01&quot;,
+    ],
+];
+
+// Schema and UI schema will be automatically generated.
+$form = FormFactory::create($definition);
+</code></pre>
+<h2><a id="content-integration-with-json-forms" href="index.html#content-integration-with-json-forms" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Integration with JSON Forms</h2>
+<p>This library’s form definitions are compatible with the <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://jsonforms.io">JSON Forms</a> JavaScript library, allowing you to use the same definitions for both server-side and client-side rendering:</p>
+<pre><code class="line-numbers match-braces language-html">&lt;div id=&quot;json-form-container&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="line-numbers match-braces language-javascript">// https://raw.githubusercontent.com/derafu/form/refs/heads/main/assets/js/jsonforms-viewer.js
+import './jsonforms-viewer.js';
+
+// Render the form and save the reference.
+const formDefinition = {{ jsonFormsDefinition | json_encode | raw }};
+const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+// You can now use `formInstance` to get the form data or its errors.
+</code></pre>
+<h3><a id="content-development-requirements" href="index.html#content-development-requirements" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Development Requirements</h3>
 <p>To render forms using JSON Forms you must install:</p>
 <pre><code class="line-numbers match-braces language-shell">npm install @jsonforms/core @jsonforms/react @jsonforms/material-renderers \
     react react-dom @mui/material @emotion/react @emotion/styled
 </code></pre>
 <p>This is already included in the package by default, so you just need to run it:</p>
 <pre><code class="line-numbers match-braces language-shell">npm install
+</code></pre>
+<h2><a id="content-form-layouts" href="index.html#content-form-layouts" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Form Layouts</h2>
+<p>The UI schema supports various layout types by default:</p>
+<ul>
+<li><strong>VerticalLayout</strong>: Fields stacked vertically.</li>
+<li><strong>HorizontalLayout</strong>: Fields arranged horizontally.</li>
+<li><strong>Group</strong>: Logical grouping of fields, often with a label.</li>
+<li><strong>Categorization</strong>: Tab-based layouts for complex forms.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="line-numbers match-braces language-php">$uischema = [
+    'type' =&gt; 'VerticalLayout',
+    'elements' =&gt; [
+        [
+            'type' =&gt; 'Group',
+            'label' =&gt; 'Personal Information',
+            'elements' =&gt; [
+                ['type' =&gt; 'Control', 'scope' =&gt; '#/properties/name'],
+                ['type' =&gt; 'Control', 'scope' =&gt; '#/properties/email'],
+            ],
+        ],
+        [
+            'type' =&gt; 'Group',
+            'label' =&gt; 'Address',
+            'elements' =&gt; [
+                ['type' =&gt; 'Control', 'scope' =&gt; '#/properties/street'],
+                ['type' =&gt; 'Control', 'scope' =&gt; '#/properties/city'],
+            ],
+        ],
+    ],
+];
 </code></pre>
 <h2><a id="content-contributing" href="index.html#content-contributing" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Contributing</h2>
 <p>Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.</p>

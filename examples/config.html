@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def2141bf">
+<div class="derafu-block-tabs " id="block-tabs--67c62500c6cec">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -1198,13 +1198,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def2114c7">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c62500c30cb">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -1243,7 +1246,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"companyProfile":{"type":"object","properties":{"legalName":{"type":"string","title":"Legal Name"},"commercialName":{"type":"string","title":"Commercial Name"},"taxIdentifier":{"type":"string","title":"Tax ID"},"fiscalRegime":{"type":"string","title":"Fiscal Regime"},"address":{"type":"object","properties":{"street":{"type":"string","title":"Street"},"number":{"type":"string","title":"Number"},"city":{"type":"string","title":"City"},"state":{"type":"string","title":"State\/Province"},"postalCode":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}},"required":["street","number","city","country"]},"contact":{"type":"object","properties":{"email":{"type":["null","string"],"format":"email","title":"Email"},"phone":{"type":"string","title":"Phone"},"website":{"type":["null","string"],"format":"uri","title":"Website"}},"required":["email"]},"logo":{"type":["null","string"],"format":"uri","title":"Company Logo URL"}},"required":["legalName","taxIdentifier","fiscalRegime"]},"digitalSignature":{"type":"object","properties":{"certificateType":{"type":"string","enum":["production","testing"],"default":"testing","title":"Certificate Type"},"certificateFile":{"type":"string","title":"Certificate File (.cer)"},"privateKeyFile":{"type":"string","title":"Private Key File (.key)"},"privateKeyPassword":{"type":"string","title":"Private Key Password"},"certificateExpiration":{"type":["null","string"],"format":"date","title":"Certificate Expiration Date"},"enableNotifications":{"type":"boolean","title":"Enable Expiration Notifications","default":true},"notificationThreshold":{"type":"number","title":"Days Before Expiration to Notify","default":30,"minimum":1,"maximum":90}},"required":["certificateType","certificateFile","privateKeyFile","privateKeyPassword"]},"documentTypes":{"type":"object","properties":{"enabledDocuments":{"type":"array","items":{"type":"string","enum":["invoice","creditNote","debitNote","receipt","paymentReceipt"]},"uniqueItems":true,"default":["invoice"],"title":"Enabled Document Types"},"documentSettings":{"type":"object","properties":{"invoice":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"A"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8,"minimum":1,"maximum":10},"defaultCurrency":{"type":"string","title":"Default Currency","default":"USD"},"defaultTaxRate":{"type":"number","title":"Default Tax Rate (%)","default":0}}},"creditNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"NC"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}},"debitNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"ND"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}}}}}},"notifications":{"type":"object","properties":{"emailNotifications":{"type":"object","properties":{"sendToCustomer":{"type":"boolean","title":"Send Email to Customer","default":true},"attachPdf":{"type":"boolean","title":"Attach PDF","default":true},"attachXml":{"type":"boolean","title":"Attach XML","default":true},"customMessage":{"type":"string","title":"Custom Message Template"},"ccEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"CC Email Addresses"},"bccEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"BCC Email Addresses"}}},"adminNotifications":{"type":"object","properties":{"errorNotifications":{"type":"boolean","title":"Receive Error Notifications","default":true},"successSummary":{"type":"boolean","title":"Receive Daily Success Summary","default":false},"notificationEmails":{"type":"array","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]},"title":"Notification Emails"}}}}},"integration":{"type":"object","properties":{"webServiceUrl":{"type":["null","string"],"format":"uri","title":"Fiscal Authority Web Service URL"},"apiKeys":{"type":"object","properties":{"production":{"type":"string","title":"Production API Key"},"testing":{"type":"string","title":"Testing API Key"}}},"webhook":{"type":"object","properties":{"enableWebhook":{"type":"boolean","title":"Enable Status Webhook","default":false},"webhookUrl":{"type":["null","string"],"format":"uri","title":"Webhook URL"},"secret":{"type":"string","title":"Webhook Secret"}}}}}},"required":["companyProfile","digitalSignature"]},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Company Profile","elements":[{"type":"Group","label":"Company Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/commercialName"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/taxIdentifier"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/fiscalRegime"}]}]},{"type":"Group","label":"Address","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/street"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/number"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/city"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/state"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/postalCode"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/country"}]}]},{"type":"Group","label":"Contact Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/email"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/phone"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/website"}]}]},{"type":"Group","label":"Branding","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/logo","options":{"format":"file"}}]}]},{"type":"Category","label":"Digital Signature","elements":[{"type":"Group","label":"Certificate Information","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateType","options":{"format":"radio"}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateFile","options":{"format":"file"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyFile","options":{"format":"file"}}]},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateExpiration"}]},{"type":"Group","label":"Expiration Notifications","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/enableNotifications"},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/notificationThreshold","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/digitalSignature\/properties\/enableNotifications","schema":{"const":true}}}}]}]},{"type":"Category","label":"Document Types","elements":[{"type":"Group","label":"Enabled Documents","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","options":{"format":"checkbox"}}]},{"type":"Categorization","elements":[{"type":"Category","label":"Invoice","elements":[{"type":"Group","label":"Invoice Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/folioDigits"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultCurrency"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultTaxRate"}]}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"invoice"}}}}},{"type":"Category","label":"Credit Note","elements":[{"type":"Group","label":"Credit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/requiresReference"}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"creditNote"}}}}},{"type":"Category","label":"Debit Note","elements":[{"type":"Group","label":"Debit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/requiresReference"}]}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","schema":{"contains":{"const":"debitNote"}}}}}]}]},{"type":"Category","label":"Notifications","elements":[{"type":"Group","label":"Customer Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachPdf"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachXml"}],"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/customMessage","options":{"multi":true},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/ccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/bccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}}]},{"type":"Group","label":"Admin Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/notificationEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"type":"OR","conditions":[{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications","schema":{"const":true}},{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary","schema":{"const":true}}]}}}]}]},{"type":"Category","label":"Integration","elements":[{"type":"Group","label":"Fiscal Authority Integration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webServiceUrl"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/production","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/testing","options":{"format":"password"}}]}]},{"type":"Group","label":"Webhook Configuration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook"},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/webhookUrl","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/secret","options":{"format":"password"},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}}]}]}]},"data":{"companyProfile":{"legalName":"","commercialName":"","taxIdentifier":"","fiscalRegime":"","address":{"street":"","number":"","city":"","state":"","postalCode":"","country":""},"contact":{"email":null,"phone":"","website":null},"logo":null},"digitalSignature":{"certificateType":"testing","certificateFile":"","privateKeyFile":"","privateKeyPassword":"","certificateExpiration":null,"enableNotifications":true,"notificationThreshold":30},"documentTypes":{"enabledDocuments":["invoice"],"documentSettings":{"invoice":{"series":"A","startNumber":1,"folioDigits":8,"defaultCurrency":"USD","defaultTaxRate":0},"creditNote":{"series":"NC","startNumber":1,"folioDigits":8,"requiresReference":true},"debitNote":{"series":"ND","startNumber":1,"folioDigits":8,"requiresReference":true}}},"notifications":{"emailNotifications":{"sendToCustomer":true,"attachPdf":true,"attachXml":true,"customMessage":"","ccEmails":[],"bccEmails":[]},"adminNotifications":{"errorNotifications":true,"successSummary":false,"notificationEmails":[]}},"integration":{"webServiceUrl":null,"apiKeys":{"production":"","testing":""},"webhook":{"enableWebhook":false,"webhookUrl":null,"secret":""}}}};
+    const formDefinition ={"schema":{"type":"object","properties":{"companyProfile":{"type":"object","properties":{"legalName":{"type":"string","title":"Legal Name"},"commercialName":{"type":"string","title":"Commercial Name"},"taxIdentifier":{"type":"string","title":"Tax ID"},"fiscalRegime":{"type":"string","title":"Fiscal Regime"},"address":{"type":"object","properties":{"street":{"type":"string","title":"Street"},"number":{"type":"string","title":"Number"},"city":{"type":"string","title":"City"},"state":{"type":"string","title":"State\/Province"},"postalCode":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}},"required":["street","number","city","country"]},"contact":{"type":"object","properties":{"email":{"type":"string","title":"Email","format":"email"},"phone":{"type":"string","title":"Phone"},"website":{"type":"string","title":"Website","format":"uri"}},"required":["email"]},"logo":{"type":"string","title":"Company Logo URL","format":"uri"}},"required":["legalName","taxIdentifier","fiscalRegime"]},"digitalSignature":{"type":"object","properties":{"certificateType":{"type":"string","title":"Certificate Type","default":"testing","enum":["production","testing"]},"certificateFile":{"type":"string","title":"Certificate File (.cer)"},"privateKeyFile":{"type":"string","title":"Private Key File (.key)"},"privateKeyPassword":{"type":"string","title":"Private Key Password"},"certificateExpiration":{"type":"string","title":"Certificate Expiration Date","format":"date"},"enableNotifications":{"type":"boolean","title":"Enable Expiration Notifications","default":true},"notificationThreshold":{"type":"number","title":"Days Before Expiration to Notify","default":30,"maximum":90,"minimum":1}},"required":["certificateType","certificateFile","privateKeyFile","privateKeyPassword"]},"documentTypes":{"type":"object","properties":{"enabledDocuments":{"type":"array","title":"Enabled Document Types","default":["invoice"],"items":{"type":"string","enum":["invoice","creditNote","debitNote","receipt","paymentReceipt"]},"uniqueItems":true},"documentSettings":{"type":"object","properties":{"invoice":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"A"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8,"maximum":10,"minimum":1},"defaultCurrency":{"type":"string","title":"Default Currency","default":"USD"},"defaultTaxRate":{"type":"number","title":"Default Tax Rate (%)","default":0}}},"creditNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"NC"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}},"debitNote":{"type":"object","properties":{"series":{"type":"string","title":"Series","default":"ND"},"startNumber":{"type":"number","title":"Starting Number","default":1},"folioDigits":{"type":"number","title":"Folio Digits","default":8},"requiresReference":{"type":"boolean","title":"Requires Reference to Invoice","default":true}}}}}}},"notifications":{"type":"object","properties":{"emailNotifications":{"type":"object","properties":{"sendToCustomer":{"type":"boolean","title":"Send Email to Customer","default":true},"attachPdf":{"type":"boolean","title":"Attach PDF","default":true},"attachXml":{"type":"boolean","title":"Attach XML","default":true},"customMessage":{"type":"string","title":"Custom Message Template"},"ccEmails":{"type":"array","title":"CC Email Addresses","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]}},"bccEmails":{"type":"array","title":"BCC Email Addresses","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]}}}},"adminNotifications":{"type":"object","properties":{"errorNotifications":{"type":"boolean","title":"Receive Error Notifications","default":true},"successSummary":{"type":"boolean","title":"Receive Daily Success Summary","default":false},"notificationEmails":{"type":"array","title":"Notification Emails","items":{"type":"object","properties":{"email":{"type":"string","format":"email","title":"Email"}},"required":["email"]}}}}}},"integration":{"type":"object","properties":{"webServiceUrl":{"type":"string","title":"Fiscal Authority Web Service URL","format":"uri"},"apiKeys":{"type":"object","properties":{"production":{"type":"string","title":"Production API Key"},"testing":{"type":"string","title":"Testing API Key"}}},"webhook":{"type":"object","properties":{"enableWebhook":{"type":"boolean","title":"Enable Status Webhook","default":false},"webhookUrl":{"type":"string","title":"Webhook URL","format":"uri"},"secret":{"type":"string","title":"Webhook Secret"}}}}}},"required":["companyProfile","digitalSignature"]},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Company Profile","elements":[{"type":"Group","label":"Company Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/legalName"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/commercialName"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/taxIdentifier"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/fiscalRegime"}]}]},{"type":"Group","label":"Address","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/street"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/number"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/city"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/state"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/postalCode"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/address\/properties\/country"}]}]},{"type":"Group","label":"Contact Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/email"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/phone"},{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/contact\/properties\/website"}]}]},{"type":"Group","label":"Branding","elements":[{"type":"Control","scope":"#\/properties\/companyProfile\/properties\/logo","options":{"format":"file"}}]}]},{"type":"Category","label":"Digital Signature","elements":[{"type":"Group","label":"Certificate Information","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateType","options":{"format":"radio"}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateFile","options":{"format":"file"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyFile","options":{"format":"file"}}]},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/privateKeyPassword","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/certificateExpiration"}]},{"type":"Group","label":"Expiration Notifications","elements":[{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/enableNotifications"},{"type":"Control","scope":"#\/properties\/digitalSignature\/properties\/notificationThreshold","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/digitalSignature\/properties\/enableNotifications","schema":{"const":true}}}}]}]},{"type":"Category","label":"Document Types","elements":[{"type":"Group","label":"Enabled Documents","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/enabledDocuments","options":{"format":"checkbox"}}]},{"type":"Categorization","elements":[{"type":"Category","label":"Invoice","elements":[{"type":"Group","label":"Invoice Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/folioDigits"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultCurrency"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/invoice\/properties\/defaultTaxRate"}]}]}]},{"type":"Category","label":"Credit Note","elements":[{"type":"Group","label":"Credit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/creditNote\/properties\/requiresReference"}]}]},{"type":"Category","label":"Debit Note","elements":[{"type":"Group","label":"Debit Note Settings","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/series"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/startNumber"},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/folioDigits"}]},{"type":"Control","scope":"#\/properties\/documentTypes\/properties\/documentSettings\/properties\/debitNote\/properties\/requiresReference"}]}]}],"options":[]}]},{"type":"Category","label":"Notifications","elements":[{"type":"Group","label":"Customer Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachPdf"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/attachXml"}]},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/customMessage","options":{"multi":true},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/ccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/bccEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/notifications\/properties\/emailNotifications\/properties\/sendToCustomer","schema":{"const":true}}}}]},{"type":"Group","label":"Admin Notifications","elements":[{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary"},{"type":"Control","scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/notificationEmails","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/email"}]}},"rule":{"effect":"SHOW","condition":{"type":"OR","conditions":[{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/errorNotifications","schema":{"const":true}},{"scope":"#\/properties\/notifications\/properties\/adminNotifications\/properties\/successSummary","schema":{"const":true}}]}}}]}]},{"type":"Category","label":"Integration","elements":[{"type":"Group","label":"Fiscal Authority Integration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webServiceUrl"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/production","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/integration\/properties\/apiKeys\/properties\/testing","options":{"format":"password"}}]}]},{"type":"Group","label":"Webhook Configuration","elements":[{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook"},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/webhookUrl","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/integration\/properties\/webhook\/properties\/secret","options":{"format":"password"},"rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/integration\/properties\/webhook\/properties\/enableWebhook","schema":{"const":true}}}}]}]}],"options":[]},"data":{"companyProfile":{"legalName":"","commercialName":"","taxIdentifier":"","fiscalRegime":"","address":{"street":"","number":"","city":"","state":"","postalCode":"","country":""},"contact":{"email":null,"phone":"","website":null},"logo":null},"digitalSignature":{"certificateType":"testing","certificateFile":"","privateKeyFile":"","privateKeyPassword":"","certificateExpiration":null,"enableNotifications":true,"notificationThreshold":30},"documentTypes":{"enabledDocuments":["invoice"],"documentSettings":{"invoice":{"series":"A","startNumber":1,"folioDigits":8,"defaultCurrency":"USD","defaultTaxRate":0},"creditNote":{"series":"NC","startNumber":1,"folioDigits":8,"requiresReference":true},"debitNote":{"series":"ND","startNumber":1,"folioDigits":8,"requiresReference":true}}},"notifications":{"emailNotifications":{"sendToCustomer":true,"attachPdf":true,"attachXml":true,"customMessage":"","ccEmails":[],"bccEmails":[]},"adminNotifications":{"errorNotifications":true,"successSummary":false,"notificationEmails":[]}},"integration":{"webServiceUrl":null,"apiKeys":{"production":"","testing":""},"webhook":{"enableWebhook":false,"webhookUrl":null,"secret":""}}},"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -1326,24 +1329,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     &quot;type&quot;: &quot;object&quot;,
                     &quot;properties&quot;: {
                         &quot;email&quot;: {
-                            &quot;type&quot;: [
-                                &quot;null&quot;,
-                                &quot;string&quot;
-                            ],
-                            &quot;format&quot;: &quot;email&quot;,
-                            &quot;title&quot;: &quot;Email&quot;
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Email&quot;,
+                            &quot;format&quot;: &quot;email&quot;
                         },
                         &quot;phone&quot;: {
                             &quot;type&quot;: &quot;string&quot;,
                             &quot;title&quot;: &quot;Phone&quot;
                         },
                         &quot;website&quot;: {
-                            &quot;type&quot;: [
-                                &quot;null&quot;,
-                                &quot;string&quot;
-                            ],
-                            &quot;format&quot;: &quot;uri&quot;,
-                            &quot;title&quot;: &quot;Website&quot;
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Website&quot;,
+                            &quot;format&quot;: &quot;uri&quot;
                         }
                     },
                     &quot;required&quot;: [
@@ -1351,12 +1348,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     ]
                 },
                 &quot;logo&quot;: {
-                    &quot;type&quot;: [
-                        &quot;null&quot;,
-                        &quot;string&quot;
-                    ],
-                    &quot;format&quot;: &quot;uri&quot;,
-                    &quot;title&quot;: &quot;Company Logo URL&quot;
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Company Logo URL&quot;,
+                    &quot;format&quot;: &quot;uri&quot;
                 }
             },
             &quot;required&quot;: [
@@ -1370,12 +1364,12 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;certificateType&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Certificate Type&quot;,
+                    &quot;default&quot;: &quot;testing&quot;,
                     &quot;enum&quot;: [
                         &quot;production&quot;,
                         &quot;testing&quot;
-                    ],
-                    &quot;default&quot;: &quot;testing&quot;,
-                    &quot;title&quot;: &quot;Certificate Type&quot;
+                    ]
                 },
                 &quot;certificateFile&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
@@ -1390,12 +1384,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     &quot;title&quot;: &quot;Private Key Password&quot;
                 },
                 &quot;certificateExpiration&quot;: {
-                    &quot;type&quot;: [
-                        &quot;null&quot;,
-                        &quot;string&quot;
-                    ],
-                    &quot;format&quot;: &quot;date&quot;,
-                    &quot;title&quot;: &quot;Certificate Expiration Date&quot;
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Certificate Expiration Date&quot;,
+                    &quot;format&quot;: &quot;date&quot;
                 },
                 &quot;enableNotifications&quot;: {
                     &quot;type&quot;: &quot;boolean&quot;,
@@ -1406,8 +1397,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     &quot;type&quot;: &quot;number&quot;,
                     &quot;title&quot;: &quot;Days Before Expiration to Notify&quot;,
                     &quot;default&quot;: 30,
-                    &quot;minimum&quot;: 1,
-                    &quot;maximum&quot;: 90
+                    &quot;maximum&quot;: 90,
+                    &quot;minimum&quot;: 1
                 }
             },
             &quot;required&quot;: [
@@ -1422,6 +1413,10 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;properties&quot;: {
                 &quot;enabledDocuments&quot;: {
                     &quot;type&quot;: &quot;array&quot;,
+                    &quot;title&quot;: &quot;Enabled Document Types&quot;,
+                    &quot;default&quot;: [
+                        &quot;invoice&quot;
+                    ],
                     &quot;items&quot;: {
                         &quot;type&quot;: &quot;string&quot;,
                         &quot;enum&quot;: [
@@ -1432,11 +1427,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             &quot;paymentReceipt&quot;
                         ]
                     },
-                    &quot;uniqueItems&quot;: true,
-                    &quot;default&quot;: [
-                        &quot;invoice&quot;
-                    ],
-                    &quot;title&quot;: &quot;Enabled Document Types&quot;
+                    &quot;uniqueItems&quot;: true
                 },
                 &quot;documentSettings&quot;: {
                     &quot;type&quot;: &quot;object&quot;,
@@ -1458,8 +1449,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                     &quot;type&quot;: &quot;number&quot;,
                                     &quot;title&quot;: &quot;Folio Digits&quot;,
                                     &quot;default&quot;: 8,
-                                    &quot;minimum&quot;: 1,
-                                    &quot;maximum&quot;: 10
+                                    &quot;maximum&quot;: 10,
+                                    &quot;minimum&quot;: 1
                                 },
                                 &quot;defaultCurrency&quot;: {
                                     &quot;type&quot;: &quot;string&quot;,
@@ -1554,6 +1545,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                         &quot;ccEmails&quot;: {
                             &quot;type&quot;: &quot;array&quot;,
+                            &quot;title&quot;: &quot;CC Email Addresses&quot;,
                             &quot;items&quot;: {
                                 &quot;type&quot;: &quot;object&quot;,
                                 &quot;properties&quot;: {
@@ -1566,11 +1558,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                 &quot;required&quot;: [
                                     &quot;email&quot;
                                 ]
-                            },
-                            &quot;title&quot;: &quot;CC Email Addresses&quot;
+                            }
                         },
                         &quot;bccEmails&quot;: {
                             &quot;type&quot;: &quot;array&quot;,
+                            &quot;title&quot;: &quot;BCC Email Addresses&quot;,
                             &quot;items&quot;: {
                                 &quot;type&quot;: &quot;object&quot;,
                                 &quot;properties&quot;: {
@@ -1583,8 +1575,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 &quot;required&quot;: [
                                     &quot;email&quot;
                                 ]
-                            },
-                            &quot;title&quot;: &quot;BCC Email Addresses&quot;
+                            }
                         }
                     }
                 },
@@ -1603,6 +1594,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                         &quot;notificationEmails&quot;: {
                             &quot;type&quot;: &quot;array&quot;,
+                            &quot;title&quot;: &quot;Notification Emails&quot;,
                             &quot;items&quot;: {
                                 &quot;type&quot;: &quot;object&quot;,
                                 &quot;properties&quot;: {
@@ -1615,8 +1607,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 &quot;required&quot;: [
                                     &quot;email&quot;
                                 ]
-                            },
-                            &quot;title&quot;: &quot;Notification Emails&quot;
+                            }
                         }
                     }
                 }
@@ -1626,12 +1617,9 @@ document.addEventListener('DOMContentLoaded', function() {
             &quot;type&quot;: &quot;object&quot;,
             &quot;properties&quot;: {
                 &quot;webServiceUrl&quot;: {
-                    &quot;type&quot;: [
-                        &quot;null&quot;,
-                        &quot;string&quot;
-                    ],
-                    &quot;format&quot;: &quot;uri&quot;,
-                    &quot;title&quot;: &quot;Fiscal Authority Web Service URL&quot;
+                    &quot;type&quot;: &quot;string&quot;,
+                    &quot;title&quot;: &quot;Fiscal Authority Web Service URL&quot;,
+                    &quot;format&quot;: &quot;uri&quot;
                 },
                 &quot;apiKeys&quot;: {
                     &quot;type&quot;: &quot;object&quot;,
@@ -1655,12 +1643,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             &quot;default&quot;: false
                         },
                         &quot;webhookUrl&quot;: {
-                            &quot;type&quot;: [
-                                &quot;null&quot;,
-                                &quot;string&quot;
-                            ],
-                            &quot;format&quot;: &quot;uri&quot;,
-                            &quot;title&quot;: &quot;Webhook URL&quot;
+                            &quot;type&quot;: &quot;string&quot;,
+                            &quot;title&quot;: &quot;Webhook URL&quot;,
+                            &quot;format&quot;: &quot;uri&quot;
                         },
                         &quot;secret&quot;: {
                             &quot;type&quot;: &quot;string&quot;,
@@ -1937,18 +1922,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         }
                                     ]
                                 }
-                            ],
-                            &quot;rule&quot;: {
-                                &quot;effect&quot;: &quot;SHOW&quot;,
-                                &quot;condition&quot;: {
-                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
-                                    &quot;schema&quot;: {
-                                        &quot;contains&quot;: {
-                                            &quot;const&quot;: &quot;invoice&quot;
-                                        }
-                                    }
-                                }
-                            }
+                            ]
                         },
                         {
                             &quot;type&quot;: &quot;Category&quot;,
@@ -1981,18 +1955,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         }
                                     ]
                                 }
-                            ],
-                            &quot;rule&quot;: {
-                                &quot;effect&quot;: &quot;SHOW&quot;,
-                                &quot;condition&quot;: {
-                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
-                                    &quot;schema&quot;: {
-                                        &quot;contains&quot;: {
-                                            &quot;const&quot;: &quot;creditNote&quot;
-                                        }
-                                    }
-                                }
-                            }
+                            ]
                         },
                         {
                             &quot;type&quot;: &quot;Category&quot;,
@@ -2025,20 +1988,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         }
                                     ]
                                 }
-                            ],
-                            &quot;rule&quot;: {
-                                &quot;effect&quot;: &quot;SHOW&quot;,
-                                &quot;condition&quot;: {
-                                    &quot;scope&quot;: &quot;#/properties/documentTypes/properties/enabledDocuments&quot;,
-                                    &quot;schema&quot;: {
-                                        &quot;contains&quot;: {
-                                            &quot;const&quot;: &quot;debitNote&quot;
-                                        }
-                                    }
-                                }
-                            }
+                            ]
                         }
-                    ]
+                    ],
+                    &quot;options&quot;: []
                 }
             ]
         },
@@ -2065,16 +2018,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     &quot;type&quot;: &quot;Control&quot;,
                                     &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/attachXml&quot;
                                 }
-                            ],
-                            &quot;rule&quot;: {
-                                &quot;effect&quot;: &quot;SHOW&quot;,
-                                &quot;condition&quot;: {
-                                    &quot;scope&quot;: &quot;#/properties/notifications/properties/emailNotifications/properties/sendToCustomer&quot;,
-                                    &quot;schema&quot;: {
-                                        &quot;const&quot;: true
-                                    }
-                                }
-                            }
+                            ]
                         },
                         {
                             &quot;type&quot;: &quot;Control&quot;,
@@ -2267,7 +2211,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             ]
         }
-    ]
+    ],
+    &quot;options&quot;: []
 }</code></pre>
 
                 </div>

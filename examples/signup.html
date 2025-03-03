@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def146e9c">
+<div class="derafu-block-tabs " id="block-tabs--67c624ffef35a">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -145,13 +145,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def1442e6">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c624ffec4d4">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -190,7 +193,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","format":"email","title":"Email address"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","title":"Email address","format":"email"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null,"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -225,8 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         &quot;email&quot;: {
             &quot;type&quot;: &quot;string&quot;,
-            &quot;format&quot;: &quot;email&quot;,
-            &quot;title&quot;: &quot;Email address&quot;
+            &quot;title&quot;: &quot;Email address&quot;,
+            &quot;format&quot;: &quot;email&quot;
         },
         &quot;terms_accepted&quot;: {
             &quot;type&quot;: &quot;boolean&quot;,

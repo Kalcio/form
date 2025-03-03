@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c3def17fc34">
+<div class="derafu-block-tabs " id="block-tabs--67c62500385cf">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -247,13 +247,16 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c3def17d006">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c625003537f">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
         </div>
     </div>
 </div>
+
+
+<form></form>
 
 
                 </div>
@@ -292,7 +295,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name","description":"User's real name."},"username":{"type":"string","title":"Username","description":"Username. Can be used to login."},"email":{"type":"string","format":"email","title":"Email","description":"Email address for system use, including login and notifications."},"api_hash":{"type":"string","title":"API hash","description":"User's unique identifier in the API. To generate a new one, delete this and save."},"api_key":{"type":"string","title":"API key","description":"Send authentication header to the API: Authorization: Basic APIKEY"},"current_password":{"type":"string","title":"Current password","description":"Password currently used by the user."},"new_password":{"type":"string","title":"New password","description":"Password you want to use."},"repeat_password":{"type":"string","title":"Repeat password","description":"Repeat the password entered above."}},"required":["name","username","email"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Information","elements":[{"type":"Control","scope":"#\/properties\/name"},{"type":"Control","scope":"#\/properties\/username"},{"type":"Control","scope":"#\/properties\/email"}]},{"type":"Group","label":"API Access","elements":[{"type":"Control","scope":"#\/properties\/api_hash","options":{"format":"password","showUnfocusedDescription":true}},{"type":"Control","scope":"#\/properties\/api_key","options":{"format":"password","showUnfocusedDescription":true}}]},{"type":"Group","label":"Change Password","elements":[{"type":"Control","scope":"#\/properties\/current_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/new_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/repeat_password","options":{"format":"password"}}]}]},"data":{"name":"Admin","username":"admin","email":"admin@example.com","api_hash":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022","api_key":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"}};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name","description":"User's real name."},"username":{"type":"string","title":"Username","description":"Username. Can be used to login."},"email":{"type":"string","title":"Email","description":"Email address for system use, including login and notifications.","format":"email"},"api_hash":{"type":"string","title":"API hash","description":"User's unique identifier in the API. To generate a new one, delete this and save."},"api_key":{"type":"string","title":"API key","description":"Send authentication header to the API: Authorization: Basic APIKEY"},"current_password":{"type":"string","title":"Current password","description":"Password currently used by the user."},"new_password":{"type":"string","title":"New password","description":"Password you want to use."},"repeat_password":{"type":"string","title":"Repeat password","description":"Repeat the password entered above."}},"required":["name","username","email"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Information","elements":[{"type":"Control","scope":"#\/properties\/name"},{"type":"Control","scope":"#\/properties\/username"},{"type":"Control","scope":"#\/properties\/email"}]},{"type":"Group","label":"API Access","elements":[{"type":"Control","scope":"#\/properties\/api_hash","options":{"format":"password","showUnfocusedDescription":true}},{"type":"Control","scope":"#\/properties\/api_key","options":{"format":"password","showUnfocusedDescription":true}}]},{"type":"Group","label":"Change Password","elements":[{"type":"Control","scope":"#\/properties\/current_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/new_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/repeat_password","options":{"format":"password"}}]}]},"data":{"name":"Admin","username":"admin","email":"admin@example.com","api_hash":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022","api_key":"\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"},"options":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -329,9 +332,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         &quot;email&quot;: {
             &quot;type&quot;: &quot;string&quot;,
-            &quot;format&quot;: &quot;email&quot;,
             &quot;title&quot;: &quot;Email&quot;,
-            &quot;description&quot;: &quot;Email address for system use, including login and notifications.&quot;
+            &quot;description&quot;: &quot;Email address for system use, including login and notifications.&quot;,
+            &quot;format&quot;: &quot;email&quot;
         },
         &quot;api_hash&quot;: {
             &quot;type&quot;: &quot;string&quot;,
