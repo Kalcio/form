@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Derafu: Form - Form Builder with Easy Definition and Layouts.
+ * Derafu: Form - Declarative Forms, Seamless Rendering.
  *
  * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.org>
  * Licensed under the MIT License.

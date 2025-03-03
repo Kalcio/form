@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Derafu: Form - Form Builder with Easy Definition and Layouts.
+ * Derafu: Form - Declarative Forms, Seamless Rendering.
  *
  * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.org>
  * Licensed under the MIT License.
@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\ExamplesForm;
 
-use Derafu\Form\Contract\ValueObject\FormInterface;
-use Derafu\Form\FormFactory;
+use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Factory\FormFactory;
 use Derafu\Routing\Exception\RouteNotFoundException;
 
 /**
@@ -221,7 +221,7 @@ final class Example
      * Find an example by its numerical order.
      *
      * @param int $number The example number to find.
-     * @return self|null The found example or null if none exists.
+     * @return self|null The found example or `null` if none exists.
      */
     public static function findByNumber(int $number): ?self
     {

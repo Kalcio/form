@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * Derafu: Form - Declarative Forms, Seamless Rendering.
+ *
+ * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.org>
+ * Licensed under the MIT License.
+ * See LICENSE file for more details.
+ */
+
+namespace Derafu\Form\UiSchema;
+
+use Derafu\Form\Abstract\AbstractUiSchemaElement;
+use Derafu\Form\Contract\UiSchema\CategorizationInterface;
+use Derafu\Form\Contract\UiSchema\CategoryInterface;
+use Derafu\Form\Contract\UiSchema\UiSchemaElementInterface;
+
+/**
+ * Represents a categorization in a UI Schema.
+ *
+ * Categorizations are used to organize UI elements into a logical collection.
+ */
+final class Categorization extends AbstractUiSchemaElement implements CategorizationInterface
+{
+    /**
+     * The categories of the categorization.
+     *
+     * @var array<CategoryInterface>
+     */
+    private array $categories;
+
+    /**
+     * The options of the categorization.
+     *
+     * @var array<string, mixed>
+     */
+    private array $options;
+
+    /**
+     * Constructor.
+     *
+     * @param array<CategoryInterface> $categories The categories of the categorization.
+     * @param array<string, mixed> $options The options of the categorization.
+     */
+    public function __construct(array $categories = [], array $options = [])
+    {
+        parent::__construct([]);
+
+        $this->categories = $categories;
+        $this->options = $options;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getType(): string
+    {
+        return 'Categorization';
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return array<CategoryInterface>
+     */
+    public function getElements(): array
+    {
+        return $this->categories;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param CategoryInterface $element
+     * @return self
+     */
+    public function addElement(UiSchemaElementInterface $element): self
+    {
+        assert($element instanceof CategoryInterface);
+
+        $this->categories[] = $element;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategories(): array
+    {
+        return $this->categories;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCategory(CategoryInterface $category): self
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray(): array
+    {
+        return [
+            'type' => $this->getType(),
+            'elements' => array_map(
+                fn (CategoryInterface $category) => $category->toArray(),
+                $this->categories
+            ),
+            'options' => $this->options,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function fromArray(array $definition): self
+    {
+        $categories = [];
+
+        foreach ($definition['elements'] as $categoryDefinition) {
+            $categories[] = Category::fromArray($categoryDefinition);
+        }
+
+        return new self($categories, $definition['options'] ?? []);
+    }
+}

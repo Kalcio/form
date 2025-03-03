@@ -1,6 +1,6 @@
 {
     "name": "derafu/form",
-    "description": "Derafu: Form - Form Builder with Easy Definition and Layouts",
+    "description": "Derafu: Form - Declarative Forms, Seamless Rendering",
     "type": "library",
     "homepage": "https://derafu.org/form",
     "license": "MIT",
@@ -26,7 +26,8 @@
         }
     },
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "derafu/support": "dev-main"
     },
     "require-dev": {
         "ext-xdebug": "*",

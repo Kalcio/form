@@ -74,3 +74,10 @@ services:
                 paths:
                     - '%kernel.project_dir%/templates'
                     - '%kernel.project_dir%/vendor/derafu/twig/resources/templates'
+                extensions:
+                    - '@Derafu\Form\Renderer\Twig\FormTwigExtension'
+
+    Derafu\Form\Renderer\Twig\FormTwigExtension: ~
+
+    Derafu\Form\Contract\Renderer\FormRendererInterface:
+        class: Derafu\Form\Renderer\FormRenderer
