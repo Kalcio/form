@@ -14,6 +14,7 @@ namespace Derafu\Form\UiSchema;
 
 use Derafu\Form\Abstract\AbstractUiSchemaElement;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
+use InvalidArgumentException;
 
 /**
  * Represents a control in a UI Schema.
@@ -36,6 +37,38 @@ final class Control extends AbstractUiSchemaElement implements ControlInterface
     public function getScope(): string
     {
         return $this->definition['scope'];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPropertyPath(): string
+    {
+        // Extract property name from scope (assumed format:
+        // "#/properties/propertyName").
+        if (preg_match('~^#/properties/(.+)$~', $this->getScope(), $matches)) {
+            return $matches[1];
+        }
+
+        throw new InvalidArgumentException(sprintf(
+            'Invalid scope format: %s. Expected format: #/properties/path/to/property',
+            $this->getScope()
+        ));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPropertyName(): string
+    {
+        $name = $this->getOptions()['name'] ?? null;
+        if ($name) {
+            return $name;
+        }
+
+        $name = str_replace('/', '.', $this->getPropertyPath());
+
+        return str_replace('properties.', '', $name);
     }
 
     /**

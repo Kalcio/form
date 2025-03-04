@@ -54,7 +54,7 @@ class ControlRenderer implements ElementRendererInterface
 
         // Find the property from scope.
         $scope = $element->getScope();
-        $property = $form->findPropertyByScope($scope);
+        $property = $form->getSchema()->getProperty($scope);
         if (!$property) {
             throw new InvalidArgumentException(sprintf(
                 'Property with scope "%s" not found in form schema.',
@@ -85,13 +85,5 @@ class ControlRenderer implements ElementRendererInterface
             // Render the complete field.
             return $formRenderer->renderRow($field, $fieldOptions);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['Control'];
     }
 }

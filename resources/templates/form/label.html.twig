@@ -7,10 +7,9 @@
 {% set label_attr = options.label_attr|default({}) %}
 {% set label_class = '' %}
 {% set is_required = field.property.isRequired is defined and field.property.isRequired %}
-{% set is_floating = options.form_floating|default(true) %}
 
 {# If not floating, use form-label, if floating no class. #}
-{% if not is_floating %}
+{% if not options.floating_labels %}
     {% set label_class = 'form-label' %}
 {% endif %}
 

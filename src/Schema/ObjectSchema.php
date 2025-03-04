@@ -95,7 +95,34 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
      */
     public function getProperty(string $name): ?PropertySchemaInterface
     {
-        return $this->properties[$name] ?? null;
+        if (preg_match('~^#/properties/(.+)$~', $name, $matches)) {
+            $segments = preg_split('~/properties/~', $matches[1]);
+        } else {
+            $segments = explode('.', $name);
+        }
+
+        // The first segment is the root property name.
+        $rootPropertyName = $segments[0];
+        $property = $this->properties[$rootPropertyName] ?? null;
+
+        if (!$property) {
+            return null;
+        }
+
+        // Navigate through the remaining segments.
+        for ($i = 1; $i < count($segments); $i++) {
+            if (!$property instanceof ObjectSchemaInterface) {
+                return null; // Cannot navigate deeper.
+            }
+
+            $property = $property->getProperty($segments[$i]);
+
+            if (!$property) {
+                return null;
+            }
+        }
+
+        return $property;
     }
 
     /**
@@ -295,60 +322,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
             $schema->setOneOf($definition['oneOf']);
         }
 
-        // Set object-specific properties.
-        if (isset($definition['properties']) && is_array($definition['properties'])) {
-            foreach ($definition['properties'] as $propName => $propDefinition) {
-                // Determine the type of the property.
-                $type = $propDefinition['type'] ?? 'string';
-
-                // Create the appropriate property schema based on type.
-                $propSchema = null;
-                switch ($type) {
-                    case 'string':
-                        $propSchema = StringSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'number':
-                        $propSchema = NumberSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'integer':
-                        $propSchema = IntegerSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'array':
-                        $propSchema = ArraySchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'object':
-                        $propSchema = self::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'boolean':
-                        $propSchema = BooleanSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    case 'null':
-                        $propSchema = NullSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                        break;
-                    default:
-                        // Default to string for unknown types.
-                        $propSchema = StringSchema::fromArray(
-                            array_merge(['name' => $propName], $propDefinition)
-                        );
-                }
-
-                $schema->addProperty($propSchema);
-            }
-        }
+        // Set object-specific options.
 
         if (isset($definition['required'])) {
             $schema->setRequired($definition['required']);
@@ -368,6 +342,48 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
 
         if (isset($definition['additionalProperties'])) {
             $schema->setAdditionalProperties($definition['additionalProperties']);
+        }
+
+        // Set object-specific properties.
+        if (isset($definition['properties']) && is_array($definition['properties'])) {
+            foreach ($definition['properties'] as $propName => $propDefinition) {
+                // Determine the type of the property.
+                $type = $propDefinition['type'] ?? 'string';
+
+                // Create the appropriate property schema based on type.
+                $propSchema = null;
+                $propDefinition = array_merge([
+                    'name' => $propName,
+                ], $propDefinition);
+                switch ($type) {
+                    case 'string':
+                        $propSchema = StringSchema::fromArray($propDefinition);
+                        break;
+                    case 'number':
+                        $propSchema = NumberSchema::fromArray($propDefinition);
+                        break;
+                    case 'integer':
+                        $propSchema = IntegerSchema::fromArray($propDefinition);
+                        break;
+                    case 'array':
+                        $propSchema = ArraySchema::fromArray($propDefinition);
+                        break;
+                    case 'object':
+                        $propSchema = self::fromArray($propDefinition);
+                        break;
+                    case 'boolean':
+                        $propSchema = BooleanSchema::fromArray($propDefinition);
+                        break;
+                    case 'null':
+                        $propSchema = NullSchema::fromArray($propDefinition);
+                        break;
+                    default:
+                        // Default to string for unknown types.
+                        $propSchema = StringSchema::fromArray($propDefinition);
+                }
+
+                $schema->addProperty($propSchema);
+            }
         }
 
         return $schema;

@@ -30,11 +30,4 @@ interface WidgetRendererInterface
      * @return string The rendered HTML.
      */
     public function render(FormFieldInterface $field, array $options = []): string;
-
-    /**
-     * Gets the widget types supported by this renderer.
-     *
-     * @return array<string> The supported widget types.
-     */
-    public function getSupportedTypes(): array;
 }

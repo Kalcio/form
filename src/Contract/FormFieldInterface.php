@@ -41,6 +41,21 @@ interface FormFieldInterface
     public function getControl(): ControlInterface;
 
     /**
+     * Checks if the field is required.
+     *
+     * @return bool True if the field is required, false otherwise.
+     */
+    public function isRequired(): bool;
+
+    /**
+     * Sets the required state of the field.
+     *
+     * @param bool $required True if the field is required, false otherwise.
+     * @return self The current instance.
+     */
+    public function setRequired(bool $required = true): self;
+
+    /**
      * Checks if the field has been rendered.
      *
      * @return bool True if the field has been rendered, false otherwise.

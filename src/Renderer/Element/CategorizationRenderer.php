@@ -107,12 +107,4 @@ class CategorizationRenderer implements ElementRendererInterface
             $context
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['Categorization'];
-    }
 }

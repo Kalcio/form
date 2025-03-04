@@ -68,12 +68,4 @@ class VerticalLayoutRenderer implements ElementRendererInterface
             $context
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['VerticalLayout'];
-    }
 }

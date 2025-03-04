@@ -36,11 +36,4 @@ interface ElementRendererInterface
         FormInterface $form,
         array $options = []
     ): string;
-
-    /**
-     * Gets the element types supported by this renderer.
-     *
-     * @return array<string> The supported element types.
-     */
-    public function getSupportedTypes(): array;
 }

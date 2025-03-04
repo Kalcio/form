@@ -41,7 +41,7 @@ interface WidgetRendererRegistryInterface
      * @return WidgetRendererInterface The renderer for the widget type. If no
      * renderer is registered for the widget type it will use the first
      * registered as default (tipically the default renderer should be the
-     * TextWidgetRenderer).
+     * InputWidgetRenderer).
      * @throws InvalidArgumentException If no renderers are registered.
      */
     public function getRenderer(string $widgetType): WidgetRendererInterface;

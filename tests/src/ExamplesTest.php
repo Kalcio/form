@@ -36,7 +36,7 @@ use Derafu\Form\Renderer\ElementRendererProvider;
 use Derafu\Form\Renderer\ElementRendererRegistry;
 use Derafu\Form\Renderer\FormRenderer;
 use Derafu\Form\Renderer\FormTwigExtension;
-use Derafu\Form\Renderer\Widget\TextWidgetRenderer;
+use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
 use Derafu\Form\Renderer\WidgetRendererProvider;
 use Derafu\Form\Renderer\WidgetRendererRegistry;
 use Derafu\Form\Schema\ArraySchema;
@@ -93,7 +93,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(VerticalLayoutRenderer::class)]
 #[CoversClass(FormTwigExtension::class)]
 #[CoversClass(WidgetRendererProvider::class)]
-#[CoversClass(TextWidgetRenderer::class)]
+#[CoversClass(InputWidgetRenderer::class)]
 class ExamplesTest extends TestCase
 {
     private FormRendererInterface $renderer;

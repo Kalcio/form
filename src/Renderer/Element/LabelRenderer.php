@@ -84,12 +84,4 @@ class LabelRenderer implements ElementRendererInterface
 
         return $html;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['Label'];
-    }
 }

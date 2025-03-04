@@ -92,12 +92,4 @@ class HorizontalLayoutRenderer implements ElementRendererInterface
             $context
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['HorizontalLayout'];
-    }
 }

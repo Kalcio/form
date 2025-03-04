@@ -19,10 +19,19 @@ use Derafu\Form\Contract\Schema\StringSchemaInterface;
 use InvalidArgumentException;
 
 /**
- * Renderer for text input widgets.
+ * Renderer for input widgets.
  */
-class TextWidgetRenderer implements WidgetRendererInterface
+class InputWidgetRenderer implements WidgetRendererInterface
 {
+    /**
+     * Constructor.
+     *
+     * @param string $type The type of input to render.
+     */
+    public function __construct(private readonly string $type = 'text')
+    {
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -32,7 +41,7 @@ class TextWidgetRenderer implements WidgetRendererInterface
         $formRenderer = $options['renderer'] ?? null;
         if (!$formRenderer instanceof FormRendererInterface) {
             throw new InvalidArgumentException(
-                'The "renderer" option in TextWidgetRenderer must be an instance of FormRendererInterface.'
+                'The "renderer" option in InputWidgetRenderer must be an instance of FormRendererInterface.'
             );
         }
 
@@ -59,7 +68,7 @@ class TextWidgetRenderer implements WidgetRendererInterface
 
         // Build HTML attributes for the input.
         $attrs = [
-            'type' => $options['type'] ?? 'text',
+            'type' => $options['attr']['type'] ?? $options['type'] ?? $this->type,
             'id' => $name . '_field',
             'name' => $name,
             'class' => $widgetClass,
@@ -74,7 +83,7 @@ class TextWidgetRenderer implements WidgetRendererInterface
         }
 
         // Add validation attributes from property.
-        if (method_exists($property, 'isRequired') && $property->isRequired()) {
+        if ($field->isRequired()) {
             $attrs['required'] = 'required';
         }
 
@@ -94,7 +103,7 @@ class TextWidgetRenderer implements WidgetRendererInterface
 
         // Add placeholder from control options if available.
         $controlOptions = $control->getOptions();
-        if (isset($controlOptions['placeholder'])) {
+        if (!empty($controlOptions['placeholder'])) {
             $attrs['placeholder'] = $controlOptions['placeholder'];
         }
 
@@ -112,14 +121,6 @@ class TextWidgetRenderer implements WidgetRendererInterface
         ];
 
         // Render the template.
-        return $formRenderer->getRenderer()->render('form/widget/text', $context);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedTypes(): array
-    {
-        return ['text'];
+        return $formRenderer->getRenderer()->render('form/widget/input', $context);
     }
 }

@@ -161,6 +161,14 @@ final class FormRenderer implements FormRendererInterface
         FormFieldInterface $field,
         array $options = []
     ): string {
+        $options = array_merge([
+            'floating_labels' => true,
+        ], $options);
+
+        if ($options['floating_labels'] && empty($options['attr']['placeholder'])) {
+            $options['attr']['placeholder'] = $field->getControl()->getLabel();
+        }
+
         $context = [
             'field' => $field,
             'label' => $this->renderLabel(

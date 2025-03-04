@@ -25,6 +25,13 @@ use Derafu\Form\Contract\UiSchema\ControlInterface;
 final class FormField implements FormFieldInterface
 {
     /**
+     * Whether the field is required.
+     *
+     * @var bool
+     */
+    private bool $required = false;
+
+    /**
      * Whether the field has been rendered.
      *
      * @var bool
@@ -59,6 +66,24 @@ final class FormField implements FormFieldInterface
     public function getControl(): ControlInterface
     {
         return $this->control;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRequired(): bool
+    {
+        return $this->required;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequired(bool $required = true): self
+    {
+        $this->required = $required;
+
+        return $this;
     }
 
     /**

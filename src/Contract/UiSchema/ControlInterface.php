@@ -28,6 +28,26 @@ interface ControlInterface extends UiSchemaElementInterface
     public function getScope(): string;
 
     /**
+     * Gets the path of the property associated with the element.
+     *
+     * This is the path of the property that is associated with the element with
+     * the full path to the property in the schema (extracted from the scope).
+     *
+     * @return string The path of the property.
+     */
+    public function getPropertyPath(): string;
+
+    /**
+     * Gets the name of the property associated with the element.
+     *
+     * This is the name of the property that is associated with the element with
+     * the full path to the property in the schema (extracted from the scope).
+     *
+     * @return string The name of the property.
+     */
+    public function getPropertyName(): string;
+
+    /**
      * Gets the label for the element.
      *
      * @return string|null The label or `null` if not defined.

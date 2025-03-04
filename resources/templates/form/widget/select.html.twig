@@ -1,0 +1,39 @@
+{#
+    This template renders a select widget.
+    It handles both single and multiple selection dropdowns.
+
+    Parameters:
+
+      - attrs: Prepared HTML attributes for the select element.
+      - choices: Map of option values to labels.
+      - value: Currently selected value(s).
+      - is_multiple: Whether this is a multiple select.
+ #}
+
+{# Generate the HTML attributes string. #}
+{% set attr_string = '' %}
+{% for name, value in attrs %}
+    {% if value is same as(true) %}
+        {% set attr_string = attr_string ~ ' ' ~ name %}
+    {% elseif value is not same as(false) %}
+        {% set attr_string = attr_string ~ ' ' ~ name ~ '="' ~ value|e('html_attr') ~ '"' %}
+    {% endif %}
+{% endfor %}
+
+<select{{ attr_string|raw }}>
+    {% if attrs.data_placeholder is defined or options.placeholder is defined %}
+        <option value="">{{ attrs.data_placeholder|default(options.placeholder|default('')) }}</option>
+    {% endif %}
+
+    {% for option_value, option_label in choices %}
+        {% if is_multiple %}
+            <option value="{{ option_value|e('html_attr') }}"{% if value is defined and value is iterable and option_value in value %} selected="selected"{% endif %}>
+                {{ option_label }}
+            </option>
+        {% else %}
+            <option value="{{ option_value|e('html_attr') }}"{% if value is defined and value == option_value %} selected="selected"{% endif %}>
+                {{ option_label }}
+            </option>
+        {% endif %}
+    {% endfor %}
+</select>

@@ -17,8 +17,6 @@ use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Options\FormOptionsInterface;
 use Derafu\Form\Contract\Schema\FormSchemaInterface;
-use Derafu\Form\Contract\Schema\ObjectSchemaInterface;
-use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
 use Derafu\Form\Contract\UiSchema\ElementsAwareInterface;
 use Derafu\Form\Contract\UiSchema\FormUiSchemaInterface;
@@ -28,7 +26,6 @@ use Derafu\Form\Factory\FormUiSchemaFactory;
 use Derafu\Form\Options\FormOptions;
 use Derafu\Form\Schema\FormSchema;
 use Derafu\Support\JsonSerializer;
-use InvalidArgumentException;
 
 /**
  * Represents a form defined using a declarative approach.
@@ -125,19 +122,13 @@ final class Form implements FormInterface
         foreach ($elements as $element) {
             // If it's a control, create a field.
             if ($element instanceof ControlInterface) {
-                $scope = $element->getScope();
-                // Extract property name from scope (assumed format:
-                // "#/properties/propertyName").
-                if (preg_match('~^#/properties/(.+)$~', $scope, $matches)) {
-                    $propertyName = $matches[1];
-                    $property = $this->getSchema()->getProperty($propertyName);
-
-                    if ($property) {
-                        $fields[$propertyName] = new FormField(
-                            $property,
-                            $element
-                        );
-                    }
+                $name = $element->getPropertyName();
+                $property = $this->getSchema()->getProperty($name);
+                if ($property) {
+                    $fields[$name] = new FormField(
+                        $property,
+                        $element
+                    );
                 }
             }
 
@@ -160,49 +151,6 @@ final class Form implements FormInterface
         $fields = $this->getFields();
 
         return $fields[$name] ?? null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function findPropertyByScope(string $scope): ?PropertySchemaInterface
-    {
-        // Check the format of the scope.
-        if (!preg_match('~^#/properties/(.+)$~', $scope, $matches)) {
-            throw new InvalidArgumentException(sprintf(
-                'Invalid scope format: %s. Expected format: #/properties/path/to/property',
-                $scope
-            ));
-        }
-
-        // Get the full path of the property.
-        $fullPath = $matches[1];
-
-        // Split by "properties" to extract each property name.
-        $segments = preg_split('~/properties/~', $fullPath);
-
-        // The first segment is the root property name.
-        $rootPropertyName = $segments[0];
-        $property = $this->schema->getProperty($rootPropertyName);
-
-        if (!$property) {
-            return null;
-        }
-
-        // Navigate through the remaining segments.
-        for ($i = 1; $i < count($segments); $i++) {
-            if (!$property instanceof ObjectSchemaInterface) {
-                return null; // Cannot navigate deeper.
-            }
-
-            $property = $property->getProperty($segments[$i]);
-
-            if (!$property) {
-                return null;
-            }
-        }
-
-        return $property;
     }
 
     /**
