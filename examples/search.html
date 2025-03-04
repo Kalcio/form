@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c62500aa493">
+<div class="derafu-block-tabs " id="block-tabs--67c72728271f9">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -45,25 +45,25 @@
                                             <i class="fa-solid fa-file-code me-2"></i>
                                         Input
                 </button>
-                            <button class="nav-link"
+                            <button class="nav-link active"
                         id="tab-demo_php"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_php"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_php"
-                        aria-selected="false">
+                        aria-selected="true">
                                             <i class="fa-brands fa-php me-2"></i>
                                         Demo PHP
                 </button>
-                            <button class="nav-link active"
+                            <button class="nav-link"
                         id="tab-demo_js"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_js"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_js"
-                        aria-selected="true">
+                        aria-selected="false">
                                             <i class="fa-brands fa-js me-2"></i>
                                         Demo JS
                 </button>
@@ -156,7 +156,8 @@
                     },
                     &quot;searchText&quot;: {
                         &quot;type&quot;: &quot;string&quot;,
-                        &quot;title&quot;: &quot;Search Text&quot;
+                        &quot;title&quot;: &quot;Search Text&quot;,
+                        &quot;description&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
                     }
                 }
             },
@@ -322,10 +323,7 @@
                     },
                     {
                         &quot;type&quot;: &quot;Control&quot;,
-                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;,
-                        &quot;options&quot;: {
-                            &quot;placeholder&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
-                        }
+                        &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;
                     }
                 ]
             },
@@ -506,13 +504,13 @@
 }</code></pre>
 
                 </div>
-                            <div class="tab-pane fade"
+                            <div class="tab-pane fade show active"
                     id="content-demo_php"
                     role="tabpanel"
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c62500a7285">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c7272810d5a">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -521,11 +519,820 @@
 </div>
 
 
-<form></form>
+
+
+
+
+
+                                                                                                                                        
+<form accept-charset="UTF-8" action="search.html" enctype="application/x-www-form-urlencoded" id="form-67c7272814a8c" method="POST" name="" rel="" target="_self">
+    <input type="hidden" name="_method" value="">
+
+
+        
+
+<div class="vstack gap-3 ">
+            <div class="mb-3">
+            
+
+
+
+<div class="card mb-4" id="card_1243810307">
+            <div class="card-header">
+                            <h5 class="mb-0">Basic Search</h5>
+                    </div>
+    
+    <div id="collapse_5438422" class="">
+        <div class="card-body">
+                            
+
+
+<div class="row ">
+                                    
+                
+        <div class="col-md-4">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="dateRange_field" name="dateRange" class="form-control" value="last30days">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="dateRange_field">Date Range</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-4">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="customDateFrom_field" name="customDateFrom" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="customDateFrom_field">From Date</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-4">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="customDateTo_field" name="customDateTo" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="customDateTo_field">To Date</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+                            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="invoiceStatus_field" name="invoiceStatus" class="form-control" value="&#x5B;&quot;sent&quot;,&quot;paid&quot;,&quot;overdue&quot;&#x5D;">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="invoiceStatus_field">Invoice Status</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+                            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="searchText_field" name="searchText" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="searchText_field">Search Text</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+            
+    <small id="searchTextHelp" class="">Invoice #, customer name, or any text in the invoice</small>
+
+        </div>
+    </div>
+
+                    </div>
+    </div>
+
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+
+<div class="card mb-4" id="card_1816311196">
+            <div class="card-header">
+                            <h5 class="mb-0">Advanced Filters</h5>
+                    </div>
+    
+    <div id="collapse_525661533" class="">
+        <div class="card-body">
+                            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                    
+<input type="text" id="showAdvanced_field" name="showAdvanced" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="showAdvanced_field">Show Advanced Filters</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+                            
+
+
+<div class="row ">
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="min_field" name="min" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="min_field">Minimum Amount</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="max_field" name="max" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="max_field">Maximum Amount</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+                            
+
+
+<div class="row ">
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="customer_field" name="customer" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="customer_field">Customer</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="taxId_field" name="taxId" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="taxId_field">Tax ID</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+                            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="paymentMethod_field" name="paymentMethod" class="form-control" value="all">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="paymentMethod_field">Payment Method</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+                            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                    
+<input type="text" id="includeItems_field" name="includeItems" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="includeItems_field">Search in Line Items</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+                            
+
+
+<div class="row ">
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="productCode_field" name="productCode" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="productCode_field">Product Code</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-6">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="description_field" name="description" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="description_field">Description Contains</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+                    </div>
+    </div>
+
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+
+<div class="card mb-4" id="card_691517976">
+            <div class="card-header">
+                            <h5 class="mb-0">Display Options</h5>
+                    </div>
+    
+    <div id="collapse_1738643122" class="">
+        <div class="card-body">
+                            
+
+
+<div class="row ">
+                                    
+                
+        <div class="col-md-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="groupBy_field" name="groupBy" class="form-control" value="none">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="groupBy_field">Group Results By</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="sortBy_field" name="sortBy" class="form-control" value="date">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="sortBy_field">Sort By</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="sortOrder_field" name="sortOrder" class="form-control" value="desc">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="sortOrder_field">Sort Order</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+                                    
+                
+        <div class="col-md-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="itemsPerPage_field" name="itemsPerPage" class="form-control" value="25">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="itemsPerPage_field">Items Per Page</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+                    </div>
+    </div>
+
+    </div>
+
+        </div>
+    </div>
+
+
+                <input type="hidden" name="_token" value="ABC123">
+
+    
+
+    
+</form>
+
+
 
 
                 </div>
-                            <div class="tab-pane fade show active"
+                            <div class="tab-pane fade"
                     id="content-demo_js"
                     role="tabpanel"
                     aria-labelledby="tab-demo_js"
@@ -560,7 +1367,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"basicFilters":{"type":"object","properties":{"dateRange":{"type":"string","title":"Date Range","default":"last30days","enum":["today","yesterday","last7days","last30days","thisMonth","lastMonth","custom"]},"customDateFrom":{"type":"string","title":"From Date","format":"date"},"customDateTo":{"type":"string","title":"To Date","format":"date"},"invoiceStatus":{"type":"array","title":"Invoice Status","items":{"type":"string","enum":["draft","sent","paid","overdue","cancelled","rejected"]},"uniqueItems":true},"searchText":{"type":"string","title":"Search Text"}}},"advancedFilters":{"type":"object","properties":{"showAdvanced":{"type":"boolean","title":"Show Advanced Filters","default":false},"amountRange":{"type":"object","properties":{"min":{"type":"number","title":"Minimum Amount"},"max":{"type":"number","title":"Maximum Amount"}}},"customer":{"type":"string","title":"Customer"},"taxId":{"type":"string","title":"Tax ID"},"paymentMethod":{"type":"string","title":"Payment Method","default":"all","enum":["all","cash","creditCard","bankTransfer","check"]},"includeItems":{"type":"boolean","title":"Search in Line Items","default":false},"itemFilters":{"type":"object","properties":{"productCode":{"type":"string","title":"Product Code"},"description":{"type":"string","title":"Description Contains"}}}}},"displayOptions":{"type":"object","properties":{"groupBy":{"type":"string","title":"Group Results By","default":"none","enum":["none","customer","status","month","quarter"]},"sortBy":{"type":"string","title":"Sort By","default":"date","enum":["date","number","customer","amount"]},"sortOrder":{"type":"string","title":"Sort Order","default":"desc","enum":["asc","desc"]},"itemsPerPage":{"type":"number","title":"Items Per Page","default":25,"enum":[10,25,50,100]}}}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Search","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/dateRange"},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateFrom","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateTo","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}}]},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/invoiceStatus","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/searchText","options":{"placeholder":"Invoice #, customer name, or any text in the invoice"}}]},{"type":"Group","label":"Advanced Filters","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/showAdvanced"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/min"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/max"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/customer"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/taxId"}]},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/paymentMethod","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/includeItems","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/productCode"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/description"}]}]},{"type":"Group","label":"Display Options","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/groupBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortOrder"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/itemsPerPage"}]}]}]},"data":{"basicFilters":{"dateRange":"last30days","invoiceStatus":["sent","paid","overdue"],"searchText":""},"advancedFilters":{"showAdvanced":false,"amountRange":{"min":null,"max":null},"customer":"","taxId":"","paymentMethod":"all","includeItems":false,"itemFilters":{"productCode":"","description":""}},"displayOptions":{"groupBy":"none","sortBy":"date","sortOrder":"desc","itemsPerPage":25}},"options":null};
+    const formDefinition ={"schema":{"type":"object","properties":{"basicFilters":{"type":"object","properties":{"dateRange":{"type":"string","title":"Date Range","default":"last30days","enum":["today","yesterday","last7days","last30days","thisMonth","lastMonth","custom"]},"customDateFrom":{"type":"string","title":"From Date","format":"date"},"customDateTo":{"type":"string","title":"To Date","format":"date"},"invoiceStatus":{"type":"array","title":"Invoice Status","items":{"type":"string","enum":["draft","sent","paid","overdue","cancelled","rejected"]},"uniqueItems":true},"searchText":{"type":"string","title":"Search Text","description":"Invoice #, customer name, or any text in the invoice"}}},"advancedFilters":{"type":"object","properties":{"showAdvanced":{"type":"boolean","title":"Show Advanced Filters","default":false},"amountRange":{"type":"object","properties":{"min":{"type":"number","title":"Minimum Amount"},"max":{"type":"number","title":"Maximum Amount"}}},"customer":{"type":"string","title":"Customer"},"taxId":{"type":"string","title":"Tax ID"},"paymentMethod":{"type":"string","title":"Payment Method","default":"all","enum":["all","cash","creditCard","bankTransfer","check"]},"includeItems":{"type":"boolean","title":"Search in Line Items","default":false},"itemFilters":{"type":"object","properties":{"productCode":{"type":"string","title":"Product Code"},"description":{"type":"string","title":"Description Contains"}}}}},"displayOptions":{"type":"object","properties":{"groupBy":{"type":"string","title":"Group Results By","default":"none","enum":["none","customer","status","month","quarter"]},"sortBy":{"type":"string","title":"Sort By","default":"date","enum":["date","number","customer","amount"]},"sortOrder":{"type":"string","title":"Sort Order","default":"desc","enum":["asc","desc"]},"itemsPerPage":{"type":"number","title":"Items Per Page","default":25,"enum":[10,25,50,100]}}}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Search","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/dateRange"},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateFrom","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateTo","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}}]},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/invoiceStatus","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/searchText"}]},{"type":"Group","label":"Advanced Filters","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/showAdvanced"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/min"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/max"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/customer"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/taxId"}]},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/paymentMethod","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/includeItems","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/productCode"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/description"}]}]},{"type":"Group","label":"Display Options","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/groupBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortOrder"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/itemsPerPage"}]}]}]},"data":{"basicFilters":{"dateRange":"last30days","invoiceStatus":["sent","paid","overdue"],"searchText":""},"advancedFilters":{"showAdvanced":false,"amountRange":{"min":null,"max":null},"customer":"","taxId":"","paymentMethod":"all","includeItems":false,"itemFilters":{"productCode":"","description":""}},"displayOptions":{"groupBy":"none","sortBy":"date","sortOrder":"desc","itemsPerPage":25}},"options":[]};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
@@ -630,7 +1437,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 &quot;searchText&quot;: {
                     &quot;type&quot;: &quot;string&quot;,
-                    &quot;title&quot;: &quot;Search Text&quot;
+                    &quot;title&quot;: &quot;Search Text&quot;,
+                    &quot;description&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
                 }
             }
         },
@@ -803,10 +1611,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 {
                     &quot;type&quot;: &quot;Control&quot;,
-                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;,
-                    &quot;options&quot;: {
-                        &quot;placeholder&quot;: &quot;Invoice #, customer name, or any text in the invoice&quot;
-                    }
+                    &quot;scope&quot;: &quot;#/properties/basicFilters/properties/searchText&quot;
                 }
             ]
         },

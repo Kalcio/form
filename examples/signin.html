@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c625001c3f8">
+<div class="derafu-block-tabs " id="block-tabs--67c7272722d4a">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -45,25 +45,25 @@
                                             <i class="fa-solid fa-file-code me-2"></i>
                                         Input
                 </button>
-                            <button class="nav-link"
+                            <button class="nav-link active"
                         id="tab-demo_php"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_php"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_php"
-                        aria-selected="false">
+                        aria-selected="true">
                                             <i class="fa-brands fa-php me-2"></i>
                                         Demo PHP
                 </button>
-                            <button class="nav-link active"
+                            <button class="nav-link"
                         id="tab-demo_js"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_js"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_js"
-                        aria-selected="true">
+                        aria-selected="false">
                                             <i class="fa-brands fa-js me-2"></i>
                                         Demo JS
                 </button>
@@ -137,13 +137,13 @@
 }</code></pre>
 
                 </div>
-                            <div class="tab-pane fade"
+                            <div class="tab-pane fade show active"
                     id="content-demo_php"
                     role="tabpanel"
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c6250019552">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c7272712c66">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -152,11 +152,150 @@
 </div>
 
 
-<form></form>
+
+
+
+
+
+                                                                                                                                        
+<form accept-charset="UTF-8" action="signin.html" enctype="application/x-www-form-urlencoded" id="form-67c7272716725" method="POST" name="" rel="" target="_self">
+    <input type="hidden" name="_method" value="">
+
+
+        
+
+<div class="vstack gap-3 ">
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="username_field" name="username" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="username_field">Username or Email</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                
+<input type="text" id="password_field" name="password" class="form-control" value="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="password_field">Password</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="twoFactorToken_field" name="twoFactorToken" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="twoFactorToken_field">2FA Token (optional)</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+            
+    <small id="twoFactorTokenHelp" class="">Enter your two-factor authentication code if enabled</small>
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+
+                <input type="hidden" name="_token" value="ABC123">
+
+    
+
+    
+</form>
+
+
 
 
                 </div>
-                            <div class="tab-pane fade show active"
+                            <div class="tab-pane fade"
                     id="content-demo_js"
                     role="tabpanel"
                     aria-labelledby="tab-demo_js"
@@ -191,7 +330,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""},"options":null};
+    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""},"options":[]};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.

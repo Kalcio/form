@@ -32,7 +32,7 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c624ffef35a">
+<div class="derafu-block-tabs " id="block-tabs--67c72726ee039">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -45,25 +45,25 @@
                                             <i class="fa-solid fa-file-code me-2"></i>
                                         Input
                 </button>
-                            <button class="nav-link"
+                            <button class="nav-link active"
                         id="tab-demo_php"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_php"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_php"
-                        aria-selected="false">
+                        aria-selected="true">
                                             <i class="fa-brands fa-php me-2"></i>
                                         Demo PHP
                 </button>
-                            <button class="nav-link active"
+                            <button class="nav-link"
                         id="tab-demo_js"
                         data-bs-toggle="pill"
                         data-bs-target="#content-demo_js"
                         type="button"
                         role="tab"
                         aria-controls="content-demo_js"
-                        aria-selected="true">
+                        aria-selected="false">
                                             <i class="fa-brands fa-js me-2"></i>
                                         Demo JS
                 </button>
@@ -139,13 +139,13 @@
 }</code></pre>
 
                 </div>
-                            <div class="tab-pane fade"
+                            <div class="tab-pane fade show active"
                     id="content-demo_php"
                     role="tabpanel"
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c624ffec4d4">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c72726dd608">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -154,11 +154,186 @@
 </div>
 
 
-<form></form>
+
+
+
+
+
+                                                                                                                                        
+<form accept-charset="UTF-8" action="signup.html" enctype="application/x-www-form-urlencoded" id="form-67c72726e13a1" method="POST" name="" rel="" target="_self">
+    <input type="hidden" name="_method" value="">
+
+
+        
+
+<div class="vstack gap-3 ">
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="name_field" name="name" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="name_field">Name</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="username_field" name="username" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="username_field">Username</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="email_field" name="email" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="email_field">Email address</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+            <div class="mb-3">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                
+<input type="text" id="terms_accepted_field" name="terms_accepted" class="form-control">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="terms_accepted_field">I accept the terms and conditions of use of the service.</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+
+                <input type="hidden" name="_token" value="ABC123">
+
+    
+
+    
+</form>
+
+
 
 
                 </div>
-                            <div class="tab-pane fade show active"
+                            <div class="tab-pane fade"
                     id="content-demo_js"
                     role="tabpanel"
                     aria-labelledby="tab-demo_js"
@@ -193,7 +368,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","title":"Email address","format":"email"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null,"options":null};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","title":"Email address","format":"email"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null,"options":[]};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
