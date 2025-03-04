@@ -46,6 +46,7 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
     public function setDefinitions(array $definitions): self
     {
         $this->definitions = $definitions;
+
         return $this;
     }
 
@@ -59,6 +60,7 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
     public function addDefinition(string $name, PropertySchemaInterface $schema): self
     {
         $this->definitions[$name] = $schema;
+
         return $this;
     }
 

@@ -1,0 +1,13 @@
+{#
+   This template renders the help text for a field.
+   It assumes that the 'field' variable is available and contains the field object.
+   The 'help' variable contains the help text (typically derived from the property description).
+#}
+
+{% if help %}
+    {% set help_id = field.property.name ~ 'Help' %}
+    {% set help_attr = options.help_attr|default({}) %}
+    {% set help_class = help_attr.class|default('') %}
+
+    <small id="{{ help_id }}" class="{{ help_class }}">{{ help }}</small>
+{% endif %}

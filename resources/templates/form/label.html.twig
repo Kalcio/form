@@ -1,0 +1,55 @@
+{#
+   This template renders the label of a field.
+   It assumes that the 'field' variable is available and contains the field object.
+   The 'label' variable contains the label text (it may come from the control or be overridden).
+#}
+
+{% set label_attr = options.label_attr|default({}) %}
+{% set label_class = '' %}
+{% set is_required = field.property.isRequired is defined and field.property.isRequired %}
+{% set is_floating = options.form_floating|default(true) %}
+
+{# If not floating, use form-label, if floating no class. #}
+{% if not is_floating %}
+    {% set label_class = 'form-label' %}
+{% endif %}
+
+{% if label_attr.class is defined %}
+    {% set label_class = label_class ~ ' ' ~ label_attr.class %}
+{% endif %}
+
+{# Add class="required" if the field is required. #}
+{% if is_required and 'required' not in label_class %}
+    {% set label_class = label_class ~ ' required' %}
+{% endif %}
+
+{# Build the HTML attributes for the label. #}
+{% set final_attr = {
+    'for': field.property.getName() ~ '_field'
+} %}
+
+{% if label_class is not empty %}
+    {% set final_attr = final_attr|merge({
+        'class': label_class
+    }) %}
+{% endif %}
+
+{% set final_attr = final_attr|merge(label_attr) %}
+
+{# Generate the HTML attributes string. #}
+{% set attr_string = '' %}
+{% for name, value in final_attr %}
+    {% if value is same as(true) %}
+        {% set attr_string = attr_string ~ ' ' ~ name %}
+    {% elseif value is not same as(false) %}
+        {% set attr_string = attr_string ~ ' ' ~ name ~ '="' ~ value ~ '"' %}
+    {% endif %}
+{% endfor %}
+
+{# Add required field indicator. #}
+{% set required_marker = is_required and options.required_label|default(true)
+    ? ' <span class="text-danger">*</span>'
+    : ''
+%}
+
+<label{{ attr_string|raw }}>{{ label|raw }}{{ required_marker|raw }}</label>

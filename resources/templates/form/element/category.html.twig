@@ -1,0 +1,18 @@
+{#
+   This template renders the content of a category (content of tabs).
+   It assumes that the 'elements_html' variable contains the already rendered
+   HTML elements.
+#}
+
+{% set category_attr = options.category_attr|default({}) %}
+{% set category_class = '' %}
+
+{% if category_attr.class is defined %}
+    {% set category_class = category_class ~ ' ' ~ category_attr.class %}
+{% endif %}
+
+<div class="{{ category_class }}">
+    {% for element_html in elements_html %}
+        {{ element_html|raw }}
+    {% endfor %}
+</div>

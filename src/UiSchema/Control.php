@@ -49,9 +49,9 @@ final class Control extends AbstractUiSchemaElement implements ControlInterface
     /**
      * {@inheritDoc}
      */
-    public function getOptions(): ?array
+    public function getOptions(): array
     {
-        return $this->definition['options'] ?? null;
+        return $this->definition['options'] ?? [];
     }
 
     /**

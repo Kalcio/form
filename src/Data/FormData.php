@@ -121,17 +121,28 @@ final class FormData implements FormDataInterface
     }
 
     /**
-     * Handle dot notation.
+     * Parse property path from various formats to array segments.
      *
-     * @param string $path
-     * @return array
+     * @param string $path Path in dot notation or JSON Forms scope format.
+     * @return array Path segments
      */
     private function parsePath(string $path): array
     {
+        // Check if this is a JSON Forms scope.
+        if (str_starts_with($path, '#/properties/')) {
+            // Remove the prefix.
+            $path = substr($path, 13);
+
+            // Split by "/properties/" and flatten.
+            return preg_split('~/properties/~', $path);
+        }
+
+        // Handle dot notation.
         if (str_contains($path, '.')) {
             return explode('.', $path);
         }
 
+        // Simple property name.
         return [$path];
     }
 

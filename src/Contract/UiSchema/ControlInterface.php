@@ -33,12 +33,4 @@ interface ControlInterface extends UiSchemaElementInterface
      * @return string|null The label or `null` if not defined.
      */
     public function getLabel(): ?string;
-
-    /**
-     * Gets additional options for the element.
-     * These can include custom rendering hints, rules, etc.
-     *
-     * @return array|null Additional options or `null` if none defined.
-     */
-    public function getOptions(): ?array;
 }

@@ -1,0 +1,16 @@
+{#
+   This template renders a vertical layout.
+   It assumes that the 'element' variable is available and contains the UI element object.
+   The 'elements_html' variable contains the child elements already rendered.
+#}
+
+{% set layout_attr = options.layout_attr|default({}) %}
+{% set layout_class = 'vstack gap-3 ' ~ (layout_attr.class|default('')) %}
+
+<div class="{{ layout_class }}"{% for attr_name, attr_value in layout_attr %} {% if attr_name != 'class' %} {{ attr_name }}="{{ attr_value }}"{% endif %}{% endfor %}>
+    {% for element_html in elements_html %}
+        <div class="mb-3">
+            {{ element_html|raw }}
+        </div>
+    {% endfor %}
+</div>

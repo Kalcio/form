@@ -1,0 +1,31 @@
+{#
+   This template renders the opening form tag.
+   It assumes that the 'form' variable is available and contains the form object.
+#}
+
+{% set attr = options.attr|default({
+    method: options.method|default('POST'),
+    action: options.action|default(''),
+    enctype: form_enctype(form),
+}) %}
+
+{# Build the HTML attributes for the form. #}
+{% set form_attr = form.getOptions().getAttributes().toArray() %}
+
+{# Merge with additional attributes from options. #}
+{% set form_attr = form_attr|merge(attr) %}
+
+{# Build the HTML attributes string. #}
+{% set attr_string = '' %}
+{% for name, value in form_attr %}
+    {% if value is same as(true) %}
+        {% set attr_string = attr_string ~ ' ' ~ name %}
+    {% elseif value is not same as(false) %}
+        {% set attr_string = attr_string ~ ' ' ~ name ~ '="' ~ value ~ '"' %}
+    {% endif %}
+{% endfor %}
+
+<form{{ attr_string|raw }}>
+{% if method|upper != 'GET' and method|upper != 'POST' %}
+    <input type="hidden" name="_method" value="{{ method|upper }}">
+{% endif %}

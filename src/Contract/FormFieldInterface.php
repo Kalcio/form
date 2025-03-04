@@ -39,4 +39,19 @@ interface FormFieldInterface
      * visually represented.
      */
     public function getControl(): ControlInterface;
+
+    /**
+     * Checks if the field has been rendered.
+     *
+     * @return bool True if the field has been rendered, false otherwise.
+     */
+    public function isRendered(): bool;
+
+    /**
+     * Sets the rendered state of the field.
+     *
+     * @param bool $rendered True if the field has been rendered, false otherwise.
+     * @return self The current instance.
+     */
+    public function setRendered(bool $rendered = true): self;
 }

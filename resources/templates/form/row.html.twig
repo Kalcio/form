@@ -1,0 +1,99 @@
+{#
+   This template renders a complete field: label, widget, errors and help text.
+   It assumes that the 'field' variable is available and contains field information.
+   The widget, label, errors and help variables already contain the rendered HTML for each component.
+#}
+
+{# Determine if the field has errors to apply the appropriate classes. #}
+{% set has_errors = errors is not empty %}
+{% set form_floating = options.form_floating|default(true) %}
+
+{# Get options for row and layout. #}
+{% set row_attr = options.row_attr|default({}) %}
+{% set row_class = 'mb-3' %}
+
+{# Main class for the group. #}
+{% if row_attr.class is defined %}
+    {% set row_class = row_class ~ ' ' ~ row_attr.class %}
+{% endif %}
+{% if has_errors %}
+    {% set row_class = row_class ~ ' has-error' %}
+{% endif %}
+
+{# Get options for input group. #}
+{% set input_group_attr = options.input_group_attr|default({}) %}
+{% set input_group_text = options.input_group_text|default(null) %}
+{% set input_group_icon = options.input_group_icon|default(null) %}
+{% set input_group_prepend = options.input_group_prepend|default(null) %}
+{% set input_group_append = options.input_group_append|default(null) %}
+{% set has_input_group = input_group_text is not null
+    or input_group_icon is not null
+    or input_group_prepend is not null
+    or input_group_append is not null %}
+
+<div class="{{ row_class }}">
+    {# If we are using input group, include the decorations. #}
+    {% if has_input_group %}
+        <div class="input-group{% if has_errors %} has-validation{% endif %}">
+            {% if input_group_prepend or input_group_prepend_icon or input_group_prepend_text %}
+                {% if input_group_prepend %}
+                    {{ input_group_prepend|raw }}
+                {% else %}
+                    <span class="input-group-text">
+                        {% if input_group_prepend_icon %}<i class="{{ input_group_prepend_icon }}"></i>{% endif %}
+                        {% if input_group_prepend_text %}{{ input_group_prepend_text }}{% endif %}
+                    </span>
+                {% endif %}
+            {% endif %}
+
+            {% if form_floating %}
+                <div class="form-floating">
+                    {{ widget|raw }}
+                    {{ label|raw }}
+                </div>
+            {% else %}
+                {{ label|raw }}
+                {{ widget|raw }}
+            {% endif %}
+
+            {% if input_group_append or input_group_append_icon or input_group_append_text %}
+                {% if input_group_append %}
+                    {{ input_group_append|raw }}
+                {% else %}
+                    <span class="input-group-text">
+                        {% if input_group_append_icon %}<i class="{{ input_group_append_icon }}"></i>{% endif %}
+                        {% if input_group_append_text %}{{ input_group_append_text }}{% endif %}
+                    </span>
+                {% endif %}
+            {% endif %}
+            {% if has_errors %}
+                <div class="invalid-feedback">
+                    {{ errors|raw }}
+                </div>
+            {% endif %}
+        </div>
+    {% else %}
+        {# Without input group, normal rendering. #}
+        {% if form_floating %}
+            <div class="form-floating">
+                {{ widget|raw }}
+                {{ label|raw }}
+            </div>
+        {% else %}
+            {{ label|raw }}
+            {{ widget|raw }}
+        {% endif %}
+
+        {% if has_errors %}
+            <div class="invalid-feedback d-block">
+                {{ errors|raw }}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if help %}
+        <div class="form-text">
+            {{ help|raw }}
+        </div>
+    {% endif %}
+</div>

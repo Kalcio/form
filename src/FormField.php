@@ -25,6 +25,13 @@ use Derafu\Form\Contract\UiSchema\ControlInterface;
 final class FormField implements FormFieldInterface
 {
     /**
+     * Whether the field has been rendered.
+     *
+     * @var bool
+     */
+    private bool $rendered = false;
+
+    /**
      * Constructs a new form field.
      *
      * @param PropertySchemaInterface $property The property associated with
@@ -52,5 +59,23 @@ final class FormField implements FormFieldInterface
     public function getControl(): ControlInterface
     {
         return $this->control;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isRendered(): bool
+    {
+        return $this->rendered;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRendered(bool $rendered = true): self
+    {
+        $this->rendered = $rendered;
+
+        return $this;
     }
 }

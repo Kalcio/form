@@ -19,11 +19,26 @@ use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Renderer\FormRendererInterface;
 use Derafu\Form\Data\FormData;
 use Derafu\Form\Factory\FormFactory;
+use Derafu\Form\Factory\FormRendererFactory;
 use Derafu\Form\Factory\FormUiSchemaFactory;
 use Derafu\Form\Factory\UiSchemaElementFactory;
 use Derafu\Form\Form;
 use Derafu\Form\FormField;
+use Derafu\Form\Options\FormAttributes;
+use Derafu\Form\Options\FormOptions;
+use Derafu\Form\Renderer\Element\CategorizationRenderer;
+use Derafu\Form\Renderer\Element\ControlRenderer;
+use Derafu\Form\Renderer\Element\GroupRenderer;
+use Derafu\Form\Renderer\Element\HorizontalLayoutRenderer;
+use Derafu\Form\Renderer\Element\LabelRenderer;
+use Derafu\Form\Renderer\Element\VerticalLayoutRenderer;
+use Derafu\Form\Renderer\ElementRendererProvider;
+use Derafu\Form\Renderer\ElementRendererRegistry;
 use Derafu\Form\Renderer\FormRenderer;
+use Derafu\Form\Renderer\FormTwigExtension;
+use Derafu\Form\Renderer\Widget\TextWidgetRenderer;
+use Derafu\Form\Renderer\WidgetRendererProvider;
+use Derafu\Form\Renderer\WidgetRendererRegistry;
 use Derafu\Form\Schema\ArraySchema;
 use Derafu\Form\Schema\BooleanSchema;
 use Derafu\Form\Schema\FormSchema;
@@ -43,6 +58,8 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass(FormFactory::class)]
 #[CoversClass(Form::class)]
+#[CoversClass(FormOptions::class)]
+#[CoversClass(FormAttributes::class)]
 #[CoversClass(FormField::class)]
 #[CoversClass(FormSchema::class)]
 #[CoversClass(AbstractPropertySchema::class)]
@@ -62,14 +79,28 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Label::class)]
 #[CoversClass(VerticalLayout::class)]
 #[CoversClass(FormData::class)]
+#[CoversClass(FormRendererFactory::class)]
 #[CoversClass(FormRenderer::class)]
+#[CoversClass(FormRendererFactory::class)]
+#[CoversClass(ElementRendererRegistry::class)]
+#[CoversClass(WidgetRendererRegistry::class)]
+#[CoversClass(ElementRendererProvider::class)]
+#[CoversClass(CategorizationRenderer::class)]
+#[CoversClass(ControlRenderer::class)]
+#[CoversClass(GroupRenderer::class)]
+#[CoversClass(HorizontalLayoutRenderer::class)]
+#[CoversClass(LabelRenderer::class)]
+#[CoversClass(VerticalLayoutRenderer::class)]
+#[CoversClass(FormTwigExtension::class)]
+#[CoversClass(WidgetRendererProvider::class)]
+#[CoversClass(TextWidgetRenderer::class)]
 class ExamplesTest extends TestCase
 {
     private FormRendererInterface $renderer;
 
     protected function setUp(): void
     {
-        $this->renderer = new FormRenderer();
+        $this->renderer = FormRendererFactory::create();
     }
 
     #[DataProvider('provideExamples')]

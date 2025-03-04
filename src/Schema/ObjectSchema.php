@@ -104,6 +104,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function addProperty(PropertySchemaInterface $property): self
     {
         $this->properties[$property->getName()] = $property;
+
         return $this;
     }
 
@@ -121,6 +122,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function setDependentRequired(array $dependentRequired): self
     {
         $this->dependentRequired = $dependentRequired;
+
         return $this;
     }
 
@@ -138,6 +140,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function setMaxProperties(int $maxProperties): self
     {
         $this->maxProperties = $maxProperties;
+
         return $this;
     }
 
@@ -155,6 +158,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function setMinProperties(int $minProperties): self
     {
         $this->minProperties = $minProperties;
+
         return $this;
     }
 
@@ -172,6 +176,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function setRequired(array $properties): self
     {
         $this->required = $properties;
+
         return $this;
     }
 
@@ -189,6 +194,7 @@ class ObjectSchema extends AbstractPropertySchema implements ObjectSchemaInterfa
     public function setAdditionalProperties(bool|array $additionalProperties = true): self
     {
         $this->additionalProperties = $additionalProperties;
+
         return $this;
     }
 

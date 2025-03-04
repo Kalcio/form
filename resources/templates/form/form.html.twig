@@ -1,0 +1,17 @@
+{#
+   This template renders the entire form.
+   It assumes that the 'form' variable is available and contains the form object.
+#}
+
+{# Render the form starting with the start, then the content according to the ui schema, and finally the end. #}
+{{ form_start(form, options) }}
+
+    {# Render elements according to the root UI schema type. #}
+    {{ form_element(form.getUiSchema(), form, options) }}
+
+    {# Add CSRF token if enabled. #}
+    {% if options.csrf_protection|default(true) %}
+        {{ form_csrf(form) }}
+    {% endif %}
+
+{{ form_end(form, options) }}

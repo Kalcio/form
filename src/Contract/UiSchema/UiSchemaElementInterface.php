@@ -30,6 +30,13 @@ interface UiSchemaElementInterface extends JsonSerializable
     public function getType(): string;
 
     /**
+     * Gets the options of the UI element.
+     *
+     * @return array The options of the UI element.
+     */
+    public function getOptions(): array;
+
+    /**
      * Converts the UI Element to an array representation.
      *
      * @return array

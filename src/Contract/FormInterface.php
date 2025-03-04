@@ -15,6 +15,7 @@ namespace Derafu\Form\Contract;
 use Derafu\Form\Contract\Data\FormDataInterface;
 use Derafu\Form\Contract\Options\FormOptionsInterface;
 use Derafu\Form\Contract\Schema\FormSchemaInterface;
+use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\FormUiSchemaInterface;
 use JsonSerializable;
 
@@ -73,6 +74,14 @@ interface FormInterface extends JsonSerializable
      * related to a control ui schema element.
      */
     public function getField(string $name): ?FormFieldInterface;
+
+    /**
+     * Finds a property by scope.
+     *
+     * @param string $scope The scope of the property.
+     * @return PropertySchemaInterface|null The property or `null` if not found.
+     */
+    public function findPropertyByScope(string $scope): ?PropertySchemaInterface;
 
     /**
      * Creates a new instance of the form with the provided data.

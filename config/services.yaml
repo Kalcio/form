@@ -73,11 +73,26 @@ services:
                 engines: ['twig', 'markdown']
                 paths:
                     - '%kernel.project_dir%/templates'
+                    - '%kernel.project_dir%/resources/templates'
                     - '%kernel.project_dir%/vendor/derafu/twig/resources/templates'
                 extensions:
-                    - '@Derafu\Form\Renderer\Twig\FormTwigExtension'
+                    - '@Derafu\Form\Renderer\FormTwigExtension'
 
-    Derafu\Form\Renderer\Twig\FormTwigExtension: ~
+    Derafu\Form\Renderer\FormTwigExtension: ~
 
     Derafu\Form\Contract\Renderer\FormRendererInterface:
         class: Derafu\Form\Renderer\FormRenderer
+
+    Derafu\Form\Contract\Renderer\ElementRendererRegistryInterface:
+        class: Derafu\Form\Renderer\ElementRendererRegistry
+        arguments:
+            $renderers: '@Derafu\Form\Renderer\ElementRendererProvider'
+
+    Derafu\Form\Renderer\ElementRendererProvider: ~
+
+    Derafu\Form\Contract\Renderer\WidgetRendererRegistryInterface:
+        class: Derafu\Form\Renderer\WidgetRendererRegistry
+        arguments:
+            $renderers: '@Derafu\Form\Renderer\WidgetRendererProvider'
+
+    Derafu\Form\Renderer\WidgetRendererProvider: ~

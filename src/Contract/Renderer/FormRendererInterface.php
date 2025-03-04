@@ -14,6 +14,8 @@ namespace Derafu\Form\Contract\Renderer;
 
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Contract\UiSchema\UiSchemaElementInterface;
+use Derafu\Renderer\Contract\RendererInterface;
 
 /**
  * Interface for form renderers.
@@ -131,4 +133,58 @@ interface FormRendererInterface
         FormInterface $form,
         array $options = []
     ): string;
+
+    /**
+     * Renders the enctype attribute for a form.
+     *
+     * @param FormInterface $form The form to render the enctype for.
+     * @return string The rendered enctype HTML.
+     */
+    public function renderEnctype(FormInterface $form): string;
+
+    /**
+     * Renders a UI element.
+     *
+     * This method delegates to the appropriate element renderer based on the
+     * element type.
+     *
+     * @param UiSchemaElementInterface $element The element to render.
+     * @param FormInterface $form The form containing the element.
+     * @param array $options Additional rendering options.
+     * @return string The rendered HTML.
+     */
+    public function renderElement(
+        UiSchemaElementInterface $element,
+        FormInterface $form,
+        array $options = []
+    ): string;
+
+    /**
+     * Renders a collection of UI elements.
+     *
+     * @param array $elements The elements to render.
+     * @param FormInterface $form The form containing the elements.
+     * @param array $options Additional rendering options.
+     * @return array The rendered HTML of each element.
+     */
+    public function renderElements(
+        array $elements,
+        FormInterface $form,
+        array $options = []
+    ): array;
+
+    /**
+     * Renders the CSRF token for a form.
+     *
+     * @param FormInterface $form The form to render the CSRF token for.
+     * @return string The rendered CSRF token HTML.
+     */
+    public function renderCsrf(FormInterface $form): string;
+
+    /**
+     * Gets the renderer.
+     *
+     * @return RendererInterface The renderer.
+     */
+    public function getRenderer(): RendererInterface;
 }

@@ -10,11 +10,12 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Renderer\Twig;
+namespace Derafu\Form\Renderer;
 
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Renderer\FormRendererInterface;
+use Derafu\Form\Contract\UiSchema\UiSchemaElementInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup;
 use Twig\TwigFunction;
@@ -57,6 +58,12 @@ final class FormTwigExtension extends AbstractExtension
             new TwigFunction('form_help', [$this, 'renderFormHelp']),
             new TwigFunction('form_row', [$this, 'renderRow']),
             new TwigFunction('form_rest', [$this, 'renderRest']),
+            new TwigFunction('form_enctype', [$this, 'renderEnctype']),
+
+            // Custom functions.
+            new TwigFunction('form_element', [$this, 'renderElement']),
+            new TwigFunction('form_elements', [$this, 'renderElements']),
+            new TwigFunction('form_csrf', [$this, 'renderCsrf']),
         ];
     }
 
@@ -207,5 +214,62 @@ final class FormTwigExtension extends AbstractExtension
             $this->renderer->renderRest($form, $options),
             $this->charset
         );
+    }
+
+    /**
+     * Renders the enctype attribute for a form.
+     *
+     * @param FormInterface $form The form to render the enctype for.
+     * @return Markup The rendered enctype HTML.
+     */
+    public function renderEnctype(FormInterface $form): Markup
+    {
+        return new Markup(
+            $this->renderer->renderEnctype($form),
+            $this->charset
+        );
+    }
+
+    /**
+     * Renders a UI element.
+     *
+     * @param UiSchemaElementInterface $element The element to render.
+     * @param FormInterface $form The form containing the element.
+     * @param array $options Additional rendering options.
+     * @return Markup The rendered HTML.
+     */
+    public function renderElement(
+        UiSchemaElementInterface $element,
+        FormInterface $form,
+        array $options = []
+    ): Markup {
+        return new Markup($this->renderer->renderElement($element, $form, $options), $this->charset);
+    }
+
+    /**
+     * Renders a collection of UI elements.
+     *
+     * @param array $elements The elements to render.
+     * @param FormInterface $form The form containing the elements.
+     * @param array $options Additional rendering options.
+     * @return array The rendered HTML of each element.
+     */
+    public function renderElements(
+        array $elements,
+        FormInterface $form,
+        array $options = []
+    ): array {
+        return $this->renderer->renderElements($elements, $form, $options);
+    }
+
+    /**
+     * Renders the CSRF token for a form.
+     *
+     * @param FormInterface $form The form to render the CSRF token for.
+     * @return Markup The rendered CSRF token HTML.
+     */
+    public function renderCsrf(FormInterface $form): Markup
+    {
+        return new Markup($this->renderer->renderCsrf($form), $this->charset);
     }
 }

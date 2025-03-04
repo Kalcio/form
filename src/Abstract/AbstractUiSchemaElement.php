@@ -35,6 +35,14 @@ abstract class AbstractUiSchemaElement implements UiSchemaElementInterface
     /**
      * {@inheritDoc}
      */
+    public function getOptions(): array
+    {
+        return $this->definition['options'] ?? [];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function jsonSerialize(): array
     {
         return $this->toArray();

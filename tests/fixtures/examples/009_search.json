@@ -55,7 +55,8 @@
                         },
                         "searchText": {
                             "type": "string",
-                            "title": "Search Text"
+                            "title": "Search Text",
+                            "description": "Invoice #, customer name, or any text in the invoice"
                         }
                     }
                 },
@@ -221,10 +222,7 @@
                         },
                         {
                             "type": "Control",
-                            "scope": "#/properties/basicFilters/properties/searchText",
-                            "options": {
-                                "placeholder": "Invoice #, customer name, or any text in the invoice"
-                            }
+                            "scope": "#/properties/basicFilters/properties/searchText"
                         }
                     ]
                 },

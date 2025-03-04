@@ -1,0 +1,75 @@
+{#
+   This template renders a categorization element (tabs) of Bootstrap 5.
+   It supports horizontal tabs (by default) and vertical tabs (stacked).
+#}
+
+{% set categorization_attr = options.categorization_attr|default({}) %}
+{% set categorization_class = 'mb-4' %}
+{% set tab_style = options.tab_style|default('horizontal') %}
+{% set vertical_col_width = options.vertical_col_width|default(3) %}
+{% set tab_id_prefix = 'tab_' ~ random() %}
+{% set categories = element.getCategories() %}
+
+{% if categorization_attr.class is defined %}
+    {% set categorization_class = categorization_class ~ ' ' ~ categorization_attr.class %}
+{% endif %}
+
+<div class="{{ categorization_class }}">
+    {% if tab_style == 'vertical' %}
+        {# Vertical tabs. #}
+        <div class="d-flex align-items-start">
+            <div class="nav flex-column nav-pills me-3 col-md-{{ vertical_col_width }}" id="{{ tab_id_prefix }}_tabs" role="tablist">
+                {% for i, category in categories %}
+                    {% set active = i == 0 ? ' active' : '' %}
+                    {% set tab_id = tab_id_prefix ~ '_' ~ i %}
+                    <button class="nav-link{{ active }}" id="{{ tab_id }}_tab" data-bs-toggle="pill"
+                            data-bs-target="#{{ tab_id }}_content" type="button" role="tab"
+                            aria-controls="{{ tab_id }}_content" aria-selected="{{ i == 0 ? 'true' : 'false' }}">
+                        {% if category.getIcon is defined and category.getIcon %}
+                            <i class="{{ category.getIcon }} me-2"></i>
+                        {% endif %}
+                        {{ category.getLabel }}
+                    </button>
+                {% endfor %}
+            </div>
+            <div class="tab-content col-md-{{ 12 - vertical_col_width }}">
+                {% for i, category in categories %}
+                    {% set active = i == 0 ? ' show active' : '' %}
+                    {% set tab_id = tab_id_prefix ~ '_' ~ i %}
+                    <div class="tab-pane fade{{ active }}" id="{{ tab_id }}_content" role="tabpanel"
+                         aria-labelledby="{{ tab_id }}_tab">
+                        {{ categories_html[i]|default('')|raw }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        {# Horizontal tabs (by default). #}
+        <ul class="nav nav-tabs" id="{{ tab_id_prefix }}_tabs" role="tablist">
+            {% for i, category in categories %}
+                {% set active = i == 0 ? ' active' : '' %}
+                {% set tab_id = tab_id_prefix ~ '_' ~ i %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link{{ active }}" id="{{ tab_id }}_tab" data-bs-toggle="tab"
+                            data-bs-target="#{{ tab_id }}_content" type="button" role="tab"
+                            aria-controls="{{ tab_id }}_content" aria-selected="{{ i == 0 ? 'true' : 'false' }}">
+                        {% if category.getIcon is defined and category.getIcon %}
+                            <i class="{{ category.getIcon }} me-2"></i>
+                        {% endif %}
+                        {{ category.getLabel }}
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content pt-3">
+            {% for i, category in categories %}
+                {% set active = i == 0 ? ' show active' : '' %}
+                {% set tab_id = tab_id_prefix ~ '_' ~ i %}
+                <div class="tab-pane fade{{ active }}" id="{{ tab_id }}_content" role="tabpanel"
+                     aria-labelledby="{{ tab_id }}_tab">
+                    {{ categories_html[i]|default('')|raw }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

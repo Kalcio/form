@@ -1,0 +1,53 @@
+{#
+   This template renders a group as a Bootstrap 5 card.
+   It assumes that the 'element' variable is available and contains the group object.
+   The 'elements_html' variable contains the array of already rendered elements.
+#}
+
+{% set group_attr = options.group_attr|default({}) %}
+{% set group_class = 'card mb-4' %}
+{% set header_class = 'card-header' %}
+{% set body_class = 'card-body' %}
+{% set footer_class = 'card-footer' %}
+
+{% if group_attr.class is defined %}
+    {% set group_class = group_class ~ ' ' ~ group_attr.class %}
+{% endif %}
+
+{# Get attributes for collapse options. #}
+{% set collapsible = options.collapsible|default(false) %}
+{% set collapsed = options.collapsed|default(false) %}
+{% set card_id = 'card_' ~ random() %}
+{% set collapse_id = 'collapse_' ~ random() %}
+
+<div class="{{ group_class }}" id="{{ card_id }}">
+    {% if element.getLabel is defined and element.getLabel %}
+        <div class="{{ header_class }}">
+            {% if collapsible %}
+                <a data-bs-toggle="collapse" href="#{{ collapse_id }}" role="button"
+                   aria-expanded="{{ collapsed ? 'false' : 'true' }}"
+                   aria-controls="{{ collapse_id }}"
+                   class="d-flex align-items-center text-decoration-none text-dark">
+                    <h5 class="mb-0">{{ element.getLabel }}</h5>
+                    <i class="ms-auto fa-solid fa-caret-{{ collapsed ? 'down' : 'up' }}"></i>
+                </a>
+            {% else %}
+                <h5 class="mb-0">{{ element.getLabel }}</h5>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div id="{{ collapse_id }}" class="{{ collapsible ? 'collapse' : '' }}{{ (collapsible and not collapsed) ? ' show' : '' }}">
+        <div class="{{ body_class }}">
+            {% for element_html in elements_html %}
+                {{ element_html|raw }}
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if options.footer is defined %}
+        <div class="{{ footer_class }}">
+            {{ options.footer|raw }}
+        </div>
+    {% endif %}
+</div>
