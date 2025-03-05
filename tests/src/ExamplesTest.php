@@ -48,6 +48,7 @@ use Derafu\Form\Schema\StringSchema;
 use Derafu\Form\Type\BooleanType;
 use Derafu\Form\Type\ChoiceType;
 use Derafu\Form\Type\ColorType;
+use Derafu\Form\Type\DatetimeType;
 use Derafu\Form\Type\DateType;
 use Derafu\Form\Type\EmailType;
 use Derafu\Form\Type\FloatType;
@@ -118,6 +119,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ChoiceType::class)]
 #[CoversClass(ColorType::class)]
 #[CoversClass(DateType::class)]
+#[CoversClass(DatetimeType::class)]
 #[CoversClass(EmailType::class)]
 #[CoversClass(FloatType::class)]
 #[CoversClass(IntegerType::class)]
