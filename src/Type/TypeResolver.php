@@ -51,7 +51,7 @@ final class TypeResolver implements TypeResolverInterface
 
         // Handle date and time types.
         if ($value instanceof DateTimeInterface) {
-            return $this->typeRegistry->get(DateTimeType::class);
+            return $this->typeRegistry->get(DatetimeType::class);
         }
 
         // Handle other types.

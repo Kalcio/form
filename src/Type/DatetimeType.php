@@ -20,7 +20,7 @@ use Derafu\Form\Abstract\AbstractType;
  *
  * A datetime type allows users to select a date and time from a calendar.
  */
-final class DateTimeType extends AbstractType
+final class DatetimeType extends AbstractType
 {
     /**
      * The pattern for the datetime type.

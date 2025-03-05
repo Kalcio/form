@@ -38,7 +38,7 @@ final class TypeProvider implements TypeProviderInterface
             new BooleanType(),
             new IntegerType(), // Integer is more specific than Float.
             new FloatType(),   // Float must be listed after Integer if type resolver is used.
-            new DateTimeType(),
+            new DatetimeType(),
             new DateType(),
             new TimeType(),
             new WeekType(),
