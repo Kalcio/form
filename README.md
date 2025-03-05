@@ -52,8 +52,6 @@ composer require derafu/form
 ### Creating a Simple Form
 
 ```php
-use Derafu\Form\Factory\FormFactory;
-
 // Define the form structure.
 $definition = [
     'schema' => [
@@ -91,7 +89,7 @@ $definition = [
 ];
 
 // Create the form.
-$form = FormFactory::create($definition);
+$form = $formFactory->create($definition);
 ```
 
 ### Rendering with Twig
@@ -123,7 +121,7 @@ $definition = [
 ];
 
 // Schema and UI schema will be automatically generated.
-$form = FormFactory::create($definition);
+$form = $formFactory->create($definition);
 ```
 
 ## Integration with JSON Forms
