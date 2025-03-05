@@ -29,9 +29,9 @@ interface IntegerSchemaInterface extends PropertySchemaInterface
      * Sets the exclusive maximum that the property value can reach.
      *
      * @param int $exclusiveMaximum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setExclusiveMaximum(int $exclusiveMaximum): self;
+    public function setExclusiveMaximum(int $exclusiveMaximum): static;
 
     /**
      * Gets the exclusive minimum that the property value can reach.
@@ -45,9 +45,9 @@ interface IntegerSchemaInterface extends PropertySchemaInterface
      * Sets the exclusive minimum that the property value can reach.
      *
      * @param int $exclusiveMinimum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setExclusiveMinimum(int $exclusiveMinimum): self;
+    public function setExclusiveMinimum(int $exclusiveMinimum): static;
 
     /**
      * Gets the maximum that the property value can reach.
@@ -61,9 +61,9 @@ interface IntegerSchemaInterface extends PropertySchemaInterface
      * Sets the maximum that the property value can reach.
      *
      * @param int $maximum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaximum(int $maximum): self;
+    public function setMaximum(int $maximum): static;
 
     /**
      * Gets the minimum that the property value can reach.
@@ -77,9 +77,9 @@ interface IntegerSchemaInterface extends PropertySchemaInterface
      * Sets the minimum that the property value can reach.
      *
      * @param int $minimum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinimum(int $minimum): self;
+    public function setMinimum(int $minimum): static;
 
     /**
      * Gets the divisor of the value property that results in an integer value.
@@ -93,7 +93,7 @@ interface IntegerSchemaInterface extends PropertySchemaInterface
      * Sets the divisor of the value property that results in an integer value.
      *
      * @param int $multipleOf
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMultipleOf(int $multipleOf): self;
+    public function setMultipleOf(int $multipleOf): static;
 }

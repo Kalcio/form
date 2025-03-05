@@ -29,9 +29,9 @@ interface NumberSchemaInterface extends PropertySchemaInterface
      * Sets the exclusive maximum that the property value can reach.
      *
      * @param int|float $exclusiveMaximum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setExclusiveMaximum(int|float $exclusiveMaximum): self;
+    public function setExclusiveMaximum(int|float $exclusiveMaximum): static;
 
     /**
      * Gets the exclusive minimum that the property value can reach.
@@ -45,9 +45,9 @@ interface NumberSchemaInterface extends PropertySchemaInterface
      * Sets the exclusive minimum that the property value can reach.
      *
      * @param int|float $exclusiveMinimum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setExclusiveMinimum(int|float $exclusiveMinimum): self;
+    public function setExclusiveMinimum(int|float $exclusiveMinimum): static;
 
     /**
      * Gets the maximum that the property value can reach.
@@ -61,9 +61,9 @@ interface NumberSchemaInterface extends PropertySchemaInterface
      * Sets the maximum that the property value can reach.
      *
      * @param int|float $maximum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaximum(int|float $maximum): self;
+    public function setMaximum(int|float $maximum): static;
 
     /**
      * Gets the minimum that the property value can reach.
@@ -77,9 +77,9 @@ interface NumberSchemaInterface extends PropertySchemaInterface
      * Sets the minimum that the property value can reach.
      *
      * @param int|float $minimum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinimum(int|float $minimum): self;
+    public function setMinimum(int|float $minimum): static;
 
     /**
      * Gets the divisor of the value property that results in an integer value.
@@ -93,7 +93,7 @@ interface NumberSchemaInterface extends PropertySchemaInterface
      * Sets the divisor of the value property that results in an integer value.
      *
      * @param int|float $multipleOf
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMultipleOf(int|float $multipleOf): self;
+    public function setMultipleOf(int|float $multipleOf): static;
 }

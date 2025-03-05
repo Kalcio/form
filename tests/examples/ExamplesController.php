@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Derafu\ExamplesForm;
 
+use Derafu\Form\Contract\Factory\FormFactoryInterface;
 use Derafu\Http\Contract\RequestInterface;
 use Derafu\Renderer\Contract\RendererInterface;
 use Derafu\Routing\Exception\RouteNotFoundException;
@@ -29,8 +30,12 @@ final class ExamplesController
      *
      * @param RendererInterface $renderer The template renderer.
      */
-    public function __construct(private readonly RendererInterface $renderer)
-    {
+    public function __construct(
+        private readonly RendererInterface $renderer,
+        private readonly FormFactoryInterface $formFactory
+    ) {
+        // Don't do this in a real application, it's just for testing.
+        Example::setFormFactory($this->formFactory);
     }
 
     /**

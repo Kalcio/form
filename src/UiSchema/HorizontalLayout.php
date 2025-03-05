@@ -62,7 +62,7 @@ final class HorizontalLayout extends AbstractUiSchemaElement implements Horizont
     /**
      * {@inheritDoc}
      */
-    public function addElement(UiSchemaElementInterface $element): self
+    public function addElement(UiSchemaElementInterface $element): static
     {
         $this->elements[] = $element;
 
@@ -86,13 +86,13 @@ final class HorizontalLayout extends AbstractUiSchemaElement implements Horizont
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
         $elements = [];
         foreach ($definition['elements'] as $element) {
             $elements[] = UiSchemaElementFactory::create($element);
         }
 
-        return new self($elements);
+        return new static($elements);
     }
 }

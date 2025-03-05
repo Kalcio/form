@@ -49,9 +49,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * Adds a property definition to the schema.
      *
      * @param PropertySchemaInterface $property The property definition.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function addProperty(PropertySchemaInterface $property): self;
+    public function addProperty(PropertySchemaInterface $property): static;
 
     /**
      * Gets the list of properties that depend on others in order to be used.
@@ -65,9 +65,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * Sets the list of properties that depend on others in order to be used.
      *
      * @param array<string,string[]> $dependentRequired
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setDependentRequired(array $dependentRequired): self;
+    public function setDependentRequired(array $dependentRequired): static;
 
     /**
      * Gets the maximum quantity of properties.
@@ -81,9 +81,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * Sets the maximum quantity of properties.
      *
      * @param int $maxProperties
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaxProperties(int $maxProperties): self;
+    public function setMaxProperties(int $maxProperties): static;
 
     /**
      * Gets the minimum quantity of properties.
@@ -97,9 +97,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * Sets the minimum quantity of properties.
      *
      * @param int $minProperties
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinProperties(int $minProperties): self;
+    public function setMinProperties(int $minProperties): static;
 
     /**
      * Gets the list of required properties.
@@ -113,9 +113,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * Sets the list of required properties.
      *
      * @param array<string> $properties
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setRequired(array $properties): self;
+    public function setRequired(array $properties): static;
 
     /**
      * Gets the `additionalProperties` value, which determines if properties not
@@ -131,9 +131,9 @@ interface ObjectSchemaInterface extends PropertySchemaInterface
      * defined in the schema are allowed.
      *
      * @param bool|array $additionalProperties
-     * @return self The current instance.
+     * @return static The current instance.
      */
     public function setAdditionalProperties(
         bool|array $additionalProperties = true
-    ): self;
+    ): static;
 }

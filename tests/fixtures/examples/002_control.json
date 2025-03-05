@@ -1,0 +1,359 @@
+{
+    "meta": {
+        "name": "Control",
+        "description": "The default controls provided by the form library.",
+        "tags": [
+            "withSchema",
+            "withOutUiSchema",
+            "withData"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "boolean": {
+                    "type": "boolean"
+                },
+                "checkbox": {
+                    "type": "boolean"
+                },
+                "choice": {
+                    "type": "string",
+                    "enum": ["Option 1", "Option 2", "Option 3"]
+                },
+                "color": {
+                    "type": "string"
+                },
+                "datetime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "duration": {
+                    "type": "string",
+                    "pattern": "^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+S)?)?$",
+                    "description": "P1Y2M3DT4H5M6S (ISO 8601)"
+                },
+                "editor": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "float": {
+                    "type": "number"
+                },
+                "hidden": {
+                    "type": "string"
+                },
+                "hostname": {
+                    "type": "string",
+                    "format": "hostname"
+                },
+                "integer": {
+                    "type": "integer"
+                },
+                "ipv4": {
+                    "type": "string",
+                    "format": "ipv4"
+                },
+                "ipv6": {
+                    "type": "string",
+                    "format": "ipv6"
+                },
+                "masked": {
+                    "type": "string"
+                },
+                "money": {
+                    "type": "number",
+                    "minimum": 0
+                },
+                "month": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "number"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "percent": {
+                    "type": "number"
+                },
+                "radio": {
+                    "type": "string",
+                    "enum": ["Option A", "Option B", "Option C"]
+                },
+                "range": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "regex": {
+                    "type": "string"
+                },
+                "search": {
+                    "type": "string"
+                },
+                "slider": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "tag": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "telephone": {
+                    "type": "string"
+                },
+                "textarea": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "uri": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "uuid": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "week": {
+                    "type": "string"
+                }
+            }
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/boolean"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/checkbox",
+                    "options": { "type": "checkbox" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/choice",
+                    "options": { "type": "choice" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/color",
+                    "options": { "type": "color" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/datetime"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/date"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/duration",
+                    "options": { "type": "duration" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/editor",
+                    "options": { "type": "editor" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/email"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/file",
+                    "options": { "type": "file" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/float",
+                    "options": { "type": "float" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/hidden",
+                    "options": { "type": "hidden" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/hostname"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/integer"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/ipv4"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/ipv6"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/masked",
+                    "options": { "type": "masked" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/money",
+                    "options": { "type": "money", "symbol": "$" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/month",
+                    "options": { "type": "month" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/number"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/password",
+                    "options": { "type": "password" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/percent",
+                    "options": { "type": "percent" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/radio",
+                    "options": { "type": "radio" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/range",
+                    "options": { "type": "range" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/regex",
+                    "options": { "type": "regex" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/search",
+                    "options": { "type": "search" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/slider",
+                    "options": { "type": "slider" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/tag",
+                    "options": { "type": "tag" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/telephone",
+                    "options": { "type": "telephone" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/textarea",
+                    "options": { "type": "textarea" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/text"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/time",
+                    "options": { "format": "time" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/uri"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/url",
+                    "options": { "type": "url" }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/uuid"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/week",
+                    "options": { "type": "week" }
+                }
+            ]
+        },
+        "data": {
+            "boolean": true,
+            "checkbox": true,
+            "choice": "Option 1",
+            "color": "#ff5733",
+            "datetime": "2025-03-04T14:30:00+02:00",
+            "date": "2025-03-04",
+            "duration": "P1Y2M3DT4H5M6S",
+            "editor": "This is a long text.",
+            "email": "user@example.com",
+            "file": "",
+            "float": 123.45,
+            "hidden": "hidden_value",
+            "hostname": "example.com",
+            "integer": 42,
+            "ipv4": "192.168.1.1",
+            "ipv6": "2001:db8::ff00:42:8329",
+            "masked": "1234567890",
+            "money": 99.99,
+            "month": "2025-03",
+            "number": 50.5,
+            "password": "securepassword",
+            "percent": 85,
+            "radio": "Option B",
+            "range": 50,
+            "regex": "abcd1234",
+            "search": "Symfony Forms",
+            "slider": 60,
+            "tag": ["Symfony", "Forms", "JSON"],
+            "telephone": "+56912345678",
+            "textarea": "This is a long text.",
+            "text": "Sample text",
+            "time": "14:30:00",
+            "uri": "mailto:user@example.com",
+            "url": "https://example.com",
+            "uuid": "550e8400-e29b-41d4-a716-446655440000",
+            "week": "2025-W10"
+        }
+    }
+}

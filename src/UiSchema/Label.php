@@ -79,8 +79,8 @@ final class Label extends AbstractUiSchemaElement implements LabelInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        return new self($definition['text']);
+        return new static($definition['text']);
     }
 }

@@ -50,7 +50,7 @@ final class FormOptions extends ArrayObject implements FormOptionsInterface
     /**
      * {@inheritDoc}
      */
-    public function set(string $key, mixed $value): self
+    public function set(string $key, mixed $value): static
     {
         $this->offsetSet($key, $value);
 
@@ -74,7 +74,7 @@ final class FormOptions extends ArrayObject implements FormOptionsInterface
     /**
      * {@inheritDoc}
      */
-    public function setAttributes(FormAttributesInterface $attributes): self
+    public function setAttributes(FormAttributesInterface $attributes): static
     {
         $this->attributes = $attributes;
 
@@ -123,8 +123,8 @@ final class FormOptions extends ArrayObject implements FormOptionsInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $data): self
+    public static function fromArray(array $data): static
     {
-        return new self($data);
+        return new static($data);
     }
 }

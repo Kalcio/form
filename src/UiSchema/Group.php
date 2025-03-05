@@ -79,7 +79,7 @@ final class Group extends AbstractUiSchemaElement implements GroupInterface
     /**
      * {@inheritDoc}
      */
-    public function addElement(UiSchemaElementInterface $element): self
+    public function addElement(UiSchemaElementInterface $element): static
     {
         $this->elements[] = $element;
 
@@ -104,13 +104,13 @@ final class Group extends AbstractUiSchemaElement implements GroupInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
         $elements = [];
         foreach ($definition['elements'] as $element) {
             $elements[] = UiSchemaElementFactory::create($element);
         }
 
-        return new self($definition['label'], $elements);
+        return new static($definition['label'], $elements);
     }
 }

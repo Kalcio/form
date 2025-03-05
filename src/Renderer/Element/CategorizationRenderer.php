@@ -22,7 +22,7 @@ use InvalidArgumentException;
 /**
  * Renderer for categorization elements (tabs).
  */
-class CategorizationRenderer implements ElementRendererInterface
+final class CategorizationRenderer implements ElementRendererInterface
 {
     /**
      * {@inheritDoc}

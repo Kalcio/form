@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\NullSchemaInterface;
  *
  * This class represents a null schema.
  */
-class NullSchema extends AbstractPropertySchema implements NullSchemaInterface
+final class NullSchema extends AbstractPropertySchema implements NullSchemaInterface
 {
     /**
      * {@inheritDoc}
@@ -33,9 +33,9 @@ class NullSchema extends AbstractPropertySchema implements NullSchemaInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {

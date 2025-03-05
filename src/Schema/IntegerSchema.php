@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\IntegerSchemaInterface;
  *
  * This class represents an integer schema and provides integer-specific validations.
  */
-class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInterface
+final class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInterface
 {
     /**
      * The exclusive maximum value.
@@ -76,7 +76,7 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public function setExclusiveMaximum(int $exclusiveMaximum): self
+    public function setExclusiveMaximum(int $exclusiveMaximum): static
     {
         $this->exclusiveMaximum = $exclusiveMaximum;
         return $this;
@@ -93,7 +93,7 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public function setExclusiveMinimum(int $exclusiveMinimum): self
+    public function setExclusiveMinimum(int $exclusiveMinimum): static
     {
         $this->exclusiveMinimum = $exclusiveMinimum;
         return $this;
@@ -110,7 +110,7 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public function setMaximum(int $maximum): self
+    public function setMaximum(int $maximum): static
     {
         $this->maximum = $maximum;
         return $this;
@@ -127,7 +127,7 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public function setMinimum(int $minimum): self
+    public function setMinimum(int $minimum): static
     {
         $this->minimum = $minimum;
         return $this;
@@ -144,7 +144,7 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public function setMultipleOf(int $multipleOf): self
+    public function setMultipleOf(int $multipleOf): static
     {
         $this->multipleOf = $multipleOf;
         return $this;
@@ -183,9 +183,9 @@ class IntegerSchema extends AbstractPropertySchema implements IntegerSchemaInter
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {

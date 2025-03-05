@@ -28,9 +28,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the items defined in the schema.
      *
      * @param array $items
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setItems(array $items): self;
+    public function setItems(array $items): static;
 
     /**
      * Gets the maximum number of items on array properties.
@@ -44,9 +44,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the maximum number of items on array properties.
      *
      * @param int $maxItems
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaxItems(int $maxItems): self;
+    public function setMaxItems(int $maxItems): static;
 
     /**
      * Gets the minimum number of items on array properties.
@@ -60,9 +60,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the minimum number of items on array properties.
      *
      * @param int $minItems
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinItems(int $minItems): self;
+    public function setMinItems(int $minItems): static;
 
     /**
      * Gets the sub-schemas that at least one element in an array property must
@@ -78,9 +78,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * match.
      *
      * @param array $contains
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setContains(array $contains): self;
+    public function setContains(array $contains): static;
 
     /**
      * Gets the maximum times that the value of `getContains()` can be.
@@ -94,9 +94,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the maximum times that the value of `getContains()` can be.
      *
      * @param int $maxContains
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaxContains(int $maxContains): self;
+    public function setMaxContains(int $maxContains): static;
 
     /**
      * Gets the minimum times that the value of `getContains()` can be.
@@ -110,9 +110,9 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the minimum times that the value of `getContains()` can be.
      *
      * @param int $minContains
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinContains(int $minContains): self;
+    public function setMinContains(int $minContains): static;
 
     /**
      * Indicates if the values of a property must be all equals.
@@ -126,7 +126,7 @@ interface ArraySchemaInterface extends PropertySchemaInterface
      * Sets the unique items status of the property.
      *
      * @param bool $uniqueItems
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setUniqueItems(bool $uniqueItems = true): self;
+    public function setUniqueItems(bool $uniqueItems = true): static;
 }

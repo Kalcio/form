@@ -34,9 +34,9 @@ interface FormOptionsInterface extends ArrayAccess, JsonSerializable
      *
      * @param string $key
      * @param mixed $value
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function set(string $key, mixed $value): self;
+    public function set(string $key, mixed $value): static;
 
     /**
      * Gets the attributes of the form.
@@ -49,9 +49,9 @@ interface FormOptionsInterface extends ArrayAccess, JsonSerializable
      * Sets the attributes of the form.
      *
      * @param FormAttributesInterface $attributes
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setAttributes(FormAttributesInterface $attributes): self;
+    public function setAttributes(FormAttributesInterface $attributes): static;
 
     /**
      * Converts the Options to an array representation.
@@ -71,7 +71,7 @@ interface FormOptionsInterface extends ArrayAccess, JsonSerializable
      * Creates a FormOptions instance from an array.
      *
      * @param array $data The options data as an array.
-     * @return self The FormOptions instance.
+     * @return static The FormOptions instance.
      */
-    public static function fromArray(array $data): self;
+    public static function fromArray(array $data): static;
 }

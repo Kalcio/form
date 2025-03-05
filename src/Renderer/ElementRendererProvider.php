@@ -23,7 +23,7 @@ use Derafu\Form\Renderer\Element\VerticalLayoutRenderer;
 /**
  * Element renderer provider.
  */
-class ElementRendererProvider implements ElementRendererProviderInterface
+final class ElementRendererProvider implements ElementRendererProviderInterface
 {
     /**
      * {@inheritDoc}

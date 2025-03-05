@@ -44,9 +44,9 @@ interface FormDataInterface extends JsonSerializable
      *
      * @param string $propertyPath The property path (supports dot notation).
      * @param mixed $value The value to set.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function set(string $propertyPath, mixed $value): self;
+    public function set(string $propertyPath, mixed $value): static;
 
     /**
      * Gets all data as an associative array.
@@ -73,7 +73,7 @@ interface FormDataInterface extends JsonSerializable
      * Create a Data instance from an array.
      *
      * @param array $data The data values as an array.
-     * @return self The data instance.
+     * @return static The data instance.
      */
-    public static function fromArray(array $data): self;
+    public static function fromArray(array $data): static;
 }

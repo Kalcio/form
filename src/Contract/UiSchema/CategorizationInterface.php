@@ -30,9 +30,9 @@ interface CategorizationInterface extends FormUiSchemaInterface
      * Adds a category to the categorization.
      *
      * @param CategoryInterface $category The category to add.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function addCategory(CategoryInterface $category): self;
+    public function addCategory(CategoryInterface $category): static;
 
     /**
      * Gets the options of the categorization.

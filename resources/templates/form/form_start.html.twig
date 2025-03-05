@@ -26,6 +26,6 @@
 {% endfor %}
 
 <form{{ attr_string|raw }}>
-{% if method|upper != 'GET' and method|upper != 'POST' %}
-    <input type="hidden" name="_method" value="{{ method|upper }}">
+{% if form_attr.method|upper != 'GET' and form_attr.method|upper != 'POST' %}
+    <input type="hidden" name="_method" value="{{ form_attr.method|upper }}">
 {% endif %}

@@ -23,7 +23,7 @@ use InvalidArgumentException;
  *
  * This class handles the rendering of multiline text areas for longer text content.
  */
-class TextareaWidgetRenderer implements WidgetRendererInterface
+final class TextareaWidgetRenderer implements WidgetRendererInterface
 {
     /**
      * {@inheritDoc}

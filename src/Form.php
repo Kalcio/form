@@ -156,9 +156,9 @@ final class Form implements FormInterface
     /**
      * {@inheritDoc}
      */
-    public function withData(FormDataInterface $data): self
+    public function withData(FormDataInterface $data): static
     {
-        return new self($this->schema, $this->uischema, $data);
+        return new static($this->schema, $this->uischema, $data);
     }
 
     /**
@@ -198,13 +198,27 @@ final class Form implements FormInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public function toJsonFormDefinition(): array
+    {
+        $array = $this->toArray();
+
+        return [
+            'schema' => $array['schema'],
+            'uischema' => $array['uischema'],
+            'data' => $array['data'],
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function fromArray(array $definition): static
     {
         $schema = FormSchema::fromArray($definition['schema'] ?? []);
         $uischema = FormUiSchemaFactory::create($definition['uischema'] ?? []);
         $data = isset($definition['data']) ? FormData::fromArray($definition['data']) : null;
         $options = FormOptions::fromArray($definition['options'] ?? []);
 
-        return new self($schema, $uischema, $data, $options);
+        return new static($schema, $uischema, $data, $options);
     }
 }

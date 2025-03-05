@@ -19,7 +19,7 @@ use Derafu\Form\Renderer\Widget\TextareaWidgetRenderer;
 /**
  * Widget renderer provider.
  */
-class WidgetRendererProvider implements WidgetRendererProviderInterface
+final class WidgetRendererProvider implements WidgetRendererProviderInterface
 {
     /**
      * {@inheritDoc}

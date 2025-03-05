@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\BooleanSchemaInterface;
  *
  * This class represents a boolean schema.
  */
-class BooleanSchema extends AbstractPropertySchema implements BooleanSchemaInterface
+final class BooleanSchema extends AbstractPropertySchema implements BooleanSchemaInterface
 {
     /**
      * {@inheritDoc}
@@ -33,9 +33,9 @@ class BooleanSchema extends AbstractPropertySchema implements BooleanSchemaInter
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {

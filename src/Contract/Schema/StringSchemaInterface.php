@@ -29,9 +29,9 @@ interface StringSchemaInterface extends PropertySchemaInterface
      * Sets the format of the property.
      *
      * @param string $format
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setFormat(string $format): self;
+    public function setFormat(string $format): static;
 
     /**
      * Gets the maximum length of a string.
@@ -45,9 +45,9 @@ interface StringSchemaInterface extends PropertySchemaInterface
      * Sets the maximum length of a string.
      *
      * @param int $maxLength
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMaxLength(int $maxLength): self;
+    public function setMaxLength(int $maxLength): static;
 
     /**
      * Gets the minimum length of a string.
@@ -61,9 +61,9 @@ interface StringSchemaInterface extends PropertySchemaInterface
      * Sets the minimum length of a string.
      *
      * @param int $minLength
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setMinLength(int $minLength): self;
+    public function setMinLength(int $minLength): static;
 
     /**
      * Gets the pattern that a string must match.
@@ -77,7 +77,7 @@ interface StringSchemaInterface extends PropertySchemaInterface
      * Sets the pattern that a string must match.
      *
      * @param string $pattern
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setPattern(string $pattern): self;
+    public function setPattern(string $pattern): static;
 }

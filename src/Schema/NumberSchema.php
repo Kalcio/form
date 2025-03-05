@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\NumberSchemaInterface;
  *
  * This class represents a number schema and provides number-specific validations.
  */
-class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterface
+final class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterface
 {
     /**
      * The exclusive maximum value.
@@ -76,7 +76,7 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setExclusiveMaximum(int|float $exclusiveMaximum): self
+    public function setExclusiveMaximum(int|float $exclusiveMaximum): static
     {
         $this->exclusiveMaximum = $exclusiveMaximum;
         return $this;
@@ -93,7 +93,7 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setExclusiveMinimum(int|float $exclusiveMinimum): self
+    public function setExclusiveMinimum(int|float $exclusiveMinimum): static
     {
         $this->exclusiveMinimum = $exclusiveMinimum;
         return $this;
@@ -110,7 +110,7 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setMaximum(int|float $maximum): self
+    public function setMaximum(int|float $maximum): static
     {
         $this->maximum = $maximum;
         return $this;
@@ -127,7 +127,7 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setMinimum(int|float $minimum): self
+    public function setMinimum(int|float $minimum): static
     {
         $this->minimum = $minimum;
         return $this;
@@ -144,7 +144,7 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setMultipleOf(int|float $multipleOf): self
+    public function setMultipleOf(int|float $multipleOf): static
     {
         $this->multipleOf = $multipleOf;
         return $this;
@@ -183,9 +183,9 @@ class NumberSchema extends AbstractPropertySchema implements NumberSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {

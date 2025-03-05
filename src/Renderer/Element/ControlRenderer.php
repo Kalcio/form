@@ -25,7 +25,7 @@ use InvalidArgumentException;
  *
  * Controls are UI elements that render form fields (inputs, selects, etc).
  */
-class ControlRenderer implements ElementRendererInterface
+final class ControlRenderer implements ElementRendererInterface
 {
     /**
      * {@inheritDoc}

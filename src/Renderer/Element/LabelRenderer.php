@@ -23,7 +23,7 @@ use InvalidArgumentException;
  *
  * Label elements are used to display static text in a form.
  */
-class LabelRenderer implements ElementRendererInterface
+final class LabelRenderer implements ElementRendererInterface
 {
     /**
      * {@inheritDoc}

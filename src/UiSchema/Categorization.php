@@ -76,7 +76,7 @@ final class Categorization extends AbstractUiSchemaElement implements Categoriza
      * @param CategoryInterface $element
      * @return self
      */
-    public function addElement(UiSchemaElementInterface $element): self
+    public function addElement(UiSchemaElementInterface $element): static
     {
         assert($element instanceof CategoryInterface);
 
@@ -96,7 +96,7 @@ final class Categorization extends AbstractUiSchemaElement implements Categoriza
     /**
      * {@inheritDoc}
      */
-    public function addCategory(CategoryInterface $category): self
+    public function addCategory(CategoryInterface $category): static
     {
         $this->categories[] = $category;
 
@@ -129,7 +129,7 @@ final class Categorization extends AbstractUiSchemaElement implements Categoriza
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
         $categories = [];
 
@@ -137,6 +137,6 @@ final class Categorization extends AbstractUiSchemaElement implements Categoriza
             $categories[] = Category::fromArray($categoryDefinition);
         }
 
-        return new self($categories, $definition['options'] ?? []);
+        return new static($categories, $definition['options'] ?? []);
     }
 }

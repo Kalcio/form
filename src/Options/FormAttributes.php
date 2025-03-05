@@ -116,7 +116,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setAcceptCharset(string $acceptCharset): self
+    public function setAcceptCharset(string $acceptCharset): static
     {
         $this->acceptCharset = $acceptCharset;
 
@@ -134,7 +134,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setAction(string $action): self
+    public function setAction(string $action): static
     {
         $this->action = $action;
 
@@ -152,7 +152,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setAutocomplete(bool $autocomplete = true): self
+    public function setAutocomplete(bool $autocomplete = true): static
     {
         $this->autocomplete = $autocomplete;
 
@@ -170,7 +170,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setEnctype(string $enctype): self
+    public function setEnctype(string $enctype): static
     {
         $this->enctype = strtolower($enctype);
         $this->method = 'post';
@@ -189,7 +189,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -207,7 +207,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setMethod(string $method): self
+    public function setMethod(string $method): static
     {
         $this->method = strtolower($method);
 
@@ -229,7 +229,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setName(?string $name): self
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
@@ -247,7 +247,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setNovalidate(bool $novalidate = true): self
+    public function setNovalidate(bool $novalidate = true): static
     {
         $this->novalidate = $novalidate;
 
@@ -265,7 +265,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setRel(string $rel): self
+    public function setRel(string $rel): static
     {
         $this->rel = $rel;
 
@@ -283,7 +283,7 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public function setTarget(string $target): self
+    public function setTarget(string $target): static
     {
         $this->target = strtolower($target);
 
@@ -336,9 +336,9 @@ final class FormAttributes implements FormAttributesInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $attributes): self
+    public static function fromArray(array $attributes): static
     {
-        return new self(
+        return new static(
             $attributes['accept-charset'] ?? self::DEFAULT_ACCEPT_CHARSET,
             $attributes['action'] ?? self::DEFAULT_ACTION,
             $attributes['autocomplete'] ?? self::DEFAULT_AUTOCOMPLETE,

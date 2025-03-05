@@ -12,10 +12,9 @@ declare(strict_types=1);
 
 namespace Derafu\Form\Schema;
 
+use Derafu\Form\Abstract\AbstractPropertySchema;
 use Derafu\Form\Contract\Schema\FormSchemaInterface;
 use Derafu\Form\Contract\Schema\PropertySchemaInterface;
-use ReflectionClass;
-use ReflectionProperty;
 
 /**
  * Implementation of SchemaInterface.
@@ -23,8 +22,10 @@ use ReflectionProperty;
  * This class represents the root schema of a form and adds support for
  * definitions section, which can be used for schema references.
  */
-class FormSchema extends ObjectSchema implements FormSchemaInterface
+final class FormSchema extends AbstractPropertySchema implements FormSchemaInterface
 {
+    use ObjectSchemaTrait;
+
     /**
      * The definitions section used for schema references.
      *
@@ -43,7 +44,7 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setDefinitions(array $definitions): self
+    public function setDefinitions(array $definitions): static
     {
         $this->definitions = $definitions;
 
@@ -57,7 +58,7 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
      * @param PropertySchemaInterface $schema The schema to add as a definition.
      * @return self The current instance.
      */
-    public function addDefinition(string $name, PropertySchemaInterface $schema): self
+    public function addDefinition(string $name, PropertySchemaInterface $schema): static
     {
         $this->definitions[$name] = $schema;
 
@@ -70,6 +71,37 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
     public function toArray(): array
     {
         $array = parent::toArray();
+
+        // Convert properties to array.
+        $propertiesArray = [];
+        foreach ($this->properties as $name => $property) {
+            $propertiesArray[$name] = $property->toArray();
+        }
+
+        if (!empty($propertiesArray)) {
+            $array['properties'] = $propertiesArray;
+        }
+
+        if (!empty($this->required)) {
+            $array['required'] = $this->required;
+        }
+
+        if ($this->dependentRequired !== null) {
+            $array['dependentRequired'] = $this->dependentRequired;
+        }
+
+        if ($this->maxProperties !== null) {
+            $array['maxProperties'] = $this->maxProperties;
+        }
+
+        if ($this->minProperties !== null) {
+            $array['minProperties'] = $this->minProperties;
+        }
+
+        // Only include additionalProperties if it's not the default (true).
+        if ($this->additionalProperties !== true) {
+            $array['additionalProperties'] = $this->additionalProperties;
+        }
 
         // Convert definitions to array.
         if (!empty($this->definitions)) {
@@ -87,19 +119,121 @@ class FormSchema extends ObjectSchema implements FormSchemaInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
-        // First set all the parent properties by calling the parent fromArray.
-        $parentSchema = parent::fromArray($definition);
+        // Set common properties.
+        if (isset($definition['title'])) {
+            $schema->setTitle($definition['title']);
+        }
 
-        // Copy all properties from the parent schema.
-        $reflectionClass = new ReflectionClass(ObjectSchema::class);
-        $properties = $reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED);
-        foreach ($properties as $property) {
-            $property->setAccessible(true);
-            $property->setValue($schema, $property->getValue($parentSchema));
+        if (isset($definition['description'])) {
+            $schema->setDescription($definition['description']);
+        }
+
+        if (isset($definition['default'])) {
+            $schema->setDefault($definition['default']);
+        }
+
+        if (isset($definition['deprecated'])) {
+            $schema->setDeprecated($definition['deprecated']);
+        }
+
+        if (isset($definition['examples'])) {
+            $schema->setExamples($definition['examples']);
+        }
+
+        if (isset($definition['readOnly'])) {
+            $schema->setReadOnly($definition['readOnly']);
+        }
+
+        if (isset($definition['writeOnly'])) {
+            $schema->setWriteOnly($definition['writeOnly']);
+        }
+
+        if (isset($definition['enum'])) {
+            $schema->setEnum($definition['enum']);
+        }
+
+        if (isset($definition['const'])) {
+            $schema->setConst($definition['const']);
+        }
+
+        if (isset($definition['allOf'])) {
+            $schema->setAllOf($definition['allOf']);
+        }
+
+        if (isset($definition['anyOf'])) {
+            $schema->setAnyOf($definition['anyOf']);
+        }
+
+        if (isset($definition['oneOf'])) {
+            $schema->setOneOf($definition['oneOf']);
+        }
+
+        // Set object-specific options.
+
+        if (isset($definition['required'])) {
+            $schema->setRequired($definition['required']);
+        }
+
+        if (isset($definition['dependentRequired'])) {
+            $schema->setDependentRequired($definition['dependentRequired']);
+        }
+
+        if (isset($definition['maxProperties'])) {
+            $schema->setMaxProperties($definition['maxProperties']);
+        }
+
+        if (isset($definition['minProperties'])) {
+            $schema->setMinProperties($definition['minProperties']);
+        }
+
+        if (isset($definition['additionalProperties'])) {
+            $schema->setAdditionalProperties($definition['additionalProperties']);
+        }
+
+        // Set object-specific properties.
+        if (isset($definition['properties']) && is_array($definition['properties'])) {
+            foreach ($definition['properties'] as $propName => $propDefinition) {
+                // Determine the type of the property.
+                $type = $propDefinition['type'] ?? 'string';
+
+                // Create the appropriate property schema based on type.
+                $propSchema = null;
+                $propDefinition = array_merge([
+                    'name' => $propName,
+                ], $propDefinition);
+                switch ($type) {
+                    case 'string':
+                        $propSchema = StringSchema::fromArray($propDefinition);
+                        break;
+                    case 'number':
+                        $propSchema = NumberSchema::fromArray($propDefinition);
+                        break;
+                    case 'integer':
+                        $propSchema = IntegerSchema::fromArray($propDefinition);
+                        break;
+                    case 'array':
+                        $propSchema = ArraySchema::fromArray($propDefinition);
+                        break;
+                    case 'object':
+                        $propSchema = self::fromArray($propDefinition);
+                        break;
+                    case 'boolean':
+                        $propSchema = BooleanSchema::fromArray($propDefinition);
+                        break;
+                    case 'null':
+                        $propSchema = NullSchema::fromArray($propDefinition);
+                        break;
+                    default:
+                        // Default to string for unknown types.
+                        $propSchema = StringSchema::fromArray($propDefinition);
+                }
+
+                $schema->addProperty($propSchema);
+            }
         }
 
         // Set definitions.

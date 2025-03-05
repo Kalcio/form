@@ -5,7 +5,7 @@
 #}
 
 {% if help %}
-    {% set help_id = field.property.name ~ 'Help' %}
+    {% set help_id = field.property.name ~ '_help' %}
     {% set help_attr = options.help_attr|default({}) %}
     {% set help_class = help_attr.class|default('') %}
 

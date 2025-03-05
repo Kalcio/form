@@ -45,6 +45,26 @@ use Derafu\Form\Schema\FormSchema;
 use Derafu\Form\Schema\IntegerSchema;
 use Derafu\Form\Schema\NumberSchema;
 use Derafu\Form\Schema\StringSchema;
+use Derafu\Form\Type\BooleanType;
+use Derafu\Form\Type\ChoiceType;
+use Derafu\Form\Type\ColorType;
+use Derafu\Form\Type\DateType;
+use Derafu\Form\Type\EmailType;
+use Derafu\Form\Type\FloatType;
+use Derafu\Form\Type\IntegerType;
+use Derafu\Form\Type\Ipv4Type;
+use Derafu\Form\Type\Ipv6Type;
+use Derafu\Form\Type\MonthType;
+use Derafu\Form\Type\TextareaType;
+use Derafu\Form\Type\TextType;
+use Derafu\Form\Type\TimeType;
+use Derafu\Form\Type\TypeProvider;
+use Derafu\Form\Type\TypeRegistry;
+use Derafu\Form\Type\TypeResolver;
+use Derafu\Form\Type\UriType;
+use Derafu\Form\Type\UrlType;
+use Derafu\Form\Type\UuidType;
+use Derafu\Form\Type\WeekType;
 use Derafu\Form\UiSchema\Categorization;
 use Derafu\Form\UiSchema\Category;
 use Derafu\Form\UiSchema\Control;
@@ -94,19 +114,46 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(FormTwigExtension::class)]
 #[CoversClass(WidgetRendererProvider::class)]
 #[CoversClass(InputWidgetRenderer::class)]
-class ExamplesTest extends TestCase
+#[CoversClass(BooleanType::class)]
+#[CoversClass(ChoiceType::class)]
+#[CoversClass(ColorType::class)]
+#[CoversClass(DateType::class)]
+#[CoversClass(EmailType::class)]
+#[CoversClass(FloatType::class)]
+#[CoversClass(IntegerType::class)]
+#[CoversClass(Ipv4Type::class)]
+#[CoversClass(Ipv6Type::class)]
+#[CoversClass(MonthType::class)]
+#[CoversClass(TextType::class)]
+#[CoversClass(TextareaType::class)]
+#[CoversClass(TimeType::class)]
+#[CoversClass(TypeProvider::class)]
+#[CoversClass(TypeRegistry::class)]
+#[CoversClass(TypeResolver::class)]
+#[CoversClass(UriType::class)]
+#[CoversClass(UrlType::class)]
+#[CoversClass(UuidType::class)]
+#[CoversClass(WeekType::class)]
+
+final class ExamplesTest extends TestCase
 {
     private FormRendererInterface $renderer;
 
     protected function setUp(): void
     {
         $this->renderer = FormRendererFactory::create();
+
+        Example::setFormFactory(
+            new FormFactory(
+                new TypeResolver(new TypeRegistry(new TypeProvider()))
+            )
+        );
     }
 
     #[DataProvider('provideExamples')]
     public function testCreateExamples(Example $example): void
     {
-        $jsonForms = $example->getJsonFormsDefinition();
+        $jsonForms = $example->getForm()->toJsonFormDefinition();
         $this->assertNotEmpty($jsonForms);
 
         $form = $example->getForm();

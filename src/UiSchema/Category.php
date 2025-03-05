@@ -39,17 +39,26 @@ final class Category extends AbstractUiSchemaElement implements CategoryInterfac
     private array $elements;
 
     /**
+     * The rule for the category.
+     *
+     * @var array|null
+     */
+    private ?array $rule;
+
+    /**
      * Constructor.
      *
      * @param string $label The label text.
      * @param array<UiSchemaElementInterface> $elements The elements of the category.
+     * @param array|null $rule The rule for the category.
      */
-    public function __construct(string $label, array $elements = [])
+    public function __construct(string $label, array $elements = [], ?array $rule = null)
     {
         parent::__construct([]);
 
         $this->label = $label;
         $this->elements = $elements;
+        $this->rule = $rule;
     }
 
     /**
@@ -79,7 +88,7 @@ final class Category extends AbstractUiSchemaElement implements CategoryInterfac
     /**
      * {@inheritDoc}
      */
-    public function addElement(UiSchemaElementInterface $element): self
+    public function addElement(UiSchemaElementInterface $element): static
     {
         $this->elements[] = $element;
 
@@ -91,7 +100,7 @@ final class Category extends AbstractUiSchemaElement implements CategoryInterfac
      */
     public function toArray(): array
     {
-        return [
+        $array = [
             'type' => $this->getType(),
             'label' => $this->label,
             'elements' => array_map(
@@ -99,18 +108,28 @@ final class Category extends AbstractUiSchemaElement implements CategoryInterfac
                 $this->elements
             ),
         ];
+
+        if ($this->rule !== null) {
+            $array['rule'] = $this->rule;
+        }
+
+        return $array;
     }
 
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
         $elements = [];
         foreach ($definition['elements'] as $element) {
             $elements[] = UiSchemaElementFactory::create($element);
         }
 
-        return new self($definition['label'], $elements);
+        return new static(
+            $definition['label'],
+            $elements,
+            $definition['rule'] ?? null
+        );
     }
 }

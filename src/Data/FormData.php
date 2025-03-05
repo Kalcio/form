@@ -71,7 +71,7 @@ final class FormData implements FormDataInterface
     /**
      * {@inheritDoc}
      */
-    public function set(string $propertyPath, mixed $value): self
+    public function set(string $propertyPath, mixed $value): static
     {
         $parts = $this->parsePath($propertyPath);
         $current = &$this->data;
@@ -149,8 +149,8 @@ final class FormData implements FormDataInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $data): self
+    public static function fromArray(array $data): static
     {
-        return new self($data);
+        return new static($data);
     }
 }

@@ -22,7 +22,7 @@ use InvalidArgumentException;
 /**
  * Renderer for vertical layout elements.
  */
-class VerticalLayoutRenderer implements ElementRendererInterface
+final class VerticalLayoutRenderer implements ElementRendererInterface
 {
     /**
      * {@inheritDoc}

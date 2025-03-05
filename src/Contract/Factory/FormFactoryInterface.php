@@ -30,5 +30,5 @@ interface FormFactoryInterface
      * @return FormInterface A new form instance.
      * @throws InvalidArgumentException If the definition is invalid.
      */
-    public static function create(array $definition): FormInterface;
+    public function create(array $definition): FormInterface;
 }

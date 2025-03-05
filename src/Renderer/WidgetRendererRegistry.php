@@ -60,7 +60,7 @@ final class WidgetRendererRegistry implements WidgetRendererRegistryInterface
     public function registerRenderer(
         string $widgetType,
         WidgetRendererInterface $renderer
-    ): self {
+    ): static {
         $this->renderers[$widgetType] = $renderer;
 
         if (!isset($this->defaultRenderer)) {

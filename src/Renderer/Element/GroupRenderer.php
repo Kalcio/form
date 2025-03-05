@@ -22,7 +22,7 @@ use InvalidArgumentException;
 /**
  * Renderer for group elements.
  */
-class GroupRenderer implements ElementRendererInterface
+final class GroupRenderer implements ElementRendererInterface
 {
     /**
      * {@inheritDoc}

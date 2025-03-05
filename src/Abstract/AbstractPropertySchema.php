@@ -134,7 +134,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -152,7 +152,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
 
@@ -170,7 +170,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setDescription(string $description): self
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -188,7 +188,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setDefault(mixed $default): self
+    public function setDefault(mixed $default): static
     {
         $this->default = $default;
 
@@ -206,7 +206,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setDeprecated(bool $deprecated = true): self
+    public function setDeprecated(bool $deprecated = true): static
     {
         $this->deprecated = $deprecated;
 
@@ -224,7 +224,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setExamples(array $examples): self
+    public function setExamples(array $examples): static
     {
         $this->examples = $examples;
 
@@ -242,7 +242,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setReadOnly(bool $readOnly = true): self
+    public function setReadOnly(bool $readOnly = true): static
     {
         $this->readOnly = $readOnly;
 
@@ -260,7 +260,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setWriteOnly(bool $writeOnly = true): self
+    public function setWriteOnly(bool $writeOnly = true): static
     {
         $this->writeOnly = $writeOnly;
 
@@ -283,7 +283,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setEnum(array $enum): self
+    public function setEnum(array $enum): static
     {
         $this->enum = $enum;
 
@@ -301,7 +301,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setConst(mixed $const): self
+    public function setConst(mixed $const): static
     {
         $this->const = $const;
 
@@ -319,7 +319,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setAllOf(array $allOf): self
+    public function setAllOf(array $allOf): static
     {
         $this->allOf = $allOf;
 
@@ -337,7 +337,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setAnyOf(array $anyOf): self
+    public function setAnyOf(array $anyOf): static
     {
         $this->anyOf = $anyOf;
 
@@ -355,7 +355,7 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setOneOf(array $oneOf): self
+    public function setOneOf(array $oneOf): static
     {
         $this->oneOf = $oneOf;
 
@@ -442,5 +442,5 @@ abstract class AbstractPropertySchema implements PropertySchemaInterface
     /**
      * {@inheritDoc}
      */
-    abstract public static function fromArray(array $definition): self;
+    abstract public static function fromArray(array $definition): static;
 }

@@ -25,7 +25,7 @@ interface ElementsAwareInterface
      * Adds an element to the category.
      *
      * @param UiSchemaElementInterface $element The element to add.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function addElement(UiSchemaElementInterface $element): self;
+    public function addElement(UiSchemaElementInterface $element): static;
 }

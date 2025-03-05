@@ -27,12 +27,12 @@ interface ElementRendererRegistryInterface
      *
      * @param string $elementType The element type to register the renderer for.
      * @param ElementRendererInterface $renderer The renderer to register.
-     * @return self Fluent interface.
+     * @return static Fluent interface.
      */
     public function registerRenderer(
         string $elementType,
         ElementRendererInterface $renderer
-    ): self;
+    ): static;
 
     /**
      * Gets the renderer for an element type.

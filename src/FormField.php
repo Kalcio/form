@@ -79,7 +79,7 @@ final class FormField implements FormFieldInterface
     /**
      * {@inheritDoc}
      */
-    public function setRequired(bool $required = true): self
+    public function setRequired(bool $required = true): static
     {
         $this->required = $required;
 
@@ -97,7 +97,7 @@ final class FormField implements FormFieldInterface
     /**
      * {@inheritDoc}
      */
-    public function setRendered(bool $rendered = true): self
+    public function setRendered(bool $rendered = true): static
     {
         $this->rendered = $rendered;
 

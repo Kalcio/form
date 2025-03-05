@@ -81,9 +81,9 @@ interface FormInterface extends JsonSerializable
      * rather than modifying the current one.
      *
      * @param FormDataInterface $data The data to use for the new form instance.
-     * @return self A new form instance with the updated data.
+     * @return static A new form instance with the updated data.
      */
-    public function withData(FormDataInterface $data): self;
+    public function withData(FormDataInterface $data): static;
 
     /**
      * Converts the Form to an array representation.
@@ -100,12 +100,19 @@ interface FormInterface extends JsonSerializable
     public function toJson(): string;
 
     /**
+     * Gets the JSON Forms definition for this form.
+     *
+     * @return array JSON Forms definition (schema, uischema, data).
+     */
+    public function toJsonFormDefinition(): array;
+
+    /**
      * Creates a form from an array definition.
      *
      * The array should contain 'schema', 'uischema', and optionally 'data' keys.
      *
      * @param array $definition The array definition of the form.
-     * @return self A new form instance based on the provided definition.
+     * @return static A new form instance based on the provided definition.
      */
-    public static function fromArray(array $definition): self;
+    public static function fromArray(array $definition): static;
 }

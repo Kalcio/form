@@ -28,7 +28,7 @@ interface FormSchemaInterface extends ObjectSchemaInterface
      * Sets the definitions section used for schema references.
      *
      * @param array<string,PropertySchemaInterface> $definitions
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setDefinitions(array $definitions): self;
+    public function setDefinitions(array $definitions): static;
 }

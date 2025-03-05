@@ -60,7 +60,7 @@ final class ElementRendererRegistry implements ElementRendererRegistryInterface
     /**
      * {@inheritDoc}
      */
-    public function registerRenderer(string $elementType, ElementRendererInterface $renderer): self
+    public function registerRenderer(string $elementType, ElementRendererInterface $renderer): static
     {
         $this->renderers[$elementType] = $renderer;
 

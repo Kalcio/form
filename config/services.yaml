@@ -96,3 +96,17 @@ services:
             $renderers: '@Derafu\Form\Renderer\WidgetRendererProvider'
 
     Derafu\Form\Renderer\WidgetRendererProvider: ~
+
+    Derafu\Form\Contract\Factory\FormFactoryInterface:
+        class: Derafu\Form\Factory\FormFactory
+
+    Derafu\Form\Contract\Type\TypeResolverInterface:
+        class: Derafu\Form\Type\TypeResolver
+
+    Derafu\Form\Contract\Type\TypeRegistryInterface:
+        class: Derafu\Form\Type\TypeRegistry
+        arguments:
+            $types: '@Derafu\Form\Contract\Type\TypeProviderInterface'
+
+    Derafu\Form\Contract\Type\TypeProviderInterface:
+        class: Derafu\Form\Type\TypeProvider

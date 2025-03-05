@@ -27,12 +27,12 @@ interface WidgetRendererRegistryInterface
      *
      * @param string $widgetType The widget type to register the renderer for.
      * @param WidgetRendererInterface $renderer The renderer to register.
-     * @return self Fluent interface.
+     * @return static Fluent interface.
      */
     public function registerRenderer(
         string $widgetType,
         WidgetRendererInterface $renderer
-    ): self;
+    ): static;
 
     /**
      * Gets the renderer for a widget type.

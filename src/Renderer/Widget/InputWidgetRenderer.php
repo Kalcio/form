@@ -21,7 +21,7 @@ use InvalidArgumentException;
 /**
  * Renderer for input widgets.
  */
-class InputWidgetRenderer implements WidgetRendererInterface
+final class InputWidgetRenderer implements WidgetRendererInterface
 {
     /**
      * Constructor.

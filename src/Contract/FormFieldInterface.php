@@ -51,9 +51,9 @@ interface FormFieldInterface
      * Sets the required state of the field.
      *
      * @param bool $required True if the field is required, false otherwise.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setRequired(bool $required = true): self;
+    public function setRequired(bool $required = true): static;
 
     /**
      * Checks if the field has been rendered.
@@ -66,7 +66,7 @@ interface FormFieldInterface
      * Sets the rendered state of the field.
      *
      * @param bool $rendered True if the field has been rendered, false otherwise.
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setRendered(bool $rendered = true): self;
+    public function setRendered(bool $rendered = true): static;
 }

@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\ExamplesForm;
 
+use Derafu\Form\Contract\Factory\FormFactoryInterface;
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Factory\FormFactory;
 use Derafu\Routing\Exception\RouteNotFoundException;
 
 /**
@@ -25,6 +25,13 @@ use Derafu\Routing\Exception\RouteNotFoundException;
  */
 final class Example
 {
+    /**
+     * Form factory.
+     *
+     * @var FormFactoryInterface
+     */
+    private static FormFactoryInterface $formFactory;
+
     /**
      * Directory containing the example JSON files.
      */
@@ -38,12 +45,95 @@ final class Example
     private array $data;
 
     /**
+     * Cached form instance.
+     *
+     * @var FormInterface
+     */
+    private FormInterface $form;
+
+    /**
+     * Cached previous example.
+     *
+     * @var Example|false
+     */
+    private Example|false $previous;
+
+    /**
+     * Cached next example.
+     *
+     * @var Example|false
+     */
+    private Example|false $next;
+
+    /**
      * Constructor.
      *
      * @param string $file Path to the example JSON file.
      */
     public function __construct(private readonly string $file)
     {
+    }
+
+    /**
+     * Get the raw data from the example JSON file.
+     *
+     * Results are cached after the first call.
+     *
+     * @return array The raw example data.
+     */
+    public function getData(): array
+    {
+        if (!isset($this->data)) {
+            $this->data = json_decode(file_get_contents($this->file), true);
+        }
+
+        return $this->data;
+    }
+
+    /**
+     * Create a form instance from the example definition.
+     *
+     * @return FormInterface The instantiated form.
+     */
+    public function getForm(): FormInterface
+    {
+        if (!isset($this->form)) {
+            $this->form = self::$formFactory->create($this->getData()['form']);
+        }
+
+        return $this->form;
+    }
+
+    /**
+     * Get the previous example in numerical order.
+     *
+     * @return Example|null The previous example or `null` if this is the first.
+     */
+    public function getPrevious(): ?Example
+    {
+        if (!isset($this->previous)) {
+            $previous = self::findByNumber($this->getNumber() - 1);
+
+            $this->previous = $previous === null ? false : $previous;
+        }
+
+        return $this->previous === false ? null : $this->previous;
+    }
+
+    /**
+     * Get the next example in numerical order.
+     *
+     * @return Example|null The next example or `null` if this is the last.
+     */
+    public function getNext(): ?Example
+    {
+        if (!isset($this->next)) {
+            $next = self::findByNumber($this->getNumber() + 1);
+
+            $this->next = $next === null ? false : $next;
+        }
+
+        return $this->next === false ? null : $this->next;
     }
 
     /**
@@ -123,90 +213,17 @@ final class Example
     }
 
     /**
-     * Create a form instance from the example definition.
-     *
-     * @return FormInterface The instantiated form.
-     */
-    public function getForm(): FormInterface
-    {
-        return FormFactory::create($this->getData()['form']);
-    }
-
-    /**
-     * Get the raw data from the example JSON file.
-     *
-     * Results are cached after the first call.
-     *
-     * @return array The raw example data.
-     */
-    public function getData(): array
-    {
-        if (!isset($this->data)) {
-            $this->data = json_decode(file_get_contents($this->file), true);
-        }
-
-        return $this->data;
-    }
-
-    /**
-     * Get the JSON Forms definition for this example.
-     *
-     * This transforms the internal form representation to the JSON Forms format
-     * that can be rendered by JSON Forms libraries.
-     *
-     * @return array JSON Forms definition (schema, uischema, data).
-     */
-    public function getJsonFormsDefinition(): array
-    {
-        $data = $this->getData();
-
-        if ($data['meta']['normalize'] ?? true) {
-            // TODO: Change to a JSON Forms transformer.
-            $jsonForms = $this->getForm()->toArray();
-        } else {
-            $jsonForms = [];
-            foreach (['schema', 'uischema', 'data'] as $key) {
-                if (!empty($data['form'][$key])) {
-                    $jsonForms[$key] = $data['form'][$key];
-                }
-            }
-        }
-
-        return $jsonForms;
-    }
-
-    /**
-     * Get the previous example in numerical order.
-     *
-     * @return Example|null The previous example or `null` if this is the first.
-     */
-    public function getPrevious(): ?Example
-    {
-        return self::findByNumber($this->getNumber() - 1);
-    }
-
-    /**
-     * Get the next example in numerical order.
-     *
-     * @return Example|null The next example or `null` if this is the last.
-     */
-    public function getNext(): ?Example
-    {
-        return self::findByNumber($this->getNumber() + 1);
-    }
-
-    /**
      * Find an example by its code.
      *
      * @param string $id The example code to find.
-     * @return self The found example.
+     * @return static The found example.
      * @throws RouteNotFoundException If no example with the given code exists.
      */
-    public static function find(string $id): self
+    public static function find(string $id): static
     {
         $files = glob(sprintf(
             '%s/[0-9][0-9][0-9]_%s.json',
-            self::EXAMPLES_DIR,
+            static::EXAMPLES_DIR,
             $id
         ));
 
@@ -214,20 +231,20 @@ final class Example
             throw new RouteNotFoundException('/examples/' . $id);
         }
 
-        return new self($files[0]);
+        return new static($files[0]);
     }
 
     /**
      * Find an example by its numerical order.
      *
      * @param int $number The example number to find.
-     * @return self|null The found example or `null` if none exists.
+     * @return static|null The found example or `null` if none exists.
      */
-    public static function findByNumber(int $number): ?self
+    public static function findByNumber(int $number): ?static
     {
         $files = glob(sprintf(
             '%s/%03d_*.json',
-            self::EXAMPLES_DIR,
+            static::EXAMPLES_DIR,
             $number
         ));
 
@@ -235,7 +252,7 @@ final class Example
             return null;
         }
 
-        return new self($files[0]);
+        return new static($files[0]);
     }
 
     /**
@@ -253,5 +270,15 @@ final class Example
         }
 
         return $examples;
+    }
+
+    /**
+     * Set the form factory.
+     *
+     * @param FormFactoryInterface $formFactory The form factory.
+     */
+    public static function setFormFactory(FormFactoryInterface $formFactory): void
+    {
+        self::$formFactory = $formFactory;
     }
 }

@@ -32,9 +32,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property name.
      *
      * @param string $name
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setName(string $name): self;
+    public function setName(string $name): static;
 
     /**
      * A preferably short description about the purpose of the property.
@@ -48,9 +48,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property title.
      *
      * @param string $title
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setTitle(string $title): self;
+    public function setTitle(string $title): static;
 
     /**
      * An explanation about the purpose of the property.
@@ -64,9 +64,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property description.
      *
      * @param string $description
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setDescription(string $description): self;
+    public function setDescription(string $description): static;
 
     /**
      * Supply a default value associated with the property.
@@ -80,9 +80,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property default value.
      *
      * @param mixed $default
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setDefault(mixed $default): self;
+    public function setDefault(mixed $default): static;
 
     /**
      * Indicates that users should refrain from using the property.
@@ -96,9 +96,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property deprecated status.
      *
      * @param bool $deprecated
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setDeprecated(bool $deprecated = true): self;
+    public function setDeprecated(bool $deprecated = true): static;
 
     /**
      * Provide sample values associated with a particular property, for the
@@ -113,9 +113,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property examples.
      *
      * @param array $examples
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setExamples(array $examples): self;
+    public function setExamples(array $examples): static;
 
     /**
      * Indicates that the value of the property is managed exclusively by the
@@ -131,9 +131,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property read-only status.
      *
      * @param bool $readOnly
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setReadOnly(bool $readOnly = true): self;
+    public function setReadOnly(bool $readOnly = true): static;
 
     /**
      * Indicates that the value is never present when the instance is retrieved
@@ -148,9 +148,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the property write-only status.
      *
      * @param bool $writeOnly
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setWriteOnly(bool $writeOnly = true): self;
+    public function setWriteOnly(bool $writeOnly = true): static;
 
     /**
      * Gets the schema type.
@@ -174,9 +174,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the enum values for the property.
      *
      * @param array $enum
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setEnum(array $enum): self;
+    public function setEnum(array $enum): static;
 
     /**
      * Gets the constant value that the property value must be equal.
@@ -190,9 +190,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * Sets the constant value that the property value must be equal.
      *
      * @param mixed $const
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setConst(mixed $const): self;
+    public function setConst(mixed $const): static;
 
     /**
      * Gets the list of options for a property where the property value must
@@ -208,9 +208,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * match all of this options.
      *
      * @param array $allOf
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setAllOf(array $allOf): self;
+    public function setAllOf(array $allOf): static;
 
     /**
      * Gets the list of options for a property where the property value must
@@ -226,9 +226,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * match at least one of this options.
      *
      * @param array $anyOf
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setAnyOf(array $anyOf): self;
+    public function setAnyOf(array $anyOf): static;
 
     /**
      * Gets the list of options for a property where the property value must
@@ -244,9 +244,9 @@ interface PropertySchemaInterface extends JsonSerializable
      * match exactly one of this options.
      *
      * @param array[] $oneOf
-     * @return self The current instance.
+     * @return static The current instance.
      */
-    public function setOneOf(array $oneOf): self;
+    public function setOneOf(array $oneOf): static;
 
     /**
      * Converts the Schema to an array representation.
@@ -266,7 +266,7 @@ interface PropertySchemaInterface extends JsonSerializable
      * Create a Schema instance from an array.
      *
      * @param array $definition The schema definition as an array.
-     * @return self
+     * @return static
      */
-    public static function fromArray(array $definition): self;
+    public static function fromArray(array $definition): static;
 }

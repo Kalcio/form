@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\StringSchemaInterface;
  *
  * This class represents a string schema and provides string-specific validations.
  */
-class StringSchema extends AbstractPropertySchema implements StringSchemaInterface
+final class StringSchema extends AbstractPropertySchema implements StringSchemaInterface
 {
     /**
      * The semantic format of the string.
@@ -69,7 +69,7 @@ class StringSchema extends AbstractPropertySchema implements StringSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setFormat(string $format): self
+    public function setFormat(string $format): static
     {
         $this->format = $format;
         return $this;
@@ -86,7 +86,7 @@ class StringSchema extends AbstractPropertySchema implements StringSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setMaxLength(int $maxLength): self
+    public function setMaxLength(int $maxLength): static
     {
         $this->maxLength = $maxLength;
         return $this;
@@ -103,7 +103,7 @@ class StringSchema extends AbstractPropertySchema implements StringSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setMinLength(int $minLength): self
+    public function setMinLength(int $minLength): static
     {
         $this->minLength = $minLength;
         return $this;
@@ -120,7 +120,7 @@ class StringSchema extends AbstractPropertySchema implements StringSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public function setPattern(string $pattern): self
+    public function setPattern(string $pattern): static
     {
         $this->pattern = $pattern;
         return $this;
@@ -155,9 +155,9 @@ class StringSchema extends AbstractPropertySchema implements StringSchemaInterfa
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {

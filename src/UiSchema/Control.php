@@ -98,8 +98,8 @@ final class Control extends AbstractUiSchemaElement implements ControlInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        return new self($definition);
+        return new static($definition);
     }
 }

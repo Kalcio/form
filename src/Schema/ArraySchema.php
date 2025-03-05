@@ -20,7 +20,7 @@ use Derafu\Form\Contract\Schema\ArraySchemaInterface;
  *
  * This class represents an array schema and provides array-specific validations.
  */
-class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
+final class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
 {
     /**
      * The schema for array items.
@@ -90,7 +90,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setItems(array $items): self
+    public function setItems(array $items): static
     {
         $this->items = $items;
         return $this;
@@ -107,7 +107,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setMaxItems(int $maxItems): self
+    public function setMaxItems(int $maxItems): static
     {
         $this->maxItems = $maxItems;
         return $this;
@@ -124,7 +124,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setMinItems(int $minItems): self
+    public function setMinItems(int $minItems): static
     {
         $this->minItems = $minItems;
         return $this;
@@ -141,7 +141,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setContains(array $contains): self
+    public function setContains(array $contains): static
     {
         $this->contains = $contains;
         return $this;
@@ -158,7 +158,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setMaxContains(int $maxContains): self
+    public function setMaxContains(int $maxContains): static
     {
         $this->maxContains = $maxContains;
         return $this;
@@ -175,7 +175,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setMinContains(int $minContains): self
+    public function setMinContains(int $minContains): static
     {
         $this->minContains = $minContains;
         return $this;
@@ -192,7 +192,7 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public function setUniqueItems(bool $uniqueItems = true): self
+    public function setUniqueItems(bool $uniqueItems = true): static
     {
         $this->uniqueItems = $uniqueItems;
         return $this;
@@ -239,9 +239,9 @@ class ArraySchema extends AbstractPropertySchema implements ArraySchemaInterface
     /**
      * {@inheritDoc}
      */
-    public static function fromArray(array $definition): self
+    public static function fromArray(array $definition): static
     {
-        $schema = new self($definition['name'] ?? '');
+        $schema = new static($definition['name'] ?? '');
 
         // Set common properties.
         if (isset($definition['title'])) {
