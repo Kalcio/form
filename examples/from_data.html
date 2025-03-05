@@ -23,7 +23,30 @@
                     
 <h1>Example: From Data</h1>
 
-<p class="mb-4">The simplest form, created from data only. Form normalization is not performed.</p>
+<p class="mb-4">The simplest form, created from data only.</p>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +55,9 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c75532c3fa1">
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c8677fa91c4">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -109,14 +134,22 @@
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
     &quot;data&quot;: {
-        &quot;name&quot;: &quot;John Doe&quot;,
-        &quot;email&quot;: &quot;john.doe@example.com&quot;,
-        &quot;web&quot;: &quot;https://www.example.com&quot;,
-        &quot;age&quot;: 39,
-        &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-        &quot;end_date&quot;: &quot;&quot;,
-        &quot;salary&quot;: 2499.99,
-        &quot;require_onboarding&quot;: true
+        &quot;string&quot;: &quot;This is a string&quot;,
+        &quot;boolean&quot;: true,
+        &quot;integer&quot;: 42,
+        &quot;number&quot;: 50.5,
+        &quot;date&quot;: &quot;2020-06-25&quot;,
+        &quot;time&quot;: &quot;23:08:00&quot;,
+        &quot;datetime&quot;: &quot;2020-06-25T23:08:42+02:00&quot;,
+        &quot;week&quot;: &quot;2025-W10&quot;,
+        &quot;month&quot;: &quot;2025-03&quot;,
+        &quot;color&quot;: &quot;#ff5733&quot;,
+        &quot;email&quot;: &quot;user@example.com&quot;,
+        &quot;uuid&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;url&quot;: &quot;https://example.com&quot;,
+        &quot;uri&quot;: &quot;mailto:user@example.com&quot;,
+        &quot;ipv4&quot;: &quot;192.168.1.1&quot;,
+        &quot;ipv6&quot;: &quot;2001:db8::ff00:42:8329&quot;
     }
 }</code></pre>
 
@@ -127,7 +160,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c75532b01a7">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c8677f987e5">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -142,14 +175,12 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="from_data.html" enctype="application/x-www-form-urlencoded" id="form-67c75532b68f5" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="from_data.html" enctype="" id="form-example-001_from_data" method="post" name="" rel="" target="_self">
 
 
         
 
-<div class="vstack gap-3 ">
-            <div class="mb-3">
+<div class="vstack gap-2 ">
             
 
 
@@ -158,8 +189,8 @@
 <div class="mb-3 has-error">
                                     <div class="form-floating">
                 
-                                                                                                
-<input type="text" id="name_field" name="name" class="form-control" value="John&#x20;Doe" placeholder="Name">
+                                                                                                                                
+<input type="url" id="form-example-001_from_data" name="string" class="form-control" value="This&#x20;is&#x20;a&#x20;string" minlength="2" maxlength="2048" placeholder="String">
 
                 
 
@@ -171,7 +202,7 @@
 
                 
 
-<label for="name_field">Name</label>
+<label for="string_field">String</label>
 
             </div>
         
@@ -186,8 +217,330 @@
         </div>
     </div>
 
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="checkbox" id="form-example-001_from_data" name="boolean" class="form-control" value placeholder="Boolean">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="boolean_field">Boolean</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
         </div>
-            <div class="mb-3">
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="number" id="form-example-001_from_data" name="integer" class="form-control" value="42" placeholder="Integer">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="integer_field">Integer</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="number" id="form-example-001_from_data" name="number" class="form-control" value="50.5" placeholder="Number">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="number_field">Number</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                                                
+<input type="date" id="form-example-001_from_data" name="date" class="form-control" value="2020-06-25" minlength="10" maxlength="10" placeholder="Date">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="date_field">Date</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                                                
+<input type="text" id="form-example-001_from_data" name="time" class="form-control" value="23&#x3A;08&#x3A;00" minlength="8" maxlength="14" placeholder="Time">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="time_field">Time</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                                                
+<input type="url" id="form-example-001_from_data" name="datetime" class="form-control" value="2020-06-25T23&#x3A;08&#x3A;42&#x2B;02&#x3A;00" minlength="2" maxlength="2048" placeholder="Datetime">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="datetime_field">Datetime</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-001_from_data" name="week" class="form-control" value="2025-W10" placeholder="Week">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="week_field">Week</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-001_from_data" name="month" class="form-control" value="2025-03" placeholder="Month">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="month_field">Month</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                                                
+<input type="url" id="form-example-001_from_data" name="color" class="form-control" value="&#x23;ff5733" minlength="2" maxlength="2048" placeholder="Color">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="color_field">Color</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
             
 
 
@@ -197,7 +550,7 @@
                                     <div class="form-floating">
                 
                                                                                                                 
-<input type="email" id="email_field" name="email" class="form-control" value="john.doe&#x40;example.com" maxlength="320" placeholder="Email">
+<input type="email" id="form-example-001_from_data" name="email" class="form-control" value="user&#x40;example.com" maxlength="320" placeholder="Email">
 
                 
 
@@ -224,8 +577,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -235,7 +586,7 @@
                                     <div class="form-floating">
                 
                                                                                                                                 
-<input type="url" id="web_field" name="web" class="form-control" value="https&#x3A;&#x2F;&#x2F;www.example.com" minlength="2" maxlength="2048" placeholder="Web">
+<input type="text" id="form-example-001_from_data" name="uuid" class="form-control" value="550e8400-e29b-41d4-a716-446655440000" minlength="36" maxlength="36" placeholder="Uuid">
 
                 
 
@@ -247,7 +598,7 @@
 
                 
 
-<label for="web_field">Web</label>
+<label for="uuid_field">Uuid</label>
 
             </div>
         
@@ -262,46 +613,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
-            
-
-
-    
-
-<div class="mb-3 has-error">
-                                    <div class="form-floating">
-                
-                                                                                                
-<input type="number" id="age_field" name="age" class="form-control" value="39" placeholder="Age">
-
-                
-
-
-
-
-
-
-
-                
-
-<label for="age_field">Age</label>
-
-            </div>
-        
-                    <div class="invalid-feedback d-block">
-                
-
-            </div>
-            
-            <div class="form-text">
-            
-
-        </div>
-    </div>
-
-        </div>
-            <div class="mb-3">
             
 
 
@@ -311,7 +622,7 @@
                                     <div class="form-floating">
                 
                                                                                                                                 
-<input type="datetime-local" id="start_date_field" name="start_date" class="form-control" value="2025-02-28T21&#x3A;01&#x3A;57&#x2B;00&#x3A;00" minlength="16" maxlength="35" placeholder="Start&#x20;Date">
+<input type="url" id="form-example-001_from_data" name="url" class="form-control" value="https&#x3A;&#x2F;&#x2F;example.com" minlength="2" maxlength="2048" placeholder="Url">
 
                 
 
@@ -323,7 +634,7 @@
 
                 
 
-<label for="start_date_field">Start Date</label>
+<label for="url_field">Url</label>
 
             </div>
         
@@ -338,8 +649,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -348,8 +657,8 @@
 <div class="mb-3 has-error">
                                     <div class="form-floating">
                 
-                                                                                                
-<input type="text" id="end_date_field" name="end_date" class="form-control" value="" placeholder="End&#x20;Date">
+                                                                                                                                
+<input type="url" id="form-example-001_from_data" name="uri" class="form-control" value="mailto&#x3A;user&#x40;example.com" minlength="2" maxlength="2048" placeholder="Uri">
 
                 
 
@@ -361,7 +670,7 @@
 
                 
 
-<label for="end_date_field">End Date</label>
+<label for="uri_field">Uri</label>
 
             </div>
         
@@ -376,8 +685,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -386,8 +693,8 @@
 <div class="mb-3 has-error">
                                     <div class="form-floating">
                 
-                                                                                                
-<input type="number" id="salary_field" name="salary" class="form-control" value="2499.99" placeholder="Salary">
+                                                                                                                                
+<input type="text" id="form-example-001_from_data" name="ipv4" class="form-control" value="192.168.1.1" minlength="7" maxlength="15" placeholder="Ipv4">
 
                 
 
@@ -399,7 +706,7 @@
 
                 
 
-<label for="salary_field">Salary</label>
+<label for="ipv4_field">Ipv4</label>
 
             </div>
         
@@ -414,8 +721,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -424,8 +729,8 @@
 <div class="mb-3 has-error">
                                     <div class="form-floating">
                 
-                                                                                                
-<input type="checkbox" id="require_onboarding_field" name="require_onboarding" class="form-control" value placeholder="Require&#x20;Onboarding">
+                                                                                                                                
+<input type="text" id="form-example-001_from_data" name="ipv6" class="form-control" value="2001&#x3A;db8&#x3A;&#x3A;ff00&#x3A;42&#x3A;8329" minlength="2" maxlength="39" placeholder="Ipv6">
 
                 
 
@@ -437,7 +742,7 @@
 
                 
 
-<label for="require_onboarding_field">Require Onboarding</label>
+<label for="ipv6_field">Ipv6</label>
 
             </div>
         
@@ -452,7 +757,6 @@
         </div>
     </div>
 
-        </div>
     </div>
 
 
@@ -465,6 +769,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-001_from_data');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -473,40 +794,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"data":{"name":"John Doe","email":"john.doe@example.com","web":"https:\/\/www.example.com","age":39,"start_date":"2025-02-28T21:01:57+00:00","end_date":"","salary":2499.99,"require_onboarding":true}};
+    const formDefinition ={"schema":{"type":"object","properties":{"string":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"boolean":{"type":"boolean"},"integer":{"type":"integer"},"number":{"type":"number"},"date":{"type":"string","format":"date","maxLength":10,"minLength":10},"time":{"type":"string","format":"time","maxLength":14,"minLength":8},"datetime":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"week":{"type":"string"},"month":{"type":"string"},"color":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"email":{"type":"string","format":"email","maxLength":320},"uuid":{"type":"string","format":"uuid","maxLength":36,"minLength":36},"url":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"uri":{"type":"string","format":"uri","maxLength":2048,"minLength":2},"ipv4":{"type":"string","format":"ipv4","maxLength":15,"minLength":7},"ipv6":{"type":"string","format":"ipv6","maxLength":39,"minLength":2}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"String","scope":"#\/properties\/string"},{"type":"Control","label":"Boolean","scope":"#\/properties\/boolean"},{"type":"Control","label":"Integer","scope":"#\/properties\/integer"},{"type":"Control","label":"Number","scope":"#\/properties\/number"},{"type":"Control","label":"Date","scope":"#\/properties\/date"},{"type":"Control","label":"Time","scope":"#\/properties\/time"},{"type":"Control","label":"Datetime","scope":"#\/properties\/datetime"},{"type":"Control","label":"Week","scope":"#\/properties\/week"},{"type":"Control","label":"Month","scope":"#\/properties\/month"},{"type":"Control","label":"Color","scope":"#\/properties\/color"},{"type":"Control","label":"Email","scope":"#\/properties\/email"},{"type":"Control","label":"Uuid","scope":"#\/properties\/uuid"},{"type":"Control","label":"Url","scope":"#\/properties\/url"},{"type":"Control","label":"Uri","scope":"#\/properties\/uri"},{"type":"Control","label":"Ipv4","scope":"#\/properties\/ipv4"},{"type":"Control","label":"Ipv6","scope":"#\/properties\/ipv6"}]},"data":{"string":"This is a string","boolean":true,"integer":42,"number":50.5,"date":"2020-06-25","time":"23:08:00","datetime":"2020-06-25T23:08:42+02:00","week":"2025-W10","month":"2025-03","color":"#ff5733","email":"user@example.com","uuid":"550e8400-e29b-41d4-a716-446655440000","url":"https:\/\/example.com","uri":"mailto:user@example.com","ipv4":"192.168.1.1","ipv6":"2001:db8::ff00:42:8329"}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')
@@ -524,7 +821,91 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-schema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;string&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;maxLength&quot;: 2048,
+            &quot;minLength&quot;: 2
+        },
+        &quot;boolean&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;integer&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        &quot;number&quot;: {
+            &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;date&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;date&quot;,
+            &quot;maxLength&quot;: 10,
+            &quot;minLength&quot;: 10
+        },
+        &quot;time&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;time&quot;,
+            &quot;maxLength&quot;: 14,
+            &quot;minLength&quot;: 8
+        },
+        &quot;datetime&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;maxLength&quot;: 2048,
+            &quot;minLength&quot;: 2
+        },
+        &quot;week&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;month&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;color&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;maxLength&quot;: 2048,
+            &quot;minLength&quot;: 2
+        },
+        &quot;email&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;email&quot;,
+            &quot;maxLength&quot;: 320
+        },
+        &quot;uuid&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uuid&quot;,
+            &quot;maxLength&quot;: 36,
+            &quot;minLength&quot;: 36
+        },
+        &quot;url&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;maxLength&quot;: 2048,
+            &quot;minLength&quot;: 2
+        },
+        &quot;uri&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;,
+            &quot;maxLength&quot;: 2048,
+            &quot;minLength&quot;: 2
+        },
+        &quot;ipv4&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;ipv4&quot;,
+            &quot;maxLength&quot;: 15,
+            &quot;minLength&quot;: 7
+        },
+        &quot;ipv6&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;ipv6&quot;,
+            &quot;maxLength&quot;: 39,
+            &quot;minLength&quot;: 2
+        }
+    }
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -532,7 +913,91 @@ document.addEventListener('DOMContentLoaded', function() {
                     role="tabpanel"
                     aria-labelledby="tab-uischema"
                     tabindex="0">
-                    <pre class="line-numbers language-json"><code>null</code></pre>
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;String&quot;,
+            &quot;scope&quot;: &quot;#/properties/string&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Boolean&quot;,
+            &quot;scope&quot;: &quot;#/properties/boolean&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Integer&quot;,
+            &quot;scope&quot;: &quot;#/properties/integer&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Number&quot;,
+            &quot;scope&quot;: &quot;#/properties/number&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Date&quot;,
+            &quot;scope&quot;: &quot;#/properties/date&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Time&quot;,
+            &quot;scope&quot;: &quot;#/properties/time&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Datetime&quot;,
+            &quot;scope&quot;: &quot;#/properties/datetime&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Week&quot;,
+            &quot;scope&quot;: &quot;#/properties/week&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Month&quot;,
+            &quot;scope&quot;: &quot;#/properties/month&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Color&quot;,
+            &quot;scope&quot;: &quot;#/properties/color&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Email&quot;,
+            &quot;scope&quot;: &quot;#/properties/email&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Uuid&quot;,
+            &quot;scope&quot;: &quot;#/properties/uuid&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Url&quot;,
+            &quot;scope&quot;: &quot;#/properties/url&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Uri&quot;,
+            &quot;scope&quot;: &quot;#/properties/uri&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Ipv4&quot;,
+            &quot;scope&quot;: &quot;#/properties/ipv4&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;label&quot;: &quot;Ipv6&quot;,
+            &quot;scope&quot;: &quot;#/properties/ipv6&quot;
+        }
+    ]
+}</code></pre>
 
                 </div>
                             <div class="tab-pane fade"
@@ -541,14 +1006,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     aria-labelledby="tab-data"
                     tabindex="0">
                     <pre class="line-numbers language-json"><code>{
-    &quot;name&quot;: &quot;John Doe&quot;,
-    &quot;email&quot;: &quot;john.doe@example.com&quot;,
-    &quot;web&quot;: &quot;https://www.example.com&quot;,
-    &quot;age&quot;: 39,
-    &quot;start_date&quot;: &quot;2025-02-28T21:01:57+00:00&quot;,
-    &quot;end_date&quot;: &quot;&quot;,
-    &quot;salary&quot;: 2499.99,
-    &quot;require_onboarding&quot;: true
+    &quot;string&quot;: &quot;This is a string&quot;,
+    &quot;boolean&quot;: true,
+    &quot;integer&quot;: 42,
+    &quot;number&quot;: 50.5,
+    &quot;date&quot;: &quot;2020-06-25&quot;,
+    &quot;time&quot;: &quot;23:08:00&quot;,
+    &quot;datetime&quot;: &quot;2020-06-25T23:08:42+02:00&quot;,
+    &quot;week&quot;: &quot;2025-W10&quot;,
+    &quot;month&quot;: &quot;2025-03&quot;,
+    &quot;color&quot;: &quot;#ff5733&quot;,
+    &quot;email&quot;: &quot;user@example.com&quot;,
+    &quot;uuid&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;url&quot;: &quot;https://example.com&quot;,
+    &quot;uri&quot;: &quot;mailto:user@example.com&quot;,
+    &quot;ipv4&quot;: &quot;192.168.1.1&quot;,
+    &quot;ipv6&quot;: &quot;2001:db8::ff00:42:8329&quot;
 }</code></pre>
 
                 </div>
@@ -559,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <hr/>
     <div class="my-4 small clearfix">
         <div class="float-start">
-            Tags: <span class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData #raw</span>
+            Tags: <span class="text-muted">#withOutSchema #withOutUiSchema #withData #onlyData</span>
         </div>
         <div class="text-muted float-end">
             001_from_data
@@ -572,9 +1045,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="col-md-6">
             </div>
     <div class="col-md-6">
-                    <a href="from_normalized_data.html" class="btn btn-secondary w-100 text-end">
+                    <a href="control.html" class="btn btn-secondary w-100 text-end">
                 <small class="d-block mb-2">Next</small>
-                From Normalized Data
+                Control
                 <i class="fa-solid fa-chevron-right"></i>
             </a>
             </div>

@@ -25,6 +25,28 @@
 
 <p class="mb-4">A user login form with username, password and 2FA options.</p>
 
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +54,10 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c7553352da9">
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c867803f420">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -143,7 +168,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c7553342550">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c86780309ae">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -158,14 +183,12 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="signin.html" enctype="application/x-www-form-urlencoded" id="form-67c7553346317" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="signin.html" enctype="" id="form-example-004_signin" method="post" name="" rel="" target="_self">
 
 
         
 
-<div class="vstack gap-3 ">
-            <div class="mb-3">
+<div class="vstack gap-2 ">
             
 
 
@@ -175,7 +198,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="username_field" name="username" class="form-control" value="" placeholder="Username&#x20;or&#x20;Email">
+<input type="text" id="form-example-004_signin" name="username" class="form-control" value="" placeholder="Username&#x20;or&#x20;Email">
 
                 
 
@@ -202,8 +225,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -213,7 +234,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="password_field" name="password" class="form-control" value="" placeholder="Password">
+<input type="text" id="form-example-004_signin" name="password" class="form-control" value="" placeholder="Password">
 
                 
 
@@ -240,8 +261,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -251,7 +270,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="twoFactorToken_field" name="twoFactorToken" class="form-control" placeholder="2FA&#x20;Token&#x20;&#x28;optional&#x29;">
+<input type="text" id="form-example-004_signin" name="twoFactorToken" class="form-control" placeholder="2FA&#x20;Token&#x20;&#x28;optional&#x29;">
 
                 
 
@@ -275,12 +294,11 @@
             <div class="form-text">
             
             
-    <small id="twoFactorTokenHelp" class="">Enter your two-factor authentication code if enabled</small>
+    <small id="twoFactorToken_help" class="">Enter your two-factor authentication code if enabled</small>
 
         </div>
     </div>
 
-        </div>
     </div>
 
 
@@ -293,6 +311,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-004_signin');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -301,40 +336,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""},"options":[]};
+    const formDefinition ={"schema":{"type":"object","properties":{"username":{"type":"string","title":"Username or Email"},"password":{"type":"string","title":"Password"},"twoFactorToken":{"type":"string","title":"2FA Token (optional)","description":"Enter your two-factor authentication code if enabled"}},"required":["username","password"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Username or Email","scope":"#\/properties\/username"},{"type":"Control","label":"Password","scope":"#\/properties\/password"},{"type":"Control","label":"2FA Token (optional)","scope":"#\/properties\/twoFactorToken"}]},"data":{"username":"","password":""}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')

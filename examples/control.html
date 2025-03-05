@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Control</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-light.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.css" rel="stylesheet" />
+    <link href="https://derafu.org/foundation/css/styles.min.css" rel="stylesheet" />
+    </head>
+<body class="derafu-theme-earthstone">
+                <div id="header-container" class="sticky-top"></div>
+    
+            <div class="container mb-4">
+            <div class="row">
+                <main class="col-md-9">
+                    
+<h1>Example: Control</h1>
+
+<p class="mb-4">The default controls provided by the form library.</p>
+
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c8677fd9826">
+            <nav class="nav nav-pills nav-justified">
+                            <button class="nav-link"
+                        id="tab-input"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-input"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-input"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-file-code me-2"></i>
+                                        Input
+                </button>
+                            <button class="nav-link active"
+                        id="tab-demo_php"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_php"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_php"
+                        aria-selected="true">
+                                            <i class="fa-brands fa-php me-2"></i>
+                                        Demo PHP
+                </button>
+                            <button class="nav-link"
+                        id="tab-demo_js"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-demo_js"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-demo_js"
+                        aria-selected="false">
+                                            <i class="fa-brands fa-js me-2"></i>
+                                        Demo JS
+                </button>
+                            <button class="nav-link"
+                        id="tab-schema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-schema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-schema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-list me-2"></i>
+                                        Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-uischema"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-uischema"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-uischema"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-table-list me-2"></i>
+                                        UI Schema
+                </button>
+                            <button class="nav-link"
+                        id="tab-data"
+                        data-bs-toggle="pill"
+                        data-bs-target="#content-data"
+                        type="button"
+                        role="tab"
+                        aria-controls="content-data"
+                        aria-selected="false">
+                                            <i class="fa-solid fa-database me-2"></i>
+                                        Data
+                </button>
+                    </nav>
+        <div class="tab-content mt-3">
+                            <div class="tab-pane fade"
+                    id="content-input"
+                    role="tabpanel"
+                    aria-labelledby="tab-input"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;boolean&quot;: {
+                &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;checkbox&quot;: {
+                &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;choice&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;enum&quot;: [
+                    &quot;Option 1&quot;,
+                    &quot;Option 2&quot;,
+                    &quot;Option 3&quot;
+                ]
+            },
+            &quot;color&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;datetime&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;date-time&quot;
+            },
+            &quot;date&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;date&quot;
+            },
+            &quot;duration&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;pattern&quot;: &quot;^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+S)?)?$&quot;,
+                &quot;description&quot;: &quot;P1Y2M3DT4H5M6S (ISO 8601)&quot;
+            },
+            &quot;editor&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;email&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;email&quot;
+            },
+            &quot;file&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;float&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+            },
+            &quot;hidden&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;hostname&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;hostname&quot;
+            },
+            &quot;integer&quot;: {
+                &quot;type&quot;: &quot;integer&quot;
+            },
+            &quot;ipv4&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;ipv4&quot;
+            },
+            &quot;ipv6&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;ipv6&quot;
+            },
+            &quot;masked&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;money&quot;: {
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;minimum&quot;: 0
+            },
+            &quot;month&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;number&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+            },
+            &quot;password&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;percent&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+            },
+            &quot;radio&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;enum&quot;: [
+                    &quot;Option A&quot;,
+                    &quot;Option B&quot;,
+                    &quot;Option C&quot;
+                ]
+            },
+            &quot;range&quot;: {
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;minimum&quot;: 0,
+                &quot;maximum&quot;: 100
+            },
+            &quot;regex&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;search&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;slider&quot;: {
+                &quot;type&quot;: &quot;number&quot;,
+                &quot;minimum&quot;: 0,
+                &quot;maximum&quot;: 100
+            },
+            &quot;tag&quot;: {
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;items&quot;: {
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            },
+            &quot;telephone&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;textarea&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;text&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;time&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;time&quot;
+            },
+            &quot;uri&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;uri&quot;
+            },
+            &quot;url&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;uri&quot;
+            },
+            &quot;uuid&quot;: {
+                &quot;type&quot;: &quot;string&quot;,
+                &quot;format&quot;: &quot;uuid&quot;
+            },
+            &quot;week&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            }
+        }
+    },
+    &quot;uischema&quot;: {
+        &quot;type&quot;: &quot;VerticalLayout&quot;,
+        &quot;elements&quot;: [
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/boolean&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/checkbox&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;checkbox&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/choice&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;choice&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/color&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;color&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/datetime&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/date&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/duration&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;duration&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/editor&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;editor&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/email&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/file&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;file&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/float&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;float&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/hidden&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;hidden&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/hostname&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/integer&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/ipv4&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/ipv6&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/masked&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;masked&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/money&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;money&quot;,
+                    &quot;symbol&quot;: &quot;$&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/month&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;month&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/number&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/password&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;password&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/percent&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;percent&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/radio&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;radio&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/range&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;range&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/regex&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;regex&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/search&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;search&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/slider&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;slider&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/tag&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;tag&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/telephone&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;telephone&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/textarea&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;textarea&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/text&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/time&quot;,
+                &quot;options&quot;: {
+                    &quot;format&quot;: &quot;time&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/uri&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/url&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;url&quot;
+                }
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/uuid&quot;
+            },
+            {
+                &quot;type&quot;: &quot;Control&quot;,
+                &quot;scope&quot;: &quot;#/properties/week&quot;,
+                &quot;options&quot;: {
+                    &quot;type&quot;: &quot;week&quot;
+                }
+            }
+        ]
+    },
+    &quot;data&quot;: {
+        &quot;boolean&quot;: true,
+        &quot;checkbox&quot;: true,
+        &quot;choice&quot;: &quot;Option 1&quot;,
+        &quot;color&quot;: &quot;#ff5733&quot;,
+        &quot;datetime&quot;: &quot;2025-03-04T14:30:00+02:00&quot;,
+        &quot;date&quot;: &quot;2025-03-04&quot;,
+        &quot;duration&quot;: &quot;P1Y2M3DT4H5M6S&quot;,
+        &quot;editor&quot;: &quot;This is a long text.&quot;,
+        &quot;email&quot;: &quot;user@example.com&quot;,
+        &quot;file&quot;: &quot;&quot;,
+        &quot;float&quot;: 123.45,
+        &quot;hidden&quot;: &quot;hidden_value&quot;,
+        &quot;hostname&quot;: &quot;example.com&quot;,
+        &quot;integer&quot;: 42,
+        &quot;ipv4&quot;: &quot;192.168.1.1&quot;,
+        &quot;ipv6&quot;: &quot;2001:db8::ff00:42:8329&quot;,
+        &quot;masked&quot;: &quot;1234567890&quot;,
+        &quot;money&quot;: 99.99,
+        &quot;month&quot;: &quot;2025-03&quot;,
+        &quot;number&quot;: 50.5,
+        &quot;password&quot;: &quot;securepassword&quot;,
+        &quot;percent&quot;: 85,
+        &quot;radio&quot;: &quot;Option B&quot;,
+        &quot;range&quot;: 50,
+        &quot;regex&quot;: &quot;abcd1234&quot;,
+        &quot;search&quot;: &quot;Symfony Forms&quot;,
+        &quot;slider&quot;: 60,
+        &quot;tag&quot;: [
+            &quot;Symfony&quot;,
+            &quot;Forms&quot;,
+            &quot;JSON&quot;
+        ],
+        &quot;telephone&quot;: &quot;+56912345678&quot;,
+        &quot;textarea&quot;: &quot;This is a long text.&quot;,
+        &quot;text&quot;: &quot;Sample text&quot;,
+        &quot;time&quot;: &quot;14:30:00&quot;,
+        &quot;uri&quot;: &quot;mailto:user@example.com&quot;,
+        &quot;url&quot;: &quot;https://example.com&quot;,
+        &quot;uuid&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+        &quot;week&quot;: &quot;2025-W10&quot;
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade show active"
+                    id="content-demo_php"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_php"
+                    tabindex="0">
+                    <div class="derafu-block-alert ">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c8677fc711b">
+                    <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
+                <div>
+            WIP: Work In Progress.
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+                                                                                                                                        
+<form accept-charset="UTF-8" action="control.html" enctype="" id="form-example-002_control" method="post" name="" rel="" target="_self">
+
+
+        
+
+<div class="vstack gap-2 ">
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="checkbox" id="form-example-002_control" name="boolean" class="form-control" value placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="boolean_field">boolean</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="checkbox" id="form-example-002_control" name="checkbox" class="form-control" value placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="checkbox_field">checkbox</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="choice" id="form-example-002_control" name="choice" class="form-control" value="Option&#x20;1" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="choice_field">choice</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="color" id="form-example-002_control" name="color" class="form-control" value="&#x23;ff5733" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="color_field">color</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="datetime-local" id="form-example-002_control" name="datetime" class="form-control" value="2025-03-04T14&#x3A;30&#x3A;00&#x2B;02&#x3A;00" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="datetime_field">datetime</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="date" id="form-example-002_control" name="date" class="form-control" value="2025-03-04" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="date_field">date</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                                
+<input type="duration" id="form-example-002_control" name="duration" class="form-control" value="P1Y2M3DT4H5M6S" pattern="&#x5E;P&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;Y&#x29;&#x3F;&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;M&#x29;&#x3F;&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;D&#x29;&#x3F;&#x28;&#x3F;&#x3A;T&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;H&#x29;&#x3F;&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;M&#x29;&#x3F;&#x28;&#x3F;&#x3A;&#x5C;d&#x2B;S&#x29;&#x3F;&#x29;&#x3F;&#x24;" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="duration_field">duration</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+            
+    <small id="duration_help" class="">P1Y2M3DT4H5M6S (ISO 8601)</small>
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="editor" id="form-example-002_control" name="editor" class="form-control" value="This&#x20;is&#x20;a&#x20;long&#x20;text." placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="editor_field">editor</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="email" id="form-example-002_control" name="email" class="form-control" value="user&#x40;example.com" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="email_field">email</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="file" id="form-example-002_control" name="file" class="form-control" value="" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="file_field">file</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="float" id="form-example-002_control" name="float" class="form-control" value="123.45" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="float_field">float</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="hidden" id="form-example-002_control" name="hidden" class="form-control" value="hidden_value" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="hidden_field">hidden</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="hostname" class="form-control" value="example.com" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="hostname_field">hostname</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="number" id="form-example-002_control" name="integer" class="form-control" value="42" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="integer_field">integer</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="ipv4" class="form-control" value="192.168.1.1" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="ipv4_field">ipv4</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="ipv6" class="form-control" value="2001&#x3A;db8&#x3A;&#x3A;ff00&#x3A;42&#x3A;8329" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="ipv6_field">ipv6</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="masked" id="form-example-002_control" name="masked" class="form-control" value="1234567890" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="masked_field">masked</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="money" id="form-example-002_control" name="money" class="form-control" value="99.99" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="money_field">money</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="month" id="form-example-002_control" name="month" class="form-control" value="2025-03" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="month_field">month</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="number" id="form-example-002_control" name="number" class="form-control" value="50.5" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="number_field">number</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="password" id="form-example-002_control" name="password" class="form-control" value="securepassword" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="password_field">password</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="percent" id="form-example-002_control" name="percent" class="form-control" value="85" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="percent_field">percent</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="radio" id="form-example-002_control" name="radio" class="form-control" value="Option&#x20;B" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="radio_field">radio</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="range" id="form-example-002_control" name="range" class="form-control" value="50" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="range_field">range</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="regex" id="form-example-002_control" name="regex" class="form-control" value="abcd1234" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="regex_field">regex</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="search" id="form-example-002_control" name="search" class="form-control" value="Symfony&#x20;Forms" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="search_field">search</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="slider" id="form-example-002_control" name="slider" class="form-control" value="60" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="slider_field">slider</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="tag" id="form-example-002_control" name="tag" class="form-control" value="&#x5B;&quot;Symfony&quot;,&quot;Forms&quot;,&quot;JSON&quot;&#x5D;" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="tag_field">tag</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="telephone" id="form-example-002_control" name="telephone" class="form-control" value="&#x2B;56912345678" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="telephone_field">telephone</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="textarea" id="form-example-002_control" name="textarea" class="form-control" value="This&#x20;is&#x20;a&#x20;long&#x20;text." placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="textarea_field">textarea</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="text" class="form-control" value="Sample&#x20;text" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="text_field">text</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="time" class="form-control" value="14&#x3A;30&#x3A;00" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="time_field">time</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="url" id="form-example-002_control" name="uri" class="form-control" value="mailto&#x3A;user&#x40;example.com" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="uri_field">uri</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="url" id="form-example-002_control" name="url" class="form-control" value="https&#x3A;&#x2F;&#x2F;example.com" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="url_field">url</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="text" id="form-example-002_control" name="uuid" class="form-control" value="550e8400-e29b-41d4-a716-446655440000" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="uuid_field">uuid</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+            
+
+
+    
+
+<div class="mb-3 has-error">
+                                    <div class="form-floating">
+                
+                                                                                                
+<input type="week" id="form-example-002_control" name="week" class="form-control" value="2025-W10" placeholder="">
+
+                
+
+
+
+
+
+
+
+                
+
+<label for="week_field">week</label>
+
+            </div>
+        
+                    <div class="invalid-feedback d-block">
+                
+
+            </div>
+            
+            <div class="form-text">
+            
+
+        </div>
+    </div>
+
+    </div>
+
+
+                <input type="hidden" name="_token" value="ABC123">
+
+    
+
+    
+</form>
+
+
+
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-002_control');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-demo_js"
+                    role="tabpanel"
+                    aria-labelledby="tab-demo_js"
+                    tabindex="0">
+                    <div id="json-form-container" class="mb-4"></div>
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Render the form and save the reference.
+    const formDefinition ={"schema":{"type":"object","properties":{"boolean":{"type":"boolean"},"checkbox":{"type":"boolean"},"choice":{"type":"string","enum":["Option 1","Option 2","Option 3"]},"color":{"type":"string"},"datetime":{"type":"string","format":"date-time"},"date":{"type":"string","format":"date"},"duration":{"type":"string","description":"P1Y2M3DT4H5M6S (ISO 8601)","pattern":"^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+S)?)?$"},"editor":{"type":"string"},"email":{"type":"string","format":"email"},"file":{"type":"string"},"float":{"type":"number"},"hidden":{"type":"string"},"hostname":{"type":"string","format":"hostname"},"integer":{"type":"integer"},"ipv4":{"type":"string","format":"ipv4"},"ipv6":{"type":"string","format":"ipv6"},"masked":{"type":"string"},"money":{"type":"number","minimum":0},"month":{"type":"string"},"number":{"type":"number"},"password":{"type":"string"},"percent":{"type":"number"},"radio":{"type":"string","enum":["Option A","Option B","Option C"]},"range":{"type":"number","maximum":100,"minimum":0},"regex":{"type":"string"},"search":{"type":"string"},"slider":{"type":"number","maximum":100,"minimum":0},"tag":{"type":"array","items":{"type":"string"}},"telephone":{"type":"string"},"textarea":{"type":"string"},"text":{"type":"string"},"time":{"type":"string","format":"time"},"uri":{"type":"string","format":"uri"},"url":{"type":"string","format":"uri"},"uuid":{"type":"string","format":"uuid"},"week":{"type":"string"}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/boolean"},{"type":"Control","scope":"#\/properties\/checkbox","options":{"type":"checkbox"}},{"type":"Control","scope":"#\/properties\/choice","options":{"type":"choice"}},{"type":"Control","scope":"#\/properties\/color","options":{"type":"color"}},{"type":"Control","scope":"#\/properties\/datetime"},{"type":"Control","scope":"#\/properties\/date"},{"type":"Control","scope":"#\/properties\/duration","options":{"type":"duration"}},{"type":"Control","scope":"#\/properties\/editor","options":{"type":"editor"}},{"type":"Control","scope":"#\/properties\/email"},{"type":"Control","scope":"#\/properties\/file","options":{"type":"file"}},{"type":"Control","scope":"#\/properties\/float","options":{"type":"float"}},{"type":"Control","scope":"#\/properties\/hidden","options":{"type":"hidden"}},{"type":"Control","scope":"#\/properties\/hostname"},{"type":"Control","scope":"#\/properties\/integer"},{"type":"Control","scope":"#\/properties\/ipv4"},{"type":"Control","scope":"#\/properties\/ipv6"},{"type":"Control","scope":"#\/properties\/masked","options":{"type":"masked"}},{"type":"Control","scope":"#\/properties\/money","options":{"type":"money","symbol":"$"}},{"type":"Control","scope":"#\/properties\/month","options":{"type":"month"}},{"type":"Control","scope":"#\/properties\/number"},{"type":"Control","scope":"#\/properties\/password","options":{"type":"password"}},{"type":"Control","scope":"#\/properties\/percent","options":{"type":"percent"}},{"type":"Control","scope":"#\/properties\/radio","options":{"type":"radio"}},{"type":"Control","scope":"#\/properties\/range","options":{"type":"range"}},{"type":"Control","scope":"#\/properties\/regex","options":{"type":"regex"}},{"type":"Control","scope":"#\/properties\/search","options":{"type":"search"}},{"type":"Control","scope":"#\/properties\/slider","options":{"type":"slider"}},{"type":"Control","scope":"#\/properties\/tag","options":{"type":"tag"}},{"type":"Control","scope":"#\/properties\/telephone","options":{"type":"telephone"}},{"type":"Control","scope":"#\/properties\/textarea","options":{"type":"textarea"}},{"type":"Control","scope":"#\/properties\/text"},{"type":"Control","scope":"#\/properties\/time","options":{"format":"time"}},{"type":"Control","scope":"#\/properties\/uri"},{"type":"Control","scope":"#\/properties\/url","options":{"type":"url"}},{"type":"Control","scope":"#\/properties\/uuid"},{"type":"Control","scope":"#\/properties\/week","options":{"type":"week"}}]},"data":{"boolean":true,"checkbox":true,"choice":"Option 1","color":"#ff5733","datetime":"2025-03-04T14:30:00+02:00","date":"2025-03-04","duration":"P1Y2M3DT4H5M6S","editor":"This is a long text.","email":"user@example.com","file":"","float":123.45,"hidden":"hidden_value","hostname":"example.com","integer":42,"ipv4":"192.168.1.1","ipv6":"2001:db8::ff00:42:8329","masked":"1234567890","money":99.99,"month":"2025-03","number":50.5,"password":"securepassword","percent":85,"radio":"Option B","range":50,"regex":"abcd1234","search":"Symfony Forms","slider":60,"tag":["Symfony","Forms","JSON"],"telephone":"+56912345678","textarea":"This is a long text.","text":"Sample text","time":"14:30:00","uri":"mailto:user@example.com","url":"https:\/\/example.com","uuid":"550e8400-e29b-41d4-a716-446655440000","week":"2025-W10"}};
+    const formInstance = window.renderJsonForm('json-form-container', formDefinition);
+
+    // Set up the event handler for the submit button.
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
+        const formData = formInstance.getData();
+        //const formErrors = formInstance.getErrors();
+        const codeElement = document.getElementById('submit-data')
+        codeElement.innerHTML = JSON.stringify(formData, null, 4);
+        Prism.highlightElement(codeElement);
+        const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+        modalSubmitData.show();
+    });
+});
+</script>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-schema"
+                    role="tabpanel"
+                    aria-labelledby="tab-schema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+        &quot;boolean&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;checkbox&quot;: {
+            &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;choice&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Option 1&quot;,
+                &quot;Option 2&quot;,
+                &quot;Option 3&quot;
+            ]
+        },
+        &quot;color&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;datetime&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;date-time&quot;
+        },
+        &quot;date&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;date&quot;
+        },
+        &quot;duration&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;P1Y2M3DT4H5M6S (ISO 8601)&quot;,
+            &quot;pattern&quot;: &quot;^P(?:\\d+Y)?(?:\\d+M)?(?:\\d+D)?(?:T(?:\\d+H)?(?:\\d+M)?(?:\\d+S)?)?$&quot;
+        },
+        &quot;editor&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;email&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;email&quot;
+        },
+        &quot;file&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;float&quot;: {
+            &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;hidden&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;hostname&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;hostname&quot;
+        },
+        &quot;integer&quot;: {
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        &quot;ipv4&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;ipv4&quot;
+        },
+        &quot;ipv6&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;ipv6&quot;
+        },
+        &quot;masked&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;money&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;minimum&quot;: 0
+        },
+        &quot;month&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;number&quot;: {
+            &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;password&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;percent&quot;: {
+            &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;radio&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;enum&quot;: [
+                &quot;Option A&quot;,
+                &quot;Option B&quot;,
+                &quot;Option C&quot;
+            ]
+        },
+        &quot;range&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;maximum&quot;: 100,
+            &quot;minimum&quot;: 0
+        },
+        &quot;regex&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;search&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;slider&quot;: {
+            &quot;type&quot;: &quot;number&quot;,
+            &quot;maximum&quot;: 100,
+            &quot;minimum&quot;: 0
+        },
+        &quot;tag&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;items&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+            }
+        },
+        &quot;telephone&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;textarea&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;text&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;time&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;time&quot;
+        },
+        &quot;uri&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;
+        },
+        &quot;url&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uri&quot;
+        },
+        &quot;uuid&quot;: {
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;format&quot;: &quot;uuid&quot;
+        },
+        &quot;week&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        }
+    }
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-uischema"
+                    role="tabpanel"
+                    aria-labelledby="tab-uischema"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;type&quot;: &quot;VerticalLayout&quot;,
+    &quot;elements&quot;: [
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/boolean&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/checkbox&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;checkbox&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/choice&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;choice&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/color&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;color&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/datetime&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/date&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/duration&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;duration&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/editor&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;editor&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/email&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/file&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;file&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/float&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;float&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/hidden&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;hidden&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/hostname&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/integer&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/ipv4&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/ipv6&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/masked&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;masked&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/money&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;money&quot;,
+                &quot;symbol&quot;: &quot;$&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/month&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;month&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/number&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/password&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;password&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/percent&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;percent&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/radio&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;radio&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/range&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;range&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/regex&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;regex&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/search&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;search&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/slider&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;slider&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/tag&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;tag&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/telephone&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;telephone&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/textarea&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;textarea&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/text&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/time&quot;,
+            &quot;options&quot;: {
+                &quot;format&quot;: &quot;time&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/uri&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/url&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;url&quot;
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/uuid&quot;
+        },
+        {
+            &quot;type&quot;: &quot;Control&quot;,
+            &quot;scope&quot;: &quot;#/properties/week&quot;,
+            &quot;options&quot;: {
+                &quot;type&quot;: &quot;week&quot;
+            }
+        }
+    ]
+}</code></pre>
+
+                </div>
+                            <div class="tab-pane fade"
+                    id="content-data"
+                    role="tabpanel"
+                    aria-labelledby="tab-data"
+                    tabindex="0">
+                    <pre class="line-numbers language-json"><code>{
+    &quot;boolean&quot;: true,
+    &quot;checkbox&quot;: true,
+    &quot;choice&quot;: &quot;Option 1&quot;,
+    &quot;color&quot;: &quot;#ff5733&quot;,
+    &quot;datetime&quot;: &quot;2025-03-04T14:30:00+02:00&quot;,
+    &quot;date&quot;: &quot;2025-03-04&quot;,
+    &quot;duration&quot;: &quot;P1Y2M3DT4H5M6S&quot;,
+    &quot;editor&quot;: &quot;This is a long text.&quot;,
+    &quot;email&quot;: &quot;user@example.com&quot;,
+    &quot;file&quot;: &quot;&quot;,
+    &quot;float&quot;: 123.45,
+    &quot;hidden&quot;: &quot;hidden_value&quot;,
+    &quot;hostname&quot;: &quot;example.com&quot;,
+    &quot;integer&quot;: 42,
+    &quot;ipv4&quot;: &quot;192.168.1.1&quot;,
+    &quot;ipv6&quot;: &quot;2001:db8::ff00:42:8329&quot;,
+    &quot;masked&quot;: &quot;1234567890&quot;,
+    &quot;money&quot;: 99.99,
+    &quot;month&quot;: &quot;2025-03&quot;,
+    &quot;number&quot;: 50.5,
+    &quot;password&quot;: &quot;securepassword&quot;,
+    &quot;percent&quot;: 85,
+    &quot;radio&quot;: &quot;Option B&quot;,
+    &quot;range&quot;: 50,
+    &quot;regex&quot;: &quot;abcd1234&quot;,
+    &quot;search&quot;: &quot;Symfony Forms&quot;,
+    &quot;slider&quot;: 60,
+    &quot;tag&quot;: [
+        &quot;Symfony&quot;,
+        &quot;Forms&quot;,
+        &quot;JSON&quot;
+    ],
+    &quot;telephone&quot;: &quot;+56912345678&quot;,
+    &quot;textarea&quot;: &quot;This is a long text.&quot;,
+    &quot;text&quot;: &quot;Sample text&quot;,
+    &quot;time&quot;: &quot;14:30:00&quot;,
+    &quot;uri&quot;: &quot;mailto:user@example.com&quot;,
+    &quot;url&quot;: &quot;https://example.com&quot;,
+    &quot;uuid&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;week&quot;: &quot;2025-W10&quot;
+}</code></pre>
+
+                </div>
+                    </div>
+    </div>
+
+
+    <hr/>
+    <div class="my-4 small clearfix">
+        <div class="float-start">
+            Tags: <span class="text-muted">#withSchema #withOutUiSchema #withData</span>
+        </div>
+        <div class="text-muted float-end">
+            002_control
+        </div>
+    </div>
+
+<hr class="mb-4" />
+
+<div class="row">
+    <div class="col-md-6">
+                    <a href="from_data.html" class="btn btn-secondary w-100 text-start">
+                <small class="d-block mb-2">Previous</small>
+                <i class="fa-solid fa-chevron-left"></i>
+                From Data
+            </a>
+            </div>
+    <div class="col-md-6">
+                    <a href="signup.html" class="btn btn-secondary w-100 text-end">
+                <small class="d-block mb-2">Next</small>
+                User Registration
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            </div>
+</div>
+
+                </main>
+                <div class="col-md-2 py-4">
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Package Info</div>
+                                <span class="smal text-muted">derafu/form</span>
+                            </div>
+                        </li>
+                        <a href="../index.html" class="list-group-item list-group-item-action ">
+                            README
+                        </a>
+                    </div>
+                    <div class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Docs</div>
+                                <span class="smal text-muted">Guides & Examples</span>
+                            </div>
+                        </li>
+                        <a href="../examples.html" class="list-group-item list-group-item-action ">
+                            Examples
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_en" class="list-group-item list-group-item-action  disabled">
+                            English Guide
+                        </a>
+                        <a href="http://127.0.0.1:9000/guide_es" class="list-group-item list-group-item-action  disabled">
+                            Guía en Español
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+            <div id="footer-container"></div>
+<script src="https://derafu.org/foundation/js/derafu.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/command-line/prism-command-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/match-braces/prism-match-braces.min.js"></script>
+    <script type="module" src="../js/app.min.js"></script>
+</body>
+</html>

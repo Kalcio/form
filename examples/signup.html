@@ -25,6 +25,28 @@
 
 <p class="mb-4">Form to create a new user account.</p>
 
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +54,10 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c7553328bcb">
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c8678012b62">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -145,7 +170,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c755331767d">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c8678004469">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -160,14 +185,12 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="signup.html" enctype="application/x-www-form-urlencoded" id="form-67c755331b79d" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="signup.html" enctype="" id="form-example-003_signup" method="post" name="" rel="" target="_self">
 
 
         
 
-<div class="vstack gap-3 ">
-            <div class="mb-3">
+<div class="vstack gap-2 ">
             
 
 
@@ -177,7 +200,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" placeholder="Name">
+<input type="text" id="form-example-003_signup" name="name" class="form-control" placeholder="Name">
 
                 
 
@@ -204,8 +227,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -215,7 +236,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="username_field" name="username" class="form-control" placeholder="Username">
+<input type="text" id="form-example-003_signup" name="username" class="form-control" placeholder="Username">
 
                 
 
@@ -242,8 +263,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -253,7 +272,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="email" id="email_field" name="email" class="form-control" placeholder="Email&#x20;address">
+<input type="email" id="form-example-003_signup" name="email" class="form-control" placeholder="Email&#x20;address">
 
                 
 
@@ -280,8 +299,6 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -291,7 +308,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="checkbox" id="terms_accepted_field" name="terms_accepted" class="form-control" placeholder="I&#x20;accept&#x20;the&#x20;terms&#x20;and&#x20;conditions&#x20;of&#x20;use&#x20;of&#x20;the&#x20;service.">
+<input type="checkbox" id="form-example-003_signup" name="terms_accepted" class="form-control" placeholder="I&#x20;accept&#x20;the&#x20;terms&#x20;and&#x20;conditions&#x20;of&#x20;use&#x20;of&#x20;the&#x20;service.">
 
                 
 
@@ -318,7 +335,6 @@
         </div>
     </div>
 
-        </div>
     </div>
 
 
@@ -331,6 +347,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-003_signup');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -339,40 +372,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","title":"Email address","format":"email"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null,"options":[]};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name"},"username":{"type":"string","title":"Username"},"email":{"type":"string","title":"Email address","format":"email"},"terms_accepted":{"type":"boolean","title":"I accept the terms and conditions of use of the service."}},"required":["name","username","email","terms_accepted"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Control","label":"Name","scope":"#\/properties\/name"},{"type":"Control","label":"Username","scope":"#\/properties\/username"},{"type":"Control","label":"Email address","scope":"#\/properties\/email"},{"type":"Control","label":"I accept the terms and conditions of use of the service.","scope":"#\/properties\/terms_accepted"}]},"data":null};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')
@@ -478,10 +487,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="row">
     <div class="col-md-6">
-                    <a href="from_normalized_data.html" class="btn btn-secondary w-100 text-start">
+                    <a href="control.html" class="btn btn-secondary w-100 text-start">
                 <small class="d-block mb-2">Previous</small>
                 <i class="fa-solid fa-chevron-left"></i>
-                From Normalized Data
+                Control
             </a>
             </div>
     <div class="col-md-6">

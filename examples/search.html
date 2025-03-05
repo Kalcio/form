@@ -25,6 +25,28 @@
 
 <p class="mb-4">Complex search form for filtering invoices with conditional fields.</p>
 
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +54,10 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c755345c1ec">
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c86781537ba">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -510,7 +535,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c755344488c">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c867813eab0">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -525,24 +550,22 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="search.html" enctype="application/x-www-form-urlencoded" id="form-67c75534486b4" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="search.html" enctype="" id="form-example-009_search" method="post" name="" rel="" target="_self">
 
 
         
 
-<div class="vstack gap-3 ">
-            <div class="mb-3">
+<div class="vstack gap-2 ">
             
 
 
 
-<div class="card mb-4" id="card_43306010">
+<div class="card mb-4" id="card_2019778636">
             <div class="card-header">
                             <h5 class="mb-0">Basic Search</h5>
                     </div>
     
-    <div id="collapse_687788881" class="">
+    <div id="collapse_834773983" class="">
         <div class="card-body">
                             
 
@@ -560,7 +583,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="dateRange_field" name="dateRange" class="form-control" value="last30days" placeholder="">
+<input type="text" id="form-example-009_search" name="dateRange" class="form-control" value="last30days" placeholder="">
 
                 
 
@@ -600,7 +623,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="date" id="customDateFrom_field" name="customDateFrom" class="form-control" placeholder="">
+<input type="date" id="form-example-009_search" name="customDateFrom" class="form-control" placeholder="">
 
                 
 
@@ -640,7 +663,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="date" id="customDateTo_field" name="customDateTo" class="form-control" placeholder="">
+<input type="date" id="form-example-009_search" name="customDateTo" class="form-control" placeholder="">
 
                 
 
@@ -679,7 +702,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="invoiceStatus_field" name="invoiceStatus" class="form-control" value="&#x5B;&quot;sent&quot;,&quot;paid&quot;,&quot;overdue&quot;&#x5D;" placeholder="">
+<input type="text" id="form-example-009_search" name="invoiceStatus" class="form-control" value="&#x5B;&quot;sent&quot;,&quot;paid&quot;,&quot;overdue&quot;&#x5D;" placeholder="">
 
                 
 
@@ -715,7 +738,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="searchText_field" name="searchText" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-009_search" name="searchText" class="form-control" value="" placeholder="">
 
                 
 
@@ -739,7 +762,7 @@
             <div class="form-text">
             
             
-    <small id="searchTextHelp" class="">Invoice #, customer name, or any text in the invoice</small>
+    <small id="searchText_help" class="">Invoice #, customer name, or any text in the invoice</small>
 
         </div>
     </div>
@@ -749,18 +772,16 @@
 
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
 
-<div class="card mb-4" id="card_1798803256">
+<div class="card mb-4" id="card_1704387986">
             <div class="card-header">
                             <h5 class="mb-0">Advanced Filters</h5>
                     </div>
     
-    <div id="collapse_1567066270" class="">
+    <div id="collapse_1806066555" class="">
         <div class="card-body">
                             
 
@@ -771,7 +792,7 @@
                                     <div class="form-floating">
                 
                                                                                     
-<input type="checkbox" id="showAdvanced_field" name="showAdvanced" class="form-control" placeholder="">
+<input type="checkbox" id="form-example-009_search" name="showAdvanced" class="form-control" placeholder="">
 
                 
 
@@ -814,7 +835,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="number" id="min_field" name="min" class="form-control" placeholder="">
+<input type="number" id="form-example-009_search" name="min" class="form-control" placeholder="">
 
                 
 
@@ -854,7 +875,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="number" id="max_field" name="max" class="form-control" placeholder="">
+<input type="number" id="form-example-009_search" name="max" class="form-control" placeholder="">
 
                 
 
@@ -900,7 +921,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="customer_field" name="customer" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-009_search" name="customer" class="form-control" value="" placeholder="">
 
                 
 
@@ -940,7 +961,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="taxId_field" name="taxId" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-009_search" name="taxId" class="form-control" value="" placeholder="">
 
                 
 
@@ -979,7 +1000,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="paymentMethod_field" name="paymentMethod" class="form-control" value="all" placeholder="">
+<input type="text" id="form-example-009_search" name="paymentMethod" class="form-control" value="all" placeholder="">
 
                 
 
@@ -1015,7 +1036,7 @@
                                     <div class="form-floating">
                 
                                                                                     
-<input type="checkbox" id="includeItems_field" name="includeItems" class="form-control" placeholder="">
+<input type="checkbox" id="form-example-009_search" name="includeItems" class="form-control" placeholder="">
 
                 
 
@@ -1058,7 +1079,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="productCode_field" name="productCode" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-009_search" name="productCode" class="form-control" value="" placeholder="">
 
                 
 
@@ -1098,7 +1119,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="description_field" name="description" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-009_search" name="description" class="form-control" value="" placeholder="">
 
                 
 
@@ -1133,18 +1154,16 @@
 
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
 
-<div class="card mb-4" id="card_974582438">
+<div class="card mb-4" id="card_316541572">
             <div class="card-header">
                             <h5 class="mb-0">Display Options</h5>
                     </div>
     
-    <div id="collapse_386967940" class="">
+    <div id="collapse_1838202524" class="">
         <div class="card-body">
                             
 
@@ -1162,7 +1181,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="groupBy_field" name="groupBy" class="form-control" value="none" placeholder="">
+<input type="text" id="form-example-009_search" name="groupBy" class="form-control" value="none" placeholder="">
 
                 
 
@@ -1202,7 +1221,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="sortBy_field" name="sortBy" class="form-control" value="date" placeholder="">
+<input type="text" id="form-example-009_search" name="sortBy" class="form-control" value="date" placeholder="">
 
                 
 
@@ -1242,7 +1261,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="sortOrder_field" name="sortOrder" class="form-control" value="desc" placeholder="">
+<input type="text" id="form-example-009_search" name="sortOrder" class="form-control" value="desc" placeholder="">
 
                 
 
@@ -1282,7 +1301,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="number" id="itemsPerPage_field" name="itemsPerPage" class="form-control" value="25" placeholder="">
+<input type="number" id="form-example-009_search" name="itemsPerPage" class="form-control" value="25" placeholder="">
 
                 
 
@@ -1317,7 +1336,6 @@
 
     </div>
 
-        </div>
     </div>
 
 
@@ -1330,6 +1348,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-009_search');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -1338,40 +1373,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"basicFilters":{"type":"object","properties":{"dateRange":{"type":"string","title":"Date Range","default":"last30days","enum":["today","yesterday","last7days","last30days","thisMonth","lastMonth","custom"]},"customDateFrom":{"type":"string","title":"From Date","format":"date"},"customDateTo":{"type":"string","title":"To Date","format":"date"},"invoiceStatus":{"type":"array","title":"Invoice Status","items":{"type":"string","enum":["draft","sent","paid","overdue","cancelled","rejected"]},"uniqueItems":true},"searchText":{"type":"string","title":"Search Text","description":"Invoice #, customer name, or any text in the invoice"}}},"advancedFilters":{"type":"object","properties":{"showAdvanced":{"type":"boolean","title":"Show Advanced Filters","default":false},"amountRange":{"type":"object","properties":{"min":{"type":"number","title":"Minimum Amount"},"max":{"type":"number","title":"Maximum Amount"}}},"customer":{"type":"string","title":"Customer"},"taxId":{"type":"string","title":"Tax ID"},"paymentMethod":{"type":"string","title":"Payment Method","default":"all","enum":["all","cash","creditCard","bankTransfer","check"]},"includeItems":{"type":"boolean","title":"Search in Line Items","default":false},"itemFilters":{"type":"object","properties":{"productCode":{"type":"string","title":"Product Code"},"description":{"type":"string","title":"Description Contains"}}}}},"displayOptions":{"type":"object","properties":{"groupBy":{"type":"string","title":"Group Results By","default":"none","enum":["none","customer","status","month","quarter"]},"sortBy":{"type":"string","title":"Sort By","default":"date","enum":["date","number","customer","amount"]},"sortOrder":{"type":"string","title":"Sort Order","default":"desc","enum":["asc","desc"]},"itemsPerPage":{"type":"number","title":"Items Per Page","default":25,"enum":[10,25,50,100]}}}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Search","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/dateRange"},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateFrom","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateTo","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}}]},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/invoiceStatus","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/searchText"}]},{"type":"Group","label":"Advanced Filters","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/showAdvanced"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/min"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/max"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/customer"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/taxId"}]},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/paymentMethod","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/includeItems","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/productCode"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/description"}]}]},{"type":"Group","label":"Display Options","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/groupBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortOrder"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/itemsPerPage"}]}]}]},"data":{"basicFilters":{"dateRange":"last30days","invoiceStatus":["sent","paid","overdue"],"searchText":""},"advancedFilters":{"showAdvanced":false,"amountRange":{"min":null,"max":null},"customer":"","taxId":"","paymentMethod":"all","includeItems":false,"itemFilters":{"productCode":"","description":""}},"displayOptions":{"groupBy":"none","sortBy":"date","sortOrder":"desc","itemsPerPage":25}},"options":[]};
+    const formDefinition ={"schema":{"type":"object","properties":{"basicFilters":{"type":"object","properties":{"dateRange":{"type":"string","title":"Date Range","default":"last30days","enum":["today","yesterday","last7days","last30days","thisMonth","lastMonth","custom"]},"customDateFrom":{"type":"string","title":"From Date","format":"date"},"customDateTo":{"type":"string","title":"To Date","format":"date"},"invoiceStatus":{"type":"array","title":"Invoice Status","items":{"type":"string","enum":["draft","sent","paid","overdue","cancelled","rejected"]},"uniqueItems":true},"searchText":{"type":"string","title":"Search Text","description":"Invoice #, customer name, or any text in the invoice"}}},"advancedFilters":{"type":"object","properties":{"showAdvanced":{"type":"boolean","title":"Show Advanced Filters","default":false},"amountRange":{"type":"object","properties":{"min":{"type":"number","title":"Minimum Amount"},"max":{"type":"number","title":"Maximum Amount"}}},"customer":{"type":"string","title":"Customer"},"taxId":{"type":"string","title":"Tax ID"},"paymentMethod":{"type":"string","title":"Payment Method","default":"all","enum":["all","cash","creditCard","bankTransfer","check"]},"includeItems":{"type":"boolean","title":"Search in Line Items","default":false},"itemFilters":{"type":"object","properties":{"productCode":{"type":"string","title":"Product Code"},"description":{"type":"string","title":"Description Contains"}}}}},"displayOptions":{"type":"object","properties":{"groupBy":{"type":"string","title":"Group Results By","default":"none","enum":["none","customer","status","month","quarter"]},"sortBy":{"type":"string","title":"Sort By","default":"date","enum":["date","number","customer","amount"]},"sortOrder":{"type":"string","title":"Sort Order","default":"desc","enum":["asc","desc"]},"itemsPerPage":{"type":"number","title":"Items Per Page","default":25,"enum":[10,25,50,100]}}}}},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Basic Search","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/dateRange"},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateFrom","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/customDateTo","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/basicFilters\/properties\/dateRange","schema":{"const":"custom"}}}}]},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/invoiceStatus","options":{"format":"checkbox"}},{"type":"Control","scope":"#\/properties\/basicFilters\/properties\/searchText"}]},{"type":"Group","label":"Advanced Filters","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/showAdvanced"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/min"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/amountRange\/properties\/max"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/customer"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/taxId"}]},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/paymentMethod","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/includeItems","rule":{"effect":"SHOW","condition":{"scope":"#\/properties\/advancedFilters\/properties\/showAdvanced","schema":{"const":true}}}},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/productCode"},{"type":"Control","scope":"#\/properties\/advancedFilters\/properties\/itemFilters\/properties\/description"}]}]},{"type":"Group","label":"Display Options","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/groupBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortBy"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/sortOrder"},{"type":"Control","scope":"#\/properties\/displayOptions\/properties\/itemsPerPage"}]}]}]},"data":{"basicFilters":{"dateRange":"last30days","invoiceStatus":["sent","paid","overdue"],"searchText":""},"advancedFilters":{"showAdvanced":false,"amountRange":{"min":null,"max":null},"customer":"","taxId":"","paymentMethod":"all","includeItems":false,"itemFilters":{"productCode":"","description":""}},"displayOptions":{"groupBy":"none","sortBy":"date","sortOrder":"desc","itemsPerPage":25}}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')

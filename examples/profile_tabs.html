@@ -25,6 +25,28 @@
 
 <p class="mb-4">User profile form with tabs and cards.</p>
 
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +54,10 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c75533b3877">
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c86780a5d7a">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -259,7 +284,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c755339aa0b">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c867808fa4e">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -274,33 +299,32 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="profile_tabs.html" enctype="application/x-www-form-urlencoded" id="form-67c755339ed27" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="profile_tabs.html" enctype="" id="form-example-006_profile_tabs" method="post" name="" rel="" target="_self">
 
 
         
 
 
 <div class="mb-4">
-                    <ul class="nav nav-tabs" id="tab_1864371782_tabs" role="tablist">
+                    <ul class="nav nav-tabs" id="tab_350192153_tabs" role="tablist">
                                                             <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="tab_1864371782_0_tab" data-bs-toggle="tab"
-                            data-bs-target="#tab_1864371782_0_content" type="button" role="tab"
-                            aria-controls="tab_1864371782_0_content" aria-selected="true">
+                    <button class="nav-link active" id="tab_350192153_0_tab" data-bs-toggle="tab"
+                            data-bs-target="#tab_350192153_0_content" type="button" role="tab"
+                            aria-controls="tab_350192153_0_content" aria-selected="true">
                                                 Basic Information &amp; API Access
                     </button>
                 </li>
                                                             <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab_1864371782_1_tab" data-bs-toggle="tab"
-                            data-bs-target="#tab_1864371782_1_content" type="button" role="tab"
-                            aria-controls="tab_1864371782_1_content" aria-selected="false">
+                    <button class="nav-link" id="tab_350192153_1_tab" data-bs-toggle="tab"
+                            data-bs-target="#tab_350192153_1_content" type="button" role="tab"
+                            aria-controls="tab_350192153_1_content" aria-selected="false">
                                                 Password
                     </button>
                 </li>
                     </ul>
         <div class="tab-content pt-3">
-                                                            <div class="tab-pane fade show active" id="tab_1864371782_0_content" role="tabpanel"
-                     aria-labelledby="tab_1864371782_0_tab">
+                                                            <div class="tab-pane fade show active" id="tab_350192153_0_content" role="tabpanel"
+                     aria-labelledby="tab_350192153_0_tab">
                     
 
 
@@ -309,12 +333,12 @@
 
 
 
-<div class="card mb-4" id="card_1216815141">
+<div class="card mb-4" id="card_1787755553">
             <div class="card-header">
                             <h5 class="mb-0">Basic Information</h5>
                     </div>
     
-    <div id="collapse_162817667" class="">
+    <div id="collapse_222390328" class="">
         <div class="card-body">
                             
 
@@ -325,7 +349,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" value="Admin" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="name" class="form-control" value="Admin" placeholder="">
 
                 
 
@@ -349,7 +373,7 @@
             <div class="form-text">
             
             
-    <small id="nameHelp" class="">User&#039;s real name.</small>
+    <small id="name_help" class="">User&#039;s real name.</small>
 
         </div>
     </div>
@@ -363,7 +387,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="username_field" name="username" class="form-control" value="admin" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="username" class="form-control" value="admin" placeholder="">
 
                 
 
@@ -387,7 +411,7 @@
             <div class="form-text">
             
             
-    <small id="usernameHelp" class="">Username. Can be used to login.</small>
+    <small id="username_help" class="">Username. Can be used to login.</small>
 
         </div>
     </div>
@@ -401,7 +425,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="email" id="email_field" name="email" class="form-control" value="admin&#x40;example.com" placeholder="">
+<input type="email" id="form-example-006_profile_tabs" name="email" class="form-control" value="admin&#x40;example.com" placeholder="">
 
                 
 
@@ -425,7 +449,7 @@
             <div class="form-text">
             
             
-    <small id="emailHelp" class="">Email address for system use, including login and notifications.</small>
+    <small id="email_help" class="">Email address for system use, including login and notifications.</small>
 
         </div>
     </div>
@@ -439,12 +463,12 @@
 
 
 
-<div class="card mb-4" id="card_1224844813">
+<div class="card mb-4" id="card_237368486">
             <div class="card-header">
                             <h5 class="mb-0">API Access</h5>
                     </div>
     
-    <div id="collapse_464593429" class="">
+    <div id="collapse_301216779" class="">
         <div class="card-body">
                             
 
@@ -455,7 +479,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="api_hash_field" name="api_hash" class="form-control" value="uhkCY2ymkklJ24SDkyPdnmkT6RcUiOac" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="api_hash" class="form-control" value="uhkCY2ymkklJ24SDkyPdnmkT6RcUiOac" placeholder="">
 
                 
 
@@ -479,7 +503,7 @@
             <div class="form-text">
             
             
-    <small id="api_hashHelp" class="">User&#039;s unique identifier in the API. To generate a new one, delete this and save.</small>
+    <small id="api_hash_help" class="">User&#039;s unique identifier in the API. To generate a new one, delete this and save.</small>
 
         </div>
     </div>
@@ -493,7 +517,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="api_key_field" name="api_key" class="form-control" value="QmFzaWMgWDp1aGtDWTJ5bWtrbEoyNFNEa3lQZG5ta1Q2UmNVaU9hYw&#x3D;&#x3D;" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="api_key" class="form-control" value="QmFzaWMgWDp1aGtDWTJ5bWtrbEoyNFNEa3lQZG5ta1Q2UmNVaU9hYw&#x3D;&#x3D;" placeholder="">
 
                 
 
@@ -517,7 +541,7 @@
             <div class="form-text">
             
             
-    <small id="api_keyHelp" class="">Send authentication header to the API: Authorization: Basic APIKEY</small>
+    <small id="api_key_help" class="">Send authentication header to the API: Authorization: Basic APIKEY</small>
 
         </div>
     </div>
@@ -530,8 +554,8 @@
     </div>
 
                 </div>
-                                                            <div class="tab-pane fade" id="tab_1864371782_1_content" role="tabpanel"
-                     aria-labelledby="tab_1864371782_1_tab">
+                                                            <div class="tab-pane fade" id="tab_350192153_1_content" role="tabpanel"
+                     aria-labelledby="tab_350192153_1_tab">
                     
 
 
@@ -540,12 +564,12 @@
 
 
 
-<div class="card mb-4" id="card_1836525409">
+<div class="card mb-4" id="card_388691443">
             <div class="card-header">
                             <h5 class="mb-0">Change Password</h5>
                     </div>
     
-    <div id="collapse_199566323" class="">
+    <div id="collapse_1233779689" class="">
         <div class="card-body">
                             
 
@@ -556,7 +580,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="current_password_field" name="current_password" class="form-control" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="current_password" class="form-control" placeholder="">
 
                 
 
@@ -580,7 +604,7 @@
             <div class="form-text">
             
             
-    <small id="current_passwordHelp" class="">Password currently used by the user.</small>
+    <small id="current_password_help" class="">Password currently used by the user.</small>
 
         </div>
     </div>
@@ -594,7 +618,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="new_password_field" name="new_password" class="form-control" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="new_password" class="form-control" placeholder="">
 
                 
 
@@ -618,7 +642,7 @@
             <div class="form-text">
             
             
-    <small id="new_passwordHelp" class="">Password you want to use.</small>
+    <small id="new_password_help" class="">Password you want to use.</small>
 
         </div>
     </div>
@@ -632,7 +656,7 @@
                                     <div class="form-floating">
                 
                                                                                 
-<input type="text" id="repeat_password_field" name="repeat_password" class="form-control" placeholder="">
+<input type="text" id="form-example-006_profile_tabs" name="repeat_password" class="form-control" placeholder="">
 
                 
 
@@ -656,7 +680,7 @@
             <div class="form-text">
             
             
-    <small id="repeat_passwordHelp" class="">Repeat the password entered above.</small>
+    <small id="repeat_password_help" class="">Repeat the password entered above.</small>
 
         </div>
     </div>
@@ -682,6 +706,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-006_profile_tabs');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -690,40 +731,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name","description":"User's real name."},"username":{"type":"string","title":"Username","description":"Username. Can be used to login."},"email":{"type":"string","title":"Email","description":"Email address for system use, including login and notifications.","format":"email"},"api_hash":{"type":"string","title":"API hash","description":"User's unique identifier in the API. To generate a new one, delete this and save."},"api_key":{"type":"string","title":"API key","description":"Send authentication header to the API: Authorization: Basic APIKEY"},"current_password":{"type":"string","title":"Current password","description":"Password currently used by the user."},"new_password":{"type":"string","title":"New password","description":"Password you want to use."},"repeat_password":{"type":"string","title":"Repeat password","description":"Repeat the password entered above."}},"required":["name","username","email"]},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Basic Information & API Access","elements":[{"type":"Group","label":"Basic Information","elements":[{"type":"Control","scope":"#\/properties\/name"},{"type":"Control","scope":"#\/properties\/username"},{"type":"Control","scope":"#\/properties\/email"}]},{"type":"Group","label":"API Access","elements":[{"type":"Control","scope":"#\/properties\/api_hash","options":{"format":"password","showUnfocusedDescription":true}},{"type":"Control","scope":"#\/properties\/api_key","options":{"format":"password","showUnfocusedDescription":true}}]}]},{"type":"Category","label":"Password","elements":[{"type":"Group","label":"Change Password","elements":[{"type":"Control","scope":"#\/properties\/current_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/new_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/repeat_password","options":{"format":"password"}}]}]}],"options":[]},"data":{"name":"Admin","username":"admin","email":"admin@example.com","api_hash":"uhkCY2ymkklJ24SDkyPdnmkT6RcUiOac","api_key":"QmFzaWMgWDp1aGtDWTJ5bWtrbEoyNFNEa3lQZG5ta1Q2UmNVaU9hYw=="},"options":[]};
+    const formDefinition ={"schema":{"type":"object","properties":{"name":{"type":"string","title":"Name","description":"User's real name."},"username":{"type":"string","title":"Username","description":"Username. Can be used to login."},"email":{"type":"string","title":"Email","description":"Email address for system use, including login and notifications.","format":"email"},"api_hash":{"type":"string","title":"API hash","description":"User's unique identifier in the API. To generate a new one, delete this and save."},"api_key":{"type":"string","title":"API key","description":"Send authentication header to the API: Authorization: Basic APIKEY"},"current_password":{"type":"string","title":"Current password","description":"Password currently used by the user."},"new_password":{"type":"string","title":"New password","description":"Password you want to use."},"repeat_password":{"type":"string","title":"Repeat password","description":"Repeat the password entered above."}},"required":["name","username","email"]},"uischema":{"type":"Categorization","elements":[{"type":"Category","label":"Basic Information & API Access","elements":[{"type":"Group","label":"Basic Information","elements":[{"type":"Control","scope":"#\/properties\/name"},{"type":"Control","scope":"#\/properties\/username"},{"type":"Control","scope":"#\/properties\/email"}]},{"type":"Group","label":"API Access","elements":[{"type":"Control","scope":"#\/properties\/api_hash","options":{"format":"password","showUnfocusedDescription":true}},{"type":"Control","scope":"#\/properties\/api_key","options":{"format":"password","showUnfocusedDescription":true}}]}]},{"type":"Category","label":"Password","elements":[{"type":"Group","label":"Change Password","elements":[{"type":"Control","scope":"#\/properties\/current_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/new_password","options":{"format":"password"}},{"type":"Control","scope":"#\/properties\/repeat_password","options":{"format":"password"}}]}]}],"options":[]},"data":{"name":"Admin","username":"admin","email":"admin@example.com","api_hash":"uhkCY2ymkklJ24SDkyPdnmkT6RcUiOac","api_key":"QmFzaWMgWDp1aGtDWTJ5bWtrbEoyNFNEa3lQZG5ta1Q2UmNVaU9hYw=="}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')

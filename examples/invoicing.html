@@ -25,6 +25,28 @@
 
 <p class="mb-4">Form for creating invoices with basic fields and line items.</p>
 
+<div class="modal fade"
+    id="modal-xl-form"
+    tabindex="-1"
+    aria-labelledby="modal-xl-form-label"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog modal-xl
+        modal-dialog-centered
+        ">
+        <div class="modal-content">
+                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+            
+            <div class="modal-body">
+                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
+            </div>
+
+                    </div>
+    </div>
+</div>
 
 
 
@@ -32,7 +54,10 @@
 
 
 
-<div class="derafu-block-tabs " id="block-tabs--67c755342a4e6">
+
+
+
+<div class="derafu-block-tabs " id="block-tabs--67c8678120443">
             <nav class="nav nav-pills nav-justified">
                             <button class="nav-link"
                         id="tab-input"
@@ -632,7 +657,7 @@
                     aria-labelledby="tab-demo_php"
                     tabindex="0">
                     <div class="derafu-block-alert ">
-    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c7553410e94">
+    <div class="alert alert-info d-flex align-items-center" role="alert" id="block-alert--67c867810a17c">
                     <i class="fa-solid fa-info-circle text-info fa-fw derafu-block-alert__icon"></i>
                 <div>
             WIP: Work In Progress.
@@ -647,24 +672,22 @@
 
 
                                                                                                                                         
-<form accept-charset="UTF-8" action="invoicing.html" enctype="application/x-www-form-urlencoded" id="form-67c75534150cc" method="POST" name="" rel="" target="_self">
-    <input type="hidden" name="_method" value="">
+<form accept-charset="UTF-8" action="invoicing.html" enctype="" id="form-example-008_invoicing" method="post" name="" rel="" target="_self">
 
 
         
 
-<div class="vstack gap-3 ">
-            <div class="mb-3">
+<div class="vstack gap-2 ">
             
 
 
 
-<div class="card mb-4" id="card_2097835916">
+<div class="card mb-4" id="card_2087630435">
             <div class="card-header">
                             <h5 class="mb-0">Invoice Information</h5>
                     </div>
     
-    <div id="collapse_1159623941" class="">
+    <div id="collapse_1086175720" class="">
         <div class="card-body">
                             
 
@@ -682,7 +705,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="id_field" name="id" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="id" class="form-control" value="" placeholder="">
 
                 
 
@@ -722,7 +745,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="date" id="issueDate_field" name="issueDate" class="form-control" value="2025-03-01" placeholder="">
+<input type="date" id="form-example-008_invoicing" name="issueDate" class="form-control" value="2025-03-01" placeholder="">
 
                 
 
@@ -762,7 +785,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="date" id="dueDate_field" name="dueDate" class="form-control" value="2025-03-10" placeholder="">
+<input type="date" id="form-example-008_invoicing" name="dueDate" class="form-control" value="2025-03-10" placeholder="">
 
                 
 
@@ -802,7 +825,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="documentCurrencyCode_field" name="documentCurrencyCode" class="form-control" value="EUR" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="documentCurrencyCode" class="form-control" value="EUR" placeholder="">
 
                 
 
@@ -841,7 +864,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="note_field" name="note" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="note" class="form-control" value="" placeholder="">
 
                 
 
@@ -873,8 +896,6 @@
 
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
@@ -886,12 +907,12 @@
 
 
 
-<div class="card mb-4" id="card_1813771347">
+<div class="card mb-4" id="card_1484025750">
             <div class="card-header">
                             <h5 class="mb-0">Supplier Information</h5>
                     </div>
     
-    <div id="collapse_1444991878" class="">
+    <div id="collapse_387660646" class="">
         <div class="card-body">
                             
 
@@ -902,7 +923,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="taxId_field" name="taxId" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="taxId" class="form-control" value="" placeholder="">
 
                 
 
@@ -938,7 +959,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="name" class="form-control" value="" placeholder="">
 
                 
 
@@ -974,7 +995,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="streetName_field" name="streetName" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="streetName" class="form-control" value="" placeholder="">
 
                 
 
@@ -1017,7 +1038,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="cityName_field" name="cityName" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="cityName" class="form-control" value="" placeholder="">
 
                 
 
@@ -1057,7 +1078,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="postalZone_field" name="postalZone" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="postalZone" class="form-control" value="" placeholder="">
 
                 
 
@@ -1096,7 +1117,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="country_field" name="country" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="country" class="form-control" value="" placeholder="">
 
                 
 
@@ -1132,7 +1153,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="name" class="form-control" value="" placeholder="">
 
                 
 
@@ -1168,7 +1189,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="telephone_field" name="telephone" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="telephone" class="form-control" value="" placeholder="">
 
                 
 
@@ -1204,7 +1225,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="email" id="electronicMail_field" name="electronicMail" class="form-control" value="" placeholder="">
+<input type="email" id="form-example-008_invoicing" name="electronicMail" class="form-control" value="" placeholder="">
 
                 
 
@@ -1244,12 +1265,12 @@
 
 
 
-<div class="card mb-4" id="card_281735778">
+<div class="card mb-4" id="card_1620598468">
             <div class="card-header">
                             <h5 class="mb-0">Customer Information</h5>
                     </div>
     
-    <div id="collapse_1666937047" class="">
+    <div id="collapse_1519235094" class="">
         <div class="card-body">
                             
 
@@ -1260,7 +1281,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="taxId_field" name="taxId" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="taxId" class="form-control" value="" placeholder="">
 
                 
 
@@ -1296,7 +1317,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="name" class="form-control" value="" placeholder="">
 
                 
 
@@ -1332,7 +1353,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="streetName_field" name="streetName" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="streetName" class="form-control" value="" placeholder="">
 
                 
 
@@ -1375,7 +1396,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="cityName_field" name="cityName" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="cityName" class="form-control" value="" placeholder="">
 
                 
 
@@ -1415,7 +1436,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="postalZone_field" name="postalZone" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="postalZone" class="form-control" value="" placeholder="">
 
                 
 
@@ -1454,7 +1475,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="country_field" name="country" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="country" class="form-control" value="" placeholder="">
 
                 
 
@@ -1490,7 +1511,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="name_field" name="name" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="name" class="form-control" value="" placeholder="">
 
                 
 
@@ -1526,7 +1547,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="telephone_field" name="telephone" class="form-control" value="" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="telephone" class="form-control" value="" placeholder="">
 
                 
 
@@ -1562,7 +1583,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="email" id="electronicMail_field" name="electronicMail" class="form-control" value="" placeholder="">
+<input type="email" id="form-example-008_invoicing" name="electronicMail" class="form-control" value="" placeholder="">
 
                 
 
@@ -1597,18 +1618,16 @@
         </div>
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
 
-<div class="card mb-4" id="card_1530451581">
+<div class="card mb-4" id="card_725299484">
             <div class="card-header">
                             <h5 class="mb-0">Invoice Items</h5>
                     </div>
     
-    <div id="collapse_1626026292" class="">
+    <div id="collapse_801124665" class="">
         <div class="card-body">
                             
 
@@ -1619,7 +1638,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="text" id="invoiceLines_field" name="invoiceLines" class="form-control" value="&#x5B;&#x7B;&quot;description&quot;&#x3A;&quot;Form&#x20;Generation&#x20;Service&quot;,&quot;quantity&quot;&#x3A;1,&quot;unitCode&quot;&#x3A;&quot;UN&quot;,&quot;priceAmount&quot;&#x3A;0,&quot;taxPercent&quot;&#x3A;22,&quot;lineExtensionAmount&quot;&#x3A;0&#x7D;&#x5D;" placeholder="">
+<input type="text" id="form-example-008_invoicing" name="invoiceLines" class="form-control" value="&#x5B;&#x7B;&quot;description&quot;&#x3A;&quot;Form&#x20;Generation&#x20;Service&quot;,&quot;quantity&quot;&#x3A;1,&quot;unitCode&quot;&#x3A;&quot;UN&quot;,&quot;priceAmount&quot;&#x3A;0,&quot;taxPercent&quot;&#x3A;22,&quot;lineExtensionAmount&quot;&#x3A;0&#x7D;&#x5D;" placeholder="">
 
                 
 
@@ -1651,18 +1670,16 @@
 
     </div>
 
-        </div>
-            <div class="mb-3">
             
 
 
 
-<div class="card mb-4" id="card_906654742">
+<div class="card mb-4" id="card_1170724262">
             <div class="card-header">
                             <h5 class="mb-0">Totals</h5>
                     </div>
     
-    <div id="collapse_550516441" class="">
+    <div id="collapse_589641052" class="">
         <div class="card-body">
                             
 
@@ -1680,7 +1697,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="number" id="lineExtensionAmount_field" name="lineExtensionAmount" class="form-control" value="0" placeholder="">
+<input type="number" id="form-example-008_invoicing" name="lineExtensionAmount" class="form-control" value="0" placeholder="">
 
                 
 
@@ -1720,7 +1737,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="number" id="taxExclusiveAmount_field" name="taxExclusiveAmount" class="form-control" value="0" placeholder="">
+<input type="number" id="form-example-008_invoicing" name="taxExclusiveAmount" class="form-control" value="0" placeholder="">
 
                 
 
@@ -1760,7 +1777,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="number" id="taxInclusiveAmount_field" name="taxInclusiveAmount" class="form-control" value="0" placeholder="">
+<input type="number" id="form-example-008_invoicing" name="taxInclusiveAmount" class="form-control" value="0" placeholder="">
 
                 
 
@@ -1800,7 +1817,7 @@
                                     <div class="form-floating">
                 
                                                                                                 
-<input type="number" id="payableAmount_field" name="payableAmount" class="form-control" value="0" placeholder="">
+<input type="number" id="form-example-008_invoicing" name="payableAmount" class="form-control" value="0" placeholder="">
 
                 
 
@@ -1835,7 +1852,6 @@
 
     </div>
 
-        </div>
     </div>
 
 
@@ -1848,6 +1864,23 @@
 
 
 
+<button class="btn btn-primary w-100" id="submit-button-php-form">Submit</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up the event handler for the submit button.
+        document.getElementById('submit-button-php-form').addEventListener('click', () => {
+            const form = document.getElementById('form-example-008_invoicing');
+            const formData = Object.fromEntries(new FormData(form).entries());
+            const codeElement = document.getElementById('submit-data')
+            codeElement.innerHTML = JSON.stringify(formData, null, 4);
+            Prism.highlightElement(codeElement);
+            const modalSubmitData = new bootstrap.Modal('#modal-xl-form');
+            modalSubmitData.show();
+        });
+    });
+</script>
+
 
                 </div>
                             <div class="tab-pane fade"
@@ -1856,40 +1889,16 @@
                     aria-labelledby="tab-demo_js"
                     tabindex="0">
                     <div id="json-form-container" class="mb-4"></div>
-<button class="btn btn-primary w-100" id="submit-button">Submit</button>
-
-<div class="modal fade"
-    id="modal-xl-form"
-    tabindex="-1"
-    aria-labelledby="modal-xl-form-label"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-xl
-        modal-dialog-centered
-        ">
-        <div class="modal-content">
-                            <div class="modal-header">
-                                            <h5 class="modal-title" id="modal-xl-form-label">Data from the form</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-            
-            <div class="modal-body">
-                <pre class='line-numbers language-json'><code id='submit-data'></code></pre>
-            </div>
-
-                    </div>
-    </div>
-</div>
-
+<button class="btn btn-primary w-100" id="submit-button-js-form">Submit</button>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Render the form and save the reference.
-    const formDefinition ={"schema":{"type":"object","properties":{"header":{"type":"object","title":"Invoice Information","properties":{"id":{"type":"string","title":"Invoice Number"},"issueDate":{"type":"string","title":"Issue Date","format":"date"},"dueDate":{"type":"string","title":"Due Date","format":"date"},"documentCurrencyCode":{"type":"string","title":"Currency","default":"USD"},"note":{"type":"string","title":"Notes"}},"required":["id","issueDate","documentCurrencyCode"]},"accountingSupplierParty":{"type":"object","title":"Supplier Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","title":"Email","format":"email"}}}},"required":["name","taxId"]},"accountingCustomerParty":{"type":"object","title":"Customer Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","title":"Email","format":"email"}}}},"required":["taxId","name"]},"invoiceLines":{"type":"array","title":"Invoice Lines","items":{"type":"object","properties":{"description":{"type":"string","title":"Description"},"quantity":{"type":"number","title":"Quantity","minimum":0},"unitCode":{"type":"string","title":"Unit","default":"UN"},"priceAmount":{"type":"number","title":"Unit Price","exclusiveMinimum":0},"taxPercent":{"type":"number","title":"Tax %","default":22,"minimum":0},"lineExtensionAmount":{"type":"number","title":"Line Total","exclusiveMinimum":0}},"required":["description","quantity","unitCode","priceAmount"]},"minItems":1},"legalMonetaryTotal":{"type":"object","title":"Totals","properties":{"lineExtensionAmount":{"type":"number","title":"Total Before Tax","minimum":0},"taxExclusiveAmount":{"type":"number","title":"Tax Amount","minimum":0},"taxInclusiveAmount":{"type":"number","title":"Total With Tax","minimum":0},"payableAmount":{"type":"number","title":"Amount Due","minimum":0}}}},"required":["header","accountingSupplierParty","accountingCustomerParty","invoiceLines","legalMonetaryTotal"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Invoice Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/header\/properties\/id"},{"type":"Control","scope":"#\/properties\/header\/properties\/issueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/dueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/documentCurrencyCode"}]},{"type":"Control","scope":"#\/properties\/header\/properties\/note"}]},{"type":"HorizontalLayout","elements":[{"type":"Group","label":"Supplier Information","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/electronicMail"}]},{"type":"Group","label":"Customer Information","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/electronicMail"}]}]},{"type":"Group","label":"Invoice Items","elements":[{"type":"Control","scope":"#\/properties\/invoiceLines","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/description"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/quantity"},{"type":"Control","scope":"#\/properties\/unitCode"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/priceAmount"},{"type":"Control","scope":"#\/properties\/taxPercent"},{"type":"Control","scope":"#\/properties\/lineExtensionAmount","options":{"readonly":true}}]}]}}}]},{"type":"Group","label":"Totals","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/lineExtensionAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxExclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxInclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/payableAmount","options":{"readonly":true}}]}]}]},"data":{"header":{"id":"","issueDate":"2025-03-01","dueDate":"2025-03-10","documentCurrencyCode":"EUR","note":""},"accountingSupplierParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"accountingCustomerParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"invoiceLines":[{"description":"Form Generation Service","quantity":1,"unitCode":"UN","priceAmount":0,"taxPercent":22,"lineExtensionAmount":0}],"legalMonetaryTotal":{"lineExtensionAmount":0,"taxExclusiveAmount":0,"taxInclusiveAmount":0,"payableAmount":0}},"options":[]};
+    const formDefinition ={"schema":{"type":"object","properties":{"header":{"type":"object","title":"Invoice Information","properties":{"id":{"type":"string","title":"Invoice Number"},"issueDate":{"type":"string","title":"Issue Date","format":"date"},"dueDate":{"type":"string","title":"Due Date","format":"date"},"documentCurrencyCode":{"type":"string","title":"Currency","default":"USD"},"note":{"type":"string","title":"Notes"}},"required":["id","issueDate","documentCurrencyCode"]},"accountingSupplierParty":{"type":"object","title":"Supplier Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","title":"Email","format":"email"}}}},"required":["name","taxId"]},"accountingCustomerParty":{"type":"object","title":"Customer Information","properties":{"taxId":{"type":"string","title":"Tax ID"},"name":{"type":"string","title":"Company Name"},"address":{"type":"object","properties":{"streetName":{"type":"string","title":"Street"},"cityName":{"type":"string","title":"City"},"postalZone":{"type":"string","title":"Postal Code"},"country":{"type":"string","title":"Country"}}},"contact":{"type":"object","properties":{"name":{"type":"string","title":"Contact Name"},"telephone":{"type":"string","title":"Phone"},"electronicMail":{"type":"string","title":"Email","format":"email"}}}},"required":["taxId","name"]},"invoiceLines":{"type":"array","title":"Invoice Lines","items":{"type":"object","properties":{"description":{"type":"string","title":"Description"},"quantity":{"type":"number","title":"Quantity","minimum":0},"unitCode":{"type":"string","title":"Unit","default":"UN"},"priceAmount":{"type":"number","title":"Unit Price","exclusiveMinimum":0},"taxPercent":{"type":"number","title":"Tax %","default":22,"minimum":0},"lineExtensionAmount":{"type":"number","title":"Line Total","exclusiveMinimum":0}},"required":["description","quantity","unitCode","priceAmount"]},"minItems":1},"legalMonetaryTotal":{"type":"object","title":"Totals","properties":{"lineExtensionAmount":{"type":"number","title":"Total Before Tax","minimum":0},"taxExclusiveAmount":{"type":"number","title":"Tax Amount","minimum":0},"taxInclusiveAmount":{"type":"number","title":"Total With Tax","minimum":0},"payableAmount":{"type":"number","title":"Amount Due","minimum":0}}}},"required":["header","accountingSupplierParty","accountingCustomerParty","invoiceLines","legalMonetaryTotal"]},"uischema":{"type":"VerticalLayout","elements":[{"type":"Group","label":"Invoice Information","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/header\/properties\/id"},{"type":"Control","scope":"#\/properties\/header\/properties\/issueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/dueDate"},{"type":"Control","scope":"#\/properties\/header\/properties\/documentCurrencyCode"}]},{"type":"Control","scope":"#\/properties\/header\/properties\/note"}]},{"type":"HorizontalLayout","elements":[{"type":"Group","label":"Supplier Information","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingSupplierParty\/properties\/contact\/properties\/electronicMail"}]},{"type":"Group","label":"Customer Information","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/taxId"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/streetName"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/cityName"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/postalZone"}]},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/address\/properties\/country"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/name"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/telephone"},{"type":"Control","scope":"#\/properties\/accountingCustomerParty\/properties\/contact\/properties\/electronicMail"}]}]},{"type":"Group","label":"Invoice Items","elements":[{"type":"Control","scope":"#\/properties\/invoiceLines","options":{"detail":{"type":"VerticalLayout","elements":[{"type":"Control","scope":"#\/properties\/description"},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/quantity"},{"type":"Control","scope":"#\/properties\/unitCode"}]},{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/priceAmount"},{"type":"Control","scope":"#\/properties\/taxPercent"},{"type":"Control","scope":"#\/properties\/lineExtensionAmount","options":{"readonly":true}}]}]}}}]},{"type":"Group","label":"Totals","elements":[{"type":"HorizontalLayout","elements":[{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/lineExtensionAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxExclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/taxInclusiveAmount","options":{"readonly":true}},{"type":"Control","scope":"#\/properties\/legalMonetaryTotal\/properties\/payableAmount","options":{"readonly":true}}]}]}]},"data":{"header":{"id":"","issueDate":"2025-03-01","dueDate":"2025-03-10","documentCurrencyCode":"EUR","note":""},"accountingSupplierParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"accountingCustomerParty":{"name":"","taxId":"","address":{"streetName":"","cityName":"","postalZone":"","country":""},"contact":{"name":"","telephone":"","electronicMail":""}},"invoiceLines":[{"description":"Form Generation Service","quantity":1,"unitCode":"UN","priceAmount":0,"taxPercent":22,"lineExtensionAmount":0}],"legalMonetaryTotal":{"lineExtensionAmount":0,"taxExclusiveAmount":0,"taxInclusiveAmount":0,"payableAmount":0}}};
     const formInstance = window.renderJsonForm('json-form-container', formDefinition);
 
     // Set up the event handler for the submit button.
-    document.getElementById('submit-button').addEventListener('click', () => {
+    document.getElementById('submit-button-js-form').addEventListener('click', () => {
         const formData = formInstance.getData();
         //const formErrors = formInstance.getErrors();
         const codeElement = document.getElementById('submit-data')
