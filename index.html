@@ -61,9 +61,7 @@
 </code></pre>
 <h2><a id="content-basic-usage" href="index.html#content-basic-usage" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Basic Usage</h2>
 <h3><a id="content-creating-a-simple-form" href="index.html#content-creating-a-simple-form" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Creating a Simple Form</h3>
-<pre><code class="line-numbers match-braces language-php">use Derafu\Form\Factory\FormFactory;
-
-// Define the form structure.
+<pre><code class="line-numbers match-braces language-php">// Define the form structure.
 $definition = [
     'schema' =&gt; [
         'type' =&gt; 'object',
@@ -100,7 +98,7 @@ $definition = [
 ];
 
 // Create the form.
-$form = FormFactory::create($definition);
+$form = $formFactory-&gt;create($definition);
 </code></pre>
 <h3><a id="content-rendering-with-twig" href="index.html#content-rendering-with-twig" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Rendering with Twig</h3>
 <pre><code class="line-numbers match-braces language-twig">{# Simple rendering of the entire form. #}
@@ -125,7 +123,7 @@ $form = FormFactory::create($definition);
 ];
 
 // Schema and UI schema will be automatically generated.
-$form = FormFactory::create($definition);
+$form = $formFactory-&gt;create($definition);
 </code></pre>
 <h2><a id="content-integration-with-json-forms" href="index.html#content-integration-with-json-forms" class="text-decoration-none small text-muted" aria-hidden="true" title="Permalink"><i class="fa-solid fa-link"></i> </a>Integration with JSON Forms</h2>
 <p>This library’s form definitions are compatible with the <a rel="nofollow noopener noreferrer" target="_blank" class="external-link" href="https://jsonforms.io">JSON Forms</a> JavaScript library, allowing you to use the same definitions for both server-side and client-side rendering:</p>
