@@ -1,7 +1,11 @@
 # Derafu: Form - Declarative Forms, Seamless Rendering
 
-[![CI Workflow](https://github.com/derafu/form/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/derafu/form/actions/workflows/ci.yml?query=branch%3Amain)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![GitHub last commit](https://img.shields.io/github/last-commit/derafu/form/main)
+![CI Workflow](https://github.com/derafu/form/actions/workflows/ci.yml/badge.svg?branch=main&event=push)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/derafu/form)
+![GitHub Issues](https://img.shields.io/github/issues-raw/derafu/form)
+![Total Downloads](https://poser.pugx.org/derafu/form/downloads)
+![Monthly Downloads](https://poser.pugx.org/derafu/form/d/monthly)
 
 A modern PHP form library that leverages a declarative, schema-based approach to form definition and rendering, compatible with JSON Forms while providing a powerful backend-centric workflow.
 
