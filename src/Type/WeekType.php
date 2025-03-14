@@ -56,10 +56,6 @@ final class WeekType extends AbstractType
         return [
             'type' => 'string',
             'format' => 'week',
-
-            // ISO 8601.
-            'max' => '2025-W52',
-            'min' => '2024-W01',
         ];
     }
 

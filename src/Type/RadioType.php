@@ -37,8 +37,6 @@ final class RadioType extends AbstractType
         return [
             'type' => 'string',
             'enum' => [],
-            'maxLength' => 100,
-            'minLength' => 0,
         ];
     }
 }
