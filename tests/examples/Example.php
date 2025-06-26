@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Derafu: Form - Declarative Forms, Seamless Rendering.
  *
- * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.org>
+ * Copyright (c) 2025 Esteban De La Fuente Rubio / Derafu <https://www.derafu.dev>
  * Licensed under the MIT License.
  * See LICENSE file for more details.
  */
@@ -14,7 +14,7 @@ namespace Derafu\ExamplesForm;
 
 use Derafu\Form\Contract\Factory\FormFactoryInterface;
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Routing\Exception\RouteNotFoundException;
+use InvalidArgumentException;
 
 /**
  * Example model representing a form example.
@@ -217,7 +217,7 @@ final class Example
      *
      * @param string $id The example code to find.
      * @return static The found example.
-     * @throws RouteNotFoundException If no example with the given code exists.
+     * @throws InvalidArgumentException If no example with the given code exists.
      */
     public static function find(string $id): static
     {
@@ -228,7 +228,10 @@ final class Example
         ));
 
         if (empty($files)) {
-            throw new RouteNotFoundException('/examples/' . $id);
+            throw new InvalidArgumentException(sprintf(
+                'Example "%s" not found.',
+                $id
+            ));
         }
 
         return new static($files[0]);
