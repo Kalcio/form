@@ -23,7 +23,7 @@ interface TypeProviderInterface
      * The order of the types is important if the type resolver is used. Types
      * that are more specific should be listed first.
      *
-     * @return array<TypeInterface>
+     * @return array<class-string<TypeInterface>|TypeInterface>
      */
     public function getTypes(): array;
 }

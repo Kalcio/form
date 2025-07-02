@@ -48,6 +48,10 @@ final class TypeRegistry implements TypeRegistryInterface
         }
 
         foreach ($types as $type) {
+            if (is_string($type)) {
+                $type = new $type();
+            }
+
             $this->register($type);
         }
     }

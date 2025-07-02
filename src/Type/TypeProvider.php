@@ -34,28 +34,28 @@ final class TypeProvider implements TypeProviderInterface
     {
         return [
             // Guessable types.
-            new EmailType(),
-            new BooleanType(),
-            new IntegerType(), // Integer is more specific than Float.
-            new FloatType(),   // Float must be listed after Integer if type resolver is used.
-            new DatetimeType(),
-            new DateType(),
-            new TimeType(),
-            new WeekType(),
-            new MonthType(),
-            new UuidType(),
-            new Ipv4Type(),
-            new Ipv6Type(),
-            new UrlType(),
-            new UriType(),
-            new ColorType(),
+            EmailType::class,
+            BooleanType::class,
+            IntegerType::class, // Integer is more specific than Float.
+            FloatType::class,   // Float must be listed after Integer if type resolver is used.
+            DatetimeType::class,
+            DateType::class,
+            TimeType::class,
+            WeekType::class,
+            MonthType::class,
+            UuidType::class,
+            Ipv4Type::class,
+            Ipv6Type::class,
+            UrlType::class,
+            UriType::class,
+            ColorType::class,
 
             // Other types (not guessables).
-            new ChoiceType(),
-            new TextareaType(),
+            ChoiceType::class,
+            TextareaType::class,
 
             // Last type, because it's a generic type.
-            new TextType(),
+            TextType::class,
         ];
     }
 }
