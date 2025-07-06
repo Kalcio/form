@@ -35,7 +35,7 @@ final class Example
     /**
      * Directory containing the example JSON files.
      */
-    private const EXAMPLES_DIR = __DIR__ . '/../../tests/fixtures/examples';
+    private const EXAMPLES_DIR = __DIR__ . '/../fixtures/examples';
 
     /**
      * Cached example data.
