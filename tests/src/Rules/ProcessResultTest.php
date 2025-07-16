@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\Form\Tests\Rules;
 
+use Derafu\Form\Contract\FormInterface;
+use Derafu\Form\Data\FormData;
 use Derafu\Form\Rules\ProcessResult;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -20,12 +22,21 @@ use PHPUnit\Framework\TestCase;
  * Tests for ProcessResult.
  */
 #[CoversClass(\Derafu\Form\Rules\ProcessResult::class)]
+#[CoversClass(\Derafu\Form\Data\FormData::class)]
 final class ProcessResultTest extends TestCase
 {
+    /** @var FormInterface&\PHPUnit\Framework\MockObject\MockObject */
+    private FormInterface $mockForm;
+
+    protected function setUp(): void
+    {
+        $this->mockForm = $this->createMock(FormInterface::class);
+    }
+
     public function testValidResult(): void
     {
         $data = ['name' => 'John Doe', 'email' => 'john@example.com'];
-        $result = new ProcessResult($data);
+        $result = new ProcessResult($this->mockForm, $data);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertEmpty($result->getErrors());
@@ -41,7 +52,7 @@ final class ProcessResultTest extends TestCase
             'email' => ['Invalid email format'],
             'name' => ['Name is too short'],
         ];
-        $result = new ProcessResult($data, $errors, false);
+        $result = new ProcessResult($this->mockForm, $data, $errors, false);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertSame($errors, $result->getErrors());
@@ -57,7 +68,7 @@ final class ProcessResultTest extends TestCase
             'email' => ['Invalid email format'],
             'name' => ['Name is too short'],
         ];
-        $result = new ProcessResult($data, $errors, false);
+        $result = new ProcessResult($this->mockForm, $data, $errors, false);
 
         $this->assertSame(['Invalid email format'], $result->getFieldErrors('email'));
         $this->assertSame(['Name is too short'], $result->getFieldErrors('name'));
@@ -71,7 +82,7 @@ final class ProcessResultTest extends TestCase
             'email' => ['Invalid email format'],
             'name' => [],
         ];
-        $result = new ProcessResult($data, $errors, false);
+        $result = new ProcessResult($this->mockForm, $data, $errors, false);
 
         $this->assertTrue($result->hasFieldErrors('email'));
         $this->assertFalse($result->hasFieldErrors('name'));
@@ -82,7 +93,7 @@ final class ProcessResultTest extends TestCase
     {
         $data = ['name' => 'John Doe'];
         $errors = [];
-        $result = new ProcessResult($data, $errors, true);
+        $result = new ProcessResult($this->mockForm, $data, $errors, true);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertEmpty($result->getErrors());
@@ -100,7 +111,7 @@ final class ProcessResultTest extends TestCase
                 'Email must be from allowed domain',
             ],
         ];
-        $result = new ProcessResult($data, $errors, false);
+        $result = new ProcessResult($this->mockForm, $data, $errors, false);
 
         $this->assertSame($errors, $result->getErrors());
         $this->assertSame(['Invalid email format', 'Email must be from allowed domain'], $result->getFieldErrors('email'));
@@ -118,7 +129,7 @@ final class ProcessResultTest extends TestCase
             'user' => ['User data is invalid'],
             'settings' => ['Invalid theme value'],
         ];
-        $result = new ProcessResult($data, $errors, false);
+        $result = new ProcessResult($this->mockForm, $data, $errors, false);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertSame($errors, $result->getErrors());
@@ -129,7 +140,7 @@ final class ProcessResultTest extends TestCase
 
     public function testNullData(): void
     {
-        $result = new ProcessResult(null, [], true);
+        $result = new ProcessResult($this->mockForm, null, [], true);
 
         $this->assertNull($result->getProcessedData());
         $this->assertEmpty($result->getErrors());
@@ -139,7 +150,7 @@ final class ProcessResultTest extends TestCase
 
     public function testEmptyData(): void
     {
-        $result = new ProcessResult([], [], true);
+        $result = new ProcessResult($this->mockForm, [], [], true);
 
         $this->assertSame([], $result->getProcessedData());
         $this->assertEmpty($result->getErrors());
@@ -150,7 +161,7 @@ final class ProcessResultTest extends TestCase
     public function testValidResultWithDefaultParameters(): void
     {
         $data = ['name' => 'John Doe'];
-        $result = new ProcessResult($data);
+        $result = new ProcessResult($this->mockForm, $data);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertEmpty($result->getErrors());
@@ -161,10 +172,123 @@ final class ProcessResultTest extends TestCase
     {
         $data = ['name' => 'John Doe'];
         $errors = ['name' => ['Name is required']];
-        $result = new ProcessResult($data, $errors);
+        $result = new ProcessResult($this->mockForm, $data, $errors, true);
 
         $this->assertSame($data, $result->getProcessedData());
         $this->assertSame($errors, $result->getErrors());
-        $this->assertTrue($result->isValid()); // Default is true.
+        $this->assertTrue($result->isValid());
+    }
+
+    public function testGetForm(): void
+    {
+        $data = ['name' => 'John Doe', 'email' => 'john@example.com'];
+        $formData = FormData::fromArray($data);
+        $newForm = $this->createMock(FormInterface::class);
+
+        $this->mockForm
+            ->expects($this->once())
+            ->method('withData')
+            ->with($formData)
+            ->willReturn($newForm);
+
+        $result = new ProcessResult($this->mockForm, $data);
+
+        $this->assertSame($newForm, $result->getForm());
+    }
+
+    public function testGetFormWithProcessedData(): void
+    {
+        $originalData = ['name' => 'John Doe', 'email' => 'john@example.com'];
+        $processedData = ['name' => 'John Doe', 'email' => 'john@example.com'];
+        $formData = FormData::fromArray($processedData);
+        $newForm = $this->createMock(FormInterface::class);
+
+        $this->mockForm
+            ->expects($this->once())
+            ->method('withData')
+            ->with($formData)
+            ->willReturn($newForm);
+
+        $result = new ProcessResult($this->mockForm, $processedData);
+
+        $this->assertSame($newForm, $result->getForm());
+    }
+
+    public function testGetFormPreservesInvalidData(): void
+    {
+        $invalidData = [
+            'name' => 'Jo', // Too short
+            'email' => 'invalid-email', // Invalid format
+            'age' => 'not-a-number', // Invalid type
+        ];
+        $formData = FormData::fromArray($invalidData);
+        $newForm = $this->createMock(FormInterface::class);
+
+        $this->mockForm
+            ->expects($this->once())
+            ->method('withData')
+            ->with($formData)
+            ->willReturn($newForm);
+
+        $result = new ProcessResult($this->mockForm, $invalidData, [
+            'name' => ['Name must be at least 3 characters'],
+            'email' => ['Invalid email format'],
+            'age' => ['Age must be a number'],
+        ], false);
+
+        $formWithData = $result->getForm();
+        $this->assertSame($newForm, $formWithData);
+    }
+
+    public function testGetFormPreservesMixedValidAndInvalidData(): void
+    {
+        $mixedData = [
+            'name' => 'John Doe', // Valid
+            'email' => 'invalid-email', // Invalid
+            'age' => 25, // Valid
+            'phone' => '123', // Invalid (too short)
+        ];
+        $formData = FormData::fromArray($mixedData);
+        $newForm = $this->createMock(FormInterface::class);
+
+        $this->mockForm
+            ->expects($this->once())
+            ->method('withData')
+            ->with($formData)
+            ->willReturn($newForm);
+
+        $result = new ProcessResult($this->mockForm, $mixedData, [
+            'email' => ['Invalid email format'],
+            'phone' => ['Phone number is too short'],
+        ], false);
+
+        $formWithData = $result->getForm();
+        $this->assertSame($newForm, $formWithData);
+    }
+
+    public function testGetFormPreservesEmptyAndNullValues(): void
+    {
+        $dataWithEmptyValues = [
+            'name' => '', // Empty string
+            'email' => null, // Null value
+            'age' => 0, // Zero value
+            'active' => false, // Boolean false
+        ];
+        $formData = FormData::fromArray($dataWithEmptyValues);
+        $newForm = $this->createMock(FormInterface::class);
+
+        $this->mockForm
+            ->expects($this->once())
+            ->method('withData')
+            ->with($formData)
+            ->willReturn($newForm);
+
+        $result = new ProcessResult($this->mockForm, $dataWithEmptyValues, [
+            'name' => ['Name is required'],
+            'email' => ['Email is required'],
+        ], false);
+
+        $formWithData = $result->getForm();
+        $this->assertSame($newForm, $formWithData);
     }
 }

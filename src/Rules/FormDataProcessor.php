@@ -29,7 +29,7 @@ final class FormDataProcessor implements FormDataProcessorInterface
      * @param SchemaToRulesMapperInterface $mapper The mapper to convert form
      * definitions to rules of Derafu\DataProcessor
      * @param ProcessorInterface $processor The processor to process the data
-     * using Derafu\DataProcessor.
+     * using Derafu\DataProcessor
      */
     public function __construct(
         private readonly SchemaToRulesMapperInterface $mapper,
@@ -48,7 +48,7 @@ final class FormDataProcessor implements FormDataProcessorInterface
             // caller to provide the data. This solution is a workaround to
             // avoid the need to pass the request to the processor in some
             // cases, but it's not a good solution neither recommended.
-            $data = $_POST ?? [];
+            $data = $_POST;
         }
 
         $processedData = [];
@@ -73,7 +73,7 @@ final class FormDataProcessor implements FormDataProcessorInterface
                 // Keep original value for invalid fields.
                 $processedData[$fieldName] = $fieldValue;
             } catch (\Throwable $e) {
-                // Handle other processing errors
+                // Handle other processing errors.
                 $errors[$fieldName] = ['Error processing field: ' . $e->getMessage()];
                 $isValid = false;
                 $processedData[$fieldName] = $fieldValue;
@@ -87,6 +87,6 @@ final class FormDataProcessor implements FormDataProcessorInterface
             }
         }
 
-        return new ProcessResult($processedData, $errors, $isValid);
+        return new ProcessResult($form, $processedData, $errors, $isValid);
     }
 }

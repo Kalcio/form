@@ -158,7 +158,7 @@ final class Form implements FormInterface
      */
     public function withData(FormDataInterface $data): static
     {
-        return new static($this->schema, $this->uischema, $data);
+        return new static($this->schema, $this->uischema, $data, $this->options);
     }
 
     /**

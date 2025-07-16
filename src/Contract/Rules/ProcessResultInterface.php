@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Derafu\Form\Contract\Rules;
 
+use Derafu\Form\Contract\FormInterface;
+
 /**
  * Interface for form data processing results.
  *
@@ -71,4 +73,14 @@ interface ProcessResultInterface
      * @return bool True if the field has errors, false otherwise
      */
     public function hasFieldErrors(string $fieldName): bool;
+
+    /**
+     * Get the form with processed data.
+     *
+     * Returns a new form instance with the processed data (validated,
+     * sanitized, casted, transformed) using the form's withData() method.
+     *
+     * @return FormInterface The form with processed data.
+     */
+    public function getForm(): FormInterface;
 }

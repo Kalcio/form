@@ -12,7 +12,9 @@ declare(strict_types=1);
 
 namespace Derafu\Form\Rules;
 
+use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Rules\ProcessResultInterface;
+use Derafu\Form\Data\FormData;
 
 /**
  * Result of processing form data through rules.
@@ -20,11 +22,18 @@ use Derafu\Form\Contract\Rules\ProcessResultInterface;
 final class ProcessResult implements ProcessResultInterface
 {
     /**
+     * The new form with processed data.
+     */
+    private FormInterface $newForm;
+
+    /**
+     * @param FormInterface $originalForm The original form that was processed.
      * @param mixed $processedData The processed data after applying all rules.
      * @param array<string, string[]> $errors Validation errors by field name.
      * @param bool $isValid Whether the data passed all validations.
      */
     public function __construct(
+        private readonly FormInterface $originalForm,
         private readonly mixed $processedData,
         private readonly array $errors = [],
         private readonly bool $isValid = true
@@ -101,5 +110,23 @@ final class ProcessResult implements ProcessResultInterface
             isset($this->errors[$fieldName])
             && !empty($this->errors[$fieldName])
         ;
+    }
+
+    /**
+     * Get the form with processed data.
+     *
+     * Returns a new form instance with the processed data (validated,
+     * sanitized, casted, transformed) using the form's withData() method.
+     *
+     * @return FormInterface The form with processed data.
+     */
+    public function getForm(): FormInterface
+    {
+        if (!isset($this->newForm)) {
+            $formData = FormData::fromArray($this->processedData);
+            $this->newForm = $this->originalForm->withData($formData);
+        }
+
+        return $this->newForm;
     }
 }
