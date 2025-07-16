@@ -22,6 +22,7 @@ use PHPUnit\Framework\TestCase;
 final class SchemaToRulesMapperIntegrationTest extends TestCase
 {
     private SchemaToRulesMapper $mapper;
+
     private $processor;
 
     protected function setUp(): void
@@ -164,7 +165,10 @@ final class SchemaToRulesMapperIntegrationTest extends TestCase
 
         $processedData = [];
         foreach ($formData as $fieldName => $value) {
-            $processedData[$fieldName] = $this->processor->process($value, $fieldRules[$fieldName]);
+            $processedData[$fieldName] = $this->processor->process(
+                $value,
+                $fieldRules[$fieldName]
+            );
         }
 
         $this->assertSame('John Doe', $processedData['name']);
