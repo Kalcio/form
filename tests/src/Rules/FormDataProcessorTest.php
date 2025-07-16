@@ -56,7 +56,7 @@ final class FormDataProcessorTest extends TestCase
 
         $data = ['name' => 'John Doe', 'email' => 'john@example.com'];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResult::class, $result);
         $this->assertTrue($result->isValid());
@@ -76,7 +76,7 @@ final class FormDataProcessorTest extends TestCase
 
         $data = ['name' => '', 'email' => 'invalid-email'];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResult::class, $result);
         $this->assertFalse($result->isValid());
@@ -103,7 +103,7 @@ final class FormDataProcessorTest extends TestCase
 
         $data = ['name' => 'John Doe', 'email' => 'invalid-email'];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResult::class, $result);
         $this->assertFalse($result->isValid());
@@ -126,7 +126,7 @@ final class FormDataProcessorTest extends TestCase
 
         $data = ['name' => 'John Doe', 'extra_field' => 'extra value'];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResult::class, $result);
         $this->assertTrue($result->isValid());
@@ -146,7 +146,7 @@ final class FormDataProcessorTest extends TestCase
 
         $data = ['name' => 'John Doe'];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResult::class, $result);
         $this->assertTrue($result->isValid());

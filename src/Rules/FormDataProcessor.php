@@ -23,6 +23,14 @@ use Derafu\Form\Exception\ValidationException;
  */
 final class FormDataProcessor implements FormDataProcessorInterface
 {
+    /**
+     * Constructor.
+     *
+     * @param SchemaToRulesMapperInterface $mapper The mapper to convert form
+     * definitions to rules of Derafu\DataProcessor
+     * @param ProcessorInterface $processor The processor to process the data
+     * using Derafu\DataProcessor.
+     */
     public function __construct(
         private readonly SchemaToRulesMapperInterface $mapper,
         private readonly ProcessorInterface $processor
@@ -30,39 +38,39 @@ final class FormDataProcessor implements FormDataProcessorInterface
     }
 
     /**
-     * Process form data using form definition.
-     *
-     * This method:
-     * 1. Maps the form to data processor rules
-     * 2. Processes each field through the rules (cast, transform, sanitize, validate)
-     * 3. Returns a result with processed data, errors, and validation status
-     *
-     * @param array<string, mixed> $data The form data to process
-     * @param FormInterface $form The form definition
-     * @return ProcessResult The processing result with data, errors, and validation status
+     * {@inheritDoc}
      */
-    public function process(array $data, FormInterface $form): ProcessResult
+    public function process(FormInterface $form, array $data = []): ProcessResult
     {
+        // If no data is provided, get it from the request.
+        if (empty($data)) {
+            // The data should never be empty. It's the responsibility of the
+            // caller to provide the data. This solution is a workaround to
+            // avoid the need to pass the request to the processor in some
+            // cases, but it's not a good solution neither recommended.
+            $data = $_POST ?? [];
+        }
+
         $processedData = [];
         $errors = [];
         $isValid = true;
 
-        // Map form to rules
+        // Map form to rules.
         $rules = $this->mapper->mapFormToRules($form);
 
-        // Process each field
+        // Process each field.
         foreach ($rules as $fieldName => $fieldRules) {
             $fieldValue = $data[$fieldName] ?? null;
 
             try {
-                // Process the field value through all rules
+                // Process the field value through all rules.
                 $processedValue = $this->processor->process($fieldValue, $fieldRules);
                 $processedData[$fieldName] = $processedValue;
             } catch (ValidationException $e) {
-                // Collect validation errors
+                // Collect validation errors.
                 $errors[$fieldName] = [$e->getMessage()];
                 $isValid = false;
-                // Keep original value for invalid fields
+                // Keep original value for invalid fields.
                 $processedData[$fieldName] = $fieldValue;
             } catch (\Throwable $e) {
                 // Handle other processing errors
@@ -72,7 +80,7 @@ final class FormDataProcessor implements FormDataProcessorInterface
             }
         }
 
-        // Add any fields from data that weren't in the schema
+        // Add any fields from data that weren't in the schema.
         foreach ($data as $fieldName => $fieldValue) {
             if (!isset($processedData[$fieldName])) {
                 $processedData[$fieldName] = $fieldValue;

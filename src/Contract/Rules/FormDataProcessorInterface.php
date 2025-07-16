@@ -27,13 +27,17 @@ interface FormDataProcessorInterface
      * Process form data using form definition.
      *
      * This method:
-     * 1. Maps the form to data processor rules
-     * 2. Processes each field through the rules (cast, transform, sanitize, validate)
-     * 3. Returns a result with processed data, errors, and validation status
      *
-     * @param array<string, mixed> $data The form data to process
-     * @param FormInterface $form The form definition
-     * @return ProcessResult The processing result with data, errors, and validation status
+     *   1. Maps the form to data processor rules.
+     *   2. Processes each field through the rules (cast, transform, sanitize,
+     *      validate).
+     *   3. Returns a result with processed data, errors, and validation status.
+     *
+     * @param FormInterface $form The form definition.
+     * @param array<string, mixed> $data The form data to process. If not
+     * provided, the data will be retrieved from the request.
+     * @return ProcessResult The processing result with data, errors, and
+     * validation status.
      */
-    public function process(array $data, FormInterface $form): ProcessResult;
+    public function process(FormInterface $form, array $data = []): ProcessResult;
 }

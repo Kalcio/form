@@ -59,7 +59,7 @@ final class FormDataProcessorIntegrationTest extends TestCase
             'age' => '25',
         ];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResultInterface::class, $result);
         $this->assertTrue($result->isValid());
@@ -80,7 +80,7 @@ final class FormDataProcessorIntegrationTest extends TestCase
             'age' => 'not-a-number', // Invalid number.
         ];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertInstanceOf(ProcessResultInterface::class, $result);
         $this->assertFalse($result->isValid());
@@ -102,7 +102,7 @@ final class FormDataProcessorIntegrationTest extends TestCase
             'extra_field' => 'extra value', // Field not in schema.
         ];
 
-        $result = $this->processor->process($data, $form);
+        $result = $this->processor->process($form, $data);
 
         $this->assertTrue($result->isValid());
         $processedData = $result->getProcessedData();
