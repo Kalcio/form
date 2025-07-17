@@ -1,0 +1,27 @@
+services:
+
+    Derafu\Form\Renderer\FormTwigExtension: ~
+
+    Derafu\Form\Contract\Renderer\FormRendererInterface:
+        factory: ['Derafu\Form\Factory\FormRendererFactory', 'create']
+
+    Derafu\Form\Contract\Factory\FormFactoryInterface:
+        class: Derafu\Form\Factory\FormFactory
+
+    Derafu\Form\Contract\Type\TypeResolverInterface:
+        class: Derafu\Form\Type\TypeResolver
+
+    Derafu\Form\Type\TypeResolver: ~
+
+    Derafu\Form\Contract\Type\TypeRegistryInterface:
+        class: Derafu\Form\Type\TypeRegistry
+        arguments:
+            $types: '@Derafu\Form\Type\TypeProvider'
+
+    Derafu\Form\Type\TypeProvider: ~
+
+    Derafu\Form\Contract\Processor\FormDataProcessorInterface:
+        class: Derafu\Form\Processor\FormDataProcessor
+
+    Derafu\Form\Contract\Processor\SchemaToRulesMapperInterface:
+        class: Derafu\Form\Processor\SchemaToRulesMapper
