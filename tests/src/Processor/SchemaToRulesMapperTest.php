@@ -119,7 +119,10 @@ final class SchemaToRulesMapperTest extends TestCase
         return [
             'integer_type' => [
                 ['type' => 'integer'],
-                ['cast' => 'integer'],
+                [
+                    'cast' => 'integer',
+                    'validate' => ['int'],
+                ],
             ],
             'integer_with_range' => [
                 [
@@ -129,12 +132,15 @@ final class SchemaToRulesMapperTest extends TestCase
                 ],
                 [
                     'cast' => 'integer',
-                    'validate' => ['gte:0', 'lte:100'],
+                    'validate' => ['int', 'gte:0', 'lte:100'],
                 ],
             ],
             'number_type' => [
                 ['type' => 'number'],
-                ['cast' => 'float'],
+                [
+                    'cast' => 'float',
+                    'validate' => ['numeric'],
+                ],
             ],
             'number_with_range' => [
                 [
@@ -144,7 +150,7 @@ final class SchemaToRulesMapperTest extends TestCase
                 ],
                 [
                     'cast' => 'float',
-                    'validate' => ['gte:0', 'lte:100'],
+                    'validate' => ['numeric', 'gte:0', 'lte:100'],
                 ],
             ],
         ];
@@ -244,7 +250,7 @@ final class SchemaToRulesMapperTest extends TestCase
                 [
                     'cast' => 'string',
                     'sanitize' => ['trim'],
-                    'validate' => ['date'],
+                    'validate' => ['date_format:Y-m-d'],
                 ],
             ],
             'date_time_format' => [
@@ -255,7 +261,7 @@ final class SchemaToRulesMapperTest extends TestCase
                 [
                     'cast' => 'string',
                     'sanitize' => ['trim'],
-                    'validate' => ['datetime'],
+                    'validate' => ['date_format:Y-m-d H:i:s'],
                 ],
             ],
             'tel_format' => [
@@ -266,7 +272,40 @@ final class SchemaToRulesMapperTest extends TestCase
                 [
                     'cast' => 'string',
                     'sanitize' => ['trim'],
-                    'validate' => ['phone'],
+                    'validate' => ['regex:/^[\+]?[0-9\s\-\(\)]+$/'],
+                ],
+            ],
+            'base64_format' => [
+                [
+                    'type' => 'string',
+                    'format' => 'base64',
+                ],
+                [
+                    'cast' => 'string',
+                    'sanitize' => ['trim'],
+                    'validate' => ['base64'],
+                ],
+            ],
+            'json_format' => [
+                [
+                    'type' => 'string',
+                    'format' => 'json',
+                ],
+                [
+                    'cast' => 'string',
+                    'sanitize' => ['trim'],
+                    'validate' => ['json'],
+                ],
+            ],
+            'json_content_media_type' => [
+                [
+                    'type' => 'string',
+                    'contentMediaType' => 'application/json',
+                ],
+                [
+                    'cast' => 'string',
+                    'sanitize' => ['trim'],
+                    'validate' => ['json'],
                 ],
             ],
         ];

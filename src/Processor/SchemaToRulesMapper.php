@@ -236,10 +236,22 @@ final class SchemaToRulesMapper implements SchemaToRulesMapperInterface
                 $enumValues = implode(',', $enumValues);
                 $rules[] = "in:{$enumValues}";
             }
+
+            // Additional string validations based on common patterns.
+            if (isset($propertySchema['contentMediaType'])) {
+                $rules[] = $this->mapContentMediaTypeToValidationRule($propertySchema['contentMediaType']);
+            }
         }
 
         // Numeric validations.
         if (in_array($propertySchema['type'] ?? '', ['integer', 'number'])) {
+            // Add type validation
+            if (($propertySchema['type'] ?? '') === 'integer') {
+                $rules[] = 'int';
+            } else {
+                $rules[] = 'numeric';
+            }
+
             if (isset($propertySchema['minimum'])) {
                 $rules[] = "gte:{$propertySchema['minimum']}";
             }
@@ -344,14 +356,34 @@ final class SchemaToRulesMapper implements SchemaToRulesMapperInterface
             'email' => 'email',
             'uri' => 'url',
             'url' => 'url',
-            'date' => 'date',
-            'date-time' => 'datetime',
-            'time' => 'time',
-            'tel' => 'phone',
+            'date' => 'date_format:Y-m-d',
+            'date-time' => 'date_format:Y-m-d H:i:s',
+            'time' => 'date_format:H:i:s',
+            'tel' => 'regex:/^[\+]?[0-9\s\-\(\)]+$/',
             'hostname' => 'hostname',
             'ipv4' => 'ip',
             'ipv6' => 'ip',
             'uuid' => 'uuid',
+            'base64' => 'base64',
+            'json' => 'json',
+            default => 'string',
+        };
+    }
+
+    /**
+     * Maps content media type to validation rule.
+     *
+     * This method converts JSON Schema contentMediaType specifications to their
+     * equivalent Derafu Data Processor validation rules.
+     *
+     * @param string $contentMediaType The content media type (e.g., 'application/json').
+     * @return string The corresponding validation rule name.
+     */
+    private function mapContentMediaTypeToValidationRule(string $contentMediaType): string
+    {
+        return match ($contentMediaType) {
+            'application/json' => 'json',
+            'text/json' => 'json',
             default => 'string',
         };
     }
