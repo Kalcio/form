@@ -17,6 +17,7 @@ use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Processor\FormDataProcessorInterface;
 use Derafu\Form\Contract\Processor\SchemaToRulesMapperInterface;
 use Derafu\Form\Exception\ValidationException;
+use Throwable;
 
 /**
  * Service to process form data using form definitions and data processor rules.
@@ -72,9 +73,9 @@ final class FormDataProcessor implements FormDataProcessorInterface
                 $isValid = false;
                 // Keep original value for invalid fields.
                 $processedData[$fieldName] = $fieldValue;
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 // Handle other processing errors.
-                $errors[$fieldName] = ['Error processing field: ' . $e->getMessage()];
+                $errors[$fieldName] = [$e->getMessage()];
                 $isValid = false;
                 $processedData[$fieldName] = $fieldValue;
             }
