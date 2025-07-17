@@ -31,9 +31,18 @@ final class SchemaToRulesMapper implements SchemaToRulesMapperInterface
     public function mapFormToRules(FormInterface $form): array
     {
         $fieldRules = [];
+        $requiredFields = $form->getSchema()->getRequired();
 
         foreach ($form->getFields() as $fieldName => $field) {
             $fieldRules[$fieldName] = $this->mapFieldToRules($field);
+
+            // Check if this field is required and add the validation rule
+            if (in_array($fieldName, $requiredFields)) {
+                if (!isset($fieldRules[$fieldName]['validate'])) {
+                    $fieldRules[$fieldName]['validate'] = [];
+                }
+                $fieldRules[$fieldName]['validate'][] = 'required';
+            }
         }
 
         return $fieldRules;
