@@ -115,6 +115,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(FormTwigExtension::class)]
 #[CoversClass(WidgetRendererProvider::class)]
 #[CoversClass(InputWidgetRenderer::class)]
+#[CoversClass(\Derafu\Form\Renderer\Widget\TextareaWidgetRenderer::class)]
 #[CoversClass(BooleanType::class)]
 #[CoversClass(ChoiceType::class)]
 #[CoversClass(ColorType::class)]

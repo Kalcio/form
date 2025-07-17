@@ -1,0 +1,191 @@
+{
+    "meta": {
+        "name": "Contact Form",
+        "description": "Simple contact form with default values and validation.",
+        "tags": [
+            "contact",
+            "validation",
+            "defaultValues"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Your Name",
+                    "minLength": 3,
+                    "maxLength": 100,
+                    "description": "Please enter your full name"
+                },
+                "email": {
+                    "type": "string",
+                    "title": "Your Email",
+                    "format": "email",
+                    "minLength": 3,
+                    "maxLength": 80,
+                    "description": "We'll use this to contact you back"
+                },
+                "telephone": {
+                    "type": "string",
+                    "title": "Your Telephone",
+                    "format": "tel",
+                    "minLength": 10,
+                    "maxLength": 15,
+                    "description": "Optional phone number"
+                },
+                "company": {
+                    "type": "string",
+                    "title": "Your Company",
+                    "minLength": 3,
+                    "maxLength": 100,
+                    "description": "Where do you work?"
+                },
+                "subject": {
+                    "type": "string",
+                    "title": "Subject",
+                    "minLength": 3,
+                    "maxLength": 100,
+                    "description": "Brief description of your inquiry"
+                },
+                "message": {
+                    "type": "string",
+                    "title": "Your Message",
+                    "minLength": 10,
+                    "maxLength": 1000,
+                    "description": "Please provide details about your inquiry"
+                },
+                "priority": {
+                    "type": "string",
+                    "title": "Priority Level",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high",
+                        "urgent"
+                    ],
+                    "default": "medium",
+                    "description": "How urgent is your request?"
+                },
+                "preferredContact": {
+                    "type": "string",
+                    "title": "Preferred Contact Method",
+                    "enum": [
+                        "email",
+                        "phone",
+                        "both"
+                    ],
+                    "default": "email",
+                    "description": "How would you like us to contact you?"
+                }
+            },
+            "required": [
+                "name",
+                "email",
+                "subject",
+                "message"
+            ]
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Personal Information",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/name",
+                                    "options": {
+                                        "placeholder": "Enter your full name"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/email",
+                                    "options": {
+                                        "placeholder": "your.email@example.com"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/telephone",
+                                    "options": {
+                                        "placeholder": "+1 (555) 123-4567"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/company",
+                                    "options": {
+                                        "placeholder": "Your company name"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Message Details",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/subject",
+                            "options": {
+                                "placeholder": "Brief description of your inquiry"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/message",
+                            "options": {
+                                "type": "textarea",
+                                "rows": 5,
+                                "placeholder": "Please provide detailed information about your inquiry..."
+                            }
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/priority",
+                                    "options": {
+                                        "format": "radio"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/preferredContact",
+                                    "options": {
+                                        "format": "select"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "telephone": "+1 (555) 123-4567",
+            "company": "Acme Corporation",
+            "subject": "Product Inquiry",
+            "message": "I'm interested in learning more about your services.",
+            "priority": "medium",
+            "preferredContact": "email"
+        }
+    }
+}

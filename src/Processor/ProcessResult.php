@@ -124,15 +124,8 @@ final class ProcessResult implements ProcessResultInterface
     {
         if (!isset($this->newForm)) {
             $formData = FormData::fromArray($this->processedData);
-            $this->newForm = $this->originalForm->withData($formData);
-
-            foreach ($this->newForm->getFields() as $field) {
-                $fieldName = $field->getProperty()->getName();
-                $field->setData($this->processedData[$fieldName] ?? null);
-                $field->setErrors($this->errors[$fieldName] ?? []);
-            }
+            $this->newForm = $this->originalForm->withData($formData, $this->errors);
         }
-
         return $this->newForm;
     }
 }

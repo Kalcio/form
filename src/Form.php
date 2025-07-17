@@ -53,12 +53,14 @@ final class Form implements FormInterface
      * @param FormUiSchemaInterface $uischema
      * @param FormDataInterface|null $data
      * @param FormOptionsInterface|null $options
+     * @param array<string, array>|null $errors Optional errors for each field (by name)
      */
     public function __construct(
         private readonly FormSchemaInterface $schema,
         private readonly FormUiSchemaInterface $uischema,
         private readonly ?FormDataInterface $data = null,
         private readonly ?FormOptionsInterface $options = null,
+        private readonly ?array $errors = null,
     ) {
     }
 
@@ -125,10 +127,22 @@ final class Form implements FormInterface
                 $name = $element->getPropertyName();
                 $property = $this->getSchema()->getProperty($name);
                 if ($property) {
-                    $fields[$name] = new FormField(
-                        $property,
-                        $element
-                    );
+                    $field = new FormField($property, $element);
+
+                    // Initialize field data from form data if available
+                    if ($this->data !== null) {
+                        $fieldValue = $this->data->get($name);
+                        if ($fieldValue !== null) {
+                            $field->setData($fieldValue);
+                        }
+                    }
+
+                    // Initialize field errors from errors array if available
+                    if ($this->errors !== null && array_key_exists($name, $this->errors)) {
+                        $field->setErrors($this->errors[$name]);
+                    }
+
+                    $fields[$name] = $field;
                 }
             }
 
@@ -156,9 +170,9 @@ final class Form implements FormInterface
     /**
      * {@inheritDoc}
      */
-    public function withData(FormDataInterface $data): static
+    public function withData(FormDataInterface $data, ?array $errors = null): static
     {
-        return new static($this->schema, $this->uischema, $data, $this->options);
+        return new static($this->schema, $this->uischema, $data, $this->options, $errors);
     }
 
     /**
@@ -218,7 +232,7 @@ final class Form implements FormInterface
         $uischema = FormUiSchemaFactory::create($definition['uischema'] ?? []);
         $data = isset($definition['data']) ? FormData::fromArray($definition['data']) : null;
         $options = FormOptions::fromArray($definition['options'] ?? []);
-
-        return new static($schema, $uischema, $data, $options);
+        $errors = $definition['errors'] ?? null;
+        return new static($schema, $uischema, $data, $options, $errors);
     }
 }

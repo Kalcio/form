@@ -75,15 +75,16 @@ interface FormInterface extends JsonSerializable
     public function getField(string $name): ?FormFieldInterface;
 
     /**
-     * Creates a new instance of the form with the provided data.
+     * Creates a new instance of the form with the provided data and optional errors.
      *
      * This method follows the immutability principle, returning a new instance
      * rather than modifying the current one.
      *
      * @param FormDataInterface $data The data to use for the new form instance.
-     * @return static A new form instance with the updated data.
+     * @param array<string, array>|null $errors Optional errors for each field (by name)
+     * @return static A new form instance with the updated data and errors.
      */
-    public function withData(FormDataInterface $data): static;
+    public function withData(FormDataInterface $data, ?array $errors = null): static;
 
     /**
      * Converts the Form to an array representation.

@@ -1,0 +1,440 @@
+{
+    "meta": {
+        "name": "User Registration",
+        "description": "Complex user registration form with nested fields and validation.",
+        "tags": [
+            "registration",
+            "validation",
+            "nestedFields"
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "object",
+                    "title": "Account Information",
+                    "properties": {
+                        "username": {
+                            "type": "string",
+                            "title": "Username",
+                            "minLength": 3,
+                            "maxLength": 20,
+                            "pattern": "^[a-zA-Z0-9_]+$",
+                            "description": "Username must contain only letters, numbers, and underscores"
+                        },
+                        "email": {
+                            "type": "string",
+                            "title": "Email Address",
+                            "format": "email",
+                            "description": "This will be your login email"
+                        },
+                        "password": {
+                            "type": "string",
+                            "title": "Password",
+                            "minLength": 8,
+                            "maxLength": 128,
+                            "description": "Password must be at least 8 characters long"
+                        },
+                        "confirmPassword": {
+                            "type": "string",
+                            "title": "Confirm Password",
+                            "description": "Please confirm your password"
+                        }
+                    },
+                    "required": ["username", "email", "password", "confirmPassword"]
+                },
+                "personal": {
+                    "type": "object",
+                    "title": "Personal Information",
+                    "properties": {
+                        "firstName": {
+                            "type": "string",
+                            "title": "First Name",
+                            "minLength": 2,
+                            "maxLength": 50
+                        },
+                        "lastName": {
+                            "type": "string",
+                            "title": "Last Name",
+                            "minLength": 2,
+                            "maxLength": 50
+                        },
+                        "dateOfBirth": {
+                            "type": "string",
+                            "title": "Date of Birth",
+                            "format": "date",
+                            "description": "You must be at least 13 years old"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "title": "Phone Number",
+                            "format": "tel",
+                            "description": "Optional for account recovery"
+                        }
+                    },
+                    "required": ["firstName", "lastName", "dateOfBirth"]
+                },
+                "address": {
+                    "type": "object",
+                    "title": "Address Information",
+                    "properties": {
+                        "street": {
+                            "type": "string",
+                            "title": "Street Address",
+                            "minLength": 5,
+                            "maxLength": 100
+                        },
+                        "city": {
+                            "type": "string",
+                            "title": "City",
+                            "minLength": 2,
+                            "maxLength": 50
+                        },
+                        "state": {
+                            "type": "string",
+                            "title": "State/Province",
+                            "minLength": 2,
+                            "maxLength": 50
+                        },
+                        "zipCode": {
+                            "type": "string",
+                            "title": "ZIP/Postal Code",
+                            "pattern": "^[0-9]{5}(-[0-9]{4})?$",
+                            "description": "Enter a valid ZIP code"
+                        },
+                        "country": {
+                            "type": "string",
+                            "title": "Country",
+                            "enum": [
+                                "US",
+                                "CA",
+                                "MX",
+                                "UK",
+                                "DE",
+                                "FR",
+                                "ES",
+                                "IT",
+                                "JP",
+                                "AU"
+                            ],
+                            "default": "US"
+                        }
+                    },
+                    "required": ["street", "city", "state", "zipCode", "country"]
+                },
+                "preferences": {
+                    "type": "object",
+                    "title": "Account Preferences",
+                    "properties": {
+                        "newsletter": {
+                            "type": "boolean",
+                            "title": "Subscribe to Newsletter",
+                            "default": true,
+                            "description": "Receive updates about new features and promotions"
+                        },
+                        "marketing": {
+                            "type": "boolean",
+                            "title": "Marketing Communications",
+                            "default": false,
+                            "description": "Receive promotional emails from partners"
+                        },
+                        "language": {
+                            "type": "string",
+                            "title": "Preferred Language",
+                            "enum": ["en", "es", "fr", "de", "ja"],
+                            "default": "en"
+                        },
+                        "timezone": {
+                            "type": "string",
+                            "title": "Timezone",
+                            "enum": [
+                                "America/New_York",
+                                "America/Chicago",
+                                "America/Denver",
+                                "America/Los_Angeles",
+                                "Europe/London",
+                                "Europe/Paris",
+                                "Asia/Tokyo"
+                            ],
+                            "default": "America/New_York"
+                        }
+                    }
+                },
+                "terms": {
+                    "type": "object",
+                    "title": "Terms and Conditions",
+                    "properties": {
+                        "acceptTerms": {
+                            "type": "boolean",
+                            "title": "I accept the Terms of Service",
+                            "description": "You must accept the terms to continue"
+                        },
+                        "acceptPrivacy": {
+                            "type": "boolean",
+                            "title": "I accept the Privacy Policy",
+                            "description": "You must accept the privacy policy to continue"
+                        },
+                        "ageVerification": {
+                            "type": "boolean",
+                            "title": "I confirm I am at least 13 years old",
+                            "description": "You must be at least 13 years old to register"
+                        }
+                    },
+                    "required": ["acceptTerms", "acceptPrivacy", "ageVerification"]
+                }
+            },
+            "required": ["account", "personal", "address", "terms"]
+        },
+        "uischema": {
+            "type": "VerticalLayout",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Account Information",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/account/properties/username",
+                                    "options": {
+                                        "placeholder": "Choose a username"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/account/properties/email",
+                                    "options": {
+                                        "placeholder": "your.email@example.com"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/account/properties/password",
+                                    "options": {
+                                        "type": "password",
+                                        "placeholder": "Enter your password"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/account/properties/confirmPassword",
+                                    "options": {
+                                        "type": "password",
+                                        "placeholder": "Confirm your password"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Personal Information",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/personal/properties/firstName",
+                                    "options": {
+                                        "placeholder": "First name"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/personal/properties/lastName",
+                                    "options": {
+                                        "placeholder": "Last name"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/personal/properties/dateOfBirth",
+                                    "options": {
+                                        "type": "date"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/personal/properties/phone",
+                                    "options": {
+                                        "placeholder": "+1 (555) 123-4567"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Address Information",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/address/properties/street",
+                            "options": {
+                                "placeholder": "123 Main Street"
+                            }
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/address/properties/city",
+                                    "options": {
+                                        "placeholder": "City"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/address/properties/state",
+                                    "options": {
+                                        "placeholder": "State"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/address/properties/zipCode",
+                                    "options": {
+                                        "placeholder": "12345"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/address/properties/country",
+                                    "options": {
+                                        "format": "select"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Account Preferences",
+                    "elements": [
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/preferences/properties/newsletter",
+                                    "options": {
+                                        "format": "checkbox"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/preferences/properties/marketing",
+                                    "options": {
+                                        "format": "checkbox"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/preferences/properties/language",
+                                    "options": {
+                                        "format": "select"
+                                    }
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/preferences/properties/timezone",
+                                    "options": {
+                                        "format": "select"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Terms and Conditions",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/terms/properties/acceptTerms",
+                            "options": {
+                                "format": "checkbox"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/terms/properties/acceptPrivacy",
+                            "options": {
+                                "format": "checkbox"
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/terms/properties/ageVerification",
+                            "options": {
+                                "format": "checkbox"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "data": {
+            "account": {
+                "username": "johndoe",
+                "email": "john.doe@example.com",
+                "password": "securepassword123",
+                "confirmPassword": "securepassword123"
+            },
+            "personal": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "dateOfBirth": "1990-01-15",
+                "phone": "+1 (555) 123-4567"
+            },
+            "address": {
+                "street": "123 Main Street",
+                "city": "New York",
+                "state": "NY",
+                "zipCode": "10001",
+                "country": "US"
+            },
+            "preferences": {
+                "newsletter": true,
+                "marketing": false,
+                "language": "en",
+                "timezone": "America/New_York"
+            },
+            "terms": {
+                "acceptTerms": true,
+                "acceptPrivacy": true,
+                "ageVerification": true
+            }
+        }
+    }
+}

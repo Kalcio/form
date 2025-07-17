@@ -17,7 +17,6 @@ use Derafu\Form\Contract\Renderer\ElementRendererInterface;
 use Derafu\Form\Contract\Renderer\FormRendererInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
 use Derafu\Form\Contract\UiSchema\UiSchemaElementInterface;
-use Derafu\Form\FormField;
 use InvalidArgumentException;
 
 /**
@@ -52,30 +51,22 @@ final class ControlRenderer implements ElementRendererInterface
             );
         }
 
-        // Find the property from scope.
-        $scope = $element->getScope();
-        $property = $form->getSchema()->getProperty($scope);
-        if (!$property) {
+        // Find the field from the form using the property name.
+        $propertyName = $element->getPropertyName();
+        $field = $form->getField($propertyName);
+
+        if (!$field) {
             throw new InvalidArgumentException(sprintf(
-                'Property with scope "%s" not found in form schema.',
-                $scope
+                'Field with property name "%s" not found in form.',
+                $propertyName
             ));
         }
-
-        // Create a field object.
-        $field = new FormField($property, $element);
 
         // Determine if we need to render a full field or just the widget.
         $renderMode = $options['render_mode'] ?? 'row';
 
         // Merge control options with passed options.
         $fieldOptions = array_merge($element->getOptions(), $options);
-
-        // Get the field value from the form data.
-        $value = $form->getData()?->get($scope);
-        if ($value !== null) {
-            $fieldOptions['value'] = $value;
-        }
 
         // Render based on the mode.
         if ($renderMode === 'widget') {
