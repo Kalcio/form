@@ -10,11 +10,11 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Rules;
+namespace Derafu\Form\Processor;
 
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Contract\Rules\SchemaToRulesMapperInterface;
+use Derafu\Form\Contract\Processor\SchemaToRulesMapperInterface;
 
 /**
  * Maps Derafu Form definitions to Derafu Data Processor rules.

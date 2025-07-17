@@ -14,6 +14,7 @@ namespace Derafu\Form\Contract;
 
 use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
+use JsonSerializable;
 
 /**
  * Represents a field within a form.
@@ -22,7 +23,7 @@ use Derafu\Form\Contract\UiSchema\ControlInterface;
  * (visual representation), creating a complete field that can be rendered and
  * processed.
  */
-interface FormFieldInterface
+interface FormFieldInterface extends JsonSerializable
 {
     /**
      * Gets the property associated with this field.
@@ -69,4 +70,55 @@ interface FormFieldInterface
      * @return static The current instance.
      */
     public function setRendered(bool $rendered = true): static;
+
+    /**
+     * Gets the data for the field.
+     *
+     * @return mixed The data for the field.
+     */
+    public function getData(): mixed;
+
+    /**
+     * Sets the data for the field.
+     *
+     * @param mixed $data The data for the field.
+     * @return static The current instance.
+     */
+    public function setData(mixed $data): static;
+
+    /**
+     * Gets the errors for the field.
+     *
+     * @return array The errors for the field.
+     */
+    public function getErrors(): array;
+
+    /**
+     * Sets the errors for the field.
+     *
+     * @param array $errors The errors for the field.
+     * @return static The current instance.
+     */
+    public function setErrors(array $errors): static;
+
+    /**
+     * Checks if the field is valid.
+     *
+     * @return bool True if the field has no errors, false otherwise.
+     */
+    public function isValid(): bool;
+
+    /**
+     * Converts the FormField to an array representation.
+     *
+     * @return array The complete form field as an array.
+     */
+    public function toArray(): array;
+
+    /**
+     * Converts the FormField to a JSON representation.
+     *
+     * @return string
+     */
+    public function toJson(): string;
 }

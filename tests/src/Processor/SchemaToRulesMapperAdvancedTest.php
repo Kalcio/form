@@ -10,13 +10,13 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Tests\Form\Rules;
+namespace Derafu\Tests\Form\Processor;
 
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
-use Derafu\Form\Rules\SchemaToRulesMapper;
+use Derafu\Form\Processor\SchemaToRulesMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

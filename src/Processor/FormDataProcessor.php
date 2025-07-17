@@ -10,12 +10,12 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Rules;
+namespace Derafu\Form\Processor;
 
 use Derafu\DataProcessor\Contract\ProcessorInterface;
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Contract\Rules\FormDataProcessorInterface;
-use Derafu\Form\Contract\Rules\SchemaToRulesMapperInterface;
+use Derafu\Form\Contract\Processor\FormDataProcessorInterface;
+use Derafu\Form\Contract\Processor\SchemaToRulesMapperInterface;
 use Derafu\Form\Exception\ValidationException;
 
 /**

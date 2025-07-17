@@ -10,25 +10,25 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Tests\Rules;
+namespace Derafu\Form\Tests\Processor;
 
 use Derafu\DataProcessor\Contract\ProcessorInterface;
 use Derafu\DataProcessor\ProcessorFactory;
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Contract\Rules\FormDataProcessorInterface;
+use Derafu\Form\Contract\Processor\FormDataProcessorInterface;
 use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
-use Derafu\Form\Rules\FormDataProcessor;
-use Derafu\Form\Rules\ProcessResult;
-use Derafu\Form\Rules\SchemaToRulesMapper;
+use Derafu\Form\Processor\FormDataProcessor;
+use Derafu\Form\Processor\ProcessResult;
+use Derafu\Form\Processor\SchemaToRulesMapper;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(\Derafu\Form\Rules\FormDataProcessor::class)]
-#[CoversClass(\Derafu\Form\Rules\ProcessResult::class)]
+#[CoversClass(\Derafu\Form\Processor\FormDataProcessor::class)]
+#[CoversClass(\Derafu\Form\Processor\ProcessResult::class)]
 #[CoversClass(\Derafu\Form\Exception\ValidationException::class)]
-#[CoversClass(\Derafu\Form\Rules\SchemaToRulesMapper::class)]
+#[CoversClass(\Derafu\Form\Processor\SchemaToRulesMapper::class)]
 #[CoversClass(\Derafu\Form\Data\FormData::class)]
 final class FormDataProcessorTest extends TestCase
 {

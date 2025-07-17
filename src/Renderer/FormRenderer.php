@@ -109,7 +109,7 @@ final class FormRenderer implements FormRendererInterface
     ): string {
         $context = [
             'field' => $field,
-            'errors' => [], // TODO: Get errors from validation system.
+            'errors' => $field->getErrors(),
             'options' => $options,
         ];
 

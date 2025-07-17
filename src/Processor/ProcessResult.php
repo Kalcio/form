@@ -10,10 +10,10 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Rules;
+namespace Derafu\Form\Processor;
 
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Contract\Rules\ProcessResultInterface;
+use Derafu\Form\Contract\Processor\ProcessResultInterface;
 use Derafu\Form\Data\FormData;
 
 /**
@@ -125,6 +125,12 @@ final class ProcessResult implements ProcessResultInterface
         if (!isset($this->newForm)) {
             $formData = FormData::fromArray($this->processedData);
             $this->newForm = $this->originalForm->withData($formData);
+
+            foreach ($this->newForm->getFields() as $field) {
+                $fieldName = $field->getProperty()->getName();
+                $field->setData($this->processedData[$fieldName] ?? null);
+                $field->setErrors($this->errors[$fieldName] ?? []);
+            }
         }
 
         return $this->newForm;

@@ -10,18 +10,18 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Tests\Rules;
+namespace Derafu\Form\Tests\Processor;
 
 use Derafu\Form\Contract\FormInterface;
 use Derafu\Form\Data\FormData;
-use Derafu\Form\Rules\ProcessResult;
+use Derafu\Form\Processor\ProcessResult;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for ProcessResult.
  */
-#[CoversClass(\Derafu\Form\Rules\ProcessResult::class)]
+#[CoversClass(\Derafu\Form\Processor\ProcessResult::class)]
 #[CoversClass(\Derafu\Form\Data\FormData::class)]
 final class ProcessResultTest extends TestCase
 {

@@ -10,10 +10,9 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Contract\Rules;
+namespace Derafu\Form\Contract\Processor;
 
 use Derafu\Form\Contract\FormInterface;
-use Derafu\Form\Rules\ProcessResult;
 
 /**
  * Interface for form data processing services.
@@ -36,8 +35,8 @@ interface FormDataProcessorInterface
      * @param FormInterface $form The form definition.
      * @param array<string, mixed> $data The form data to process. If not
      * provided, the data will be retrieved from the request.
-     * @return ProcessResult The processing result with data, errors, and
-     * validation status.
+     * @return ProcessResultInterface The processing result with data, errors
+     * and validation status.
      */
-    public function process(FormInterface $form, array $data = []): ProcessResult;
+    public function process(FormInterface $form, array $data = []): ProcessResultInterface;
 }

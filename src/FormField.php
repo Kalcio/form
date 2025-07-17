@@ -15,6 +15,7 @@ namespace Derafu\Form;
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\Schema\PropertySchemaInterface;
 use Derafu\Form\Contract\UiSchema\ControlInterface;
+use Derafu\Support\JsonSerializer;
 
 /**
  * Implementation of the FormFieldInterface.
@@ -37,6 +38,20 @@ final class FormField implements FormFieldInterface
      * @var bool
      */
     private bool $rendered = false;
+
+    /**
+     * The data for the field.
+     *
+     * @var mixed
+     */
+    private mixed $data = null;
+
+    /**
+     * The errors for the field.
+     *
+     * @var array
+     */
+    private array $errors = [];
 
     /**
      * Constructs a new form field.
@@ -102,5 +117,87 @@ final class FormField implements FormFieldInterface
         $this->rendered = $rendered;
 
         return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getData(): mixed
+    {
+        return $this->data;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setData(mixed $data): static
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setErrors(array $errors): static
+    {
+        $this->errors = $errors;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isValid(): bool
+    {
+        return empty($this->errors);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toArray(): array
+    {
+        return [
+            'property' => $this->property->toArray(),
+            'control' => $this->control->toArray(),
+            'required' => $this->required,
+            'rendered' => $this->rendered,
+            'data' => $this->data,
+            'errors' => $this->errors,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function jsonSerialize(): array
+    {
+        return [
+            'property' => $this->property,
+            'control' => $this->control,
+            'required' => $this->required,
+            'rendered' => $this->rendered,
+            'data' => $this->data,
+            'errors' => $this->errors,
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function toJson(): string
+    {
+        return JsonSerializer::serialize($this->jsonSerialize());
     }
 }

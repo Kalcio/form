@@ -63,7 +63,7 @@ final class SelectWidgetRenderer implements WidgetRendererInterface
         }
 
         // Get field value (can be a single value or an array for multiple select).
-        $value = $options['value'] ?? null;
+        $value = $options['value'] ?? $field->getData() ?? null;
 
         // Get options for the select.
         $choices = [];

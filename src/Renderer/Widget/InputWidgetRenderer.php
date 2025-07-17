@@ -64,7 +64,7 @@ final class InputWidgetRenderer implements WidgetRendererInterface
         $name = $property->getName();
 
         // Get field value.
-        $value = $options['value'] ?? null;
+        $value = $options['value'] ?? $field->getData() ?? null;
 
         // Build HTML attributes for the input.
         $attrs = [

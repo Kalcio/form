@@ -57,7 +57,7 @@ final class TextareaWidgetRenderer implements WidgetRendererInterface
         $name = $property->getName();
 
         // Get field value
-        $value = $options['value'] ?? '';
+        $value = $options['value'] ?? $field->getData() ?? '';
 
         // Build HTML attributes for the textarea.
         $attrs = [

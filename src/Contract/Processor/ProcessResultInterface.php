@@ -10,7 +10,7 @@ declare(strict_types=1);
  * See LICENSE file for more details.
  */
 
-namespace Derafu\Form\Contract\Rules;
+namespace Derafu\Form\Contract\Processor;
 
 use Derafu\Form\Contract\FormInterface;
 
