@@ -310,7 +310,7 @@ final class FormRenderer implements FormRendererInterface
                 return 'url';
             } elseif ($property->getEnum() !== null) {
                 return 'select';
-            } elseif ($property->getMaxLength() !== null && $property->getMaxLength() > 255) {
+            } elseif (!empty($options['multi'])) {
                 return 'textarea';
             }
             return 'text';
