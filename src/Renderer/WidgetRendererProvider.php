@@ -14,6 +14,7 @@ namespace Derafu\Form\Renderer;
 
 use Derafu\Form\Contract\Renderer\WidgetRendererProviderInterface;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
+use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
 use Derafu\Form\Renderer\Widget\TextareaWidgetRenderer;
 
 /**
@@ -53,7 +54,7 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
 
             'textarea' => new TextareaWidgetRenderer(),
 
-            //'select' => new SelectWidgetRenderer(),
+            'select' => new SelectWidgetRenderer(),
         ];
     }
 }

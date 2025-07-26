@@ -71,8 +71,8 @@ final class SelectWidgetRenderer implements WidgetRendererInterface
         // If the property has an enum, use it for choices.
         if (method_exists($property, 'getEnum') && $property->getEnum() !== null) {
             $enum = $property->getEnum();
-            foreach ($enum as $enumValue) {
-                $choices[$enumValue] = $enumValue;
+            foreach ($enum as $enumKey => $enumValue) {
+                $choices[is_string($enumKey) ? $enumKey : $enumValue] = $enumValue;
             }
         }
 
