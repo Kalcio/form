@@ -37,6 +37,8 @@ use Derafu\Form\Renderer\ElementRendererRegistry;
 use Derafu\Form\Renderer\FormRenderer;
 use Derafu\Form\Renderer\FormTwigExtension;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
+use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
+use Derafu\Form\Renderer\Widget\TextareaWidgetRenderer;
 use Derafu\Form\Renderer\WidgetRendererProvider;
 use Derafu\Form\Renderer\WidgetRendererRegistry;
 use Derafu\Form\Schema\ArraySchema;
@@ -115,7 +117,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(FormTwigExtension::class)]
 #[CoversClass(WidgetRendererProvider::class)]
 #[CoversClass(InputWidgetRenderer::class)]
-#[CoversClass(\Derafu\Form\Renderer\Widget\TextareaWidgetRenderer::class)]
+#[CoversClass(SelectWidgetRenderer::class)]
+#[CoversClass(TextareaWidgetRenderer::class)]
 #[CoversClass(BooleanType::class)]
 #[CoversClass(ChoiceType::class)]
 #[CoversClass(ColorType::class)]
