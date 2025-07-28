@@ -49,7 +49,7 @@ final class InputWidgetRenderer implements WidgetRendererInterface
         $control = $field->getControl();
 
         // Determine if there are errors.
-        $hasErrors = $options['has_errors'] ?? false;
+        $hasErrors = !$field->isValid();
 
         // Prepare CSS classes.
         $widgetClass = 'form-control';

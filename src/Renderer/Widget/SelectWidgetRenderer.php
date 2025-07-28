@@ -42,7 +42,7 @@ final class SelectWidgetRenderer implements WidgetRendererInterface
         $control = $field->getControl();
 
         // Determine if there are errors.
-        $hasErrors = $options['has_errors'] ?? false;
+        $hasErrors = !$field->isValid();
 
         // Check if multiple selection is enabled.
         $isMultiple = $property->getType() === 'array';

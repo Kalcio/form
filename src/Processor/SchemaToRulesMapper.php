@@ -232,7 +232,11 @@ final class SchemaToRulesMapper implements SchemaToRulesMapperInterface
 
             // Enum validation.
             if (isset($propertySchema['enum'])) {
-                $enumValues = array_map('strtolower', $propertySchema['enum']);
+                $enumKeys = [];
+                foreach ($propertySchema['enum'] as $enumKey => $enumValue) {
+                    $enumKeys[] = is_string($enumKey) ? $enumKey : $enumValue;
+                }
+                $enumValues = array_map('strtolower', $enumKeys);
                 $enumValues = implode(',', $enumValues);
                 $rules[] = "in:{$enumValues}";
             }
