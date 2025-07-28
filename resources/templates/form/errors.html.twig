@@ -8,7 +8,7 @@
 {% if errors|length > 0 %}
     <ul class="list-unstyled mb-0">
         {% for error in errors %}
-            <li><i class="fa-solid fa-exclamation-circle"></i> {{ error }}</li>
+            <li><i class="fa-solid fa-exclamation-circle"></i> {{ error|raw }}</li>
         {% endfor %}
     </ul>
 {% endif %}

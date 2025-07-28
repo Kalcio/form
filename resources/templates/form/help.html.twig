@@ -9,5 +9,5 @@
     {% set help_attr = options.help_attr|default({}) %}
     {% set help_class = help_attr.class|default('') %}
 
-    <small id="{{ help_id }}" class="{{ help_class }}">{{ help }}</small>
+    <small id="{{ help_id }}" class="{{ help_class }}">{{ help|raw }}</small>
 {% endif %}
