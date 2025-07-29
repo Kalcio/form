@@ -26,7 +26,7 @@ final class ColorType extends AbstractType
      *
      * @var string
      */
-    public const PATTERN = '/^#([0-9a-fA-F]{6})$/';
+    public const PATTERN = '/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/';
 
     /**
      * {@inheritDoc}
@@ -64,6 +64,17 @@ final class ColorType extends AbstractType
     public function castValue(mixed $value): mixed
     {
         return strtolower($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getJsonSchema(): array
+    {
+        return [
+            'type' => 'string',
+            'format' => 'color',
+        ];
     }
 
     /**

@@ -26,7 +26,22 @@ final class WeekType extends AbstractType
      *
      * @var string
      */
-    public const PATTERN = '/^[0-9]{4}-W[0-9]{2}$/';
+    public const PATTERN = '/^[0-9]{4}-W(0[1-9]|[1-4][0-9]|5[0-3])$/';
+
+    /**
+     * {@inheritDoc}
+    */
+    public function getJsonSchema(): array
+    {
+        return [
+            'type' => 'string',
+            'format' => 'week',
+
+            // ISO 8601: YYYY-W##
+            'maxLength' => 8,
+            'minLength' => 8,
+        ];
+    }
 
     /**
      * {@inheritDoc}
