@@ -26,7 +26,7 @@ final class MonthType extends AbstractType
      *
      * @var string
      */
-    public const PATTERN = '/^[0-9]{4}-[0-9]{2}$/';
+    public const PATTERN = '/^[1-9]\d{3}-(0[1-9]|1[0-2])$/';
 
     /**
      * {@inheritDoc}
@@ -46,6 +46,21 @@ final class MonthType extends AbstractType
         }
 
         return preg_match(self::PATTERN, $value) === 1;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getJsonSchema(): array
+    {
+        return [
+            'type' => 'string',
+            'format' => 'month',
+
+            // ISO 8601.
+            'maxLength' => 7,
+            'minLength' => 7,
+        ];
     }
 
     /**

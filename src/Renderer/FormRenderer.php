@@ -127,6 +127,7 @@ final class FormRenderer implements FormRendererInterface
         $control = $field->getControl();
 
         $widgetType = $this->determineWidgetType($property, $control);
+
         $renderer = $this->widgetRendererRegistry->getRenderer($widgetType);
 
         $html = $renderer->render($field, array_merge([
@@ -165,7 +166,10 @@ final class FormRenderer implements FormRendererInterface
             'floating_labels' => true,
         ], $options);
 
-        if ($options['floating_labels'] && empty($options['attr']['placeholder'])) {
+        if (
+            $options['floating_labels']
+            && empty($options['attr']['placeholder'])
+        ) {
             $options['attr']['placeholder'] = $field->getControl()->getLabel();
         }
 
@@ -229,7 +233,9 @@ final class FormRenderer implements FormRendererInterface
         FormInterface $form,
         array $options = []
     ): string {
-        $renderer = $this->elementRendererRegistry->getRenderer($element->getType());
+        $renderer = $this->elementRendererRegistry->getRenderer(
+            $element->getType()
+        );
 
         return $renderer->render($element, $form, array_merge([
             'renderer' => $this,
@@ -304,17 +310,54 @@ final class FormRenderer implements FormRendererInterface
                 return 'date';
             } elseif ($format === 'date-time') {
                 return 'datetime';
+            } elseif ($format === 'week') {
+                return 'week';
+            } elseif ($format === 'month') {
+                return 'month';
             } elseif ($format === 'password') {
                 return 'password';
+            } elseif ($format === 'time') {
+                return 'time';
+            } elseif ($format === 'color') {
+                return 'color';
+            } elseif (
+                isset($options['type'])
+                && $options['type'] === 'radio'
+            ) {
+                return 'radio';
             } elseif ($format === 'uri') {
                 return 'url';
             } elseif ($property->getEnum() !== null) {
                 return 'select';
-            } elseif (!empty($options['multi'])) {
+            } elseif (
+                !empty($options['multi'])
+                || (
+                    $property->getMaxLength() !== null
+                    && $property->getMaxLength() > 255
+                )
+                || (
+                    isset($options['type'])
+                    && $options['type'] === 'textarea'
+                )
+            ) {
                 return 'textarea';
             }
             return 'text';
-        } elseif ($type === 'number' || $type === 'integer') {
+        } elseif (
+            $type === 'number'
+            || $type === 'integer'
+            || $type === 'float'
+            || (isset($options['type']) && $options['type'] === 'float')
+            || $type === 'percent'
+        ) {
+            // Check if slider widget is explicitly requested.
+            if (isset($options['type']) && $options['type'] === 'slider') {
+                return 'slider';
+            }
+            // Check if range widget is explicitly requested (alias for slider).
+            if (isset($options['type']) && $options['type'] === 'range') {
+                return 'range';
+            }
             return 'number';
         } elseif ($type === 'boolean') {
             return 'checkbox';

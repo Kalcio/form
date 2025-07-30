@@ -14,7 +14,9 @@ namespace Derafu\Form\Renderer;
 
 use Derafu\Form\Contract\Renderer\WidgetRendererProviderInterface;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
+use Derafu\Form\Renderer\Widget\RadioWidgetRenderer;
 use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
+use Derafu\Form\Renderer\Widget\SliderWidgetRenderer;
 use Derafu\Form\Renderer\Widget\TextareaWidgetRenderer;
 
 /**
@@ -42,7 +44,6 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             'month' => new InputWidgetRenderer('month'),
             'number' => new InputWidgetRenderer('number'),
             'password' => new InputWidgetRenderer('password'),
-            'radio' => new InputWidgetRenderer('radio'),
             'range' => new InputWidgetRenderer('range'),
             'reset' => new InputWidgetRenderer('reset'),
             'search' => new InputWidgetRenderer('search'),
@@ -55,6 +56,8 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             'textarea' => new TextareaWidgetRenderer(),
 
             'select' => new SelectWidgetRenderer(),
+            'radio' => new RadioWidgetRenderer(),
+            'slider' => new SliderWidgetRenderer(),
         ];
     }
 }
