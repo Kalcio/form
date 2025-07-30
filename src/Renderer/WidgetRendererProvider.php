@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Derafu\Form\Renderer;
 
 use Derafu\Form\Contract\Renderer\WidgetRendererProviderInterface;
+use Derafu\Form\Renderer\Widget\CheckboxWidgetRenderer;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
 use Derafu\Form\Renderer\Widget\RadioWidgetRenderer;
 use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
@@ -33,8 +34,8 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             // Input types.
             'text' => new InputWidgetRenderer(),
             'button' => new InputWidgetRenderer('button'),
-            'checkbox' => new InputWidgetRenderer('checkbox'),
             'color' => new InputWidgetRenderer('color'),
+            'checkbox' => new InputWidgetRenderer('checkbox'),
             'date' => new InputWidgetRenderer('date'),
             'datetime' => new InputWidgetRenderer('datetime-local'),
             'email' => new InputWidgetRenderer('email'),
@@ -54,6 +55,8 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             'week' => new InputWidgetRenderer('week'),
 
             'textarea' => new TextareaWidgetRenderer(),
+
+            'checkboxes' => new CheckboxWidgetRenderer(),
 
             'select' => new SelectWidgetRenderer(),
             'radio' => new RadioWidgetRenderer(),
