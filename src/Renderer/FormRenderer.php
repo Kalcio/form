@@ -361,10 +361,29 @@ final class FormRenderer implements FormRendererInterface
             return 'number';
         } elseif ($type === 'boolean') {
             return 'checkbox';
+        } elseif ($type === 'array') {
+            $schema = $property->toArray();
+            if (isset($schema['items']['enum'])) {
+                return 'checkboxes';
+            }
+            return 'collection';
         } elseif ($property instanceof ArraySchemaInterface) {
             return 'collection';
         } elseif ($type === 'object') {
             return 'compound';
+        }
+
+        // Check if the control has a specific format defined in options.
+        if (isset($options['format'])) {
+            if ($options['format'] === 'checkbox') {
+                // For boolean fields, use single checkbox
+                // For array fields with enum, use multiple checkboxes
+                if ($property->getType() === 'boolean') {
+                    return 'checkbox';
+                } else {
+                    return 'checkboxes';
+                }
+            }
         }
 
         // Default to text.

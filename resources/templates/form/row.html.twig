@@ -7,6 +7,18 @@
 {# Determine if the field has errors to apply the appropriate classes. #}
 {% set has_errors = errors is not empty %}
 
+{# Check if this is a checkbox or radio field using multiple detection methods #}
+{% set input_type = options.type|default(options.attr.type|default('text')) %}
+{% set widget_contains_checkbox = widget matches '/type="checkbox"/' %}
+{% set widget_contains_radio = widget matches '/type="radio"/' %}
+{% set widget_contains_password = widget matches '/type="password"/' or widget matches '/data-password-field="true"/' %}
+{% set widget_has_multiple_checkboxes = widget matches '/type="checkbox".*type="checkbox"/s' %}
+{% set widget_has_form_check_group = widget matches '/checkbox-group/' %}
+
+{% set is_checkbox = input_type == 'checkbox' or input_type == 'radio' or widget_contains_checkbox or widget_contains_radio %}
+{% set is_password = input_type == 'password' or widget_contains_password %}
+{% set is_choice_multiple = widget_has_multiple_checkboxes or widget_has_form_check_group or (options.multiple is defined and options.multiple and options.expanded is defined and options.expanded) %}
+
 {# Get options for row and layout. #}
 {% set row_attr = options.row_attr|default({}) %}
 {% set row_class = 'mb-3' %}
@@ -19,7 +31,7 @@
     {% set row_class = row_class ~ ' has-error' %}
 {% endif %}
 
-{# Get options for input group. #}
+{# Get options for input group (not applicable to checkboxes). #}
 {% set input_group_prepend_text = options.input_group_prepend_text|default(null) %}
 {% set input_group_prepend_icon = options.input_group_prepend_icon|default(null) %}
 {% set input_group_prepend = options.input_group_prepend|default(null) %}
@@ -34,20 +46,91 @@
     or input_group_append is not null %}
 
 <div class="{{ row_class }}">
-    {# If we are using input group, include the decorations. #}
-    {% if has_input_group %}
-        <div class="input-group{% if has_errors %} has-validation{% endif %}">
-            {% if input_group_prepend or input_group_prepend_icon or input_group_prepend_text %}
-                {% if input_group_prepend %}
-                    {{ input_group_prepend|raw }}
-                {% else %}
-                    <span class="input-group-text">
-                        {% if input_group_prepend_icon %}<i class="{{ input_group_prepend_icon }}"></i>{% endif %}
-                        {% if input_group_prepend_text %}{{ input_group_prepend_text }}{% endif %}
-                    </span>
-                {% endif %}
+    {# Special handling for checkboxes and radio buttons #}
+    {% if is_checkbox or is_choice_multiple %}
+        {# For single checkbox/radio or multiple choice expanded #}
+        {% if is_choice_multiple %}
+            {# Multiple checkboxes/radios - render the main label first if exists #}
+            {% if label %}
+                <fieldset>
+                    <legend class="col-form-label">{{ label|raw }}</legend>
+                    {{ widget|raw }}
+                </fieldset>
+            {% else %}
+                {{ widget|raw }}
             {% endif %}
+        {% else %}
+            {# Single checkbox/radio - use form-check structure #}
+            <div class="form-check">
+                {{ widget|raw }}
+                {{ label|raw }}
+            </div>
+        {% endif %}
 
+        {# Errors for checkboxes #}
+        {% if has_errors %}
+            <div class="invalid-feedback d-block">
+                {{ errors|raw }}
+            </div>
+        {% endif %}
+
+        {# Help text for checkboxes #}
+        {% if help %}
+            <div class="form-text">
+                {{ help|raw }}
+            </div>
+        {% endif %}
+
+    {% else %}
+        {# Regular fields (non-checkbox) - original logic #}
+        {% if has_input_group or is_password %}
+            <div class="input-group{% if has_errors %} has-validation{% endif %}">
+                {% if input_group_prepend or input_group_prepend_icon or input_group_prepend_text %}
+                    {% if input_group_prepend %}
+                        {{ input_group_prepend|raw }}
+                    {% else %}
+                        <span class="input-group-text">
+                            {% if input_group_prepend_icon %}<i class="{{ input_group_prepend_icon }}"></i>{% endif %}
+                            {% if input_group_prepend_text %}{{ input_group_prepend_text }}{% endif %}
+                        </span>
+                    {% endif %}
+                {% endif %}
+
+                {% if options.floating_labels %}
+                    <div class="form-floating">
+                        {{ widget|raw }}
+                        {{ label|raw }}
+                    </div>
+                {% else %}
+                    {{ label|raw }}
+                    {{ widget|raw }}
+                {% endif %}
+
+                {% if is_password %}
+                    {# Add show/hide password button #}
+                    <button class="btn btn-outline-secondary" type="button" onclick="FormFields.showPassword(this)">
+                        <i class="fa-regular fa-eye fa-fw"></i>
+                    </button>
+                {% endif %}
+
+                {% if input_group_append or input_group_append_icon or input_group_append_text %}
+                    {% if input_group_append %}
+                        {{ input_group_append|raw }}
+                    {% else %}
+                        <span class="input-group-text">
+                            {% if input_group_append_icon %}<i class="{{ input_group_append_icon }}"></i>{% endif %}
+                            {% if input_group_append_text %}{{ input_group_append_text }}{% endif %}
+                        </span>
+                    {% endif %}
+                {% endif %}
+                {% if has_errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ errors|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            {# Without input group, normal rendering. #}
             {% if options.floating_labels %}
                 <div class="form-floating">
                     {{ widget|raw }}
@@ -58,44 +141,17 @@
                 {{ widget|raw }}
             {% endif %}
 
-            {% if input_group_append or input_group_append_icon or input_group_append_text %}
-                {% if input_group_append %}
-                    {{ input_group_append|raw }}
-                {% else %}
-                    <span class="input-group-text">
-                        {% if input_group_append_icon %}<i class="{{ input_group_append_icon }}"></i>{% endif %}
-                        {% if input_group_append_text %}{{ input_group_append_text }}{% endif %}
-                    </span>
-                {% endif %}
-            {% endif %}
             {% if has_errors %}
                 <div class="invalid-feedback d-block">
                     {{ errors|raw }}
                 </div>
             {% endif %}
-        </div>
-    {% else %}
-        {# Without input group, normal rendering. #}
-        {% if options.floating_labels %}
-            <div class="form-floating">
-                {{ widget|raw }}
-                {{ label|raw }}
-            </div>
-        {% else %}
-            {{ label|raw }}
-            {{ widget|raw }}
         {% endif %}
 
-        {% if has_errors %}
-            <div class="invalid-feedback d-block">
-                {{ errors|raw }}
+        {% if help %}
+            <div class="form-text">
+                {{ help|raw }}
             </div>
         {% endif %}
-    {% endif %}
-
-    {% if help %}
-        <div class="form-text">
-            {{ help|raw }}
-        </div>
     {% endif %}
 </div>

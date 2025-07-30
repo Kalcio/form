@@ -36,6 +36,7 @@ use Derafu\Form\Renderer\ElementRendererProvider;
 use Derafu\Form\Renderer\ElementRendererRegistry;
 use Derafu\Form\Renderer\FormRenderer;
 use Derafu\Form\Renderer\FormTwigExtension;
+use Derafu\Form\Renderer\Widget\CheckboxWidgetRenderer;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
 use Derafu\Form\Renderer\Widget\RadioWidgetRenderer;
 use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
@@ -118,6 +119,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(VerticalLayoutRenderer::class)]
 #[CoversClass(FormTwigExtension::class)]
 #[CoversClass(WidgetRendererProvider::class)]
+#[CoversClass(CheckboxWidgetRenderer::class)]
 #[CoversClass(InputWidgetRenderer::class)]
 #[CoversClass(RadioWidgetRenderer::class)]
 #[CoversClass(SelectWidgetRenderer::class)]
