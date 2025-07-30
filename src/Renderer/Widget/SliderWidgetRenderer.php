@@ -15,8 +15,8 @@ namespace Derafu\Form\Renderer\Widget;
 use Derafu\Form\Contract\FormFieldInterface;
 use Derafu\Form\Contract\Renderer\FormRendererInterface;
 use Derafu\Form\Contract\Renderer\WidgetRendererInterface;
-use Derafu\Form\Contract\Schema\NumberSchemaInterface;
 use Derafu\Form\Contract\Schema\IntegerSchemaInterface;
+use Derafu\Form\Contract\Schema\NumberSchemaInterface;
 use InvalidArgumentException;
 
 /**
