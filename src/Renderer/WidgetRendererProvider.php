@@ -13,8 +13,11 @@ declare(strict_types=1);
 namespace Derafu\Form\Renderer;
 
 use Derafu\Form\Contract\Renderer\WidgetRendererProviderInterface;
+use Derafu\Form\Renderer\Widget\CheckboxWidgetRenderer;
 use Derafu\Form\Renderer\Widget\InputWidgetRenderer;
+use Derafu\Form\Renderer\Widget\RadioWidgetRenderer;
 use Derafu\Form\Renderer\Widget\SelectWidgetRenderer;
+use Derafu\Form\Renderer\Widget\SliderWidgetRenderer;
 use Derafu\Form\Renderer\Widget\TextareaWidgetRenderer;
 
 /**
@@ -31,8 +34,8 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             // Input types.
             'text' => new InputWidgetRenderer(),
             'button' => new InputWidgetRenderer('button'),
-            'checkbox' => new InputWidgetRenderer('checkbox'),
             'color' => new InputWidgetRenderer('color'),
+            'checkbox' => new InputWidgetRenderer('checkbox'),
             'date' => new InputWidgetRenderer('date'),
             'datetime' => new InputWidgetRenderer('datetime-local'),
             'email' => new InputWidgetRenderer('email'),
@@ -42,7 +45,6 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             'month' => new InputWidgetRenderer('month'),
             'number' => new InputWidgetRenderer('number'),
             'password' => new InputWidgetRenderer('password'),
-            'radio' => new InputWidgetRenderer('radio'),
             'range' => new InputWidgetRenderer('range'),
             'reset' => new InputWidgetRenderer('reset'),
             'search' => new InputWidgetRenderer('search'),
@@ -54,7 +56,11 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
 
             'textarea' => new TextareaWidgetRenderer(),
 
+            'checkboxes' => new CheckboxWidgetRenderer(),
+
             'select' => new SelectWidgetRenderer(),
+            'radio' => new RadioWidgetRenderer(),
+            'slider' => new SliderWidgetRenderer(),
         ];
     }
 }

@@ -34,7 +34,8 @@ final class TextareaWidgetRenderer implements WidgetRendererInterface
         $formRenderer = $options['renderer'] ?? null;
         if (!$formRenderer instanceof FormRendererInterface) {
             throw new InvalidArgumentException(
-                'The "renderer" option in TextareaWidgetRenderer must be an instance of FormRendererInterface.'
+                'The "renderer" option in TextareaWidgetRenderer must be an '
+                . 'instance of FormRendererInterface.'
             );
         }
 
@@ -109,6 +110,9 @@ final class TextareaWidgetRenderer implements WidgetRendererInterface
         ];
 
         // Render the template.
-        return $formRenderer->getRenderer()->render('form/widget/textarea', $context);
+        return $formRenderer->getRenderer()->render(
+            'form/widget/textarea',
+            $context
+        );
     }
 }

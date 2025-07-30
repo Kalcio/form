@@ -1,0 +1,146 @@
+{#
+   This template renders a range slider with left fill using CSS gradients.
+   Method 1: Pure CSS with dynamic gradient.
+#}
+<div class="slider-group">
+    {% set slider_attrs = attrs|merge({
+        'id': name ~ '_field',
+        'type': 'range',
+        'class': 'form-slider'
+    }) %}
+
+    {# Set default min/max if not provided #}
+    {% if not slider_attrs.min is defined %}
+        {% set slider_attrs = slider_attrs|merge({'min': '0'}) %}
+    {% endif %}
+    {% if not slider_attrs.max is defined %}
+        {% set slider_attrs = slider_attrs|merge({'max': '100'}) %}
+    {% endif %}
+
+    {# Set current value #}
+    {% if value is defined and value is not empty %}
+        {% set slider_attrs = slider_attrs|merge({'value': value}) %}
+    {% else %}
+        {# Default to middle value if no value set #}
+        {% set default_value = ((slider_attrs.max|number_format + slider_attrs.min|number_format) / 2)|round %}
+        {% set slider_attrs = slider_attrs|merge({'value': default_value}) %}
+    {% endif %}
+
+    {# Calculate percentage for gradient (SERVER-SIDE) #}
+    {% set min_val = slider_attrs.min|number_format %}
+    {% set max_val = slider_attrs.max|number_format %}
+    {% set current_val = slider_attrs.value|number_format %}
+    {% set fill_percent = ((current_val - min_val) / (max_val - min_val) * 100)|round(1) %}
+
+    {# Ensure percentage is within bounds #}
+    {% set fill_percent = fill_percent < 0 ? 0 : (fill_percent > 100 ? 100 : fill_percent) %}
+
+    {# Build gradient background #}
+    {% set gradient_bg = 'linear-gradient(to right, #0d6efd 0%, #0d6efd ' ~ fill_percent ~ '%, #e9ecef ' ~ fill_percent ~ '%, #e9ecef 100%)' %}
+
+    {# Generate the HTML attributes string #}
+    {% set attr_string = '' %}
+    {% for attr_name, attr_value in slider_attrs %}
+        {% if attr_value is same as(true) %}
+            {% set attr_string = attr_string ~ ' ' ~ attr_name %}
+        {% elseif attr_value is not same as(false) %}
+            {% set attr_string = attr_string ~ ' ' ~ attr_name ~ '="' ~ attr_value|e('html_attr') ~ '"' %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="slider-container">
+        {% if options.label is defined %}
+            <label class="form-label" for="{{ slider_attrs.id }}">
+                {{ options.label }}
+            </label>
+        {% endif %}
+
+        {# Input with calculated gradient background #}
+        <input{{ attr_string|raw }} style="background: {{ gradient_bg }};">
+
+        {% if options.show_value is defined and options.show_value %}
+            <div class="slider-value">
+                <span>{{ slider_attrs.value }}</span>
+                {% if options.unit is defined %}{{ options.unit }}{% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    {% if has_errors and options.error_message is defined %}
+        <div class="invalid-feedback">
+            {{ options.error_message }}
+        </div>
+    {% endif %}
+</div>
+
+<style>
+.slider-group {
+    margin-bottom: 1rem;
+}
+
+.slider-container {
+    width: 100%;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #212529;
+}
+
+.form-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    /* Background is set inline with initial gradient */
+}
+
+.form-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0d6efd;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.form-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.form-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0d6efd;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+}
+
+.slider-value {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.invalid-feedback {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+/* Error state */
+.slider-group.is-invalid .form-slider::-webkit-slider-thumb {
+    background: #dc3545;
+}
+</style>
