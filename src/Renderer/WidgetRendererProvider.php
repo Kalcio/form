@@ -53,11 +53,8 @@ final class WidgetRendererProvider implements WidgetRendererProviderInterface
             'time' => new InputWidgetRenderer('time'),
             'url' => new InputWidgetRenderer('url'),
             'week' => new InputWidgetRenderer('week'),
-
             'textarea' => new TextareaWidgetRenderer(),
-
             'checkboxes' => new CheckboxWidgetRenderer(),
-
             'select' => new SelectWidgetRenderer(),
             'radio' => new RadioWidgetRenderer(),
             'slider' => new SliderWidgetRenderer(),

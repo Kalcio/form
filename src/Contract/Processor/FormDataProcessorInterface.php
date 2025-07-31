@@ -38,5 +38,8 @@ interface FormDataProcessorInterface
      * @return ProcessResultInterface The processing result with data, errors
      * and validation status.
      */
-    public function process(FormInterface $form, array $data = []): ProcessResultInterface;
+    public function process(
+        FormInterface $form,
+        array $data = []
+    ): ProcessResultInterface;
 }

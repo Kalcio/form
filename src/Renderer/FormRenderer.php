@@ -217,7 +217,7 @@ final class FormRenderer implements FormRendererInterface
         $fields = $form->getFields();
 
         foreach ($fields as $field) {
-            if ($field->getControl()->getOptions()['enctype'] ?? null) {
+            if (($field->getControl()->getOptions()['type'] ?? null) === 'file') {
                 return 'multipart/form-data';
             }
         }

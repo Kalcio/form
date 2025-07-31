@@ -65,7 +65,10 @@ final class FormDataProcessor implements FormDataProcessorInterface
 
             try {
                 // Process the field value through all rules.
-                $processedValue = $this->processor->process($fieldValue, $fieldRules);
+                $processedValue = $this->processor->process(
+                    $fieldValue,
+                    $fieldRules
+                );
                 $processedData[$fieldName] = $processedValue;
             } catch (ValidationException $e) {
                 // Collect validation errors.
